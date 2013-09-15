@@ -112,13 +112,13 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EcmaScript.NET">
-      <HintPath>..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
+      <HintPath>packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor">
-      <HintPath>..\packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <HintPath>packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
     <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild">
-      <HintPath>..\packages\YUICompressor.NET.MSBuild.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
+      <HintPath>packages\YUICompressor.NET.MSBuild.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup>
