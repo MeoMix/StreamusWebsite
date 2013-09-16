@@ -10,6 +10,7 @@
         <link href="css/bootstrap.css" rel="stylesheet" />
         <link href="css/bootstrap-responsive.css" rel="stylesheet" />
         <link href="css/blueimp-gallery.min.css" rel="stylesheet" />
+        <link href="css/font-awesome.css" rel="stylesheet" />
 <!--        <link href="css/minified.css" rel="stylesheet" />-->
         <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jbnkffmindojffecdhbbmekbmkkfpmjd">
         <link rel='shortcut icon' href='favicon.ico' />
@@ -205,15 +206,69 @@
 
             <div id="donateContent" class="content">
                 
-                <div class="row-fluid marketing">
-                    Feeling generous? Continuous development of Streamus is only possible with your support. Thank you!
+                <div class="jumbotron">
+                    <h1>
+                        <i class="icon-dollar"></i>
+                        <i class="icon-long-arrow-right"></i>
+                        <i class="icon-beer"></i>
+                        <span class="equals">=</span>
+                        <i class="icon-heart"></i>
+                    </h1>
+                </div>
+                
+                <hr/>
+
+                <div class="row-fluid ">
+                    <p>Feeling generous? Continuous development of Streamus is only possible with your support. Thank you!</p>
+                </div>
+
+                <div class="row-fluid form-horizontal">
+                    <select id="currencySelect">
+                        <option value="USD">U.S. Dollar</option>
+                        <option value="AUD">Australian Dollar</option>
+                        <option value="CAD">Canadian Dollar</option>
+                        <option value="CZK">Czech Koruna</option>
+                        <option value="DKK">Danish Krone</option>
+                        <option value="EUR">Euro</option>
+                        <option value="HKD">Hong Kong Dollar</option>
+                        <option value="HUF">Hungarian Forint</option>
+                        <option value="ILS">Israeli New Sheqel</option>
+                        <option value="JPY">Japanese Yen</option>
+                        <option value="MXN">Mexican Peso</option>
+                        <option value="NOK">Norwegian Krone</option>
+                        <option value="NZD">New Zealand Dollar</option>
+                        <option value="PHP">Philippine Peso</option>
+                        <option value="PLN">Polish Zloty</option>
+                        <option value="GBP">Pound Sterling</option>
+                        <option value="SGD">Singapore Dollar</option>
+                        <option value="SEK">Swedish Krona</option>
+                        <option value="CHF">Swiss Franc</option>
+                        <option value="TWD">Taiwan New Dollar</option>
+                        <option value="THB">Thai Baht</option>
+                    </select>
                     
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
-                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    <select id="donationAmountSelect">
+                        <option value="1">1</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="-1">Custom</option>
+                    </select>
+                    <input id="customDonationAmount" type="number" min="1" name="customDonationAmount" value=""/>
+                    
+                    <button type="submit" form="donateForm">Donate via <strong>PayPal</strong></button>
+
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="donateForm">
+                        <input type="hidden" name="cmd" value="_donations">
+                        <input type="hidden" name="business" value="sean.palmer.anderson@gmail.com">
+                        <input type="hidden" name="item_name" value="Streamus - Simple streaming music">
+                        <input type="hidden" name="no_shipping" value="1">
+                        <input type="hidden" name="no_note" value="1">
+                        <input type="hidden" name="currency_code" value="">
+                        <input type="hidden" name="amount" value="">
+                        <input type="hidden" name="confirmation_note" value="Thank you so much for your donation!"/>
                     </form>
+
                 </div>
 
             </div>

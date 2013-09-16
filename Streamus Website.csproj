@@ -44,7 +44,9 @@
     <Content Include="css\blueimp-gallery.min.css" />
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\font-awesome.css" />
     <Content Include="css\minified.css" />
+    <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="font\helvetica neue\helveticaneue-webfont.svg" />
     <Content Include="font\helvetica neue\helveticaneuebold-webfont.svg" />
     <Content Include="css\index.css" />
@@ -80,6 +82,10 @@
     <Content Include="font\helvetica neue\helveticaneuebold-webfont.ttf" />
     <Content Include="font\helvetica neue\helveticaneuebold-webfont.woff" />
     <Content Include=".htaccess" />
+    <Content Include="font\fontawesome-webfont.eot" />
+    <Content Include="font\fontawesome-webfont.ttf" />
+    <Content Include="font\fontawesome-webfont.woff" />
+    <Content Include="font\FontAwesome.otf" />
     <None Include="js\chrome-api-vsdoc.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\detectMobileBrowser.js" />

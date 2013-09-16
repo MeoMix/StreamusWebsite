@@ -8,7 +8,9 @@
 
         events: {
             'click .logoWrapper a': 'goHome',
-            'click *[data-contentid]': 'clicked'
+            'click *[data-contentid]': 'clicked',
+            'change #donationAmountSelect': 'toggleCustomDonateVisibility',
+            'submit #donateForm': 'updateFormAndSubmit'
         },
        
         installButton: new InstallButtonView,
@@ -127,6 +129,38 @@
         
         goHome: function() {
             this.navigationItems.first().click();
+        },
+
+        toggleCustomDonateVisibility: function (event) {
+
+            var donationAmountSelect = $(event.currentTarget);
+            var selectedDonationAmount = parseInt(donationAmountSelect.val(), 10);
+            
+            if (selectedDonationAmount === -1) {
+                $('#customDonationAmount').show();
+            } else {
+                $('#customDonationAmount').hide();
+            }
+
+        },
+        
+        updateFormAndSubmit: function(event) {
+
+            var selectedCurrency = $('#currencySelect').val();
+
+            var donationAmount;
+            
+            var customDonationAmount = $('#customDonationAmount');
+            if (customDonationAmount.is(':visible')) {
+                donationAmount = parseInt(customDonationAmount.val(), 10);
+            } else {
+                donationAmount = parseInt($('#donationAmountSelect').text(), 10);
+            }
+
+            var form = $(event.currentTarget);
+            form.find('input[name="currency_code"]').val(selectedCurrency);
+            form.find('input[name="amount"]').val(donationAmount);
+
         }
 
     });

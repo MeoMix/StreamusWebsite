@@ -149,6 +149,10 @@ ul.nav {
     line-height: 1;
 }
 
+#donateContent .jumbotron h1 {
+    font-size: 72px;
+}
+
 @media (max-width: 1000px) {
     .container-narrow { padding: 10px 0;}
     .badgeWrapper { text-align: left; }
@@ -213,4 +217,34 @@ ul.nav {
         zoom: .7;
     }
 
+}
+
+#customDonationAmount {
+    display: none;
+}
+
+#donateContent .icon-dollar {
+    color: #51A351;
+}
+
+#donateContent .icon-long-arrow-right {
+    color: #f0ad4e;
+}
+
+#donateContent .icon-beer {
+    color: #654321;
+}
+
+#donateContent .equals {
+    color: #428bca;
+    vertical-align: top;
+    line-height: 62px;
+}
+
+#donateContent .icon-heart {
+    color: #d2322d;
+}
+
+#donateContent > div {
+    text-align: center;
 }
