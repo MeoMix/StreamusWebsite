@@ -61,6 +61,9 @@
                 case '#contact':
                     listItem = this.$el.find('[data-contentid="' + 'contactContent' + '"]');
                     break;
+                case '#donate':
+                    listItem = this.$el.find('[data-contentid="' + 'donateContent' + '"]');
+                    break;
                 case '#terms-of-use':
                     listItem = this.$el.find('[data-contentid="' + 'touContent' + '"]');
                     break;
@@ -94,6 +97,9 @@
                     break;
                 case 'contactContent':
                     location.replace("#contact");
+                    break;
+                case 'donateContent':
+                    location.replace("#donate");
                     break;
                 case 'touContent':
                     location.replace("#terms-of-use");
