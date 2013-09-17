@@ -231,6 +231,10 @@ ul.nav {
     color: #f0ad4e;
 }
 
+#donateContent #beerMug {
+    margin-bottom: -10px;
+}
+
 #donateContent .icon-beer {
     color: #654321;
 }
@@ -238,7 +242,7 @@ ul.nav {
 #donateContent .equals {
     color: #428bca;
     vertical-align: top;
-    line-height: 62px;
+    line-height: 80px;
 }
 
 #donateContent .icon-heart {
