@@ -52,7 +52,6 @@
     <Content Include="css\index.css" />
     <Content Include="favicon.ico" />
     <Content Include="googlee6d26778f04ae1ed.html" />
-    <Content Include="img\beerMug.svg" />
     <Content Include="img\error.png" />
     <Content Include="img\error.svg" />
     <Content Include="img\keyboardShortcutsScreenshot.png" />
