@@ -20,7 +20,7 @@
 
             this.$el
                 .attr('disabled', true)
-                .text('PC required');
+                .text('Desktop computer required');
 
         }
     },
