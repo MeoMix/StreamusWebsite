@@ -73,6 +73,11 @@ body {
     opacity: 0.8;
 }
 
+.social > iframe.github {
+    display: block;
+    margin-bottom: 5px;
+}
+
 .social:hover {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
