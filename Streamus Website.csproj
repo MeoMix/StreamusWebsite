@@ -41,78 +41,68 @@
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="css\blueimp-gallery.min.css" />
-    <Content Include="css\bootstrap-responsive.css" />
-    <Content Include="css\bootstrap.css" />
-    <Content Include="css\font-awesome.css" />
-    <Content Include="css\minified.css" />
-    <Content Include="font\fontawesome-webfont.svg" />
-    <Content Include="font\helvetica neue\helveticaneue-webfont.svg" />
-    <Content Include="font\helvetica neue\helveticaneuebold-webfont.svg" />
-    <Content Include="css\index.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="googlee6d26778f04ae1ed.html" />
-    <Content Include="img\error.png" />
-    <Content Include="img\error.svg" />
-    <Content Include="img\keyboardShortcutsScreenshot.png" />
-    <Content Include="img\loading.gif" />
-    <Content Include="img\mainScreenshot.png" />
-    <Content Include="img\play-pause.png" />
-    <Content Include="img\play-pause.svg" />
-    <Content Include="img\sean.jpg" />
-    <Content Include="img\chromeWebStoreBadge.png" />
-    <Content Include="img\glyphicons-halflings-white.png" />
-    <Content Include="img\glyphicons-halflings.png" />
-    <Content Include="img\logo.png" />
-    <Content Include="img\streamusIntro1.png" />
-    <Content Include="img\streamusIntro2.png" />
-    <Content Include="img\streamusIntro3.png" />
-    <Content Include="img\streamusIntro5.png" />
-    <Content Include="img\video-play.png" />
-    <Content Include="img\video-play.svg" />
-    <Content Include="img\videoScreenshot.png" />
-    <Content Include="img\youTubeBadge.png" />
-    <Content Include="img\youTubeInjectScreenshot.png" />
-    <Content Include="index.htm" />
-    <Content Include="js\bootstrap.js" />
-    <Content Include="font\helvetica neue\helveticaneue-webfont.eot" />
-    <Content Include="font\helvetica neue\helveticaneue-webfont.ttf" />
-    <Content Include="font\helvetica neue\helveticaneue-webfont.woff" />
-    <Content Include="font\helvetica neue\helveticaneuebold-webfont.eot" />
-    <Content Include="font\helvetica neue\helveticaneuebold-webfont.ttf" />
-    <Content Include="font\helvetica neue\helveticaneuebold-webfont.woff" />
     <Content Include=".htaccess" />
-    <Content Include="font\fontawesome-webfont.eot" />
-    <Content Include="font\fontawesome-webfont.ttf" />
-    <Content Include="font\fontawesome-webfont.woff" />
-    <Content Include="font\FontAwesome.otf" />
-    <None Include="js\chrome-api-vsdoc.js" />
-    <Content Include="js\bootstrap.min.js" />
-    <Content Include="js\detectMobileBrowser.js" />
-    <Content Include="js\detectMobileBrowser.min.js" />
-    <Content Include="js\index.min.js" />
-    <Content Include="js\installButtonView.min.js" />
-    <Content Include="js\jquery.blueimp-gallery.min.js" />
-    <Content Include="js\index.js" />
-    <Content Include="js\installButtonView.js" />
-    <Content Include="js\jquery.blueimp-gallery.js" />
-    <Content Include="share\index.htm" />
-    <Content Include="Web.config" />
+    <Content Include="src\css\blueimp-gallery.min.css" />
+    <Content Include="src\css\bootstrap-responsive.css" />
+    <Content Include="src\css\bootstrap.css" />
+    <Content Include="src\css\font-awesome.css" />
+    <Content Include="src\css\index.css" />
+    <Content Include="src\css\minified.css" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\font\fontawesome-webfont.svg" />
+    <Content Include="src\font\helvetica neue\helveticaneue-webfont.svg" />
+    <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.svg" />
+    <Content Include="src\googlee6d26778f04ae1ed.html" />
+    <Content Include="src\img\chromeWebStoreBadge.png" />
+    <Content Include="src\img\error.png" />
+    <Content Include="src\img\error.svg" />
+    <Content Include="src\img\glyphicons-halflings-white.png" />
+    <Content Include="src\img\glyphicons-halflings.png" />
+    <Content Include="src\img\keyboardShortcutsScreenshot.png" />
+    <Content Include="src\img\loading.gif" />
+    <Content Include="src\img\logo.png" />
+    <Content Include="src\img\mainScreenshot.png" />
+    <Content Include="src\img\play-pause.png" />
+    <Content Include="src\img\play-pause.svg" />
+    <Content Include="src\img\sean.jpg" />
+    <Content Include="src\img\streamusIntro1.png" />
+    <Content Include="src\img\streamusIntro2.png" />
+    <Content Include="src\img\streamusIntro3.png" />
+    <Content Include="src\img\streamusIntro5.png" />
+    <Content Include="src\img\video-play.png" />
+    <Content Include="src\img\video-play.svg" />
+    <Content Include="src\img\videoScreenshot.png" />
+    <Content Include="src\img\youTubeBadge.png" />
+    <Content Include="src\img\youTubeInjectScreenshot.png" />
+    <Content Include="src\index.htm" />
+    <Content Include="src\js\index.js" />
+    <Content Include="src\js\installButtonView.js" />
+    <Content Include="src\js\thirdParty\bootstrap.js" />
+    <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
+    <Content Include="src\js\thirdParty\detectMobileBrowser.js" />
+    <Content Include="src\js\thirdParty\jquery.blueimp-gallery.js" />
+    <Content Include="src\share\index.htm" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="minifier.proj" />
-    <Content Include="js\index.min.js.map">
-      <DependentUpon>index.js</DependentUpon>
-    </Content>
-    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
-    <None Include="Web.Debug.config">
+    <Content Include="src\font\fontawesome-webfont.eot" />
+    <Content Include="src\font\fontawesome-webfont.ttf" />
+    <Content Include="src\font\fontawesome-webfont.woff" />
+    <Content Include="src\font\FontAwesome.otf" />
+    <Content Include="src\font\helvetica neue\helveticaneue-webfont.eot" />
+    <Content Include="src\font\helvetica neue\helveticaneue-webfont.ttf" />
+    <Content Include="src\font\helvetica neue\helveticaneue-webfont.woff" />
+    <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.eot" />
+    <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.ttf" />
+    <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.woff" />
+    <Content Include="src\Web.config" />
+    <None Include="src\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
+    <None Include="src\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
@@ -157,7 +147,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>MSBuild "$(ProjectDir)\minifier.proj"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

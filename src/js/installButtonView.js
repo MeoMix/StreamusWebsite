@@ -47,7 +47,7 @@
                 } else {
 
                     self.$el.text('An error was encountered.');
-                    window && console.error(error);
+                    console.error(error);
 
                 }
 

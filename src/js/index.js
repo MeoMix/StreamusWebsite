@@ -12,7 +12,7 @@
             'submit #donateForm': 'updateFormAndSubmit'
         },
        
-        installButton: new InstallButtonView,
+        installButton: new InstallButtonView(),
         
         initialize: function () {
 
@@ -143,7 +143,7 @@
 
     });
 
-    var bodyView = new BodyView;
+    var bodyView = new BodyView();
     
     blueimp.Gallery( $('#links a') , {
         container: '#blueimp-gallery-carousel',
