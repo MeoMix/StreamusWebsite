@@ -77,10 +77,19 @@
     <Content Include="src\index.htm" />
     <Content Include="src\js\index.js" />
     <Content Include="src\js\installButtonView.js" />
+    <Content Include="src\js\thirdParty\backbone.js" />
     <Content Include="src\js\thirdParty\bootstrap.js" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
+    <Content Include="src\js\thirdParty\coinbase.js" />
     <Content Include="src\js\thirdParty\detectMobileBrowser.js" />
+    <Content Include="src\js\thirdParty\facebookButton.js" />
+    <Content Include="src\js\thirdParty\googleAnalytics.js" />
+    <Content Include="src\js\thirdParty\googlePlusButton.js" />
     <Content Include="src\js\thirdParty\jquery.blueimp-gallery.js" />
+    <Content Include="src\js\thirdParty\jquery.js" />
+    <Content Include="src\js\thirdParty\lodash.js" />
+    <Content Include="src\js\thirdParty\twitterButton.js" />
+    <Content Include="src\js\thirdParty\zopim.js" />
     <Content Include="src\share\index.htm" />
   </ItemGroup>
   <ItemGroup>

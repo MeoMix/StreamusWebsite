@@ -30,27 +30,9 @@ module.exports = function (grunt) {
 			options: {
 				separator: ';',
 				stripBanners: true
-			},
-			distjs: {
-				src: ['src/js/**/!(chrome-api-vsdoc).js'],
-				dest: 'dist/js/<%= pkg.name %>.js'
-			},
-			distcss: {
-				src: ['src/css/**/*.css'],
-				dest: 'dist/css/<%= pkg.name %>.css'
 			}
 		},
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-			},
-			distjs: {
-				files: {
-					'dist/js/<%= pkg.name %>.min.js': ['<%= concat.distjs.dest %>']
-				}
-			}
-		},
-	
+
 		watch: {
 		  files: ['<%= jshint.files %>'],
 		  tasks: ['jshint']
@@ -70,22 +52,41 @@ module.exports = function (grunt) {
 
 		},
 		
-		cssmin: {
-			minify: {
-				src: 'dist/css/<%= pkg.name %>.css',
-				dest: 'dist/css/<%= pkg.name %>.min.css',
-			}
-		}
+		useminPrepare: {
+		    html: 'src/index.htm'
+		},
+
+		usemin: {
+		    html: 'dist/index.htm'
+		},
+
+		copy: {
+		    dist: {
+		        files: [
+                    { dest: 'dist/index.htm', src: 'src/index.htm' },
+                    { dest: 'dist/share/', cwd: 'src/share', src: '**', expand: true},
+		            { dest: 'dist/font/', cwd: 'src/font', src: '**', expand: true},
+		            { dest: 'dist/img/', cwd:'src/img', src: '**', expand: true},
+		            { dest: 'dist/favicon.ico', src: 'src/favicon.ico' },
+		            { dest: 'dist/googlee6d26778f04ae1ed.html', src: 'src/googlee6d26778f04ae1ed.html' }
+		        ]
+		    }
+		},
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-usemin');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
 	grunt.registerTask('lint', ['jshint']);
 
+	//  TODO: I feel like I shouldn't have to call concat/uglify/cssmin here because useminPrepare's flow should handle it, but not seeing it...? 
+	grunt.registerTask('gogo', ['copy', 'useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin']);
+	
 };

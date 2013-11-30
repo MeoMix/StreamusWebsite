@@ -6,11 +6,14 @@
         <meta name="description" content="Streamus is a Google Chrome extension that turns YouTube into the music video player you always wanted.">
         <meta name="keywords" content="Streamus, music, online, YouTube, listen, streaming, play, digital, album, artist, playlist">
         
+        <!-- build:css css/website.min.css -->
         <link href="css/index.css" rel="stylesheet" />
         <link href="css/bootstrap.css" rel="stylesheet" />
         <link href="css/bootstrap-responsive.css" rel="stylesheet" />
         <link href="css/blueimp-gallery.min.css" rel="stylesheet" />
         <link href="css/font-awesome.css" rel="stylesheet" />
+        <!-- endbuild -->
+
         <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jbnkffmindojffecdhbbmekbmkkfpmjd">
         <link rel='shortcut icon' href='favicon.ico' />
     </head>
@@ -485,76 +488,22 @@
             <a href="https://twitter.com/share" class="twitter-share-button" data-via="GetStreamus"></a>
         </aside>
 
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+        <!-- build:js js/website.min.js -->
+        <script src="js/thirdParty/jquery.js"></script>
+        <script src="js/thirdParty/lodash.js"></script>
+        <script src="js/thirdParty/backbone.js"></script>
         <script src="js/thirdParty/bootstrap.js"></script>
+        <script src="js/thirdParty/coinbase.js"></script>
         <script src="js/thirdParty/detectMobileBrowser.js"></script>
+        <script src="js/thirdParty/facebookButton.js"></script>
+        <script src="js/thirdParty/googleAnalytics.js"></script>
+        <script src="js/thirdParty/googlePlusButton.js"></script>
         <script src="js/thirdParty/jquery.blueimp-gallery.js"></script>
+        <script src="js/thirdParty/twitterButton.js"></script>
+        <script src="js/thirdParty/zopim.js"></script>
         <script src="js/installButtonView.js"></script>
         <script src="js/index.js"></script>
-		
-        <!--  TODO: Optimize... -->
-        <script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
-        
-        <script type="text/javascript">
-            //  inline load Google Analytics:
-            (function (d, j, f, c, h) { d.GoogleAnalyticsObject = h; d[h] = d[h] || function () { (d[h].q = d[h].q || []).push(arguments) }, d[h].l = 1 * new Date(); b = j.createElement(f), e = j.getElementsByTagName(f)[0]; b.async = 1; b.src = c; e.parentNode.insertBefore(b, e) })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga"); ga("create", "UA-41808530-1", "streamus.com"); ga("send", "pageview");
-        
-            //  inline social buttons:
-            //  facebook:
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-            
-            //  twitter:
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = "//platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'twitter-wjs'));
-            
-            //  twitter:
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = "https://apis.google.com/js/plusone.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'google-jspo'));
-            
-            //  zopim:
-            window.$zopim || (function (d, s) {
-                var z = $zopim = function (c) { z._.push(c); }, $ = z.s =
-                    d.createElement(s), e = d.getElementsByTagName(s)[0];
-                z.set = function (o) {
-                    z.set.
-                        _.push(o);
-                };
-                z._ = [];
-                z.set._ = [];
-                $.async = !0;
-                $.setAttribute('charset', 'utf-8');
-                $.src = '//v2.zopim.com/?1TIFyJJeUxtn1IuZpJGTUc0e3kpthpoN';
-                z.t = +new Date;
-                $.
-                    type = 'text/javascript';
-                e.parentNode.insertBefore($, e);
-            })(document, 'script');
-        </script>
+        <!-- endbuild -->
         
     </body>
 </html>

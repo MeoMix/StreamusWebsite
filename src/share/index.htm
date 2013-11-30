@@ -6,7 +6,7 @@
         <meta name="description" content="Streamus is a Google Chrome extension that turns YouTube into the music video player you always wanted.">
         <meta name="keywords" content="Streamus, music, online, YouTube, listen, streaming, play, digital, album, artist, playlist">
 
-        <link href="http://www.streamus.com/css/minified.css" rel="stylesheet" />
+        <link href="http://www.streamus.com/css/website.min.css" rel="stylesheet" />
         <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jbnkffmindojffecdhbbmekbmkkfpmjd">
         <link rel='shortcut icon' href='http://www.streamus.com/favicon.ico' />
     </head>
@@ -244,71 +244,7 @@
         </aside>
 
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
-        <script src="http://www.streamus.com/js/bootstrap.min.js"></script>
-        <script src="http://www.streamus.com/js/detectMobileBrowser.min.js"></script>
-        <script src="http://www.streamus.com/js/installButtonView.min.js"></script>
-        <script src="http://www.streamus.com/js/index.min.js"></script>
-        
-        <script type="text/javascript">
-            //  inline load Google Analytics:
-            (function (d, j, f, c, h, b, e) { d.GoogleAnalyticsObject = h; d[h] = d[h] || function () { (d[h].q = d[h].q || []).push(arguments) }, d[h].l = 1 * new Date(); b = j.createElement(f), e = j.getElementsByTagName(f)[0]; b.async = 1; b.src = c; e.parentNode.insertBefore(b, e) })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga"); ga("create", "UA-41808530-1", "streamus.com"); ga("send", "pageview");
-
-            //  inline social buttons:
-            //  facebook:
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-            //  twitter:
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = "//platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'twitter-wjs'));
-
-            //  twitter:
-            (function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.async = true;
-                js.src = "https://apis.google.com/js/plusone.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'google-jspo'));
-            
-            //  zopim:
-            window.$zopim || (function (d, s) {
-                var z = $zopim = function (c) { z._.push(c); }, $ = z.s =
-                    d.createElement(s), e = d.getElementsByTagName(s)[0];
-                z.set = function (o) {
-                    z.set.
-                        _.push(o);
-                };
-                z._ = [];
-                z.set._ = [];
-                $.async = !0;
-                $.setAttribute('charset', 'utf-8');
-                $.src = '//v2.zopim.com/?1TIFyJJeUxtn1IuZpJGTUc0e3kpthpoN';
-                z.t = +new Date;
-                $.
-                    type = 'text/javascript';
-                e.parentNode.insertBefore($, e);
-            })(document, 'script');
-        </script>
+        <script src="http://www.streamus.com/js/website.min.js"></script>
 
     </body>
 </html>
