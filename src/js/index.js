@@ -1,9 +1,11 @@
-﻿$(function () {
+﻿define([
+    'installButtonView'
+], function (InstallButtonView) {
     'use strict';
 
     var BodyView = Backbone.View.extend({
         el: $('body'),
-        
+
         navigationItems: $('ul.nav li'),
 
         events: {
@@ -11,9 +13,9 @@
             'click *[data-contentid]': 'clicked',
             'submit #donateForm': 'updateFormAndSubmit'
         },
-       
+
         installButton: new InstallButtonView(),
-        
+
         initialize: function () {
 
             var activeLink = this.$el.find('ul.nav li a[href="' + window.location.hash + '"]');
@@ -23,7 +25,7 @@
             }
 
             var self = this;
-            window.onhashchange = function() {
+            window.onhashchange = function () {
 
                 var hash = $.trim(window.location.hash);
 
@@ -38,14 +40,14 @@
 
             //  Set the initial page if the hash is set on load.
             var initialHash = $.trim(window.location.hash);
-            
+
             if (initialHash !== '') {
                 this.showContentBasedOnHash(initialHash);
             }
 
         },
-        
-        showContentBasedOnHash: function(hash){
+
+        showContentBasedOnHash: function (hash) {
 
             var listItem = null;
 
@@ -79,14 +81,14 @@
             this.showViewBasedOnListItem(listItem);
 
         },
-        
+
         //  Enable keeping track of the current content shown without affecting history and without actually changing the page.
         clicked: function (event) {
 
             var contentSelector = $(event.currentTarget);
             var contentId = contentSelector.data('contentid');
-            
-            switch(contentId) {
+
+            switch (contentId) {
                 case 'homeContent':
                     location.replace("#home");
                     break;
@@ -113,7 +115,7 @@
             }
 
         },
-        
+
         showViewBasedOnListItem: function (listItem) {
             this.$el.find('.active').removeClass('active');
 
@@ -125,12 +127,12 @@
 
             $('#' + contentId).show();
         },
-        
-        goHome: function() {
+
+        goHome: function () {
             this.navigationItems.first().click();
         },
-        
-        updateFormAndSubmit: function(event) {
+
+        updateFormAndSubmit: function (event) {
 
             var selectedCurrency = $('#currencySelect').val();
             var donationAmount = parseInt($('#donationAmount').val(), 10);
@@ -143,11 +145,5 @@
 
     });
 
-    var bodyView = new BodyView();
-    
-    blueimp.Gallery( $('#links a') , {
-        container: '#blueimp-gallery-carousel',
-        carousel: true
-    });
-
+    return new BodyView();
 });

@@ -42,8 +42,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".htaccess" />
-    <Content Include="src\css\blueimp-gallery.min.css" />
-    <Content Include="src\css\bootstrap-responsive.css" />
+    <Content Include="dist\css\website.min.css" />
+    <Content Include="dist\favicon.ico" />
+    <Content Include="dist\font\fontawesome-webfont.svg" />
+    <Content Include="dist\font\helvetica neue\helveticaneue-webfont.svg" />
+    <Content Include="dist\font\helvetica neue\helveticaneuebold-webfont.svg" />
+    <Content Include="dist\googlee6d26778f04ae1ed.html" />
+    <Content Include="dist\img\chromeWebStoreBadge.png" />
+    <Content Include="dist\img\error.png" />
+    <Content Include="dist\img\error.svg" />
+    <Content Include="dist\img\glyphicons-halflings-white.png" />
+    <Content Include="dist\img\glyphicons-halflings.png" />
+    <Content Include="dist\img\keyboardShortcutsScreenshot.png" />
+    <Content Include="dist\img\loading.gif" />
+    <Content Include="dist\img\logo.png" />
+    <Content Include="dist\img\mainScreenshot.png" />
+    <Content Include="dist\img\play-pause.png" />
+    <Content Include="dist\img\play-pause.svg" />
+    <Content Include="dist\img\sean.jpg" />
+    <Content Include="dist\img\streamusIntro1.png" />
+    <Content Include="dist\img\streamusIntro2.png" />
+    <Content Include="dist\img\streamusIntro3.png" />
+    <Content Include="dist\img\streamusIntro5.png" />
+    <Content Include="dist\img\video-play.png" />
+    <Content Include="dist\img\video-play.svg" />
+    <Content Include="dist\img\videoScreenshot.png" />
+    <Content Include="dist\img\youTubeBadge.png" />
+    <Content Include="dist\img\youTubeInjectScreenshot.png" />
+    <Content Include="dist\index.htm" />
+    <Content Include="dist\js\website.min.js" />
+    <Content Include="dist\share\index.htm" />
     <Content Include="src\css\bootstrap.css" />
     <Content Include="src\css\font-awesome.css" />
     <Content Include="src\css\index.css" />
@@ -54,46 +82,42 @@
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.svg" />
     <Content Include="src\googlee6d26778f04ae1ed.html" />
     <Content Include="src\img\chromeWebStoreBadge.png" />
-    <Content Include="src\img\error.png" />
-    <Content Include="src\img\error.svg" />
-    <Content Include="src\img\glyphicons-halflings-white.png" />
-    <Content Include="src\img\glyphicons-halflings.png" />
     <Content Include="src\img\keyboardShortcutsScreenshot.png" />
-    <Content Include="src\img\loading.gif" />
     <Content Include="src\img\logo.png" />
-    <Content Include="src\img\mainScreenshot.png" />
-    <Content Include="src\img\play-pause.png" />
-    <Content Include="src\img\play-pause.svg" />
     <Content Include="src\img\sean.jpg" />
     <Content Include="src\img\streamusIntro1.png" />
     <Content Include="src\img\streamusIntro2.png" />
     <Content Include="src\img\streamusIntro3.png" />
     <Content Include="src\img\streamusIntro5.png" />
-    <Content Include="src\img\video-play.png" />
-    <Content Include="src\img\video-play.svg" />
-    <Content Include="src\img\videoScreenshot.png" />
     <Content Include="src\img\youTubeBadge.png" />
-    <Content Include="src\img\youTubeInjectScreenshot.png" />
     <Content Include="src\index.htm" />
+    <Content Include="src\js\main.js" />
     <Content Include="src\js\index.js" />
     <Content Include="src\js\installButtonView.js" />
     <Content Include="src\js\thirdParty\backbone.js" />
     <Content Include="src\js\thirdParty\bootstrap.js" />
+    <Content Include="dist\font\fontawesome-webfont.eot" />
+    <Content Include="dist\font\fontawesome-webfont.ttf" />
+    <Content Include="dist\font\fontawesome-webfont.woff" />
+    <Content Include="dist\font\FontAwesome.otf" />
+    <Content Include="dist\font\helvetica neue\helveticaneue-webfont.eot" />
+    <Content Include="dist\font\helvetica neue\helveticaneue-webfont.ttf" />
+    <Content Include="dist\font\helvetica neue\helveticaneue-webfont.woff" />
+    <Content Include="dist\font\helvetica neue\helveticaneuebold-webfont.eot" />
+    <Content Include="dist\font\helvetica neue\helveticaneuebold-webfont.ttf" />
+    <Content Include="dist\font\helvetica neue\helveticaneuebold-webfont.woff" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
     <Content Include="src\js\thirdParty\coinbase.js" />
     <Content Include="src\js\thirdParty\detectMobileBrowser.js" />
     <Content Include="src\js\thirdParty\facebookButton.js" />
     <Content Include="src\js\thirdParty\googleAnalytics.js" />
     <Content Include="src\js\thirdParty\googlePlusButton.js" />
-    <Content Include="src\js\thirdParty\jquery.blueimp-gallery.js" />
     <Content Include="src\js\thirdParty\jquery.js" />
     <Content Include="src\js\thirdParty\lodash.js" />
+    <Content Include="src\js\thirdParty\require.js" />
     <Content Include="src\js\thirdParty\twitterButton.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
     <Content Include="src\share\index.htm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
@@ -114,20 +138,6 @@
     <None Include="src\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
-    </Reference>
-    <Reference Include="Yahoo.Yui.Compressor, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\YUICompressor.NET.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
-    </Reference>
-    <Reference Include="Yahoo.Yui.Compressor.Build.MsBuild, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\YUICompressor.NET.MSBuild.2.3.0.0\lib\NET20\Yahoo.Yui.Compressor.Build.MsBuild.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
