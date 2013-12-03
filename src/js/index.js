@@ -3,6 +3,8 @@
 ], function (InstallButtonView) {
     'use strict';
 
+    return;
+
     var BodyView = Backbone.View.extend({
         el: $('body'),
 

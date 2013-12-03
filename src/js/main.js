@@ -46,17 +46,17 @@
         index: 'index',
         installButtonView: 'installButtonView',
         main: 'main',
-        
+
         //  Third Party:
-        backbone: 'thirdParty/backbone',
-        bootstrap: 'thirdParty/bootstrap',
+        backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
+        bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min',
         coinbase: 'thirdParty/coinbase',
         detectMobileBrowser: 'thirdParty/detectMobileBrowser',
         facebookButton: 'thirdParty/facebookButton',
         googleAnalytics: 'thirdParty/googleAnalytics',
         googlePlusButton: 'thirdParty/googlePlusButton',
-        jquery: 'thirdParty/jquery',
-        lodash: 'thirdParty/lodash',
+        jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
+        lodash: '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
         twitterButton: 'thirdParty/twitterButton',
         zopim: 'thirdParty/zopim'
         

@@ -94,8 +94,6 @@
     <Content Include="src\js\main.js" />
     <Content Include="src\js\index.js" />
     <Content Include="src\js\installButtonView.js" />
-    <Content Include="src\js\thirdParty\backbone.js" />
-    <Content Include="src\js\thirdParty\bootstrap.js" />
     <Content Include="dist\font\fontawesome-webfont.eot" />
     <Content Include="dist\font\fontawesome-webfont.ttf" />
     <Content Include="dist\font\fontawesome-webfont.woff" />
@@ -112,9 +110,6 @@
     <Content Include="src\js\thirdParty\facebookButton.js" />
     <Content Include="src\js\thirdParty\googleAnalytics.js" />
     <Content Include="src\js\thirdParty\googlePlusButton.js" />
-    <Content Include="src\js\thirdParty\jquery.js" />
-    <Content Include="src\js\thirdParty\lodash.js" />
-    <Content Include="src\js\thirdParty\require.js" />
     <Content Include="src\js\thirdParty\twitterButton.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
     <Content Include="src\share\index.htm" />
