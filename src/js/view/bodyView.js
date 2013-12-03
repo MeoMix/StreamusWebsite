@@ -1,16 +1,19 @@
 ﻿define([
+    'socialView',
     'installButtonView',
     'genericDialogView',
     'termsOfUseView',
     'privacyView',
-    'contactView'
-], function (InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView) {
+    'contactView',
+    'footerView'
+], function (SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView) {
     'use strict';
 
     var BodyView = Backbone.View.extend({
         el: $('body'),
 
         navigationItems: $('ul.nav li'),
+        narrowContainer: $('body > div.container-narrow'),
 
         events: {
             'click .logoWrapper a': 'goHome',
@@ -22,8 +25,12 @@
         },
 
         installButton: new InstallButtonView(),
+        socialView: new SocialView(),
+        footerView: new FooterView(),
 
         initialize: function () {
+
+            console.log("Location:", window.location);
 
             var activeLink = this.$el.find('ul.nav li a[href="' + window.location.hash + '"]');
 
@@ -52,6 +59,8 @@
                 this.showContentBasedOnHash(initialHash);
             }
 
+            this.$el.append(this.socialView.render().el);
+            this.narrowContainer.append(this.footerView.render().el);
         },
 
         showContentBasedOnHash: function (hash) {
