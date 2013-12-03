@@ -11,6 +11,11 @@
             exports: 'Backbone'
         },
         
+        bootstrap: {
+            deps: ['jquery'],
+            exports: 'Bootstrap'
+        },
+        
         coinbase: {
             exports: 'Coinbase'
         },
@@ -43,10 +48,6 @@
 
     paths: {
         
-        index: 'index',
-        installButtonView: 'installButtonView',
-        main: 'main',
-
         //  Third Party:
         backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
         bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min',
@@ -57,8 +58,17 @@
         googlePlusButton: 'thirdParty/googlePlusButton',
         jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
         lodash: '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
+        text: 'thirdParty/text',
         twitterButton: 'thirdParty/twitterButton',
-        zopim: 'thirdParty/zopim'
+        zopim: 'thirdParty/zopim',
+        
+        //  View:
+        contactView: 'view/contactView',
+        genericDialogView: 'view/genericDialogView',
+        index: 'view/index',
+        installButtonView: 'view/installButtonView',
+        privacyView: 'view/privacyView',
+        termsOfUseView: 'view/termsOfUseView'
         
     }
 
@@ -67,6 +77,7 @@
 require([
     'jquery',
     'backbone',
+    'bootstrap',
     'lodash',
     'coinbase',
     'detectMobileBrowser',
@@ -74,8 +85,9 @@ require([
     'googleAnalytics',
     'googlePlusButton',
     'twitterButton',
+    'text',
     'zopim'
-], function ($, Backbone, _, Coinbase, DetectMobileBrowser, FacebookButton, GoogleAnalytics, GooglePlusButton, TwitterButton, Zopim) {
+], function ($, Backbone, Bootstrap, _, Coinbase, DetectMobileBrowser, FacebookButton, GoogleAnalytics, GooglePlusButton, TwitterButton, Text, Zopim) {
     'use strict';
 
     //  Load this once everything else is ready.

@@ -1,9 +1,11 @@
 ﻿define([
-    'installButtonView'
-], function (InstallButtonView) {
+    'installButtonView',
+    'genericDialogView',
+    'termsOfUseView',
+    'privacyView',
+    'contactView'
+], function (InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView) {
     'use strict';
-
-    return;
 
     var BodyView = Backbone.View.extend({
         el: $('body'),
@@ -13,7 +15,10 @@
         events: {
             'click .logoWrapper a': 'goHome',
             'click *[data-contentid]': 'clicked',
-            'submit #donateForm': 'updateFormAndSubmit'
+            'submit #donateForm': 'updateFormAndSubmit',
+            'click #touButton': 'showTouDialog',
+            'click #privacyButton': 'showPrivacyDialog',
+            'click #contactButton': 'showContactDialog'
         },
 
         installButton: new InstallButtonView(),
@@ -63,17 +68,8 @@
                 case '#about':
                     listItem = this.$el.find('[data-contentid="' + 'aboutContent' + '"]');
                     break;
-                case '#contact':
-                    listItem = this.$el.find('[data-contentid="' + 'contactContent' + '"]');
-                    break;
                 case '#donate':
                     listItem = this.$el.find('[data-contentid="' + 'donateContent' + '"]');
-                    break;
-                case '#terms-of-use':
-                    listItem = this.$el.find('[data-contentid="' + 'touContent' + '"]');
-                    break;
-                case '#privacy':
-                    listItem = this.$el.find('[data-contentid="' + 'privacyContent' + '"]');
                     break;
                 default:
                     console.error("Unhandled hash:", window.location.hash);
@@ -100,17 +96,8 @@
                 case 'aboutContent':
                     location.replace("#about");
                     break;
-                case 'contactContent':
-                    location.replace("#contact");
-                    break;
                 case 'donateContent':
                     location.replace("#donate");
-                    break;
-                case 'touContent':
-                    location.replace("#terms-of-use");
-                    break;
-                case 'privacyContent':
-                    location.replace("#privacy");
                     break;
                 default:
                     console.error("Unhandled contentId:", contentId);
@@ -143,6 +130,39 @@
             form.find('input[name="currency_code"]').val(selectedCurrency);
             form.find('input[name="amount"]').val(donationAmount);
 
+        },
+        
+        showTouDialog: function() {
+            var termsOfUseDialogView = new GenericDialogView({
+                model: {
+                    title: 'Terms of Use',
+                    body: new TermsOfUseView()
+                }
+            });
+
+            this.$el.append(termsOfUseDialogView.render().el);
+        },
+        
+        showPrivacyDialog: function() {
+            var privacyDialogView = new GenericDialogView({
+                model: {
+                    title: 'Privacy',
+                    body: new PrivacyView()
+                }
+            });
+
+            this.$el.append(privacyDialogView.render().el);
+        },
+        
+        showContactDialog: function() {
+            var contactDialogView = new GenericDialogView({
+                model: {
+                    title: 'Contact',
+                    body: new ContactView()
+                }
+            });
+
+            this.$el.append(contactDialogView.render().el);
         }
 
     });
