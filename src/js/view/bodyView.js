@@ -1,12 +1,18 @@
-﻿define([
+﻿//  TODO: BodyView loads the HTML for share.streamus and streamus.com irregardless of which is requested -- need to fix.
+define([
     'socialView',
     'installButtonView',
     'genericDialogView',
     'termsOfUseView',
     'privacyView',
     'contactView',
-    'footerView'
-], function (SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView) {
+    'footerView',
+    'logoView',
+    'homeContentView',
+    'gettingStartedContentView',
+    'aboutContentView',
+    'donateContentView'
+], function (SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView, LogoView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView) {
     'use strict';
 
     var BodyView = Backbone.View.extend({
@@ -14,6 +20,9 @@
 
         navigationItems: $('ul.nav li'),
         narrowContainer: $('body > div.container-narrow'),
+        logoWrapper: $('body div.logoWrapper'),
+        headerDivider: $('body hr#headerDivider'),
+        footerDivider: $('body hr#footerDivider'),
 
         events: {
             'click .logoWrapper a': 'goHome',
@@ -27,10 +36,13 @@
         installButton: new InstallButtonView(),
         socialView: new SocialView(),
         footerView: new FooterView(),
+        logoView: new LogoView(),
+        homeContentView: new HomeContentView(),
+        gettingStartedContentView: new GettingStartedContentView(),
+        aboutContentView: new AboutContentView(),
+        donateContentView: new DonateContentView(),
 
         initialize: function () {
-
-            console.log("Location:", window.location);
 
             var activeLink = this.$el.find('ul.nav li a[href="' + window.location.hash + '"]');
 
@@ -58,9 +70,19 @@
             if (initialHash !== '') {
                 this.showContentBasedOnHash(initialHash);
             }
+            
+            //  TODO: Crappy hack. Only append the HTML when loading the root domain.
+            if (window.location.host !== 'share.streamus.com') {
+                this.headerDivider.after(this.homeContentView.render().el);
+                this.headerDivider.after(this.gettingStartedContentView.render().el);
+                this.headerDivider.after(this.aboutContentView.render().el);
+                this.headerDivider.after(this.donateContentView.render().el);
+            }
 
             this.$el.append(this.socialView.render().el);
             this.narrowContainer.append(this.footerView.render().el);
+            this.logoWrapper.append(this.logoView.render().el);
+            
         },
 
         showContentBasedOnHash: function (hash) {

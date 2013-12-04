@@ -60,11 +60,16 @@
         zopim: 'thirdParty/zopim',
         
         //  View:
+        aboutContentView: 'view/aboutContentView',
         bodyView: 'view/bodyView',
         contactView: 'view/contactView',
+        donateContentView: 'view/donateContentView',
         footerView: 'view/footerView',
         genericDialogView: 'view/genericDialogView',
+        gettingStartedContentView: 'view/gettingStartedContentView',
+        homeContentView: 'view/homeContentView',
         installButtonView: 'view/installButtonView',
+        logoView: 'view/logoView',
         privacyView: 'view/privacyView',
         socialView: 'view/socialView',
         termsOfUseView: 'view/termsOfUseView'
