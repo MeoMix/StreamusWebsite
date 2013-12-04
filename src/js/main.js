@@ -1,7 +1,11 @@
 ﻿require.config({
     
     baseUrl: '/src/js/',
-
+    
+    //  To get timely, correct error triggers in IE, 
+    //  force a define/shim exports check.
+    enforceDefine: true,
+    
     shim: {
 
         backbone: {
@@ -13,84 +17,77 @@
         
         bootstrap: {
             deps: ['jquery'],
-            exports: 'Bootstrap'
+            //  Bootstrap extends jQuery so it seems fitting to define it as the exports value.
+            //  Discussion here: http://stackoverflow.com/questions/13377373/shim-twitter-bootstrap-for-requirejs
+            exports: '$'
         },
         
         coinbase: {
-            exports: 'Coinbase'
+            deps: ['jquery'],
+            exports: 'window.Coinbase'
         },
-        
+
         detectMobileBrowser: {
-            exports: 'DetectMobileBrowser',
-            deps: ['jquery']
+            deps: ['jquery'],
+            exports: 'jQuery.browser'
         },
         
-        facebookButtonScript: {
-            exports: 'FacebookButton'
-        },
-        
-        googleAnalytics: {
-            exports: 'GoogleAnalytics'
-        },
-        
-        googlePlusButton: {
-            exports: 'GooglePlusButton'
-        },
-        
-        twitterButton: {
-            exports: 'TwitterButton'
+        googleAnalyticsScript: {
+            exports: 'window.GoogleAnalyticsObject'
         },
         
         zopim: {
-            exports: 'Zopim'
+            exports: 'window.$zopim'
         }
+
     },
 
     paths: {
         
         //  Third Party:
-        backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
-        bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min',
+        backbone: [
+            '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
+            //  If the CDN location fails, load from this location
+            'thirdParty/backbone'
+        ],
+        bootstrap: [
+            '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min',
+            //  If the CDN location fails, load from this location
+            'thirdParty/bootstrap'
+        ],
         coinbase: 'thirdParty/coinbase',
         detectMobileBrowser: 'thirdParty/detectMobileBrowser',
-        googleAnalytics: 'thirdParty/googleAnalytics',
-        jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
-        lodash: '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
+        googleAnalyticsScript: 'thirdParty/googleAnalyticsScript',
+        jquery: [
+            '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
+            //  If the CDN location fails, load from this location
+            'thirdParty/jquery'
+        ],
+        lodash: [
+            '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
+            //  If the CDN location fails, load from this location
+            'thirdParty/lodash'
+        ],
         text: 'thirdParty/text',
-        zopim: 'thirdParty/zopim',
-        
-        //  View:
-        aboutContentView: 'view/aboutContentView',
-        bodyView: 'view/bodyView',
-        contactView: 'view/contactView',
-        donateContentView: 'view/donateContentView',
-        footerView: 'view/footerView',
-        genericDialogView: 'view/genericDialogView',
-        gettingStartedContentView: 'view/gettingStartedContentView',
-        homeContentView: 'view/homeContentView',
-        installButtonView: 'view/installButtonView',
-        logoView: 'view/logoView',
-        privacyView: 'view/privacyView',
-        socialView: 'view/socialView',
-        termsOfUseView: 'view/termsOfUseView'
-        
+        zopim: 'thirdParty/zopim'
     }
 
 });
 
-require([
+//  The data-main attribute counts as the require statement and define is needed here for enforceDefine: true.
+define([
     'jquery',
     'backbone',
     'bootstrap',
     'lodash',
     'coinbase',
     'detectMobileBrowser',
-    'googleAnalytics',
+    'googleAnalyticsScript',
     'text',
     'zopim'
-], function ($, Backbone, Bootstrap, _, Coinbase, DetectMobileBrowser, GoogleAnalytics, Text, Zopim) {
+], function ($, Backbone, Bootstrap, _, Coinbase, jQueryBrowser, GoogleAnalyticsObject, text, $zopim) {
     'use strict';
 
     //  Load this once everything else is ready.
-    require(['bodyView']);
+    require(['view/bodyView']);
 });

@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../template/donateContent.htm'
+    'text!../../template/donateContent.htm'
 ], function (DonateContentTemplate) {
     'use strict';
 

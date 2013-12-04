@@ -38,7 +38,8 @@ module.exports = function (grunt) {
 					//	More here: http://stackoverflow.com/questions/16977884/what-does-the-expand-option-do-in-grunt-contrib-copy-the-examples-all-use-it
 					{ dest: 'dist/share/', cwd: 'src/share', src: '**', expand: true},
 					{ dest: 'dist/font/', cwd: 'src/font', src: '**', expand: true},
-					{ dest: 'dist/img/', cwd:'src/img', src: '**', expand: true},
+					{ dest: 'dist/img/', cwd: 'src/img', src: '**', expand: true },
+                    { dest: 'dist/template/', cwd: 'src/template', src: '**', expand: true },
 					{ dest: 'dist/favicon.ico', src: 'src/favicon.ico' },
 					{ dest: 'dist/googlee6d26778f04ae1ed.html', src: 'src/googlee6d26778f04ae1ed.html' }
                 ]
@@ -89,6 +90,46 @@ module.exports = function (grunt) {
             }
         },
 
+        requirejs: {
+            production: {
+                options: {
+                    appDir: 'src/',
+                    baseUrl: 'js/',
+                    mainConfigFile: 'src/js/main.js',
+                    dir: 'dist/js/',
+                    //  Inlines the text for any text! dependencies, to avoid the separate
+                    //  async XMLHttpRequest calls to load those dependencies.
+                    inlineText: true,
+                    //  List the modules that will be optimized. All their immediate and deep
+                    //  dependencies will be included in the module's file when the build is done
+                    modules: [{
+                        name: 'main'
+                    }],
+                    optimize: 'uglify2',
+                    //  - "standard": @import inlining, comment removal and line returns.
+                    //  Removing line returns may have problems in IE, depending on the type of CSS.
+                    optimizeCss: 'standard',
+                    paths: {
+                        //  Paths fallbacks not supported in r.js so stub them with their fallbacks.
+                        backbone: 'thirdParty/backbone',
+                        bootstrap: 'thirdParty/bootstrap',
+                        jquery: 'thirdParty/jquery',
+                        lodash: 'thirdParty/lodash'
+                    },
+                    preserveLicenseComments: false,
+                    //  Specify modules to stub out in the optimized file. The optimizer will
+                    //  use the source version of these modules for dependency tracing and for
+                    //  plugin use, but when writing the text into an optimized bundle, these
+                    //  modules will get the following text instead:
+                    //  If the module is used as a plugin:
+                    //      define({load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
+                    //  If just a plain module:
+                    //      define({});
+                    stubModules: ['text']
+                }
+            }
+        },
+
         useminPrepare: {
             html: 'src/index.htm'
         },
@@ -112,16 +153,18 @@ module.exports = function (grunt) {
     //	TODO: Introduce a PNG/JPEG optimizer. It was throwing a fatal error on PNGs (known issue) waiting for fix to go public.
     //  See here for more information: https://github.com/gruntjs/grunt-contrib-imagemin/issues/61
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-usemin');
 
 	grunt.registerTask('default', ['jshint', 'watch']);
 	grunt.registerTask('lint', ['jshint']);
+	grunt.registerTask('production', ['requirejs']);
 
 	//	TODO: I feel like I shouldn't have to call concat/uglify/cssmin here because useminPrepare's flow property should handle it by default... but not seeing it so I call 'em manually.
 	//	Generate a release build in the dist folder.
-	grunt.registerTask('release', ['clean', 'copy', 'useminPrepare', 'usemin', 'concat', 'uglify', 'cssmin', 'htmlmin']);
+	grunt.registerTask('release', ['clean', 'copy', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'requirejs']);
 	
 };

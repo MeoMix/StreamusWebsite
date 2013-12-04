@@ -1,17 +1,17 @@
 ﻿//  TODO: BodyView loads the HTML for share.streamus and streamus.com irregardless of which is requested -- need to fix.
 define([
-    'socialView',
-    'installButtonView',
-    'genericDialogView',
-    'termsOfUseView',
-    'privacyView',
-    'contactView',
-    'footerView',
-    'logoView',
-    'homeContentView',
-    'gettingStartedContentView',
-    'aboutContentView',
-    'donateContentView'
+    'view/socialView',
+    'view/installButtonView',
+    'view/genericDialogView',
+    'view/termsOfUseView',
+    'view/privacyView',
+    'view/contactView',
+    'view/footerView',
+    'view/logoView',
+    'view/homeContentView',
+    'view/gettingStartedContentView',
+    'view/aboutContentView',
+    'view/donateContentView'
 ], function (SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView, LogoView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView) {
     'use strict';
 
@@ -82,7 +82,8 @@ define([
             this.$el.append(this.socialView.render().el);
             this.narrowContainer.append(this.footerView.render().el);
             this.logoWrapper.append(this.logoView.render().el);
-            
+
+            this.appendSocialScripts();
         },
 
         showContentBasedOnHash: function (hash) {
@@ -194,6 +195,33 @@ define([
             });
 
             this.$el.append(contactDialogView.render().el);
+        },
+        
+        appendSocialScripts: function () {
+            
+            var facebookButtonScript = $('<script>', {
+                async: true,
+                id: 'facebook-jssdk',
+                src: '//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252'
+            });
+            this.$el.append(facebookButtonScript);
+
+            var twitterButtonScript = $('<script>', {
+                async: true,
+                id: 'twitter-wjs',
+                src: '//platform.twitter.com/widgets.js'
+            });
+            this.$el.append(twitterButtonScript);
+
+            var googlePlusButtonScript = $('<script>', {
+                async: true,
+                id: 'google-jspo',
+                src: 'https://apis.google.com/js/plusone.js'
+            });
+            this.$el.append(googlePlusButtonScript);
+            
+
+
         }
 
     });

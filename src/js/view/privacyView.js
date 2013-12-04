@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../template/privacy.htm'
+    'text!../../template/privacy.htm'
 ], function (PrivacyTemplate) {
     'use strict';
 

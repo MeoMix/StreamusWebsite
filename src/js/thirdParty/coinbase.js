@@ -1,4 +1,6 @@
-﻿((function() {
+﻿((function () {
+    //  TODO: I'm just placating requireJS here. There's gotta be a better solution at some point.
+    window.Coinbase = true;
     var a;
     a = function(a, b, c, d) {
         var e, f, g, h, i;
