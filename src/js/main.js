@@ -22,6 +22,16 @@
             exports: '$'
         },
         
+        'bootstrap-modal': {
+            deps: ['jquery', 'bootstrap'],
+            exports: '$.fn.modal'
+        },
+        
+        'bootstrap-modalmanager': {
+            deps: ['jquery', 'bootstrap'],
+            exports: '$.fn.modalmanager'
+        },
+        
         coinbase: {
             deps: ['jquery'],
             exports: 'window.Coinbase'
@@ -29,7 +39,7 @@
 
         'jquery.browser': {
             deps: ['jquery'],
-            exports: 'jQuery.browser'
+            exports: '$.browser'
         },
         
         googleAnalyticsScript: {
@@ -55,6 +65,8 @@
             //  If the CDN location fails, load from this location
             'thirdParty/bootstrap'
         ],
+        'bootstrap-modal': 'thirdParty/bootstrap-modal',
+        'bootstrap-modalmanager': 'thirdParty/bootstrap-modalmanager',
         coinbase: 'thirdParty/coinbase',
         googleAnalyticsScript: 'thirdParty/googleAnalyticsScript',
         jquery: [
@@ -76,10 +88,12 @@
 });
 
 //  The data-main attribute counts as the require statement and define is needed here for enforceDefine: true.
-//  TODO: jQueryBrowser is undefined here because I can't pass $.browser as an object name... is there a way to do this better?
+//  TODO: jQueryBrowser, jQueryFnModal, jQueryFnModalManager are undefined here because I can't pass - or . in an object name... is there a way to do this better?
 define([
     'backbone',
     'bootstrap',
+    'bootstrap-modal',
+    'bootstrap-modalmanager',
     'coinbase',
     'googleAnalyticsScript',
     'jquery.browser',
@@ -87,7 +101,7 @@ define([
     'lodash',
     'text',
     'zopim'
-], function (Backbone, Bootstrap, Coinbase, GoogleAnalyticsObject, jQueryBrowser, $, _, text, $zopim) {
+], function (Backbone, Bootstrap, jQueryFnModal, jQueryFnModalManager, Coinbase, GoogleAnalyticsObject, jQueryBrowser, $, _, text, $zopim) {
     'use strict';
 
     //  Load this once everything else is ready.

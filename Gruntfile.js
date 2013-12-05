@@ -50,12 +50,18 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     removeComments: true,
-                    collapseWhitespace: true
+                    collapseWhitespace: true,
+                    collapseBooleanAttributes: true,
+                    removeAttributeQuotes: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true
                 },
-                files: {
-                    'dist/index.htm': 'dist/index.htm',
-                    'dist/share/index.htm': 'dist/share/index.htm'
-                }
+                expand: true,
+                cwd: 'dist',
+                dest: 'dist/',
+                src: ['**/*.htm']
             }
         },
 
@@ -161,7 +167,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['jshint', 'watch']);
 	grunt.registerTask('lint', ['jshint']);
-	grunt.registerTask('production', ['clean', 'requirejs']);
+	grunt.registerTask('production', ['clean', 'requirejs', 'htmlmin']);
 
 	//	TODO: I feel like I shouldn't have to call concat/uglify/cssmin here because useminPrepare's flow property should handle it by default... but not seeing it so I call 'em manually.
 	//	Generate a release build in the dist folder.

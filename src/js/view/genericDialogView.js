@@ -5,7 +5,7 @@
 
     var GenericDialogView = Backbone.View.extend({
         
-        className: 'modal fade',
+        className: 'modal container fade',
         
         attributes: {
             tabindex: '-1',
@@ -24,6 +24,7 @@
             this.$el.html(this.template(this.model.toJSON()));
             //  Render subview inside of content to support full HTML mark-up easily.
             this.$el.find('.modal-body').append(this.model.get('body').render().el);
+
             return this;
         },
 

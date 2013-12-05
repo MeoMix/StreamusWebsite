@@ -20,7 +20,7 @@ body {
     color: #1E1E1E !important;
     padding-bottom: 40px;
     padding-top: 20px;
-    transition: opacity 1.5s ease-in-out;
+    transition: opacity .75s ease-in-out;
     overflow-y: scroll;
 }
 

@@ -1,5 +1,6 @@
 ﻿//  TODO: BodyView loads the HTML for share.streamus and streamus.com irregardless of which is requested -- need to fix.
 define([
+    'router',
     'model/genericDialog',
     'view/socialView',
     'view/installButtonView',
@@ -8,22 +9,15 @@ define([
     'view/privacyView',
     'view/contactView',
     'view/footerView',
-    'view/logoView',
-    'view/homeContentView',
-    'view/gettingStartedContentView',
-    'view/aboutContentView',
-    'view/donateContentView',
-    'view/navigationView'
-], function (GenericDialog, SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView, LogoView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView, NavigationView) {
+    'view/logoView'
+], function (Router, GenericDialog, SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView, LogoView) {
     'use strict';
 
     var BodyView = Backbone.View.extend({
         el: $('body'),
 
-        narrowContainer: $('body > div.container-narrow'),
+        narrowContainer: $('body div.container-narrow'),
         logoWrapper: $('body div.logoWrapper'),
-        navigationWrapper: $('body div.navigationWrapper'),
-        contentWrapper: $('body div.contentWrapper'),
 
         events: {
             'click .logoWrapper a': 'goHome',
@@ -38,57 +32,42 @@ define([
         socialView: new SocialView(),
         footerView: new FooterView(),
         logoView: new LogoView(),
-        homeContentView: new HomeContentView(),
-        gettingStartedContentView: new GettingStartedContentView(),
-        aboutContentView: new AboutContentView(),
-        donateContentView: new DonateContentView(),
-        navigationView: new NavigationView(),
+        router: new Router(),
 
         initialize: function () {
             
             this.$el.append(this.socialView.render().el);
-            this.appendSocialScripts();
-            
-            //  TODO: Crappy hack. Only append the HTML when loading the root domain.
-            if (window.location.host !== 'share.streamus.com') {
-
-                this.contentWrapper.append(this.homeContentView.render().el);
-                this.contentWrapper.append(this.gettingStartedContentView.render().el);
-                this.contentWrapper.append(this.aboutContentView.render().el);
-                this.contentWrapper.append(this.donateContentView.render().el);
-
-                this.navigationWrapper.append(this.navigationView.render().el);
-            }
+            this.socialView.appendScripts();
 
             this.narrowContainer.append(this.footerView.render().el);
             this.logoWrapper.append(this.logoView.render().el);
 
-            var activeLink = this.$el.find('ul.nav li a[href="' + window.location.hash + '"]');
+            //var activeLink = this.$el.find('ul.nav li a[href="' + window.location.hash + '"]');
 
-            if (activeLink.length > 0) {
-                this.showViewBasedOnListItem(activeLink.parent());
-            }
+            //if (activeLink.length > 0) {
+            //    this.showViewBasedOnListItem(activeLink.parent());
+            //}
 
-            var self = this;
-            window.onhashchange = function () {
+            //var self = this;
+            //window.onhashchange = function () {
 
-                var hash = $.trim(window.location.hash);
+            //    var hash = $.trim(window.location.hash);
 
-                if (hash !== '') {
-                    self.showContentBasedOnHash(hash);
-                } else {
-                    // assume home if nothing.
-                    self.showContentBasedOnHash('#home');
-                }
+            //    if (hash !== '') {
+            //        self.showContentBasedOnHash(hash);
+            //    } else {
+            //        // assume home if nothing.
+            //        self.showContentBasedOnHash('#home');
+            //    }
 
-            };
+            //};
 
-            //  Set the initial page if the hash is set on load.
-            var initialHash = $.trim(window.location.hash);
+            ////  Set the initial page if the hash is set on load.
+            //var initialHash = $.trim(window.location.hash);
 
-            if (initialHash !== '') {
-                this.showContentBasedOnHash(initialHash);
-            }
+            //if (initialHash !== '') {
+            //    this.showContentBasedOnHash(initialHash);
+            //}
             
             this.$el.removeClass('loading');            
         },
@@ -171,12 +150,15 @@ define([
 
         },
         
-        showTouDialog: function() {
+        showTouDialog: function () {
+
+            var termsOfUseDialog = new GenericDialog({
+                title: 'Terms of Use',
+                body: new TermsOfUseView()
+            });
+
             var termsOfUseDialogView = new GenericDialogView({
-                model: {
-                    title: 'Terms of Use',
-                    body: new TermsOfUseView()
-                }
+                model: termsOfUseDialog
             });
 
             this.$el.append(termsOfUseDialogView.render().el);
@@ -194,60 +176,19 @@ define([
             });
 
             this.$el.append(privacyDialogView.render().el);
-
-            this.listenTo(privacyDialog, 'destroy', function () {
-                //  TODO: I think this is necessary? Double check!! Might be important for Streamus.
-                this.stopListening(privacyDialog, 'destroy');
-            });
         },
         
-        showContactDialog: function() {
+        showContactDialog: function () {
+            var contactDialog = new GenericDialog({
+                title: 'Contact',
+                body: new ContactView()
+            });
+
             var contactDialogView = new GenericDialogView({
-                model: {
-                    title: 'Contact',
-                    body: new ContactView()
-                }
+                model: contactDialog
             });
 
             this.$el.append(contactDialogView.render().el);
-        },
-        
-        appendSocialScripts: function () {
-            //  TODO: How can I detect these scripts loading so I know when to actually fade it in?
-            var facebookButtonScript = $('<script>', {
-                async: true,
-                defer: true,
-                id: 'facebook-jssdk',
-                src: '//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252'
-            });
-            this.$el.append(facebookButtonScript);
-
-            var twitterButtonScript = $('<script>', {
-                async: true,
-                defer: true,
-                id: 'twitter-wjs',
-                src: '//platform.twitter.com/widgets.js'
-            });
-            this.$el.append(twitterButtonScript);
-
-            var googlePlusButtonScript = $('<script>', {
-                async: true,
-                defer: true,
-                id: 'google-jspo',
-                src: 'https://apis.google.com/js/plusone.js'
-            });
-            this.$el.append(googlePlusButtonScript);
-
-            //  Is there a better way to detect these scripts having loaded?
-            setTimeout(function () {
-                this.socialView.$el.removeClass('loading');
-
-                //  Wrap in a set timeout to let the css3 transition start before removing it's effect.
-                setTimeout(function () {
-                    //  Change the transition to 0 so on-hover can fade-in to 1.0 instantly and back.
-                    this.socialView.$el.css('transition', 'opacity 0s');
-                }.bind(this));
-            }.bind(this), 3000);
         }
 
     });
