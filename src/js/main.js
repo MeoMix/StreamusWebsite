@@ -27,7 +27,7 @@
             exports: 'window.Coinbase'
         },
 
-        detectMobileBrowser: {
+        'jquery.browser': {
             deps: ['jquery'],
             exports: 'jQuery.browser'
         },
@@ -56,13 +56,13 @@
             'thirdParty/bootstrap'
         ],
         coinbase: 'thirdParty/coinbase',
-        detectMobileBrowser: 'thirdParty/detectMobileBrowser',
         googleAnalyticsScript: 'thirdParty/googleAnalyticsScript',
         jquery: [
             '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
             //  If the CDN location fails, load from this location
             'thirdParty/jquery'
         ],
+        'jquery.browser': 'thirdParty/jquery.browser',
         lodash: [
             '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
             //  If the CDN location fails, load from this location
@@ -75,17 +75,18 @@
 });
 
 //  The data-main attribute counts as the require statement and define is needed here for enforceDefine: true.
+//  TODO: jQueryBrowser is undefined here because I can't pass $.browser as an object name... is there a way to do this better?
 define([
-    'jquery',
     'backbone',
     'bootstrap',
-    'lodash',
     'coinbase',
-    'detectMobileBrowser',
     'googleAnalyticsScript',
+    'jquery.browser',
+    'jquery',
+    'lodash',
     'text',
     'zopim'
-], function ($, Backbone, Bootstrap, _, Coinbase, jQueryBrowser, GoogleAnalyticsObject, text, $zopim) {
+], function (Backbone, Bootstrap, Coinbase, GoogleAnalyticsObject, jQueryBrowser, $, _, text, $zopim) {
     'use strict';
 
     //  Load this once everything else is ready.

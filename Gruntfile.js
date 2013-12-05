@@ -93,17 +93,21 @@ module.exports = function (grunt) {
         requirejs: {
             production: {
                 options: {
-                    appDir: 'src/',
-                    baseUrl: 'js/',
-                    mainConfigFile: 'src/js/main.js',
+                    //  TODO: Should probably be able to share baseUrl between main and gruntfile.
+                    baseUrl: 'src/js/',
                     dir: 'dist/js/',
                     //  Inlines the text for any text! dependencies, to avoid the separate
                     //  async XMLHttpRequest calls to load those dependencies.
                     inlineText: true,
+                    mainConfigFile: 'src/js/main.js',
                     //  List the modules that will be optimized. All their immediate and deep
                     //  dependencies will be included in the module's file when the build is done
                     modules: [{
-                        name: 'main'
+                        name: 'main',
+                        exclude: ['view/bodyView']
+                    }, {
+                        name: 'view/bodyView',
+                        exclude: ['main']
                     }],
                     optimize: 'uglify2',
                     //  - "standard": @import inlining, comment removal and line returns.
@@ -117,6 +121,11 @@ module.exports = function (grunt) {
                         lodash: 'thirdParty/lodash'
                     },
                     preserveLicenseComments: false,
+
+                    removeCombined: true,
+                    //  Skip files which start with a . or end in vs-doc.js
+                    fileExclusionRegExp: /^\.|vsdoc.js$/,
+
                     //  Specify modules to stub out in the optimized file. The optimizer will
                     //  use the source version of these modules for dependency tracing and for
                     //  plugin use, but when writing the text into an optimized bundle, these
