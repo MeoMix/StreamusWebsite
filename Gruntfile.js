@@ -93,18 +93,18 @@ module.exports = function (grunt) {
         requirejs: {
             production: {
                 options: {
-                    //  TODO: Should probably be able to share baseUrl between main and gruntfile.
-                    baseUrl: 'src/js/',
-                    dir: 'dist/js/',
+                    appDir: 'src',
+                    dir: 'dist/',
                     //  Inlines the text for any text! dependencies, to avoid the separate
                     //  async XMLHttpRequest calls to load those dependencies.
                     inlineText: true,
+                    stubModules: ['text'],
+                    useStrict: true,
                     mainConfigFile: 'src/js/main.js',
                     //  List the modules that will be optimized. All their immediate and deep
                     //  dependencies will be included in the module's file when the build is done
                     modules: [{
-                        name: 'main',
-                        exclude: ['view/bodyView']
+                        name: 'main'
                     }, {
                         name: 'view/bodyView',
                         exclude: ['main']
@@ -121,20 +121,11 @@ module.exports = function (grunt) {
                         lodash: 'thirdParty/lodash'
                     },
                     preserveLicenseComments: false,
-
+                    //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
                     //  Skip files which start with a . or end in vs-doc.js
-                    fileExclusionRegExp: /^\.|vsdoc.js$/,
-
-                    //  Specify modules to stub out in the optimized file. The optimizer will
-                    //  use the source version of these modules for dependency tracing and for
-                    //  plugin use, but when writing the text into an optimized bundle, these
-                    //  modules will get the following text instead:
-                    //  If the module is used as a plugin:
-                    //      define({load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
-                    //  If just a plain module:
-                    //      define({});
-                    stubModules: ['text']
+                    fileExclusionRegExp: /^\.|vsdoc.js$/
+                    
                 }
             }
         },
@@ -170,7 +161,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['jshint', 'watch']);
 	grunt.registerTask('lint', ['jshint']);
-	grunt.registerTask('production', ['requirejs']);
+	grunt.registerTask('production', ['clean', 'requirejs']);
 
 	//	TODO: I feel like I shouldn't have to call concat/uglify/cssmin here because useminPrepare's flow property should handle it by default... but not seeing it so I call 'em manually.
 	//	Generate a release build in the dist folder.

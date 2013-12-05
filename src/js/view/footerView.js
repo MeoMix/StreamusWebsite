@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../../template/footer.htm'
+    'text!template/footer.htm'
 ], function (FooterTemplate) {
     'use strict';
 

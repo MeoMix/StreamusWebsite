@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../../template/genericDialog.htm'
+    'text!template/genericDialog.htm'
 ], function (GenericDialogTemplate) {
     'use strict';
 
@@ -15,24 +15,25 @@
         },
         
         events: {
-            'hidden.bs.modal': 'removeView'
+            'hidden.bs.modal': 'destroyModel'
         },
 
         template: _.template(GenericDialogTemplate),
 
         render: function () {
-            this.$el.html(this.template(this.model));
+            this.$el.html(this.template(this.model.toJSON()));
             //  Render subview inside of content to support full HTML mark-up easily.
-            this.$el.find('.modal-body').append(this.model.body.render().el);
+            this.$el.find('.modal-body').append(this.model.get('body').render().el);
             return this;
         },
 
         initialize: function () {
             this.$el.modal();
+            this.listenTo(this.model, 'destroy', this.remove);
         },
         
-        removeView: function () {
-            this.remove();
+        destroyModel: function () {
+            this.model.trigger('destroy');
         }
 
     });

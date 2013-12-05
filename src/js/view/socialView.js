@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../../template/social.htm'
+    'text!template/social.htm'
 ], function (SocialTemplate) {
     'use strict';
 
@@ -7,7 +7,7 @@
         
         tagName: 'aside',
         
-        className: 'social',
+        className: 'social loading',
         
         scriptsLoaded: false,
         

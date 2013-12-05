@@ -1,5 +1,6 @@
 ﻿//  TODO: BodyView loads the HTML for share.streamus and streamus.com irregardless of which is requested -- need to fix.
 define([
+    'model/genericDialog',
     'view/socialView',
     'view/installButtonView',
     'view/genericDialogView',
@@ -11,18 +12,18 @@ define([
     'view/homeContentView',
     'view/gettingStartedContentView',
     'view/aboutContentView',
-    'view/donateContentView'
-], function (SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView, LogoView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView) {
+    'view/donateContentView',
+    'view/navigationView'
+], function (GenericDialog, SocialView, InstallButtonView, GenericDialogView, TermsOfUseView, PrivacyView, ContactView, FooterView, LogoView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView, NavigationView) {
     'use strict';
 
     var BodyView = Backbone.View.extend({
         el: $('body'),
 
-        navigationItems: $('ul.nav li'),
         narrowContainer: $('body > div.container-narrow'),
         logoWrapper: $('body div.logoWrapper'),
-        headerDivider: $('body hr#headerDivider'),
-        footerDivider: $('body hr#footerDivider'),
+        navigationWrapper: $('body div.navigationWrapper'),
+        contentWrapper: $('body div.contentWrapper'),
 
         events: {
             'click .logoWrapper a': 'goHome',
@@ -41,8 +42,26 @@ define([
         gettingStartedContentView: new GettingStartedContentView(),
         aboutContentView: new AboutContentView(),
         donateContentView: new DonateContentView(),
+        navigationView: new NavigationView(),
 
         initialize: function () {
+            
+            this.$el.append(this.socialView.render().el);
+            this.appendSocialScripts();
+            
+            //  TODO: Crappy hack. Only append the HTML when loading the root domain.
+            if (window.location.host !== 'share.streamus.com') {
+
+                this.contentWrapper.append(this.homeContentView.render().el);
+                this.contentWrapper.append(this.gettingStartedContentView.render().el);
+                this.contentWrapper.append(this.aboutContentView.render().el);
+                this.contentWrapper.append(this.donateContentView.render().el);
+
+                this.navigationWrapper.append(this.navigationView.render().el);
+            }
+
+            this.narrowContainer.append(this.footerView.render().el);
+            this.logoWrapper.append(this.logoView.render().el);
 
             var activeLink = this.$el.find('ul.nav li a[href="' + window.location.hash + '"]');
 
@@ -71,19 +90,7 @@ define([
                 this.showContentBasedOnHash(initialHash);
             }
             
-            //  TODO: Crappy hack. Only append the HTML when loading the root domain.
-            if (window.location.host !== 'share.streamus.com') {
-                this.headerDivider.after(this.homeContentView.render().el);
-                this.headerDivider.after(this.gettingStartedContentView.render().el);
-                this.headerDivider.after(this.aboutContentView.render().el);
-                this.headerDivider.after(this.donateContentView.render().el);
-            }
-
-            this.$el.append(this.socialView.render().el);
-            this.narrowContainer.append(this.footerView.render().el);
-            this.logoWrapper.append(this.logoView.render().el);
-
-            this.appendSocialScripts();
+            this.$el.removeClass('loading');            
         },
 
         showContentBasedOnHash: function (hash) {
@@ -150,7 +157,7 @@ define([
         },
 
         goHome: function () {
-            this.navigationItems.first().click();
+            this.navigationView.$el.first().click();
         },
 
         updateFormAndSubmit: function (event) {
@@ -175,15 +182,23 @@ define([
             this.$el.append(termsOfUseDialogView.render().el);
         },
         
-        showPrivacyDialog: function() {
+        showPrivacyDialog: function () {
+
+            var privacyDialog = new GenericDialog({
+                title: 'Privacy',
+                body: new PrivacyView()
+            });
+
             var privacyDialogView = new GenericDialogView({
-                model: {
-                    title: 'Privacy',
-                    body: new PrivacyView()
-                }
+                model: privacyDialog
             });
 
             this.$el.append(privacyDialogView.render().el);
+
+            this.listenTo(privacyDialog, 'destroy', function () {
+                //  TODO: I think this is necessary? Double check!! Might be important for Streamus.
+                this.stopListening(privacyDialog, 'destroy');
+            });
         },
         
         showContactDialog: function() {
@@ -198,9 +213,10 @@ define([
         },
         
         appendSocialScripts: function () {
-            
+            //  TODO: How can I detect these scripts loading so I know when to actually fade it in?
             var facebookButtonScript = $('<script>', {
                 async: true,
+                defer: true,
                 id: 'facebook-jssdk',
                 src: '//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252'
             });
@@ -208,6 +224,7 @@ define([
 
             var twitterButtonScript = $('<script>', {
                 async: true,
+                defer: true,
                 id: 'twitter-wjs',
                 src: '//platform.twitter.com/widgets.js'
             });
@@ -215,13 +232,22 @@ define([
 
             var googlePlusButtonScript = $('<script>', {
                 async: true,
+                defer: true,
                 id: 'google-jspo',
                 src: 'https://apis.google.com/js/plusone.js'
             });
             this.$el.append(googlePlusButtonScript);
-            
 
+            //  Is there a better way to detect these scripts having loaded?
+            setTimeout(function () {
+                this.socialView.$el.removeClass('loading');
 
+                //  Wrap in a set timeout to let the css3 transition start before removing it's effect.
+                setTimeout(function () {
+                    //  Change the transition to 0 so on-hover can fade-in to 1.0 instantly and back.
+                    this.socialView.$el.css('transition', 'opacity 0s');
+                }.bind(this));
+            }.bind(this), 3000);
         }
 
     });

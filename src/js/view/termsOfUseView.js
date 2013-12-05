@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../../template/termsOfUse.htm'
+    'text!template/termsOfUse.htm'
 ], function (TermsOfUseTemplate) {
     'use strict';
 

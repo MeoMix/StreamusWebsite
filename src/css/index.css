@@ -20,6 +20,17 @@ body {
     color: #1E1E1E !important;
     padding-bottom: 40px;
     padding-top: 20px;
+    transition: opacity 1.5s ease-in-out;
+    overflow-y: scroll;
+}
+
+body.loading {
+    opacity: 0;
+}
+
+/* Never show 2 scroll bars */
+body.showingModal {
+    overflow-y: hidden;
 }
 
 /* Custom container */
@@ -78,6 +89,12 @@ body .jumbotron {
     left: 10px;
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
     opacity: 0.8;
+    transition: opacity 2s ease-in-out;
+}
+
+.social.loading {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
 }
 
 .social > .fb-like,

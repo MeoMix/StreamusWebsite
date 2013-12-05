@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../../template/gettingStartedContent.htm'
+    'text!template/gettingStartedContent.htm'
 ], function (GettingStartedContentTemplate) {
     'use strict';
 

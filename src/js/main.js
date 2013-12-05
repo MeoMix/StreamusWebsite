@@ -1,6 +1,6 @@
 ﻿require.config({
     
-    baseUrl: '/src/js/',
+    baseUrl: 'js/',
     
     //  To get timely, correct error triggers in IE, 
     //  force a define/shim exports check.
@@ -68,6 +68,7 @@
             //  If the CDN location fails, load from this location
             'thirdParty/lodash'
         ],
+        template: '../template',
         text: 'thirdParty/text',
         zopim: 'thirdParty/zopim'
     }

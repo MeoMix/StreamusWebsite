@@ -1,5 +1,5 @@
 ﻿define([
-    'text!../../template/logo.htm'
+    'text!template/logo.htm'
 ], function (LogoTemplate) {
     'use strict';
 

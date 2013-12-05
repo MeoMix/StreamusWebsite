@@ -130,6 +130,7 @@
     <Content Include="src\js\view\aboutContentView.js" />
     <Content Include="src\js\view\bodyView.js" />
     <Content Include="src\js\view\contactView.js" />
+    <Content Include="src\js\view\navigationView.js" />
     <Content Include="src\js\view\donateContentView.js" />
     <Content Include="src\js\view\footerView.js" />
     <Content Include="src\js\view\gettingStartedContentView.js" />
@@ -173,6 +174,7 @@
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.woff" />
     <Content Include="src\template\aboutContent.htm" />
     <Content Include="src\template\contact.htm" />
+    <Content Include="src\template\navigation.htm" />
     <Content Include="src\template\donateContent.htm" />
     <Content Include="src\template\footer.htm" />
     <Content Include="src\template\gettingStartedContent.htm" />
