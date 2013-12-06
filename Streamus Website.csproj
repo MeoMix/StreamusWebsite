@@ -60,6 +60,8 @@
     <Content Include="src\img\streamusIntro5.png" />
     <Content Include="src\img\youTubeBadge.png" />
     <Content Include="src\index.htm" />
+    <Content Include="src\js\collection\contentPages.js" />
+    <Content Include="src\js\model\contentPage.js" />
     <Content Include="src\js\model\genericDialog.js" />
     <Content Include="src\js\contentRouter.js" />
     <Content Include="src\js\thirdParty\backbone.js" />

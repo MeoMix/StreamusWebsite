@@ -167,6 +167,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['jshint', 'watch']);
 	grunt.registerTask('lint', ['jshint']);
+
+    //  TODO: This still needs to call useminPrepare/usemin/concat/cssmin maaaaybe.
 	grunt.registerTask('production', ['clean', 'requirejs', 'htmlmin']);
 
 	//	TODO: I feel like I shouldn't have to call concat/uglify/cssmin here because useminPrepare's flow property should handle it by default... but not seeing it so I call 'em manually.

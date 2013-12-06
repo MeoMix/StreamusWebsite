@@ -23,6 +23,7 @@
         },
 
         render: function () {
+            //  TODO: Not confident urlPrefix is necessary. Need to test.
             this.$el.html(this.template({
                 urlPrefix: this.urlPrefix
             }));

@@ -20,8 +20,6 @@
             var route = Backbone.history.fragment;
             var contentPage = ContentPages.findWhere({ route: route });
 
-            console.log("Content page:", contentPage);
-
             //  If the desired content page is hidden -- hide whichever page is visible and and show the desired page.
             if (contentPage.get('hidden')) {
                 var visibleContentPage = ContentPages.findWhere({ hidden: false });
@@ -31,7 +29,6 @@
                 }
                 
                 contentPage.set('hidden', false);
-                console.log("Set hidden to false");
             }
         }
        
