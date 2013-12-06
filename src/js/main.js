@@ -42,6 +42,11 @@
             exports: '$.browser'
         },
         
+        'jquery.unveil': {
+            deps: ['jquery'],
+            exports: '$.fn.unveil'
+        },
+        
         googleAnalyticsScript: {
             exports: 'window.GoogleAnalyticsObject'
         },
@@ -69,12 +74,13 @@
         'bootstrap-modalmanager': 'thirdParty/bootstrap-modalmanager',
         coinbase: 'thirdParty/coinbase',
         googleAnalyticsScript: 'thirdParty/googleAnalyticsScript',
+        'jquery.browser': 'thirdParty/jquery.browser',
         jquery: [
             '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
             //  If the CDN location fails, load from this location
             'thirdParty/jquery'
         ],
-        'jquery.browser': 'thirdParty/jquery.browser',
+        'jquery.unveil': 'thirdParty/jquery.unveil',
         lodash: [
             '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
             //  If the CDN location fails, load from this location
@@ -98,6 +104,7 @@ define([
     'googleAnalyticsScript',
     'jquery.browser',
     'jquery',
+    'jquery.unveil',
     'lodash',
     'text',
     'zopim'

@@ -1,9 +1,19 @@
-﻿define(function () {
+﻿define([
+    'view/genericContentView',
+    'model/contentPage'
+], function (GenericContentView, ContentPage) {
     'use strict';
 
-    var AboutContentView = Backbone.View.extend({
-        el: $('#aboutContent')
+    var AboutContentView = GenericContentView.extend({
+        el: $('#aboutContent'),
+        
+        model: new ContentPage({
+            route: 'about'
+        }),
+        
+        lazyImages: $('#aboutContent img[data-src]')
+      
     });
 
-    return new AboutContentView();
+    return AboutContentView;
 });

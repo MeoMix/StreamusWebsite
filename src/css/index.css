@@ -21,16 +21,10 @@ body {
     padding-bottom: 40px;
     padding-top: 20px;
     transition: opacity .75s ease-in-out;
-    overflow-y: scroll;
 }
 
 body.loading {
     opacity: 0;
-}
-
-/* Never show 2 scroll bars */
-body.showingModal {
-    overflow-y: hidden;
 }
 
 /* Custom container */
@@ -119,16 +113,20 @@ ul.nav {
     display: inline-block;
 }
 
-#homeContent {
-    display: inherit;
-}
-
 .content {
     display: none;
 }
 
 .logoWrapper {
     display: inline-block;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+#navigation li > a {
+    cursor: pointer;
 }
 
 #aboutConclusion {
@@ -142,6 +140,10 @@ ul.nav {
 
 #contactContent ul {
     list-style: none;
+}
+
+#installButton {
+    cursor: pointer;
 }
 
 .featurette {
@@ -225,6 +227,22 @@ ul.nav {
         zoom: .7;
     }
 
+}
+
+img[data-src="img/streamusIntro2.png"],
+img[data-src="img/streamusIntro3.png"] {
+    width: 630px;
+    height: 540px;
+}
+
+img[data-src="img/streamusIntro4.png"] {
+    width: 612px;
+    height: 432px;
+}
+
+img[data-src="img/streamusIntro5.png"] {
+    width: 1000px;
+    height: 286px;
 }
 
 #donateContent .fa-usd {

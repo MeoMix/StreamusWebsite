@@ -1,9 +1,16 @@
-﻿define(function () {
+﻿define([
+    'view/genericContentView',
+    'model/contentPage'
+], function (GenericContentView, ContentPage) {
     'use strict';
 
-    var HomeContentView = Backbone.View.extend({
-        el: $('#homeContent')
+    var HomeContentView = GenericContentView.extend({
+        el: $('#homeContent'),
+        
+        model: new ContentPage({
+            route: 'home'
+        })
     });
 
-    return new HomeContentView();
+    return HomeContentView;
 });

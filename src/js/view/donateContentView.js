@@ -1,9 +1,34 @@
-﻿define(function () {
+﻿define([
+    'view/genericContentView',
+    'model/contentPage'
+], function (GenericContentView, ContentPage) {
     'use strict';
 
-    var DonateContentView = Backbone.View.extend({
-        el: $('#donateContent')
+    var DonateContentView = GenericContentView.extend({
+        el: $('#donateContent'),
+        
+        model: new ContentPage({
+            route: 'donate'
+        }),
+
+        events: {
+            'submit #payPalDonateForm': 'updateFormAndSubmit'
+        },
+        
+        //  Update the form submitted to PayPal with the values currently represented in the combo boxes.
+        //  Then submit it to process the user's request.
+        updateFormAndSubmit: function (event) {
+
+            var selectedCurrency = $('#currencySelect').val();
+            var donationAmount = parseInt($('#donationAmount').val(), 10);
+
+            var form = $(event.currentTarget);
+            form.find('input[name="currency_code"]').val(selectedCurrency);
+            form.find('input[name="amount"]').val(donationAmount);
+
+        }
+
     });
 
-    return new DonateContentView();
+    return DonateContentView;
 });

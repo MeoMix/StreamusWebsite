@@ -7,17 +7,19 @@
         
         tagName: 'a',
         
+        className: 'logo',
+        
         attributes: {
-            'href': 'javascript:void(0)',
-            'data-contentid': 'homeContent'
+            'data-route': 'home'
         },
 
         template: _.template(LogoTemplate),
-
-        urlPrefix: '',
+        
+        //  When requesting images from a sub-domain I need to be explicit with where I am retrieving the resources... I think.
+        urlPrefix: window.location.host === 'share.streamus.com' ? 'http://www.streamus.com/' : '',
         
         events: {
-            'click': 'goToHome'
+            'click': 'navigateHome'
         },
 
         render: function () {
@@ -27,17 +29,10 @@
             
             return this;
         },
-
-        initialize: function () {
-            //  When requesting images from a sub-domain I need to be explicit with where I am retrieving the resources... I think.
-            if (window.location.host === 'share.streamus.com') {
-                this.urlPrefix = 'http://www.streamus.com/';
-            }
-
-        },
         
         //  If the user has clicked the logo and is viewing the share.streamus sub-domain, go back to the root domain.
-        goToHome: function() {
+        //  Otherwise just route as normal.
+        navigateHome: function () {
             
             if (this.urlPrefix !== '') {
                 document.location.href = 'http://streamus.com';

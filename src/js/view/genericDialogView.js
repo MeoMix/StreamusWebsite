@@ -29,12 +29,16 @@
         },
 
         initialize: function () {
-            this.$el.modal();
             this.listenTo(this.model, 'destroy', this.remove);
         },
         
         destroyModel: function () {
             this.model.trigger('destroy');
+        },
+        
+        show: function() {
+            $('.page-container').append(this.render().el);
+            this.$el.modal();
         }
 
     });

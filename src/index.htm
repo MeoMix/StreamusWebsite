@@ -30,24 +30,24 @@
                     </div>
                     <div class="col-md-6 text-right navigationWrapper">
                         
-                        <ul class="nav nav-pills">
-                            <li class="active" data-contentid="homeContent">
-                                <a href="javascript:void(0)" title="Home">
+                        <ul id="navigation" class="nav nav-pills">
+                            <li data-route="home">
+                                <a title="Home">
                                     Home
                                 </a>
                             </li>
-                            <li data-contentid="gettingStartedContent">
-                                <a href="javascript:void(0)" title="Getting Started">
+                            <li data-route="getting-started">
+                                <a title="Getting Started">
                                     Getting Started
                                 </a>
                             </li>
-                            <li data-contentid="aboutContent">
-                                <a href="javascript:void(0)" title="About">
+                            <li data-route="about">
+                                <a title="About">
                                     About
                                 </a>
                             </li>
-                            <li data-contentid="donateContent">
-                                <a href="javascript:void(0)" title="Donate">
+                            <li data-route="donate">
+                                <a title="Donate">
                                     Donate
                                 </a>
                             </li>
@@ -71,7 +71,7 @@
 			                Streamus turns YouTube into the music player you always wanted. It's a Google Chrome extension that makes streaming YouTube refreshingly easy.
 		                </p>
 
-		                <a id="installButton" class="btn btn-lg btn-success" href="javascript:void(0)">
+		                <a id="installButton" class="btn btn-lg btn-success">
 			                Install extension now
 		                </a>
 	                </div>
@@ -104,7 +104,6 @@
 	                </div>
                 </div>
                 
-                <!--TODO: Lazy Load these images so it doesn't incur network on first load.-->
                 <div id="gettingStartedContent" class="content">
                     
                     <div class="jumbotron">
@@ -113,12 +112,11 @@
                         <h2>
                             Let's get you familiar with your new extension!
                         </h2>
-
                     </div>
                     <div class="row marketing">
                         <hr class="featurette-divider" />
                         <div class="featurette">
-                            <img width="630" height="540" class="featurette-image pull-right img-thumbnail img-responsive" src="img/streamusIntro1.png" />
+                            <img width="630" height="540" class="featurette-image pull-right img-thumbnail img-responsive" src="img/streamusIntro1.png" alt="Streamus Intro - Welcome" />
                             <h2 class="featurette-heading">
                                 <span class="muted">
                                     Welcome to your new content library.
@@ -132,7 +130,7 @@
                         </div>
                         <hr class="featurette-divider" />
                         <div class="featurette">
-                            <img width="630" height="540" class="featurette-image pull-left img-thumbnail img-responsive" src="img/streamusIntro2.png" />
+                            <img width="630" height="540" class="featurette-image pull-left img-thumbnail img-responsive" data-src="img/streamusIntro2.png" alt="Streamus Intro - Playing"/>
                             <h2 class="featurette-heading">Streaming videos. <span class="muted">Sounds like what you want, right?</span></h2>
                             <p class="lead">
                                 Click on a video to add it to the stream. For playlists, right-click the
@@ -142,7 +140,7 @@
                         </div>
                         <hr class="featurette-divider" />
                         <div class="featurette">
-                            <img width="630" height="540" class="featurette-image pull-right img-thumbnail img-responsive" src="img/streamusIntro3.png" />
+                            <img width="630" height="540" class="featurette-image pull-right img-thumbnail img-responsive" data-src="img/streamusIntro3.png" alt="Streamus Intro - Radio"/>
                             <h2 class="featurette-heading">Discover! <span class="muted">Imagine if Pandora and YouTube had a baby.</span></h2>
                             <p class="lead">
                                 Click the radio tower to enable radio mode. Streamus will suggest new
@@ -151,7 +149,7 @@
                         </div>
                         <hr class="featurette-divider" />
                         <div class="featurette">
-                            <img width="612" height="432" class="featurette-image pull-left img-thumbnail img-responsive" src="img/keyboardShortcutsScreenshot.png" />
+                            <img width="612" height="432" class="featurette-image pull-left img-thumbnail img-responsive" data-src="img/streamusIntro4.png" alt="Streamus Intro - Shortcuts" />
                             <h2 class="featurette-heading">Keybindings! <span class="muted">Because opening Streamus is too much work.</span></h2>
                             <p class="lead">
                                 Streamus supports a bunch of keyboard shortcuts. You can open the interface,
@@ -160,7 +158,7 @@
                         </div>
                         <hr class="featurette-divider" />
                         <div class="featurette">
-                            <img width="1000" height="286" class="featurette-image pull-right img-thumbnail img-responsive" src="img/streamusIntro5.png" />
+                            <img width="1000" height="286" class="featurette-image pull-right img-thumbnail img-responsive" data-src="img/streamusIntro5.png" alt="Streamus Intro - Omnibox" />
                             <h2 class="featurette-heading">Omnibox <span class="muted">Stream videos right meow!</span></h2>
                             <p class="lead">
                                 You can use the omnibox to immediately stream videos in Streamus. Just
@@ -172,7 +170,7 @@
 
                 </div>
                 
-                <div  id="aboutContent" class="content">
+                <div id="aboutContent" class="content">
                     <div class="jumbotron">
                         <h1>Hi! I'm Sean Anderson.</h1>
                         <h2>Pleasure to meet you. <br/>Here's a bit of background on the project.</h2>
@@ -203,7 +201,7 @@
                             </p>
                         </div>
                         <div class="col-md-4">
-                            <img width="720" height="960" src="img/sean.jpg" class="img-thumbnail img-responsive" />
+                            <img id="seanImage" width="720" height="960" src="img/sean.jpg" class="img-thumbnail img-responsive" alt="Image of Sean Anderson"/>
                         </div>
                     </div>
                 </div>
@@ -227,9 +225,9 @@
                         </h1>
                     </div>
                     <hr />
-                    <div class="row ">
+                    <div class="row marketing">
                         <p>
-                            Feeling generous? Continuous development of Streamus is only possible with your support. Thank you!
+                            <strong>Feeling generous?</strong> Consider donating via PayPal or Bitcoin. Additional features and continuous support of Streamus is made possible by the support of music lovers such as yourself. Thank you!
                         </p>
                     </div>
                     <div class="row form-horizontal">
@@ -257,11 +255,11 @@
                             <option value="THB">Thai Baht</option>
                         </select>
                         <input class="form-control" id="donationAmount" type="number" min="1" name="donationAmount" value="2" />
-                        <button class="btn btn-success" type="submit" form="donateForm">
+                        <button class="btn btn-success" type="submit" form="payPalDonateForm">
                             Donate via <strong>PayPal</strong>
                         </button>
 
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="donateForm">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="payPalDonateForm">
                             <input type="hidden" name="cmd" value="_donations" />
                             <input type="hidden" name="business" value="sean.palmer.anderson@gmail.com" />
                             <input type="hidden" name="item_name" value="Streamus - Simple streaming music" />
@@ -271,6 +269,7 @@
                             <input type="hidden" name="amount" value="" />
                             <input type="hidden" name="confirmation_note" value="Thank you so much for your donation!" />
                         </form>
+                        
                         <a class="coinbase-button" data-code="4fe7c0aa7fbe7bab258cfc07b50446df" data-button-style="custom_large" href="https://coinbase.com/checkouts/4fe7c0aa7fbe7bab258cfc07b50446df">
                             Donate Bitcoins
                         </a>
