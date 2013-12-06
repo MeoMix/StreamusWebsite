@@ -1,6 +1,7 @@
 ﻿define([
-    'text!template/logo.htm'
-], function (LogoTemplate) {
+    'text!template/logo.html',
+    'enum/route'
+], function (LogoTemplate, Route) {
     'use strict';
 
     var LogoView = Backbone.View.extend({
@@ -10,7 +11,7 @@
         className: 'logo',
         
         attributes: {
-            'data-route': 'home'
+            'data-route': Route.Home
         },
 
         template: _.template(LogoTemplate),

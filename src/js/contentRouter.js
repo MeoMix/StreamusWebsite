@@ -1,9 +1,12 @@
 ﻿define([
-    'collection/contentPages'
-], function (ContentPages) {
+    'collection/contentPages',
+    'enum/route'
+], function (ContentPages, Route) {
     'use strict';
 
     var ContentRouter = Backbone.Router.extend({
+
+        defaultRoute: Route.Home,
 
         routes: {
             '*allRoutes': 'routeToContentView'
@@ -18,6 +21,11 @@
         routeToContentView: function () {
 
             var route = Backbone.history.fragment;
+            
+            if ($.trim(route) === '') {
+                route = this.defaultRoute;
+            }
+
             var contentPage = ContentPages.findWhere({ route: route });
 
             //  If the desired content page is hidden -- hide whichever page is visible and and show the desired page.

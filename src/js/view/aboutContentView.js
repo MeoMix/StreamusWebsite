@@ -1,18 +1,16 @@
 ﻿define([
     'view/genericContentView',
-    'model/contentPage'
-], function (GenericContentView, ContentPage) {
+    'model/contentPage',
+    'enum/route'
+], function (GenericContentView, ContentPage, Route) {
     'use strict';
 
     var AboutContentView = GenericContentView.extend({
         el: $('#aboutContent'),
         
         model: new ContentPage({
-            route: 'about'
-        }),
-        
-        lazyImages: $('#aboutContent img[data-src]')
-      
+            route: Route.About
+        })
     });
 
     return AboutContentView;

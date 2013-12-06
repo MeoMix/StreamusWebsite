@@ -81,7 +81,7 @@
 
 });
 
-//  I'm using define over require here intentionally. The data-main attribute in index.htm counts as the require 
+//  I'm using define over require here intentionally. The data-main attribute in index.html counts as the require 
 //  statement and define is needed here for the enforceDefine: true option to be fulfilled.
 //  TODO: jQueryBrowser, jQueryFnModal, jQueryFnModalManager are undefined here because I can't pass - or . in an object name... is there a way to do this better?
 define([

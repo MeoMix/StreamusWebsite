@@ -1,5 +1,5 @@
 ﻿define([
-    'text!template/footer.htm',
+    'text!template/footer.html',
     'model/genericDialog',
     'view/genericDialogView',
     'view/termsOfUseView',

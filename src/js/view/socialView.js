@@ -1,5 +1,5 @@
 ﻿define([
-    'text!template/social.htm'
+    'text!template/social.html'
 ], function (SocialTemplate) {
     'use strict';
 

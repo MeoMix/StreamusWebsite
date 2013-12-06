@@ -1,5 +1,5 @@
 ﻿define([
-    'text!template/genericDialog.htm'
+    'text!template/genericDialog.html'
 ], function (GenericDialogTemplate) {
     'use strict';
 

@@ -59,8 +59,9 @@
     <Content Include="src\img\streamusIntro3.png" />
     <Content Include="src\img\streamusIntro5.png" />
     <Content Include="src\img\youTubeBadge.png" />
-    <Content Include="src\index.htm" />
+    <Content Include="src\index.html" />
     <Content Include="src\js\collection\contentPages.js" />
+    <Content Include="src\js\enum\route.js" />
     <Content Include="src\js\model\contentPage.js" />
     <Content Include="src\js\model\genericDialog.js" />
     <Content Include="src\js\contentRouter.js" />
@@ -93,7 +94,7 @@
     <Content Include="src\js\thirdParty\googleAnalyticsScript.js" />
     <Content Include="src\js\thirdParty\text.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
-    <Content Include="src\share\index.htm" />
+    <Content Include="src\share\index.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
@@ -107,13 +108,13 @@
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.eot" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.ttf" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.woff" />
-    <Content Include="src\template\contact.htm" />
-    <Content Include="src\template\footer.htm" />
-    <Content Include="src\template\logo.htm" />
-    <Content Include="src\template\privacy.htm" />
-    <Content Include="src\template\social.htm" />
-    <Content Include="src\template\termsOfUse.htm" />
-    <Content Include="src\template\genericDialog.htm" />
+    <Content Include="src\template\contact.html" />
+    <Content Include="src\template\footer.html" />
+    <Content Include="src\template\logo.html" />
+    <Content Include="src\template\privacy.html" />
+    <Content Include="src\template\social.html" />
+    <Content Include="src\template\termsOfUse.html" />
+    <Content Include="src\template\genericDialog.html" />
     <Content Include="src\Web.config" />
     <None Include="src\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

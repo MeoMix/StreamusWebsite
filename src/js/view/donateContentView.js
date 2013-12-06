@@ -1,14 +1,15 @@
 ﻿define([
     'view/genericContentView',
-    'model/contentPage'
-], function (GenericContentView, ContentPage) {
+    'model/contentPage',
+    'enum/route'
+], function (GenericContentView, ContentPage, Route) {
     'use strict';
 
     var DonateContentView = GenericContentView.extend({
         el: $('#donateContent'),
         
         model: new ContentPage({
-            route: 'donate'
+            route: Route.Donate
         }),
 
         events: {

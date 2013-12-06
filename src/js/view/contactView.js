@@ -1,5 +1,5 @@
 ﻿define([
-    'text!template/contact.htm'
+    'text!template/contact.html'
 ], function (ContactTemplate) {
     'use strict';
 

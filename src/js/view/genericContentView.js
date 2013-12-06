@@ -11,6 +11,8 @@
             
             ContentPages.add(this.model);
 
+            this.lazyImages = this.$el.find('img[data-src]');
+
             if (this.lazyImages.length > 0) {
                 this.lazyImages.unveil(200);
             }
