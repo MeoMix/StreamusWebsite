@@ -16,9 +16,6 @@ define([
     var BodyView = Backbone.View.extend({
         el: $('body'),
 
-        narrowContainer: $('body div.container-narrow'),
-        logoWrapper: $('body div.logoWrapper'),
-
         events: {
             'click *[data-route]': 'navigateToRoute'
         },
@@ -40,9 +37,6 @@ define([
             this.contentRouter = new ContentRouter();
             
             this.$el.append(this.socialView.render().el);
-            this.narrowContainer.append(this.footerView.render().el);
-            this.logoWrapper.append(this.logoView.render().el);
-
             this.$el.removeClass('loading');            
         },
 

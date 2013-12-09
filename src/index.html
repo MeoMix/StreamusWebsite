@@ -15,10 +15,7 @@
         <link href="css/bootstrap-modal-bs3patch.css" rel="stylesheet" />
         <link href="css/bootstrap-modal.css" rel="stylesheet" />
         <!-- endbuild -->
-        
-        <!--Load RequireJS and then go to js/foreground/main to start-->
-        <!-- TODO: Current a minor version behind (2.1.9 latest) due to a bug in grunt-contrib-requirejs. -->
-        <script data-main="js/main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js"></script>
+
     </head>
     
     <body class="loading">
@@ -27,28 +24,29 @@
             <div class="container-narrow">
                 <div class="header row">
                     <div class="col-md-6 logoWrapper">
-
+                        <a class="logo">
+                            <img width="250" height="54" src="img/logo.png" title="Streaming YouTube music made simple by Google Chrome - Streamus" alt="Streaming YouTube music made simple by Google Chrome - Streamus" class="img-responsive" />
+                        </a>
                     </div>
                     <div class="col-md-6 text-right navigationWrapper">
                         
                         <ul id="navigation" class="nav nav-pills">
-                            <!-- These data-route values are sync'ed with enum/route.js -->
-                            <li data-route="home">
+                            <li id="homeNavigationItem">
                                 <a title="Home">
                                     Home
                                 </a>
                             </li>
-                            <li data-route="getting-started">
+                            <li id="gettingStartedNavigationItem">
                                 <a title="Getting Started">
                                     Getting Started
                                 </a>
                             </li>
-                            <li data-route="about">
+                            <li id="aboutNavigationItem">
                                 <a title="About">
                                     About
                                 </a>
                             </li>
-                            <li data-route="donate">
+                            <li id="donateNavigationItem">
                                 <a title="Donate">
                                     Donate
                                 </a>
@@ -308,8 +306,38 @@
                 </div>
                 
                 <hr />
+                
+                <div class="footer row">
+                    
+                    <div class="col-md-6 legalWrapper">
+                        <p>
+                            © 2013 Streamus™
+                            <a id="touButton" title="Terms of Use">
+                                Terms of Use
+                            </a>
+                            <a id="privacyButton" title="Privacy Policy">
+                                Privacy
+                            </a>
+                            <a id="contactButton" title="Contacts">
+                                Contact
+                            </a>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right badgeWrapper">
+                        <img width="85" height="40" src="img/youTubeBadge.png" alt="Powered by YouTube" />
+
+                        <a href="https://chrome.google.com/webstore/detail/streamus-beta/jbnkffmindojffecdhbbmekbmkkfpmjd">
+                            <img width="150" height="40" src="img/chromeWebStoreBadge.png" alt="Available in the Chrome Web Store" />  
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </div>
+        
+        <!--Load RequireJS and then go to js/foreground/main to start-->
+        <!-- TODO: Current a minor version behind (2.1.9 latest) due to a bug in grunt-contrib-requirejs. -->
+        <script data-main="js/main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js"></script>
     </body>
 
 </html>

@@ -1,34 +1,20 @@
 ﻿define([
-    'text!template/footer.html',
     'model/genericDialog',
     'view/genericDialogView',
     'view/termsOfUseView',
     'view/privacyView',
     'view/contactView'
-], function (FooterTemplate, GenericDialog, GenericDialogView, TermsOfUseView, PrivacyView, ContactView) {
+], function (GenericDialog, GenericDialogView, TermsOfUseView, PrivacyView, ContactView) {
     'use strict';
 
     var FooterView = Backbone.View.extend({
 
-        className: 'footer row',
+        el: $('div.footer'),
 
-        template: _.template(FooterTemplate),
-        
-        //  When requesting images from a sub-domain I need to be explicit with where I am retrieving the resources... I think.
-        urlPrefix: window.location.host === 'share.streamus.com' ? 'http://www.streamus.com/' : '',
-        
         events: {
             'click #touButton': 'showTouDialog',
             'click #privacyButton': 'showPrivacyDialog',
             'click #contactButton': 'showContactDialog'
-        },
-
-        render: function () {
-            this.$el.html(this.template({
-                urlPrefix: this.urlPrefix
-            }));
-            
-            return this;
         },
 
         showTouDialog: function () {

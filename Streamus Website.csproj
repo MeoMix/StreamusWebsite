@@ -112,8 +112,6 @@
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.ttf" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.woff" />
     <Content Include="src\template\contact.html" />
-    <Content Include="src\template\footer.html" />
-    <Content Include="src\template\logo.html" />
     <Content Include="src\template\privacy.html" />
     <Content Include="src\template\social.html" />
     <Content Include="src\template\termsOfUse.html" />

@@ -19,7 +19,6 @@
         },
         
         routeToContentView: function () {
-
             var route = Backbone.history.fragment;
             
             if ($.trim(route) === '') {
