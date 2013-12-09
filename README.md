@@ -1,18 +1,19 @@
-Streamus™
+Streamus™ - Website
 =========
 
-A Google Chrome extension which allows users to add YouTube videos to playlists, share playlists and discover new YouTube videos.
+The Streamus website is an alternative download point for the extension. It also contains a small instructional guide, a brief history of the program and a donation page.
 
 Overview
 ========
 
-Streamus consists of a front-end client, the Google Chrome extension, a back-end server and a website. This repository contains the files for the website. Please see the other repositories, StreamusChromeExtension and StreamusServer, to gain a full understanding of the product.
-
+The website utilizes many of the same libraries as the extension. RequireJS, BackboneJS and Bootstrap are all in place. GruntJS (through Node) is used to create a deployment-ready
+version of the website. See Gruntfile.js for more details.
 
 Deployment
 ========
 
-TODO: Fill out information regarding website deployment. Currently the website is deployed through Visual Studio by writing to a webdisk.
+Once you have NPM and Grunt installed, just run "grunt production." This will create a dist. folder along with all of the files ready to go.
+If you've touched any images -- you'll probably want to re-install grunt-contrib-imagemin and compress the images before uploading. This module isn't included by default because it is pretty bulky.
 
 License
 =======
@@ -22,4 +23,3 @@ Authors
 =======
 
 * MeoMix - Original developer, main contributor.
-* Voziv - Assisting in website development

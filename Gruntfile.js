@@ -133,7 +133,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
+    //  Bulky, install on-demand only.
+	//grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -142,6 +143,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('lint', ['jshint']);
 
-	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin']);
+	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin']);
 	
 };
