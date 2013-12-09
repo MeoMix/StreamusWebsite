@@ -54,7 +54,7 @@ module.exports = function (grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'src/img',
+                    cwd: 'dist/img',
                     src: ['**/*.{png,jpg,gif}'],
                     dest: 'dist/img/'
                 }]
@@ -133,9 +133,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    //	TODO: Introduce a PNG/JPEG optimizer. It was throwing a fatal error on PNGs (known issue) waiting for fix to go public.
-    //  See here for more information: https://github.com/gruntjs/grunt-contrib-imagemin/issues/61
-	//grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -144,6 +142,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('lint', ['jshint']);
 
-	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin']);
+	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin']);
 	
 };

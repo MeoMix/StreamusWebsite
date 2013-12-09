@@ -7,5 +7,5 @@
         model: ContentPage
     });
 
-    return new ContentPageCollection;
+    return new ContentPageCollection();
 });

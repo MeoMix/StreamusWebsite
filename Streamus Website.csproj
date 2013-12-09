@@ -14,7 +14,7 @@
     <RootNamespace>Streamus_Website</RootNamespace>
     <AssemblyName>Streamus Website</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -50,14 +50,17 @@
     <Content Include="src\font\helvetica neue\helveticaneue-webfont.svg" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.svg" />
     <Content Include="src\googlee6d26778f04ae1ed.html" />
+    <Content Include="src\img\1st.png" />
+    <Content Include="src\img\2nd.png" />
+    <Content Include="src\img\3rd.png" />
+    <Content Include="src\img\4th.png" />
+    <Content Include="src\img\5th.png" />
+    <Content Include="src\img\8th.png" />
     <Content Include="src\img\chromeWebStoreBadge.png" />
-    <Content Include="src\img\streamusIntro4.png" />
+    <Content Include="src\img\6th.png" />
     <Content Include="src\img\logo.png" />
     <Content Include="src\img\sean.jpg" />
-    <Content Include="src\img\streamusIntro1.png" />
-    <Content Include="src\img\streamusIntro2.png" />
-    <Content Include="src\img\streamusIntro3.png" />
-    <Content Include="src\img\streamusIntro5.png" />
+    <Content Include="src\img\7th.png" />
     <Content Include="src\img\youTubeBadge.png" />
     <Content Include="src\index.html" />
     <Content Include="src\js\collection\contentPages.js" />
@@ -138,8 +141,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49553</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:49553/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://share.streamus.com</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

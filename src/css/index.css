@@ -1,22 +1,4 @@
-﻿@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    @font-face {
-        font-family: 'Helvetica Neue';
-        src: url('../font/helvetica neue/helveticaneue-webfont.svg') format('svg');
-        font-weight: normal;
-        font-style: normal;
-    }
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    @font-face {
-        font-family: 'Helvetica Neue';
-        src: url('../font/helvetica neue/helveticaneuebold-webfont.svg') format('svg');
-        font-weight: bold;
-        font-style: normal;
-    }
-}
-
-body {
+﻿body {
     color: #1E1E1E !important;
     padding-bottom: 40px;
     padding-top: 20px;
@@ -27,14 +9,10 @@ body.loading {
     opacity: 0;
 }
 
-/* Custom container */
-
 .container-narrow {
     margin: 0 auto;
     max-width: 1000px;
 }
-
-/* Main marketing message and sign up button */
 
 body .jumbotron {
     text-align: center;
@@ -52,11 +30,6 @@ body .jumbotron {
 
 .footer { padding-top: 10px; }
 
-.footer * {
-    display: inline-block !important;
-    padding-right: 5px;
-}
-
 .marketing { margin: 40px 0; }
 
 .marketing p + h4 { margin-top: 28px; }
@@ -73,6 +46,10 @@ body .jumbotron {
 .legalWrapper {
     line-height: 1;
     padding-top: 5px;
+}
+
+.legalWrapper p {
+    display: inline-block;
 }
 
 .social {
@@ -117,14 +94,13 @@ ul.nav {
     display: none;
 }
 
+.legalWrapper,
 .logoWrapper {
-    display: inline-block;
+    float: left;
 }
 
-.logo {
-    cursor: pointer;
-}
-
+.logo,
+#installButton,
 #navigation li > a {
     cursor: pointer;
 }
@@ -140,10 +116,6 @@ ul.nav {
 
 #contactContent ul {
     list-style: none;
-}
-
-#installButton {
-    cursor: pointer;
 }
 
 .featurette {
@@ -163,70 +135,8 @@ ul.nav {
     margin-left: 40px;
 }
 
-@media (max-width: 1000px) {
-    .container-narrow { padding: 10px 0;}
-    .badgeWrapper { text-align: left; }
-    .social { display: none !important; }
-    .zopim { display: none !important; }
-}
-
-@media (max-width: 767px) {
-    .badgeWrapper {
-        margin-top: inherit;
-        text-align: center !important;
-    }
-    .logoWrapper {
-         text-align: center !important;
-    }
-    .navigationWrapper {
-        text-align: center !important;
-        margin-top: 20px !important;
-        zoom: .9;
-    }
-    .legalWrapper {
-         text-align: center;
-    }
-
-    .content {
-        zoom: .9;
-    }
-}
-
-@media (max-width: 352px) {
-    .badgeWrapper {
-        zoom: .7
-    }
-
-    .header,
-    .footer {
-        zoom: .9
-    }
-   
-    .content {
-        zoom: .7;
-    }
-
-    .navigationWrapper {
-        text-align: center !important;
-        margin-top: 10px !important;
-        zoom: .8;
-    }
-
-}
-
-@media (max-width: 290px) {
-    .content {
-        zoom: .6;
-    }
-
-    #homeContent > .jumbotron h1 {
-        font-size: 66px;
-    }
-
-    .navigationWrapper {
-        zoom: .7;
-    }
-
+.featurette-image.wide {
+    margin-bottom: 20px;
 }
 
 img[data-src="img/streamusIntro2.png"],
@@ -264,7 +174,8 @@ img[data-src="img/streamusIntro5.png"] {
 #donateContent .equals {
     color: #428bca;
     vertical-align: top;
-    line-height: 80px;
+    display: inline-block;
+    margin-top: 13px;
 }
 
 #donateContent .fa-heart {
@@ -275,9 +186,58 @@ img[data-src="img/streamusIntro5.png"] {
     text-align: center;
 }
 
+#donateContent iframe {
+    width: 193px !important;
+}
+
 #currencySelect,
 #donationAmount {
     width: 200px;
     display: inline-block;
 }
 
+@media (max-width: 1220px) {
+    .social { display: none !important; }
+    .zopim { display: none !important; }
+}
+
+@media (max-width: 767px) {
+    #donateContent #beerMug {
+        zoom: .6;
+    }
+
+    #donateContent .equals {
+        margin-top: 11px;
+    }
+}
+
+@media (max-width: 622px) {
+    .logoWrapper,
+    .navigationWrapper,
+    .badgeWrapper,
+    .legalWrapper {
+        text-align: center;
+        float: none;
+    }
+
+    .badgeWrapper {
+        margin-top: 0;
+    }
+
+    .logoWrapper img {
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .marketing h4,
+    .marketing p {
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 520px) {
+    #donateContent button[form="payPalDonateForm"] {
+        margin-top: 15px;
+    }
+}
