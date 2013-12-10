@@ -29,7 +29,11 @@
         },
 
         initialize: function () {
-            this.listenTo(this.model, 'destroy', this.remove);
+            //  Whenever Bootstrap Modals are destroyed in FireFox -- need to wait until the stack has cleared before cleaning up.
+            //  Otherwise, the overlay sticks around and makes all the elements non-interactive.
+            this.listenTo(this.model, 'destroy', function() {
+                _.defer(this.remove.bind(this));
+            });
         },
         
         destroyModel: function () {

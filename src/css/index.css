@@ -98,9 +98,7 @@ ul.nav {
     float: left;
 }
 
-.logo,
-#installButton,
-#navigation li > a {
+.clickable {
     cursor: pointer;
 }
 
