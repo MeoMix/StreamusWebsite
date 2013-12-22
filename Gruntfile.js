@@ -79,6 +79,18 @@ module.exports = function (grunt) {
             }
         },
 
+        replace: {
+            // r.js optimizer isn't friendly to conditional, insert it afterwards.
+            setShareFriendlyBaseUrl: {
+                src: ['dist/js/main.js'],
+                overwrite: true,
+                replacements: [{
+                    from: 'baseUrl:"js/",',
+                    to: 'baseUrl:isShareSubdomain?"//streamus.com/js/":"js/",',
+                }]
+            }
+        },
+
         requirejs: {
             production: {
                 options: {
@@ -96,6 +108,9 @@ module.exports = function (grunt) {
                         name: 'main'
                     }, {
                         name: 'view/bodyView',
+                        exclude: ['main']
+                    }, {
+                        name: 'view/shareBodyView',
                         exclude: ['main']
                     }],
                     optimize: 'uglify2',
@@ -137,12 +152,13 @@ module.exports = function (grunt) {
 	//grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-usemin');
 
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('lint', ['jshint']);
 
-	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin']);
+	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'replace']);
 	
 };

@@ -78,6 +78,7 @@
     <Content Include="src\js\view\aboutContentView.js" />
     <Content Include="src\js\view\bodyView.js" />
     <Content Include="src\js\view\contactView.js" />
+    <Content Include="src\js\view\shareBodyView.js" />
     <Content Include="src\js\view\genericContentView.js" />
     <Content Include="src\js\view\navigationView.js" />
     <Content Include="src\js\view\donateContentView.js" />

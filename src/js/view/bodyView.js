@@ -1,5 +1,4 @@
-﻿//  TODO: BodyView loads the HTML for share.streamus and streamus.com irregardless of which is requested -- need to fix.
-define([
+﻿define([
     'contentRouter',
     'view/navigationView',
     'view/homeContentView',

@@ -1,8 +1,10 @@
-﻿require.config({
+﻿var isShareSubdomain = window.location.host === 'share.streamus.com';
+
+require.config({
     
     baseUrl: 'js/',
     
-    //  force a define/shim exports check in order to receive timely, correct error triggers in IE. 
+    //  Force a define/shim exports check in order to receive timely, correct error triggers in IE. 
     enforceDefine: true,
     
     shim: {
@@ -83,7 +85,6 @@
 
 //  I'm using define over require here intentionally. The data-main attribute in index.html counts as the require 
 //  statement and define is needed here for the enforceDefine: true option to be fulfilled.
-//  TODO: jQueryBrowser, jQueryFnModal, jQueryFnModalManager are undefined here because I can't pass - or . in an object name... is there a way to do this better?
 define([
     'backbone',
     'bootstrap',
@@ -97,9 +98,14 @@ define([
     'lodash',
     'text',
     'zopim'
-], function (Backbone, Bootstrap, jQueryFnModal, jQueryFnModalManager, Coinbase, GoogleAnalyticsObject, jQueryBrowser, $, _, text, $zopim) {
+], function () {
     'use strict';
+    
+    //  Load all views once global plugins are ready.
+    if (isShareSubdomain) {
+        require(['view/shareBodyView']);
+    } else {
+        require(['view/bodyView']);
+    }
 
-    //  Load this once everything else is ready.
-    require(['view/bodyView']);
 });

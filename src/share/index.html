@@ -6,46 +6,48 @@
         <meta name="keywords" content="Streamus, music, online, YouTube, listen, streaming, play, digital, album, artist, playlist" />
         
         <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jbnkffmindojffecdhbbmekbmkkfpmjd" />
-        <link rel="shortcut icon" href="http://www.streamus.com/favicon.ico" />
+        <link rel="shortcut icon" href="//streamus.com/favicon.ico" />
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" />
 
-        <link href="http://www.streamus.com/css/website.min.css" rel="stylesheet" />
+        <link href="//streamus.com/css/website.min.css" rel="stylesheet" />
     </head>
     
-    <body>
-        <div class="container-narrow">
-            <div class="header row">
-                <div class="col-md-12 logoWrapper">
-                    <a class="logo">
-                        <img width="250" height="54" src="//streamus.com/img/logo.png" title="Streaming YouTube music made simple by Google Chrome - Streamus" alt="Streaming YouTube music made simple by Google Chrome - Streamus" class="img-responsive" />
+    <body class="loading">
+        <div class="page-container">
+
+            <div class="container-narrow">
+                <div class="header row">
+                    <div class="col-md-12 logoWrapper">
+                        <img width="250" height="54" src="//streamus.com/img/logo.png" class="clickable" title="Streaming YouTube music made simple by Google Chrome - Streamus" alt="Streaming YouTube music made simple by Google Chrome - Streamus" class="img-responsive" />
+                    </div>
+                </div>
+                <hr />
+                <div class="streamusNotInstalledWarning jumbotron">
+                    <h1>
+                        Looks like you're not experiencing Streamus yet.
+                        <br />
+                        Try it out?
+                    </h1>
+                    <a id="installButton" class="btn btn-lg btn-success">
+                        Install extension now
                     </a>
                 </div>
-            </div>
-            <hr />
-            <div class="streamusNotInstalledWarning jumbotron">
-                <h3>
-                    Looks like you're not experiencing Streamus yet.
-                    <br />
-                    Try it out?
-                </h3>
-                <a id="installButton" class="btn btn-lg btn-success">
-                    Install extension now
-                </a>
-            </div>
-            <hr />                        
-            <div class="footer row">
+
+                <hr /> 
+                                    
+                <div class="footer row">
                     
                     <div class="col-md-6 legalWrapper">
                         <p>
                             © 2013 Streamus™
-                            <a id="touButton" title="Terms of Use">
+                            <a id="touButton" class="clickable" title="Terms of Use">
                                 Terms of Use
                             </a>
-                            <a id="privacyButton" title="Privacy Policy">
+                            <a id="privacyButton" class="clickable" title="Privacy Policy">
                                 Privacy
                             </a>
-                            <a id="contactButton" title="Contacts">
+                            <a id="contactButton" class="clickable" title="Contacts">
                                 Contact
                             </a>
                         </p>
@@ -59,10 +61,11 @@
                     </div>
 
                 </div>
+            </div>
         </div>
 
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="http://www.streamus.com/js/website.min.js"></script>
+        <script data-main="//streamus.com/js/main" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.min.js"></script>
 
     </body>
 
