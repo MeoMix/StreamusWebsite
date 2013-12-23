@@ -16,15 +16,9 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         //  Tasks:
-
-        //  Clean the distribution folder of previous files before every release.
-        clean: ['dist'],
-
-        //  Prepare CSS and JavaScript for deployment by combining into larger files.
-        //  More options are applied by useminPrepare's evaluation of .html files
         concat: {
+            //  NOTE: Careful not to define separator as semi-colon here. It will error out on font-awesome CSS.
             options: {
-                separator: ';',
                 stripBanners: true
             }
         },
@@ -44,7 +38,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'dist',
                 dest: 'dist/',
-                src: ['**/*.html']
+                src: ['**/*.html', '!**/template/**']
             }
         },
 
@@ -127,7 +121,7 @@ module.exports = function (grunt) {
                     //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
                     //  Skip files which start with a . or end in vs-doc.js as well as our CSS because cssmin is handling it
-                    fileExclusionRegExp: /^\.|vsdoc.js$|.css$/
+                    fileExclusionRegExp: /^\.|vsdoc.js$|.css$|Web|Web.Debug|Web.Release/
                     
                 }
             }
@@ -148,8 +142,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    //  Bulky, install on-demand only.
-	//grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -159,6 +152,16 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['jshint']);
 	grunt.registerTask('lint', ['jshint']);
 
-	grunt.registerTask('production', ['lint', 'clean', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'replace']);
+	grunt.registerTask('production', ['lint', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin', 'cleanup-dist-folder', 'replace']);
 	
+    grunt.registerTask('cleanup-dist-folder', 'removes the template folder since it was inlined into javascript and deletes build.txt', function () {
+        if (grunt.file.exists('dist/template')) {
+            //	Can't delete a full directory -- clean it up.
+            grunt.config.set('clean', ['dist/template']);
+            grunt.task.run('clean');
+            grunt.file.delete('dist/template');
+        }
+
+        grunt.file.delete('dist/build.txt');
+    });
 };
