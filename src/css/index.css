@@ -116,12 +116,7 @@ ul.nav {
 }
 
 .featurette {
-    padding-top: 120px;
     overflow: hidden;
-}
-
-.featurette-image {
-    margin-top: -120px;
 }
 
 .featurette-image.pull-left {
