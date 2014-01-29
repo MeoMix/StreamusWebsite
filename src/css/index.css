@@ -2,6 +2,7 @@
     color: #1E1E1E !important;
     padding-bottom: 40px;
     padding-top: 20px;
+    text-rendering: optimizeLegibility;
 }
 
 body.loading {

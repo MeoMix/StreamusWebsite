@@ -8,8 +8,9 @@
     'view/socialView',
     'view/installButtonView',
     'view/footerView',
-    'view/logoView'
-], function (ContentRouter, NavigationView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView, SocialView, InstallButtonView, FooterView, LogoView) {
+    'view/logoView',
+    'enum/route'
+], function (ContentRouter, NavigationView, HomeContentView, GettingStartedContentView, AboutContentView, DonateContentView, SocialView, InstallButtonView, FooterView, LogoView, Route) {
     'use strict';
 
     var BodyView = Backbone.View.extend({
@@ -36,7 +37,11 @@
             this.contentRouter = new ContentRouter();
             
             this.$el.append(this.socialView.render().el);
-            this.$el.removeClass('loading');            
+            this.$el.removeClass('loading');
+
+            this.installButton.onInstalled(function () {
+                this.contentRouter.navigate(Route.GettingStarted, { trigger: true });
+            }.bind(this));
         },
 
         //  Enable keeping track of the current content shown without affecting history and without actually changing the page.
