@@ -318,7 +318,18 @@
                         <a class="coinbase-button" data-code="4fe7c0aa7fbe7bab258cfc07b50446df" data-button-style="custom_large" href="https://coinbase.com/checkouts/4fe7c0aa7fbe7bab258cxfc07b50446df">
                             Donate Bitcoins
                         </a>
+                        
+                        <div class='doge-widget-wrapper'>
+                            <form method='get' action='https://www.dogeapi.com/checkout'>
+                                <input type='hidden' name='widget_type' value='donate'>
+                                <input type='hidden' name='widget_key' value='1s07rksokwjss1dzufi2ncirg'>
+                                <input type='hidden' name='payment_address' value='DChmgf8WaMqat2GmwWUY7myn6zHY3ciaSw'>
+                                <input type='hidden' name='show_received' value='1'>
+                                <div class='doge-widget' style='display:none;'></div>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
                 
                 <hr />
