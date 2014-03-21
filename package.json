@@ -2,7 +2,7 @@
   "name": "Streamus_Website",
   "version": "0.0.1",
   "private": true,
-  "description": "A Description for Streamus Website Here",
+  "description": "The product website for Streamus, an open-source Google Chrome extension Web music player.",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.2",
