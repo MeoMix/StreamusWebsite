@@ -13,17 +13,12 @@
         initialize: function () {
 
             //  http://stackoverflow.com/questions/17129261/detect-mobile-browser-with-javascript-detectmobilebrowsers-returns-false-for-m
-            if (window.mobileCheck || screen.width < 768) {
-                this.$el.attr('disabled', true).text('Desktop computer required');
+            if (!chrome.webstore || screen.width < 768) {
+                this.$el.attr('disabled', true).text('Desktop computer and/or Google Chrome is required');
                 return;
             }
 
-            var browserIsNotChrome = navigator.userAgent.toLowerCase().indexOf('chrome') === -1;
-            if (browserIsNotChrome) {
-                this.$el.attr('disabled', true).text('Google Chrome required');
-                return;
-            }
-
+           
             //  Check version of Chrome. Streamus requires v29+ currently:
             var majorVersion = parseInt(window.navigator.appVersion.match(/Chrome\/(\d+)\./)[1], 10);
 
