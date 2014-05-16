@@ -239,3 +239,10 @@ img[data-src="img/streamusIntro5.png"] {
     display: inline-block;
     margin-top: 5px;
 }
+
+.vote-notification {
+    background-color: #dff0d8;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+}
