@@ -46,6 +46,7 @@
 
         //  Enable keeping track of the current content shown without affecting history and without actually changing the page.
         navigateToRoute: function (event) {
+            console.log("navigating to route");
             var route = $(event.currentTarget).data('route');
             this.contentRouter.navigate(route, { trigger: true });
         }

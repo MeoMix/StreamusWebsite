@@ -4,13 +4,14 @@
     'use strict';
 
     var LogoView = Backbone.View.extend({
+        el: $('#logo'),
 
         events: {
             'click': 'navigateHome'
         },
         
         initialize: function () {
-            this.$el.data('route', Route.Home);
+            this.$el.attr('data-route', Route.Home);
         },
         
         //  If the user has clicked the logo and is viewing the share.streamus sub-domain, go back to the root domain.
@@ -19,7 +20,7 @@
             
             if (window.location.host === 'share.streamus.com') {
                 document.location.href = 'http://streamus.com';
-            }
+            }       
 
         }
 
