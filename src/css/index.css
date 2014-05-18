@@ -180,7 +180,8 @@ img[data-src="img/streamusIntro5.png"] {
 }
 
 #donateContent iframe {
-    width: 193px !important;
+    width: 203 !important;
+    height: 51px !important;
 }
 
 #currencySelect,
