@@ -49,6 +49,7 @@
     <Content Include="src\font\fontawesome-webfont.svg" />
     <Content Include="src\font\helvetica neue\helveticaneue-webfont.svg" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.svg" />
+    <Content Include="src\github-btn.html" />
     <Content Include="src\googlee6d26778f04ae1ed.html" />
     <Content Include="src\img\beatport.png" />
     <Content Include="src\img\chromeWebStoreBadge.png" />
@@ -126,6 +127,13 @@
     <None Include="src\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
