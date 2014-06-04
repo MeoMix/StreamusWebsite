@@ -3,8 +3,8 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteRule playlist/* /
 
-RewriteCond %{HTTP_HOST} ^wwwstreamus\.com$
-RewriteRule ^(.*) http://streamus.com/$1 [R=301]
+RewriteCond %{HTTP_HOST} ^www\.(.*)
+RewriteRule ^.*$ https://%1/$1 [R=301,L]
 
 AddDefaultCharset utf-8
 AddCharset utf-8 .css .js
