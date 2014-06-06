@@ -3,8 +3,8 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteRule playlist/* /
 
-RewriteCond %{HTTP_HOST} ^www\.(.*)
-RewriteRule ^.*$ https://%1/$1 [R=301,L]
+RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
+RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
 
 AddDefaultCharset utf-8
 AddCharset utf-8 .css .js
