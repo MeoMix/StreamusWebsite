@@ -74,7 +74,6 @@
     <Content Include="src\js\thirdParty\bootstrap-modal.js" />
     <Content Include="src\js\thirdParty\bootstrap.js" />
     <Content Include="src\js\thirdParty\bootstrap-modalmanager.js" />
-    <Content Include="src\js\thirdParty\dogeapi.js" />
     <Content Include="src\js\thirdParty\jquery.js" />
     <Content Include="src\js\thirdParty\jquery.unveil.js" />
     <Content Include="src\js\thirdParty\lodash.js" />
