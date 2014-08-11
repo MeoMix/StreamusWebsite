@@ -190,6 +190,11 @@ img[data-src="img/streamusIntro5.png"] {
     display: inline-block;
 }
 
+#donationAmount {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 @media (max-width: 1220px) {
     .social { display: none !important; }
     .zopim { display: none !important; }
