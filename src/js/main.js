@@ -33,11 +33,6 @@ require.config({
             //  TODO: Coinbase doesn't actually export anything...
             exports: 'window.Coinbase'
         },
-        dogeapi: {
-            deps: ['jquery'],
-            //  TODO: Coinbase doesn't actually export anything...
-            exports: 'window.Dogeapi'
-        },
         'jquery.browser': {
             deps: ['jquery'],
             exports: '$.browser'
@@ -68,7 +63,6 @@ require.config({
         'bootstrap-modal': 'thirdParty/bootstrap-modal',
         'bootstrap-modalmanager': 'thirdParty/bootstrap-modalmanager',
         coinbase: 'thirdParty/coinbase',
-        dogeapi: 'thirdParty/dogeapi',
         googleAnalyticsScript: 'thirdParty/googleAnalyticsScript',
         'jquery.browser': 'thirdParty/jquery.browser',
         jquery: [
@@ -97,7 +91,6 @@ define([
     'bootstrap-modal',
     'bootstrap-modalmanager',
     'coinbase',
-    'dogeapi',
     'googleAnalyticsScript',
     'jquery.browser',
     'jquery',
