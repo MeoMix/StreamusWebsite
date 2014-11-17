@@ -97,7 +97,7 @@
     <Content Include="src\js\view\termsOfUseView.js" />
     <Content Include="src\js\thirdParty\coinbase.js" />
     <Content Include="src\js\thirdParty\jquery.browser.js" />
-    <Content Include="src\js\thirdParty\googleAnalyticsScript.js" />
+    <Content Include="src\js\thirdParty\googleAnalytics.js" />
     <Content Include="src\js\thirdParty\text.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
     <Content Include="src\share\index.html" />
