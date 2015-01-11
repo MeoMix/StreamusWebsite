@@ -45,6 +45,7 @@
     <Content Include="src\css\bootstrap-modal.css" />
     <Content Include="src\css\bootstrap-modal-bs3patch.css" />
     <Content Include="src\css\index.css" />
+    <Content Include="src\demo.html" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\font\fontawesome-webfont.svg" />
     <Content Include="src\font\helvetica neue\helveticaneue-webfont.svg" />
@@ -114,6 +115,7 @@
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.eot" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.ttf" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.woff" />
+    <Content Include="src\Streamus.mp4" />
     <Content Include="src\template\contact.html" />
     <Content Include="src\template\privacy.html" />
     <Content Include="src\template\social.html" />

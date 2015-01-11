@@ -3,8 +3,7 @@
 //  Type grunt to run the default method, or "grunt paramater" to run a specific method.
 //
 //  Options:
-//      *   grunt: lint the website's non-third party code.
-//      *   grunt production: copy and transform website files into a dist folder, ready to be deployed after.
+//      *   grunt deploy: copy and transform website files into a dist folder, ready to be deployed after.
 //
 //  See here for more information: http://gruntjs.com/sample-gruntfile
 'use strict';
@@ -149,10 +148,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-usemin');
 
-	grunt.registerTask('default', ['jshint']);
-	grunt.registerTask('lint', ['jshint']);
-
-	grunt.registerTask('production', ['lint', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin', 'cleanup-dist-folder', 'replace']);
+	grunt.registerTask('deploy', ['jshint', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin', 'cleanup-dist-folder', 'replace']);
 	
     grunt.registerTask('cleanup-dist-folder', 'removes the template folder since it was inlined into javascript and deletes build.txt', function () {
         if (grunt.file.exists('dist/template')) {
