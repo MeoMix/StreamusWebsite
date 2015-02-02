@@ -13,7 +13,7 @@ Deployment
 ========
 
 Once you have NPM and Grunt installed you'll need to run "npm install" from the StreamusWebsite directory. This will cause all the necessary packages to install.
-Then, call "grunt production" to spitout a dist folder with all the files needed to run a deploy version of the website. You shouldn't have to do anything special
+Then, call "grunt deploy" to spitout a dist folder with all the files needed to run a deploy version of the website. You shouldn't have to do anything special
 to run a development version of the website -- simply open index.html in your favorite browser.
 
 If you've touched any images -- you'll probably want to re-install grunt-contrib-imagemin and compress the images before uploading. This module isn't included by default because it is pretty bulky.
