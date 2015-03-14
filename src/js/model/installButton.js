@@ -1,4 +1,4 @@
-﻿define(function () {
+﻿define(function() {
     'use strict';
 
     var InstallButton = Backbone.Model.extend({
@@ -6,23 +6,23 @@
             enabled: true,
             text: 'Install extension now'
         },
-        
-        initialize: function () {
+
+        initialize: function() {
             this._ensureValidBrowser();
         },
-        
-        reset: function () {
+
+        reset: function() {
             this.set(this.defaults);
         },
-        
+
         isBrowserOpera: function() {
             return $.browser.opr;
         },
-        
-        isBrowserChrome: function () {
+
+        isBrowserChrome: function() {
             return $.browser.chrome;
         },
-        
+
         _ensureValidBrowser: function() {
             if ($.browser.mobile) {
                 this.set({

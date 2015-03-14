@@ -3,7 +3,7 @@
 require.config({
     baseUrl: 'js/',
     enforceDefine: true,
-    
+
     shim: {
         bootstrap: {
             deps: ['jquery'],
@@ -70,7 +70,7 @@ require.config({
 
 //  I'm using define over require here intentionally. The data-main attribute in index.html counts as the require 
 //  statement and define is needed here for the enforceDefine: true option to be fulfilled.
-define(function (require) {
+define(function(require) {
     'use strict';
 
     require('backbone.marionette');
@@ -81,7 +81,7 @@ define(function (require) {
     require('jquery.unveil');
     require('text');
     require('zopim');
-    
+
     //  TODO: This can't be right...
     //  Load all views once global plugins are ready.
     if (isShareSubdomain) {
