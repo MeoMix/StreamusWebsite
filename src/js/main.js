@@ -1,48 +1,26 @@
 ﻿var isShareSubdomain = window.location.host === 'share.streamus.com';
 
 require.config({
-    
     baseUrl: 'js/',
-    
-    //  Force a define/shim exports check in order to receive timely, correct error triggers in IE. 
     enforceDefine: true,
     
     shim: {
-        backbone: {
-            //  These script dependencies should be loaded before loading backbone.js
-            deps: ['lodash', 'jquery'],
-            //  Once loaded, use the global 'Backbone' as the module value.
-            exports: 'Backbone'
-        },
         bootstrap: {
             deps: ['jquery'],
             //  Bootstrap extends jQuery so it seems fitting to define it as the exports value.
             //  Discussion here: http://stackoverflow.com/questions/13377373/shim-twitter-bootstrap-for-requirejs
             exports: '$'
         },
-        'bootstrap-modal': {
-            deps: ['jquery', 'bootstrap'],
-            exports: '$.fn.modal'
-        },
-        'bootstrap-modalmanager': {
-            deps: ['jquery', 'bootstrap'],
-            exports: '$.fn.modalmanager'
-        },
         coinbase: {
             deps: ['jquery'],
-            //  TODO: Coinbase doesn't actually export anything...
-            exports: 'window.Coinbase'
-        },
-        'jquery.browser': {
-            deps: ['jquery'],
-            exports: '$.browser'
+            exports: 'window.coinbase'
         },
         'jquery.unveil': {
             deps: ['jquery'],
             exports: '$.fn.unveil'
         },
         googleAnalytics: {
-            exports: 'window.GoogleAnalyticsObject'
+            exports: 'window.ga'
         },
         zopim: {
             exports: 'window.$zopim'
@@ -51,61 +29,66 @@ require.config({
 
     paths: {
         backbone: [
-            '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min',
-            //  If the CDN location fails, load from this location
+            '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min',
             'thirdParty/backbone'
         ],
+        'backbone.marionette': [
+            '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/2.4.1/backbone.marionette.min',
+            'thirdParty/backbone.marionette'
+        ],
         bootstrap: [
-            '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min',
-            //  If the CDN location fails, load from this location
+            '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min',
             'thirdParty/bootstrap'
         ],
-        'bootstrap-modal': 'thirdParty/bootstrap-modal',
-        'bootstrap-modalmanager': 'thirdParty/bootstrap-modalmanager',
         coinbase: 'thirdParty/coinbase',
         googleAnalytics: 'thirdParty/googleAnalytics',
-        'jquery.browser': 'thirdParty/jquery.browser',
+        'jquery.browser': [
+            '//cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.0.7/jquery.browser.min',
+            'thirdParty/jquery.browser'
+        ],
         jquery: [
-            '//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min',
-            //  If the CDN location fails, load from this location
+            '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min',
             'thirdParty/jquery'
         ],
-        'jquery.unveil': 'thirdParty/jquery.unveil',
-        lodash: [
-            '//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.0/lodash.min',
-            //  If the CDN location fails, load from this location
+        'jquery.unveil': [
+            '//cdnjs.cloudflare.com/ajax/libs/unveil/1.3.0/jquery.unveil.min',
+            'thirdParty/jquery.unveil'
+        ],
+        //  Rename lodash to underscore since functionally equivilant but underscore is expected by other third party libraries.
+        underscore: [
+            '//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.4.0/lodash.min',
             'thirdParty/lodash'
         ],
         template: '../template',
-        text: 'thirdParty/text',
+        text: [
+            '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.12/text.min',
+            'thirdParty/text'
+        ],
         zopim: 'thirdParty/zopim'
     }
-
 });
 
 //  I'm using define over require here intentionally. The data-main attribute in index.html counts as the require 
 //  statement and define is needed here for the enforceDefine: true option to be fulfilled.
-define([
-    'backbone',
-    'bootstrap',
-    'bootstrap-modal',
-    'bootstrap-modalmanager',
-    'coinbase',
-    'googleAnalytics',
-    'jquery.browser',
-    'jquery',
-    'jquery.unveil',
-    'lodash',
-    'text',
-    'zopim'
-], function () {
+define(function (require) {
     'use strict';
+
+    require('backbone.marionette');
+    require('bootstrap');
+    require('coinbase');
+    require('googleAnalytics');
+    require('jquery.browser');
+    require('jquery.unveil');
+    require('text');
+    require('zopim');
     
+    //  TODO: This can't be right...
     //  Load all views once global plugins are ready.
     if (isShareSubdomain) {
-        require(['view/shareBodyView']);
+        require(['view/shareBodyView'], function(ShareBodyView) {
+            var shareBodyView = new ShareBodyView();
+        });
     } else {
-        require(['view/bodyView']);
+        require(['application']);
     }
-
 });

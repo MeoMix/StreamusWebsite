@@ -1,0 +1,38 @@
+﻿.social {
+    transition: opacity 3s ease-in-out;
+    opacity: 0;
+    max-width: 250px;
+    overflow: hidden;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+.social.is-loaded {
+    opacity: 1;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+
+.social-widget {
+    height: 25px;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8;
+    transition: opacity .14s ease-in-out;
+}
+
+.social-widget:hover {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+}
+
+//  Prevent incredibly annoying pop-ups from appearing when hovering Google+ social button.
+.gc-reset,
+.pls-dropBottom{
+    display: none !important;
+}
+
+@media (max-width: 1220px) {
+    .social {
+        display: none !important; 
+    }
+}

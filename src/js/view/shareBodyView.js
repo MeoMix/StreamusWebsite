@@ -1,25 +1,34 @@
-﻿define([
-    'view/socialView',
-    'view/installButtonView',
-    'view/footerView',
-    'view/logoView'
-], function (SocialView, InstallButtonView, FooterView, LogoView) {
+﻿define(function (require) {
     'use strict';
 
-    var ShareBodyView = Backbone.View.extend({
-        el: $('body'),
+    var SocialView = require('view/socialView');
+    var InstallButtonView = require('view/installButtonView');
+    var FooterView = require('view/footerView');
+    var LogoView = require('view/logoView');
 
-        installButton: new InstallButtonView(),
-        socialView: new SocialView(),
-        footerView: new FooterView(),
-        logoView: new LogoView(),
-
+    var ShareBodyView = Marionette.ItemView.extend({
+        el: 'body',
+        
+        regions: {
+            socialRegion: '#socialRegion'
+        },
+        
         initialize: function () {
-            this.$el.append(this.socialView.render().el);
-            this.$el.removeClass('loading');            
-        }
+            var installButtonView = new InstallButtonView();
+            installButtonView.render();
 
+            var footerView = new FooterView();
+            footerView.render();
+
+            var logoView = new LogoView();
+            logoView.render();
+            
+            var socialView = new SocialView();
+            this.socialRegion.show(socialView);
+
+            this.$el.removeClass('is-loading');            
+        }
     });
 
-    return new ShareBodyView();
+    return ShareBodyView;
 });

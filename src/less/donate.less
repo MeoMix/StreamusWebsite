@@ -1,0 +1,64 @@
+﻿@import "color";
+
+#page-donate .fa-usd {
+    color: @green;
+}
+
+#page-donate .fa-long-arrow-right {
+    color: @yellow;
+}
+
+#page-donate #beerMug {
+    margin-bottom: -10px;
+}
+
+#page-donate .icon-beer {
+    color: @brown;
+}
+
+#page-donate .equals {
+    color: @blue;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 13px;
+}
+
+#page-donate .fa-heart {
+    color: @red;
+}
+
+#page-donate > div {
+    text-align: center;
+}
+
+#page-donate iframe {
+    height: 51px !important;
+}
+
+#payPal-currencyCode,
+#payPal-amount {
+    width: 200px;
+    display: inline-block;
+}
+
+#payPal-amount {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+@media (max-width: 767px) {
+    #page-donate #beerMug {
+        zoom: .6;
+    }
+
+    #page-donate .equals {
+        margin-top: 11px;
+    }
+}
+
+@media (max-width: 520px) {
+    #page-donate button[form="payPal-form"] {
+        margin-top: 15px;
+    }
+}

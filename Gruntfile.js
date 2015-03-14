@@ -3,14 +3,15 @@
 //  Type grunt to run the default method, or "grunt paramater" to run a specific method.
 //
 //  Options:
-//      *   grunt deploy: copy and transform website files into a dist folder, ready to be deployed after.
+//      *   grunt build: copy and transform website files into a dist folder, ready to be deployed after.
 //
 //  See here for more information: http://gruntjs.com/sample-gruntfile
 'use strict';
 module.exports = function (grunt) {
 
-    grunt.initConfig({
+    require('load-grunt-tasks')(grunt);
 
+    grunt.initConfig({
         //	Read project settings from package.json in order to be able to reference the properties with grunt.
         pkg: grunt.file.readJSON('package.json'),
 
@@ -110,18 +111,22 @@ module.exports = function (grunt) {
                     //  Skip CSS optimizations in RequireJS step -- handle with cssmin because it supports multiple CSS files.
                     optimizeCss: 'none',
                     paths: {
+                        //  TODO: I /am/ loading from CDN when deployed, right?
                         //  Paths fallbacks not supported in r.js so stub them with their fallbacks.
                         backbone: 'thirdParty/backbone',
+                        'backbone.marionette': 'thirdParty/backbone.marionette',
                         bootstrap: 'thirdParty/bootstrap',
                         jquery: 'thirdParty/jquery',
-                        lodash: 'thirdParty/lodash'
+                        'jquery.browser': 'thirdParty/jquery.browser',
+                        'jquery.unveil': 'thirdParty/jquery.unveil',
+                        underscore: 'thirdParty/lodash',
+                        text: 'thirdParty/text'
                     },
                     preserveLicenseComments: false,
                     //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
                     //  Skip files which start with a . or end in vs-doc.js as well as our CSS because cssmin is handling it
                     fileExclusionRegExp: /^\.|vsdoc.js$|.css$|Web|Web.Debug|Web.Release/
-                    
                 }
             }
         },
@@ -133,22 +138,39 @@ module.exports = function (grunt) {
 
         usemin: {
             html: 'dist/index.html'
-        }
+        },
         
+        //  Compile LESS to CSS
+        less: {
+            options: {
+                compress: true,
+                strictImports: true,
+                strictMath: true,
+                strictUnits: true
+            },
+
+            files: {
+                expand: true,
+                cwd: 'src/less/',
+                src: 'index.less',
+                dest: 'src/css/',
+                ext: '.css'
+            }
+        },
+        watch: {
+            less: {
+                options: {
+                    nospawn: true
+                },
+                files: ['src/less/*'],
+                tasks: ['less']
+            }
+        }
     });
+    
+    grunt.registerTask('default', 'An alias task for running tests.', ['test']);
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-text-replace');
-	grunt.loadNpmTasks('grunt-usemin');
-
-	grunt.registerTask('deploy', ['jshint', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin', 'cleanup-dist-folder', 'replace']);
+	grunt.registerTask('build', ['jshint', 'requirejs', 'useminPrepare', 'usemin', 'concat', 'cssmin', 'htmlmin', 'imagemin', 'cleanup-dist-folder', 'replace']);
 	
     grunt.registerTask('cleanup-dist-folder', 'removes the template folder since it was inlined into javascript and deletes build.txt', function () {
         if (grunt.file.exists('dist/template')) {

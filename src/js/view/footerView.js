@@ -1,61 +1,49 @@
-﻿define([
-    'model/genericDialog',
-    'view/genericDialogView',
-    'view/termsOfUseView',
-    'view/privacyView',
-    'view/contactView'
-], function (GenericDialog, GenericDialogView, TermsOfUseView, PrivacyView, ContactView) {
+﻿define(function (require) {
     'use strict';
 
-    var FooterView = Backbone.View.extend({
+    var TermsOfUseDialogView = require('view/dialog/termsOfUseDialogView');
+    var PrivacyDialogView = require('view/dialog/privacyDialogView');
+    var ContactDialogView = require('view/dialog/contactDialogView');
 
-        el: $('div.footer'),
+    var FooterView = Marionette.ItemView.extend({
+        el: '.footer',
+        template: false,
+        
+        ui: {
+            termsOfUse: '.termsOfUse',
+            privacy: '.privacy',
+            contact: '.contact'
+        },
 
         events: {
-            'click #touButton': 'showTouDialog',
-            'click #privacyButton': 'showPrivacyDialog',
-            'click #contactButton': 'showContactDialog'
+            'click @ui.termsOfUse': '_onClickTermsOfUse',
+            'click @ui.privacy': '_onClickPrivacy',
+            'click @ui.contact': '_onClickContact'
+        },
+        
+        _onClickTermsOfUse: function() {
+            this._showTermsOfUseDialog();
+        },
+        
+        _onClickPrivacy: function() {
+            this._showPrivacyDialog();
+        },
+        
+        _onClickContact: function() {
+            this._showContactDialog();
         },
 
-        showTouDialog: function () {
-            var termsOfUseDialog = new GenericDialog({
-                title: 'Terms of Use',
-                body: new TermsOfUseView()
-            });
-
-            var termsOfUseDialogView = new GenericDialogView({
-                model: termsOfUseDialog
-            });
-
-            termsOfUseDialogView.show();
+        _showTermsOfUseDialog: function () {
+            Streamus.channels.dialog.commands.trigger('show:dialog', TermsOfUseDialogView);
         },
 
-        showPrivacyDialog: function () {
-            var privacyDialog = new GenericDialog({
-                title: 'Privacy',
-                body: new PrivacyView()
-            });
-
-            var privacyDialogView = new GenericDialogView({
-                model: privacyDialog
-            });
-
-            privacyDialogView.show();
+        _showPrivacyDialog: function () {
+            Streamus.channels.dialog.commands.trigger('show:dialog', PrivacyDialogView);
         },
 
-        showContactDialog: function () {
-            var contactDialog = new GenericDialog({
-                title: 'Contact',
-                body: new ContactView()
-            });
-
-            var contactDialogView = new GenericDialogView({
-                model: contactDialog
-            });
-
-            contactDialogView.show();
+        _showContactDialog: function () {
+            Streamus.channels.dialog.commands.trigger('show:dialog', ContactDialogView);
         }   
-
     });
 
     return FooterView;

@@ -3,7 +3,14 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine On
 RewriteRule playlist/* /
 
+# HTML5 pushstate support
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ / [L]
+
 RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
+RewriteCond %{HTTP_HOST} !=localhost
+RewriteCond %{HTTP_HOST} !=127.0.0.1
 RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
 
 AddDefaultCharset utf-8

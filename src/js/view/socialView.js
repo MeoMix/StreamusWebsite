@@ -1,62 +1,26 @@
-﻿define([
-    'text!template/social.html'
-], function (SocialTemplate) {
+﻿define(function (require) {
     'use strict';
 
-    var SocialView = Backbone.View.extend({
-        
+    var SocialTemplate = require('text!template/social.html');
+
+    var SocialView = Marionette.ItemView.extend({
         tagName: 'aside',
-        
-        className: 'social loading',
-        
-        scriptsLoaded: false,
-        
+        className: 'social',
         template: _.template(SocialTemplate),
-        
-        render: function () {
-            this.$el.html(this.template());
-            this.appendScripts();
-            return this;
-        },
-        
-        appendScripts: function () {
-            //  TODO: How can I detect these scripts loading so I know when to actually fade it in?
-            var facebookButtonScript = $('<script>', {
-                async: true,
-                defer: true,
-                id: 'facebook-jssdk',
-                src: '//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252'
-            });
-            this.$el.append(facebookButtonScript);
 
-            var twitterButtonScript = $('<script>', {
-                async: true,
-                defer: true,
-                id: 'twitter-wjs',
-                src: '//platform.twitter.com/widgets.js'
-            });
-            this.$el.append(twitterButtonScript);
-
-            var googlePlusButtonScript = $('<script>', {
-                async: true,
-                defer: true,
-                id: 'google-jspo',
-                src: 'https://apis.google.com/js/plusone.js'
-            });
-            this.$el.append(googlePlusButtonScript);
-
-            //  TODO: Is there a better way to detect these scripts having loaded?
+        onAttach: function () {
+            //  TODO: Why doesn't this work with just a _.defer?
+            //  I don't think there's a great way to detect the above scripts having all loaded successfully.
+            //  Fade in after a second so that it doesn't detract from the rest of the page.
             setTimeout(function () {
-                this.$el.removeClass('loading');
-
-                //  Wrap in a set timeout to let the css3 transition start before removing it's effect.
-                setTimeout(function () {
-                    //  Change the transition to 0 so on-hover can fade-in to 1.0 instantly and back.
-                    this.$el.css('transition', 'opacity 0s');
-                }.bind(this));
-            }.bind(this), 3000);
+                this.$el.addClass('is-loaded');
+            }.bind(this), 1000);
+            
+            //  Scripts can't be added through a template because Marionette will not run their logic.
+            this.$el.append('<script src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252"></script>');
+            this.$el.append('<script src="//platform.twitter.com/widgets.js"></script>');
+            this.$el.append('<script src="//apis.google.com/js/plusone.js"></script>');
         }
-
     });
 
     return SocialView;
