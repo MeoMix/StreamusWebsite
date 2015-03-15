@@ -107,6 +107,9 @@
     <Content Include="LICENSE" />
     <Content Include="README.md" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
+    <Content Include="src\js\view\playlistItemsView.js" />
+    <Content Include="src\js\view\playlistItemView.js" />
+    <Content Include="src\js\view\playlistView.js" />
     <Content Include="src\js\view\socialView.js" />
     <Content Include="src\js\view\dialog\termsOfUseView.js" />
     <Content Include="src\js\thirdParty\coinbase.js" />
@@ -128,21 +131,16 @@
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.ttf" />
     <Content Include="src\font\helvetica neue\helveticaneuebold-webfont.woff" />
     <Content Include="src\template\contact.html" />
+    <Content Include="src\template\playlist.html" />
+    <Content Include="src\template\playlistItem.html" />
     <Content Include="src\template\privacy.html" />
     <Content Include="src\template\social.html" />
     <Content Include="src\template\termsOfUse.html" />
     <Content Include="src\template\dialog.html" />
-    <Content Include="src\Web.config" />
     <Content Include="src\less\index.less" />
     <Content Include="src\less\social.less" />
     <Content Include="src\less\color.less" />
     <Content Include="src\less\donate.less" />
-    <None Include="src\Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="src\Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

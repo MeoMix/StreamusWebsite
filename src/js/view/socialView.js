@@ -26,9 +26,11 @@
         },
 
         _onGitHubApiResponse: function(response) {
+            /*jshint camelcase: false */
             var stargazerCount = response.data.stargazers_count;
+            /*jshint camelcase: true */
             //  Add commas to the returned value. For example, 6237 ==> 6,237
-            var formattedCount = String(stargazerCount).replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+            var formattedCount = String(stargazerCount).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
             this.ui.githubStargazerCount.html(formattedCount);
         },
 
