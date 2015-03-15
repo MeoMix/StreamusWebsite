@@ -1,7 +1,7 @@
 ﻿define(function () {
     'use strict';
 
-    var Hidable = Marionette.Behavior.extend({
+    var Routable = Marionette.Behavior.extend({
         modelEvents: {
             'change:hidden': '_onChangeHidden'
         },
@@ -11,10 +11,18 @@
             Streamus.pages.add(this.view.options.model);
         },
         
+        onRender: function() {
+            this._setVisibility(this.view.model.get('hidden'));
+        },
+        
         _onChangeHidden: function (model, hidden) {
+            this._setVisibility(hidden);
+        },
+       
+        _setVisibility: function (hidden) {
             this.$el.toggle(!hidden);
         }
     });
 
-    return Hidable;
+    return Routable;
 });

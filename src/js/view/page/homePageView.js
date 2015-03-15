@@ -1,15 +1,15 @@
 ﻿define(function (require) {
     'use strict';
 
-    var Hidable = require('view/behavior/hidable');
+    var Routable = require('view/behavior/routable');
     
     var HomePageView = Marionette.ItemView.extend({
         el: '#page-home',
         template: false,
         
         behaviors: {
-            Hidable: {
-                behaviorClass: Hidable
+            Routable: {
+                behaviorClass: Routable
             }
         }
     });

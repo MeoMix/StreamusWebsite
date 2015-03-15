@@ -9,6 +9,7 @@
     var GettingStartedPageView = require('view/page/gettingStartedPageView');
     var AboutPageView = require('view/page/aboutPageView');
     var DonatePageView = require('view/page/donatePageView');
+    var SharePageView = require('view/page/sharePageView');
     var SocialView = require('view/socialView');
     var InstallButtonView = require('view/installButtonView');
     var FooterView = require('view/footerView');
@@ -54,7 +55,7 @@
                 })
             });
             homePageView.render();
-            
+
             var gettingStartedPageView = new GettingStartedPageView({
                 model: new Page({
                     route: Route.GettingStarted
@@ -75,6 +76,13 @@
                 })
             });
             aboutPageView.render();
+
+            var sharePageView = new SharePageView({
+                model: new Page({
+                    route: Route.Share
+                })
+            });
+            sharePageView.render();
 
             this.$el.removeClass('is-loading');
         },

@@ -6,10 +6,18 @@
     var Pages = Backbone.Collection.extend({
         model: Page,
 
-        initialize: function() {
+        initialize: function () {
             this.on('change:hidden', this._onChangeHidden);
         },
+        
+        showByRoute: function(route) {
+            var page = this.findWhere({
+                route: route
+            });
 
+            page.set('hidden', false);
+        },
+        
         _onChangeHidden: function(model, hidden) {
             if (!hidden) {
                 this._hideAllExcept(model);

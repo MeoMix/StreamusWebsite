@@ -1,6 +1,4 @@
-﻿var isShareSubdomain = window.location.host === 'share.streamus.com';
-
-require.config({
+﻿require.config({
     baseUrl: 'js/',
     enforceDefine: true,
 
@@ -82,13 +80,5 @@ define(function(require) {
     require('text');
     require('zopim');
 
-    //  TODO: This can't be right...
-    //  Load all views once global plugins are ready.
-    if (isShareSubdomain) {
-        require(['view/shareBodyView'], function(ShareBodyView) {
-            var shareBodyView = new ShareBodyView();
-        });
-    } else {
-        require(['application']);
-    }
+    require(['application']);
 });

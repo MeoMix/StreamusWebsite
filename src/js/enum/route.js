@@ -4,5 +4,6 @@ define({
     Home: 'home',
     GettingStarted: 'getting-started',
     About: 'about',
-    Donate: 'donate'
+    Donate: 'donate',
+    Share: 'share'
 });

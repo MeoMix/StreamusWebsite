@@ -41,6 +41,7 @@
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include=".htaccess" />
     <Content Include="Gruntfile.js" />
     <Content Include="src\favicon.ico" />
@@ -64,9 +65,14 @@
     <Content Include="src\index.html" />
     <Content Include="src\js\application.js" />
     <Content Include="src\js\collection\pages.js" />
+    <Content Include="src\js\collection\playlistItems.js" />
     <Content Include="src\js\enum\route.js" />
     <Content Include="src\js\model\page.js" />
     <Content Include="src\js\model\dialog.js" />
+    <Content Include="src\js\model\playlist.js" />
+    <Content Include="src\js\model\playlistItem.js" />
+    <Content Include="src\js\model\shareCode.js" />
+    <Content Include="src\js\model\song.js" />
     <Content Include="src\js\router.js" />
     <Content Include="src\js\model\installButton.js" />
     <Content Include="src\js\thirdParty\backbone.js" />
@@ -75,8 +81,9 @@
     <Content Include="src\js\thirdParty\jquery.js" />
     <Content Include="src\js\thirdParty\jquery.unveil.js" />
     <Content Include="src\js\thirdParty\lodash.js" />
+    <Content Include="src\js\utility.js" />
     <Content Include="src\js\view\page\aboutPageView.js" />
-    <Content Include="src\js\view\behavior\hidable.js" />
+    <Content Include="src\js\view\behavior\routable.js" />
     <Content Include="src\js\view\behavior\lazyImages.js" />
     <Content Include="src\js\view\bodyView.js" />
     <Content Include="src\js\view\dialog\contactView.js" />
@@ -85,7 +92,7 @@
     <Content Include="src\js\view\dialog\privacyDialogView.js" />
     <Content Include="src\js\view\dialog\termsOfUseDialogView.js" />
     <Content Include="src\js\view\navigation\navigationItemView.js" />
-    <Content Include="src\js\view\shareBodyView.js" />
+    <Content Include="src\js\view\page\sharePageView.js" />
     <Content Include="src\js\view\navigation\navigationView.js" />
     <Content Include="src\js\view\page\donatePageView.js" />
     <Content Include="src\js\view\footerView.js" />
@@ -98,6 +105,7 @@
     <Content Include="src\js\view\installButtonView.js" />
     <Content Include="package.json" />
     <Content Include="LICENSE" />
+    <Content Include="README.md" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
     <Content Include="src\js\view\socialView.js" />
     <Content Include="src\js\view\dialog\termsOfUseView.js" />
@@ -106,7 +114,6 @@
     <Content Include="src\js\thirdParty\googleAnalytics.js" />
     <Content Include="src\js\thirdParty\text.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
-    <Content Include="src\share\index.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />

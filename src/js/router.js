@@ -1,39 +1,45 @@
 ﻿define(function(require) {
     'use strict';
 
+    //  TODO: 404 page
     var Route = require('enum/route');
 
     var Router = Marionette.AppRouter.extend({
-        appRoutes: {
-            //  TODO: I don't feel like this is right... what's a better approach?
-            '*allRoutes': 'showPage'
+        routes: {
+            '': '_showHomePage',
+            'share/:entityType/:shortId/:urlFriendlyEntityTitle': '_showSharePage',
+            //  TODO: Is this an OK approach?
+            '*allPages': '_showPage',
         },
 
-        controller: {
-            showPage: function(route) {
-                var page = Streamus.pages.findWhere({
-                    route: route
-                });
-
-                page.set('hidden', false);
-            }
-        },
-
-        initialize: function() {
+        initialize: function () {
             //  Starting Backbone's history is a necessary first step for using the router.
             //  http://backbonejs.org/#Router
             Backbone.history.start({
                 pushState: true
             });
+        },
+        
+        onRoute: function(a, b, c) {
+            console.log('onRoute:', a, b, c);
+        },
+        
+        _showHomePage: function () {
+            Streamus.pages.showByRoute(Route.Home);
+        },
+        
+        _showPage: function (route) {
+            Streamus.pages.showByRoute(route);
+        },
 
-            //  TODO: Is this the appropriate way to route to the initial route?
-            var route = Backbone.history.fragment;
-
-            if (route.trim() === '') {
-                route = Route.Home;
-            }
-
-            this.controller.showPage(route);
+        //  TODO: This is ass backwards. How can I have the ShareView give this to the router without causing a circular-reference
+        _showSharePage: function (entityType, shortId, urlFriendlyEntityTitle) {
+            Streamus.pages.showByRoute(Route.Share);
+            Streamus.channels.share.commands.trigger('load:entity', {
+                entityType: entityType,
+                shortId: shortId,
+                urlFriendlyEntityTitle: urlFriendlyEntityTitle
+            });
         }
     });
 

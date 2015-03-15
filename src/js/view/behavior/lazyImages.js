@@ -6,8 +6,8 @@
             lazyImages: 'img[data-src]'
         },
 
-        onRender: function () {
-            //  TODO: Why does setting the value to 200px cause them all to load on gettingStarted?
+        onRender: function() {
+            //  Set image src 200px before they scroll into the viewport to give a chance to load.
             this.ui.lazyImages.unveil(200);
         }
     });

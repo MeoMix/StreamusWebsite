@@ -1,7 +1,7 @@
 ﻿define(function (require) {
     'use strict';
 
-    var Hidable = require('view/behavior/hidable');
+    var Routable = require('view/behavior/routable');
     
     var DonatePageView = Marionette.ItemView.extend({
         el: '#page-donate',
@@ -21,8 +21,8 @@
         },
         
         behaviors: {
-            Hidable: {
-                behaviorClass: Hidable
+            Routable: {
+                behaviorClass: Routable
             }
         },
         

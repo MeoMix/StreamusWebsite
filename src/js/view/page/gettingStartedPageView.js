@@ -2,7 +2,7 @@
     'use strict';
 
     var LazyImages = require('view/behavior/lazyImages');
-    var Hidable = require('view/behavior/hidable');
+    var Routable = require('view/behavior/routable');
 
     var GettingStartedPageView = Marionette.ItemView.extend({
         el: '#page-gettingStarted',
@@ -12,8 +12,8 @@
             LazyImages: {
                 behaviorClass: LazyImages
             },
-            Hidable: {
-                behaviorClass: Hidable
+            Routable: {
+                behaviorClass: Routable
             }
         }
     });

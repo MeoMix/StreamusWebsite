@@ -103,9 +103,6 @@ module.exports = function (grunt) {
                     }, {
                         name: 'view/bodyView',
                         exclude: ['main']
-                    }, {
-                        name: 'view/shareBodyView',
-                        exclude: ['main']
                     }],
                     optimize: 'uglify2',
                     //  Skip CSS optimizations in RequireJS step -- handle with cssmin because it supports multiple CSS files.
