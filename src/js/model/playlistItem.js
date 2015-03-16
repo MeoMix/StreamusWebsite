@@ -40,7 +40,9 @@
             //  Need to convert song object to Backbone.Model
             if (!(song instanceof Backbone.Model)) {
                 //  Silent because song is just being properly set.
-                this.set('song', new Song(song), { silent: true });
+                this.set('song', new Song(song), {
+                    silent: true
+                });
             }
         }
     });

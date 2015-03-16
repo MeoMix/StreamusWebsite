@@ -2,10 +2,6 @@
 dist
 release
 
-#TODO: REMOVE
-Deploy/
-Streamus *.zip
-
 # CSS is compiled with LESS. Commit the LESS file rather than the CSS
 src/css/*.css
 

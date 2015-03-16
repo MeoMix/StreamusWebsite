@@ -48,10 +48,10 @@
             if (!(items instanceof Backbone.Collection)) {
                 //  Silent because items is just being properly set.
                 this.set('items', new PlaylistItems(items, {
-                        playlistId: this.get('id')
-                    }), {
-                        silent: true
-                    });
+                    playlistId: this.get('id')
+                }), {
+                    silent: true
+                });
             }
         }
     });

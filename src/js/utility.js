@@ -34,19 +34,22 @@
         var prettyTime;
         var timeInMinutes = Math.floor(timeInSeconds / 60);
 
+        var minutesInDay = 1440;
+        var threeDaysInMinutes = 4320;
+        var minutesInHour = 60;
+        var threeHoursInMinutes = 180;
+
         //  Print the total duration of content in minutes unless there is 3+ hours, then just print hours.
         if (timeInMinutes === 1) {
-            prettyTime = timeInMinutes + ' ' + chrome.i18n.getMessage('minute');
+            prettyTime = timeInMinutes + ' ' + 'minute';
         }
-            //  3 days
-        else if (timeInMinutes > 4320) {
-            prettyTime = Math.floor(timeInMinutes / 1440) + ' ' + chrome.i18n.getMessage('days');
+        else if (timeInMinutes > threeDaysInMinutes) {
+            prettyTime = Math.floor(timeInMinutes / minutesInDay) + ' ' + 'days';
         }
-            //  3 hours
-        else if (timeInMinutes > 180) {
-            prettyTime = Math.floor(timeInMinutes / 60) + ' ' + chrome.i18n.getMessage('hours');
+        else if (timeInMinutes > threeHoursInMinutes) {
+            prettyTime = Math.floor(timeInMinutes / minutesInHour) + ' ' + 'hours';
         } else {
-            prettyTime = timeInMinutes + ' ' + chrome.i18n.getMessage('minutes');
+            prettyTime = timeInMinutes + ' ' + 'minutes';
         }
 
         return prettyTime;
