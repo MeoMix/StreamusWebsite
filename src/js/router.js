@@ -12,10 +12,6 @@
             '*allPages': '_showPage',
         },
 
-        initialize: function () {
-
-        },
-        
         _showHomePage: function() {
             Streamus.pages.showByRoute(Route.Home);
         },
