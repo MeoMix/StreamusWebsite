@@ -14,7 +14,8 @@
 
         channels: {
             dialog: Backbone.Wreqr.radio.channel('dialog'),
-            share: Backbone.Wreqr.radio.channel('share')
+            share: Backbone.Wreqr.radio.channel('share'),
+            body: Backbone.Wreqr.radio.channel('body')
         },
 
         initialize: function () {
@@ -34,6 +35,12 @@
             bodyView.render();
 
             this.router = new Router();
+            
+            //  Starting Backbone's history is a necessary first step for using the router.
+            //  http://backbonejs.org/#Router
+            Backbone.history.start({
+                pushState: true
+            });
         }
     });
 

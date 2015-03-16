@@ -44,7 +44,7 @@
     <Content Include=".gitignore" />
     <Content Include=".htaccess" />
     <Content Include="Gruntfile.js" />
-    <Content Include="src\css\index.css" />
+    <Content Include="src\css\index.min.css" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\font\fontawesome-webfont.svg" />
     <Content Include="src\font\helvetica neue\helveticaneue-webfont.svg" />
@@ -83,7 +83,11 @@
     <Content Include="src\js\thirdParty\jquery.unveil.js" />
     <Content Include="src\js\thirdParty\lodash.js" />
     <Content Include="src\js\utility.js" />
-    <Content Include="src\js\view\page\aboutPageView.js" />
+    <Content Include="src\js\view\footer\footerRegion.js" />
+    <Content Include="src\js\view\header\headerRegion.js" />
+    <Content Include="src\js\view\header\headerView.js" />
+    <Content Include="src\js\view\page\about\aboutPageRegion.js" />
+    <Content Include="src\js\view\page\about\aboutPageView.js" />
     <Content Include="src\js\view\behavior\routable.js" />
     <Content Include="src\js\view\behavior\lazyImages.js" />
     <Content Include="src\js\view\bodyView.js" />
@@ -92,26 +96,31 @@
     <Content Include="src\js\view\dialog\dialogRegion.js" />
     <Content Include="src\js\view\dialog\privacyDialogView.js" />
     <Content Include="src\js\view\dialog\termsOfUseDialogView.js" />
-    <Content Include="src\js\view\navigation\navigationItemView.js" />
-    <Content Include="src\js\view\page\sharePageView.js" />
-    <Content Include="src\js\view\navigation\navigationView.js" />
-    <Content Include="src\js\view\page\donatePageView.js" />
-    <Content Include="src\js\view\footerView.js" />
-    <Content Include="src\js\view\page\gettingStartedPageView.js" />
-    <Content Include="src\js\view\page\homePageView.js" />
-    <Content Include="src\js\view\logoView.js" />
+    <Content Include="src\js\view\header\navigationItemView.js" />
+    <Content Include="src\js\view\page\donate\donatePageRegion.js" />
+    <Content Include="src\js\view\page\gettingStarted\gettingStartedPageRegion.js" />
+    <Content Include="src\js\view\page\home\homePageRegion.js" />
+    <Content Include="src\js\view\page\share\sharePageRegion.js" />
+    <Content Include="src\js\view\page\share\sharePageView.js" />
+    <Content Include="src\js\view\header\navigationView.js" />
+    <Content Include="src\js\view\page\donate\donatePageView.js" />
+    <Content Include="src\js\view\footer\footerView.js" />
+    <Content Include="src\js\view\page\gettingStarted\gettingStartedPageView.js" />
+    <Content Include="src\js\view\page\home\homePageView.js" />
+    <Content Include="src\js\view\header\logoView.js" />
     <Content Include="src\js\view\dialog\privacyView.js" />
     <Content Include="src\js\view\dialog\dialogView.js" />
     <Content Include="src\js\main.js" />
-    <Content Include="src\js\view\installButtonView.js" />
+    <Content Include="src\js\view\page\home\installButtonView.js" />
     <Content Include="package.json" />
     <Content Include="LICENSE" />
     <Content Include="README.md" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
-    <Content Include="src\js\view\playlistItemsView.js" />
-    <Content Include="src\js\view\playlistItemView.js" />
-    <Content Include="src\js\view\playlistView.js" />
-    <Content Include="src\js\view\socialView.js" />
+    <Content Include="src\js\view\page\share\playlistItemsView.js" />
+    <Content Include="src\js\view\page\share\playlistItemView.js" />
+    <Content Include="src\js\view\page\share\playlistView.js" />
+    <Content Include="src\js\view\social\socialRegion.js" />
+    <Content Include="src\js\view\social\socialView.js" />
     <Content Include="src\js\view\dialog\termsOfUseView.js" />
     <Content Include="src\js\thirdParty\coinbase.js" />
     <Content Include="src\js\thirdParty\jquery.browser.js" />
@@ -120,6 +129,7 @@
     <Content Include="src\js\thirdParty\zopim.js" />
     <Content Include="src\less\reset.less" />
     <Content Include="src\less\utility.less" />
+    <Content Include="src\less\fontAwesome.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
@@ -152,7 +162,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\js\view\navigation\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

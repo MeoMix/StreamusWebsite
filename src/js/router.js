@@ -13,18 +13,10 @@
         },
 
         initialize: function () {
-            //  Starting Backbone's history is a necessary first step for using the router.
-            //  http://backbonejs.org/#Router
-            Backbone.history.start({
-                pushState: true
-            });
+
         },
         
-        onRoute: function(a, b, c) {
-            console.log('onRoute:', a, b, c);
-        },
-        
-        _showHomePage: function () {
+        _showHomePage: function() {
             Streamus.pages.showByRoute(Route.Home);
         },
         

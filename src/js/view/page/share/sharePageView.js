@@ -4,7 +4,7 @@
     var Routable = require('view/behavior/routable');
     var ShareCode = require('model/shareCode');
     var Playlist = require('model/playlist');
-    var PlaylistView = require('view/playlistView');
+    var PlaylistView = require('view/page/share/playlistView');
 
     var SharePageView = Marionette.LayoutView.extend({
         el: '.sharePage',

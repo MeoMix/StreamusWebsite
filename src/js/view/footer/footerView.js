@@ -5,7 +5,7 @@
     var PrivacyDialogView = require('view/dialog/privacyDialogView');
     var ContactDialogView = require('view/dialog/contactDialogView');
 
-    var FooterView = Marionette.ItemView.extend({
+    var FooterView = Marionette.LayoutView.extend({
         el: '.footer',
         template: false,
 

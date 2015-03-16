@@ -2,7 +2,7 @@
     'use strict';
 
     var PlaylistTemplate = require('text!template/playlist.html');
-    var PlaylistItemsView = require('view/playlistItemsView');
+    var PlaylistItemsView = require('view/page/share/playlistItemsView');
 
     var PlaylistView = Marionette.LayoutView.extend({
         template: _.template(PlaylistTemplate),

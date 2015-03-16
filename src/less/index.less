@@ -3,16 +3,15 @@
 @import "utility";
 @import "social";
 @import "donate";
+//  Don't load font-awesome from a CDN because it issues a second request to load the font
+//  which causes icons to flicker on first load because 2nd request is still processing.
+@import "fontAwesome";
 
 body {
     padding-top: 20px;
     padding-bottom: 40px;
     color: @dark--primary;
     text-rendering: optimizeLegibility;
-
-    &.is-loading {
-        opacity: 0;
-    }
 }
 
 .container-narrow {

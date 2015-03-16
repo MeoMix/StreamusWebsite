@@ -1,7 +1,7 @@
 ﻿define(function(require) {
     'use strict';
 
-    var PlaylistItemView = require('view/playlistItemView');
+    var PlaylistItemView = require('view/page/share/playlistItemView');
 
     var PlaylistItemsView = Marionette.CollectionView.extend({
         tagName: 'ul',

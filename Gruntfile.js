@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'dist/img',
                 src: ['**/*.{png,jpg,gif}'],
-                dest: 'dist/img/'
+                dest: 'dist/img'
             }
         },
         //  Improve code quality by applying a code-quality check with jshint
@@ -49,11 +49,10 @@ module.exports = function(grunt) {
                 quotmark: 'single',
                 jquery: true,
                 maxparams: 5,
-                //  TODO: Reduce these values.
                 maxdepth: 4,
-                maxstatements: 50,
-                maxcomplexity: 13,
-                maxlen: 90001,
+                maxstatements: 15,
+                maxcomplexity: 5,
+                maxlen: 150,
                 //	Don't validate third-party libraries
                 ignores: ['src/js/thirdParty/**/*.js']
             },
@@ -73,7 +72,6 @@ module.exports = function(grunt) {
                     appDir: 'src',
                     mainConfigFile: 'src/js/main.js',
                     paths: {
-                        //  TODO: I /am/ loading from CDN when deployed, right?
                         //  Paths fallbacks not supported in r.js so stub them with their fallbacks.
                         backbone: 'thirdParty/backbone',
                         'backbone.marionette': 'thirdParty/backbone.marionette',
@@ -84,7 +82,7 @@ module.exports = function(grunt) {
                         underscore: 'thirdParty/lodash',
                         text: 'thirdParty/text'
                     },
-                    dir: 'dist/',
+                    dir: 'dist',
                     optimize: 'uglify2',
                     //  Skip optimizing CSS here because it is handled when building LESS
                     optimizeCss: 'none',
@@ -101,19 +99,11 @@ module.exports = function(grunt) {
                     }],
                     //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
-                    fileExclusionRegExp: /^\.|vsdoc.js$|.less$|Web|Web.Debug|Web.Release/
+                    fileExclusionRegExp: /^\.|vsdoc.js$|.less$/
                 }
             }
         },
-        //  TODO: Review this
-        useminPrepare: {
-            //  Target src here so CSS can still be found.
-            html: 'src/index.html'
-        },
-        usemin: {
-            html: 'dist/index.html'
-        },
-        //  Compile LESS to CSS
+        //  Compile LESS to minified CSS
         less: {
             options: {
                 compress: true,
@@ -124,10 +114,10 @@ module.exports = function(grunt) {
 
             files: {
                 expand: true,
-                cwd: 'src/less/',
+                cwd: 'src/less',
                 src: 'index.less',
-                dest: 'src/css/',
-                ext: '.css'
+                dest: 'src/css',
+                ext: '.min.css'
             }
         },
         watch: {
@@ -144,7 +134,7 @@ module.exports = function(grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: 'dist/',
+                    cwd: 'dist',
                     src: ['template', 'build.txt']
                 }]
             }
@@ -155,5 +145,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', 'Run tests and code-quality analysis', ['jshint', 'recess']);
 
-    grunt.registerTask('build', ['jshint', 'requirejs', 'useminPrepare', 'usemin', 'less', 'htmlmin', 'imagemin', 'clean:dist']);
+    grunt.registerTask('build', ['test', 'requirejs', 'less', 'htmlmin', 'imagemin', 'clean:dist']);
 };

@@ -2,7 +2,7 @@
     'use strict';
 
     var Route = require('enum/route');
-    var NavigationItemView = require('view/navigation/navigationItemView');
+    var NavigationItemView = require('view/header/navigationItemView');
 
     var NavigationView = Marionette.ItemView.extend({
         el: '.navigation',

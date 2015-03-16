@@ -1,31 +1,53 @@
 ﻿define(function(require) {
     'use strict';
 
-    var Page = require('model/page');
-    var InstallButton = require('model/installButton');
-    var Route = require('enum/route');
-    var NavigationView = require('view/navigation/navigationView');
-    var HomePageView = require('view/page/homePageView');
-    var GettingStartedPageView = require('view/page/gettingStartedPageView');
-    var AboutPageView = require('view/page/aboutPageView');
-    var DonatePageView = require('view/page/donatePageView');
-    var SharePageView = require('view/page/sharePageView');
-    var SocialView = require('view/socialView');
-    var InstallButtonView = require('view/installButtonView');
-    var FooterView = require('view/footerView');
-    var LogoView = require('view/logoView');
+    var HeaderRegion = require('view/header/headerRegion');
+    var HomePageRegion = require('view/page/home/homePageRegion');
+    var GettingStartedPageRegion = require('view/page/gettingStarted/gettingStartedPageRegion');
+    var AboutPageRegion = require('view/page/about/aboutPageRegion');
+    var DonatePageRegion = require('view/page/donate/donatePageRegion');
+    var SharePageRegion = require('view/page/share/sharePageRegion');
+    var FooterRegion = require('view/footer/footerRegion');
+    var SocialRegion = require('view/social/socialRegion');
     var DialogRegion = require('view/dialog/dialogRegion');
 
     var BodyView = Marionette.LayoutView.extend({
         el: 'body',
         template: false,
 
-        events: {
-            'click *[data-route]': 'navigateToRoute'
-        },
-
         regions: {
-            socialRegion: '.socialRegion',
+            headerRegion: {
+                selector: '.headerRegion',
+                regionClass: HeaderRegion
+            },
+            homePageRegion: {
+                selector: '.homePageRegion',
+                regionClass: HomePageRegion
+            },
+            gettingStartedPageRegion: {
+                selector: '.gettingStartedPageRegion',
+                regionClass: GettingStartedPageRegion
+            },
+            aboutPageRegion: {
+                selector: '.aboutPageRegion',
+                regionClass: AboutPageRegion
+            },
+            donatePageRegion: {
+                selector: '.donatePageRegion',
+                regionClass: DonatePageRegion
+            },
+            sharePageRegion: {
+                selector: '.sharePageRegion',
+                regionClass: SharePageRegion
+            },
+            footerRegion: {
+                selector: '.footerRegion',
+                regionClass: FooterRegion
+            },
+            socialRegion: {
+                selector: '.socialRegion',
+                regionClass: SocialRegion
+            },
             dialogRegion: {
                 selector: '.dialogRegion',
                 regionClass: DialogRegion
@@ -33,64 +55,8 @@
         },
 
         onRender: function() {
-            var navigationView = new NavigationView();
-            navigationView.render();
-
-            var installButtonView = new InstallButtonView({
-                model: new InstallButton()
-            });
-            installButtonView.render();
-
-            var footerView = new FooterView();
-            footerView.render();
-
-            var logoView = new LogoView();
-            logoView.render();
-
-            this.socialRegion.show(new SocialView());
-
-            var homePageView = new HomePageView({
-                model: new Page({
-                    route: Route.Home
-                })
-            });
-            homePageView.render();
-
-            var gettingStartedPageView = new GettingStartedPageView({
-                model: new Page({
-                    route: Route.GettingStarted
-                })
-            });
-            gettingStartedPageView.render();
-
-            var donatePageView = new DonatePageView({
-                model: new Page({
-                    route: Route.Donate
-                })
-            });
-            donatePageView.render();
-
-            var aboutPageView = new AboutPageView({
-                model: new Page({
-                    route: Route.About
-                })
-            });
-            aboutPageView.render();
-
-            var sharePageView = new SharePageView({
-                model: new Page({
-                    route: Route.Share
-                })
-            });
-            sharePageView.render();
-
-            this.$el.removeClass('is-loading');
-        },
-
-        //  Enable keeping track of the current page shown without affecting history and without actually changing the page.
-        navigateToRoute: function(event) {
-            var route = $(event.currentTarget).data('route');
-            Streamus.router.navigate(route, { trigger: true });
+            Streamus.channels.body.vent.trigger('rendered');
+            this.$el.removeClass('is-hidden');
         }
     });
 
