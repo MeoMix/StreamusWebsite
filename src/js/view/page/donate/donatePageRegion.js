@@ -11,12 +11,11 @@
         },
 
         _onBodyRendered: function() {
-            var donatePageView = new DonatePageView({
+            this.show(new DonatePageView({
                 model: new Page({
                     route: Route.Donate
                 })
-            });
-            donatePageView.render();
+            }));
         }
     });
 

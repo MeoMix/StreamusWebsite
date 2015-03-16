@@ -7,8 +7,7 @@
         },
 
         _showDialog: function(DialogView, options) {
-            var dialogView = new DialogView(options);
-            this.show(dialogView);
+            this.show(new DialogView(options));
         }
     });
 

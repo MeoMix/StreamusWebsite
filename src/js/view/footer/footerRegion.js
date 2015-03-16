@@ -9,8 +9,7 @@
         },
 
         _onBodyRendered: function() {
-            var footerView = new FooterView();
-            footerView.render();
+            this.show(new FooterView());
         }
     });
 

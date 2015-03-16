@@ -9,8 +9,7 @@
         },
 
         _onBodyRendered: function() {
-            var headerView = new HeaderView();
-            headerView.render();
+            this.show(new HeaderView());
         }
     });
 

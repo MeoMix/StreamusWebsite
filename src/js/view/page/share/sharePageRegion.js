@@ -11,12 +11,11 @@
         },
 
         _onBodyRendered: function() {
-            var sharePageView = new SharePageView({
+            this.show(new SharePageView({
                 model: new Page({
                     route: Route.Share
                 })
-            });
-            sharePageView.render();
+            }));
         }
     });
 

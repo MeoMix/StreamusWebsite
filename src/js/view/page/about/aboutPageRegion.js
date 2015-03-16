@@ -11,12 +11,11 @@
         },
 
         _onBodyRendered: function() {
-            var aboutPageView = new AboutPageView({
+            this.show(new AboutPageView({
                 model: new Page({
                     route: Route.About
                 })
-            });
-            aboutPageView.render();
+            }));
         }
     });
 

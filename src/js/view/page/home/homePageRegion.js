@@ -11,12 +11,11 @@
         },
 
         _onBodyRendered: function() {
-            var homePageView = new HomePageView({
+            this.show(new HomePageView({
                 model: new Page({
                     route: Route.Home
                 })
-            });
-            homePageView.render();
+            }));
         }
     });
 

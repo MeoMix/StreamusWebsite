@@ -11,12 +11,11 @@
         },
 
         _onBodyRendered: function() {
-            var gettingStartedPageView = new GettingStartedPageView({
+            this.show(new GettingStartedPageView({
                 model: new Page({
                     route: Route.GettingStarted
                 })
-            });
-            gettingStartedPageView.render();
+            }));
         }
     });
 
