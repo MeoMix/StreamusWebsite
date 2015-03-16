@@ -2,7 +2,7 @@
 <p align="center">The website for Streamus - The most popular Chrome extension YouTube music player</p>
 <p align="center">
   <a title='Build Status' href="https://travis-ci.org/MeoMix/StreamusWebsite">
-    <img src='https://travis-ci.org/MeoMix/StreamusWebsite.svg?branch=Development' />
+    <img src='https://travis-ci.org/MeoMix/StreamusWebsite.svg' />
   </a>
 </p>
 
