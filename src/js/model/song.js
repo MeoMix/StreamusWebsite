@@ -1,4 +1,4 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
 
     var Utility = require('utility');
@@ -18,17 +18,17 @@
             url: ''
         },
 
-        initialize: function () {
+        initialize: function() {
             this._setPrettyDuration(this.get('duration'));
             this._setUrl(this.get('id'));
         },
 
         //  Calculate this value pre-emptively because when rendering I don't want to incur inefficiency
-        _setPrettyDuration: function (duration) {
+        _setPrettyDuration: function(duration) {
             this.set('prettyDuration', Utility.prettyPrintTime(duration));
         },
 
-        _setUrl: function (id) {
+        _setUrl: function(id) {
             this.set('url', 'https://youtu.be/' + id);
         }
     });

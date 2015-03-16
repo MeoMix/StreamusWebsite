@@ -4,7 +4,7 @@
     var Route = require('enum/route');
 
     var LogoView = Marionette.ItemView.extend({
-        el: '#logo',
+        el: '.logo',
         template: false,
 
         events: {

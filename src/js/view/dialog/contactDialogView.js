@@ -6,7 +6,7 @@
     var ContactView = require('view/dialog/contactView');
 
     var ContactDialogView = DialogView.extend({
-        initialize: function () {
+        initialize: function() {
             this.model = new Dialog({
                 title: 'Contact'
             });

@@ -1,4 +1,6 @@
-﻿@import "color";
+﻿@import "reset";
+@import "color";
+@import "utility";
 @import "social";
 @import "donate";
 
@@ -18,28 +20,17 @@ body {
     margin: 0 auto;
 }
 
-body .jumbotron {
+.jumbotron {
     text-align: center;
     background-color: transparent;
 }
 
-.jumbotron > h1,
-.jumbotron > h2 {
+h1,
+h2 {
     font-weight: bold;
 }
 
-.jumbotron.short {
-     margin: inherit;
-}
-
-.footer {
-    padding-top: 10px;
-}
-
-.marketing {
-    margin: 40px 0;
-}
-
+//  TODO: This gives spacing to the elements in home after the first, but is pretty confusing.
 .marketing p + h4 {
     margin-top: 28px;
 }
@@ -48,86 +39,39 @@ body .jumbotron {
     font-weight: bold;
 }
 
+//  TODO: Do I really want nowrap here?
 .badgeWrapper {
-    margin-top: -10px;
     white-space: nowrap;
 }
 
+//  Sync the height of legalWrapper with badgeWrapper
+//  TODO: Be more clear about this..
 .legalWrapper {
-    padding-top: 5px;
-    line-height: 1;
+    line-height: 40px;
 }
 
-.legalWrapper p {
-    display: inline-block;
-}
-
-ul.nav {
+.nav {
     display: inline-block;
     margin-top: 12px;
-    margin-bottom: 0;
 }
 
-.content {
-    display: none;
-}
-
-.legalWrapper,
-.logoWrapper {
-    float: left;
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-#aboutConclusion {
-    margin-top: 30px;
-    text-align: center;
-}
-
-#contactContent {
-    text-align: center;
-}
-
-#contactContent ul {
-    list-style: none;
-}
-
+//  TODO: Change this to an HTML5 video with changing text on the side instead.
 .featurette {
     overflow: hidden;
 }
 
-.featurette-image.pull-left {
+.image-left {
     margin-right: 40px;
 }
 
-.featurette-image.pull-right {
+.image-right {
     margin-left: 40px;
 }
 
-.featurette-image.wide {
-    margin-bottom: 20px;
-}
-
-img[data-src="img/streamusIntro2.png"],
-img[data-src="img/streamusIntro3.png"] {
-    width: 630px;
-    height: 540px;
-}
-
-img[data-src="img/streamusIntro4.png"] {
-    width: 612px;
-    height: 432px;
-}
-
-img[data-src="img/streamusIntro5.png"] {
-    width: 1000px;
-    height: 286px;
-}
-
 @media (max-width: 1220px) {
-    .zopim { display: none !important; }
+    .zopim {
+        display: none; 
+    }
 }
 
 @media (max-width: 622px) {

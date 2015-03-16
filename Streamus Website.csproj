@@ -44,6 +44,7 @@
     <Content Include=".gitignore" />
     <Content Include=".htaccess" />
     <Content Include="Gruntfile.js" />
+    <Content Include="src\css\index.css" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\font\fontawesome-webfont.svg" />
     <Content Include="src\font\helvetica neue\helveticaneue-webfont.svg" />
@@ -117,6 +118,8 @@
     <Content Include="src\js\thirdParty\googleAnalytics.js" />
     <Content Include="src\js\thirdParty\text.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
+    <Content Include="src\less\reset.less" />
+    <Content Include="src\less\utility.less" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
@@ -149,9 +152,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\css\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

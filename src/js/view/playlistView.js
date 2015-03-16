@@ -30,11 +30,11 @@
         _onClickSave: function() {
             //  TODO: Need to inject extension ID instead
             chrome.runtime.sendMessage('jbnkffmindojffecdhbbmekbmkkfpmjd', {
-                method: 'copyPlaylist',
-                playlistId: this.model.get('id')
-            }, function(response) {
+                    method: 'copyPlaylist',
+                    playlistId: this.model.get('id')
+                }, function(response) {
 
-            });
+                });
         }
     });
 

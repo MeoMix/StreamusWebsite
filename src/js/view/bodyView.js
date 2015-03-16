@@ -1,6 +1,6 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
-    
+
     var Page = require('model/page');
     var InstallButton = require('model/installButton');
     var Route = require('enum/route');
@@ -23,16 +23,16 @@
         events: {
             'click *[data-route]': 'navigateToRoute'
         },
-        
+
         regions: {
-            socialRegion: '#socialRegion',
+            socialRegion: '.socialRegion',
             dialogRegion: {
-                selector: '#dialogRegion',
+                selector: '.dialogRegion',
                 regionClass: DialogRegion
             }
         },
 
-        onRender: function () {
+        onRender: function() {
             var navigationView = new NavigationView();
             navigationView.render();
 
@@ -40,10 +40,10 @@
                 model: new InstallButton()
             });
             installButtonView.render();
-            
+
             var footerView = new FooterView();
             footerView.render();
-            
+
             var logoView = new LogoView();
             logoView.render();
 
@@ -62,14 +62,14 @@
                 })
             });
             gettingStartedPageView.render();
-            
+
             var donatePageView = new DonatePageView({
                 model: new Page({
                     route: Route.Donate
                 })
             });
             donatePageView.render();
-            
+
             var aboutPageView = new AboutPageView({
                 model: new Page({
                     route: Route.About
@@ -88,7 +88,7 @@
         },
 
         //  Enable keeping track of the current page shown without affecting history and without actually changing the page.
-        navigateToRoute: function (event) {
+        navigateToRoute: function(event) {
             var route = $(event.currentTarget).data('route');
             Streamus.router.navigate(route, { trigger: true });
         }

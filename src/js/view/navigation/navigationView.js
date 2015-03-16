@@ -1,41 +1,41 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
 
     var Route = require('enum/route');
     var NavigationItemView = require('view/navigation/navigationItemView');
 
     var NavigationView = Marionette.ItemView.extend({
-        el: '#navigation',
+        el: '.navigation',
         template: false,
-        
+
         ui: {
-            home: '#navigation-home',
-            gettingStarted: '#navigation-gettingStarted',
-            about: '#navigation-about',
-            donate: '#navigation-donate'
+            home: '.navigation-home',
+            gettingStarted: '.navigation-gettingStarted',
+            about: '.navigation-about',
+            donate: '.navigation-donate'
         },
-        
-        onRender: function () {
+
+        onRender: function() {
             //  TODO: Stop relying on pages being a global so that this isnt' so weird.
             Streamus.pages.each(this._renderNavigationItem.bind(this));
 
             this.listenTo(Streamus.pages, 'add', this._renderNavigationItem);
         },
 
-        _renderNavigationItem: function (page) {
+        _renderNavigationItem: function(page) {
             var navigationItem = this._getNavigationItem(page.get('route'));
-            
+
             var navigationItemView = new NavigationItemView({
                 el: navigationItem,
                 model: page
             });
             navigationItemView.render();
         },
-        
-        _getNavigationItem: function (route) {
+
+        _getNavigationItem: function(route) {
             var navigationItem = null;
 
-            switch(route) {
+            switch (route) {
                 case Route.Home:
                     navigationItem = this.ui.home;
                     break;

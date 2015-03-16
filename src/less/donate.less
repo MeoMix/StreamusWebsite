@@ -1,63 +1,40 @@
 ﻿@import "color";
 
-#page-donate .fa-usd {
+.icon-dollarSign {
     color: @green;
 }
 
-#page-donate .fa-long-arrow-right {
+.icon-arrowRight {
     color: @yellow;
 }
 
-#page-donate #beerMug {
+.icon-beerMug {
     margin-bottom: -10px;
+    fill: @brown;
 }
 
-#page-donate .icon-beer {
-    color: @brown;
-}
-
-#page-donate .equals {
+.icon-equalSign {
     display: inline-block;
-    margin-top: 13px;
     color: @blue;
-    vertical-align: top;
 }
 
-#page-donate .fa-heart {
+.icon-heart {
     color: @red;
 }
 
-#page-donate > div {
-    text-align: center;
-}
-
-#page-donate iframe {
-    height: 51px !important;
-}
-
-#payPal-currencyCode,
-#payPal-amount {
+.donate-payPalInput {
     display: inline-block;
-    width: 200px;
-}
-
-#payPal-amount {
-    margin-right: 5px;
-    margin-left: 5px;
+    max-width: 200px;
 }
 
 @media (max-width: 767px) {
-    #page-donate #beerMug {
+    .icon-beerMug {
         zoom: .6;
-    }
-
-    #page-donate .equals {
-        margin-top: 11px;
     }
 }
 
 @media (max-width: 520px) {
-    #page-donate button[form="payPal-form"] {
+    .donate-payPalButton {
         margin-top: 15px;
     }
 }

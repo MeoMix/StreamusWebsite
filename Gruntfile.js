@@ -3,7 +3,7 @@
 //    * grunt: Lint JavaScript and LESS
 //    * grunt build: Build a release
 'use strict';
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
 
@@ -150,10 +150,10 @@ module.exports = function (grunt) {
             }
         }
     });
-    
+
     grunt.registerTask('default', 'An alias task for running tests.', ['test']);
 
     grunt.registerTask('test', 'Run tests and code-quality analysis', ['jshint', 'recess']);
 
-	grunt.registerTask('build', ['jshint', 'requirejs', 'useminPrepare', 'usemin', 'less', 'htmlmin', 'imagemin', 'clean:dist']);
+    grunt.registerTask('build', ['jshint', 'requirejs', 'useminPrepare', 'usemin', 'less', 'htmlmin', 'imagemin', 'clean:dist']);
 };

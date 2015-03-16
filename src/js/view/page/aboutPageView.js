@@ -1,13 +1,13 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
 
     var LazyImages = require('view/behavior/lazyImages');
     var Routable = require('view/behavior/routable');
 
     var AboutPageView = Marionette.ItemView.extend({
-        el: '#page-about',
+        el: '.aboutPage',
         template: false,
-        
+
         behaviors: {
             LazyImages: {
                 behaviorClass: LazyImages

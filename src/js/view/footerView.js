@@ -1,4 +1,4 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
 
     var TermsOfUseDialogView = require('view/dialog/termsOfUseDialogView');
@@ -8,7 +8,7 @@
     var FooterView = Marionette.ItemView.extend({
         el: '.footer',
         template: false,
-        
+
         ui: {
             termsOfUse: '.termsOfUse',
             privacy: '.privacy',
@@ -20,30 +20,30 @@
             'click @ui.privacy': '_onClickPrivacy',
             'click @ui.contact': '_onClickContact'
         },
-        
+
         _onClickTermsOfUse: function() {
             this._showTermsOfUseDialog();
         },
-        
+
         _onClickPrivacy: function() {
             this._showPrivacyDialog();
         },
-        
+
         _onClickContact: function() {
             this._showContactDialog();
         },
 
-        _showTermsOfUseDialog: function () {
+        _showTermsOfUseDialog: function() {
             Streamus.channels.dialog.commands.trigger('show:dialog', TermsOfUseDialogView);
         },
 
-        _showPrivacyDialog: function () {
+        _showPrivacyDialog: function() {
             Streamus.channels.dialog.commands.trigger('show:dialog', PrivacyDialogView);
         },
 
-        _showContactDialog: function () {
+        _showContactDialog: function() {
             Streamus.channels.dialog.commands.trigger('show:dialog', ContactDialogView);
-        }   
+        }
     });
 
     return FooterView;

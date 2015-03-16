@@ -1,6 +1,6 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
-    
+
     var Dialog = require('model/dialog');
     var DialogView = require('view/dialog/dialogView');
     var PrivacyView = require('view/dialog/privacyView');

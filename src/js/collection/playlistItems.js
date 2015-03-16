@@ -1,4 +1,4 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
 
     var PlaylistItem = require('model/playlistItem');
@@ -7,7 +7,7 @@
     var PlaylistItems = Backbone.Collection.extend({
         model: PlaylistItem,
 
-        getDisplayInfo: function () {
+        getDisplayInfo: function() {
             var totalItemsDuration = this._getTotalDuration();
             var prettyTimeWithWords = Utility.prettyPrintTimeWithWords(totalItemsDuration);
 
@@ -18,10 +18,10 @@
             return displayInfo;
         },
 
-        _getTotalDuration: function () {
+        _getTotalDuration: function() {
             var songDurations = _.invoke(this.pluck('song'), 'get', 'duration');
 
-            var totalDuration = _.reduce(songDurations, function (memo, songDuration) {
+            var totalDuration = _.reduce(songDurations, function(memo, songDuration) {
                 return memo + songDuration;
             }, 0);
 

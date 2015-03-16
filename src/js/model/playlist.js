@@ -1,4 +1,4 @@
-﻿define(function (require) {
+﻿define(function(require) {
     'use strict';
 
     var PlaylistItems = require('collection/playlistItems');
@@ -12,14 +12,14 @@
             items: null,
             sequence: -1
         },
-        
-        urlRoot: function () {
+
+        urlRoot: function() {
             return Streamus.serverUrl + 'Playlist/';
         },
         
         //  Convert data which is sent from the server back to a proper Backbone.Model.
         //  Need to recreate submodels as Backbone.Models else they will just be regular Objects.
-        parse: function (playlistDto) {
+        parse: function(playlistDto) {
             //  Convert C# Guid.Empty into BackboneJS null
             for (var key in playlistDto) {
                 if (playlistDto.hasOwnProperty(key) && playlistDto[key] === '00000000-0000-0000-0000-000000000000') {
@@ -37,21 +37,21 @@
             return playlistDto;
         },
 
-        initialize: function () {
+        initialize: function() {
             this._ensureItemsCollection();
         },
 
-        _ensureItemsCollection: function () {
+        _ensureItemsCollection: function() {
             var items = this.get('items');
 
             //  Need to convert items array to Backbone.Collection
             if (!(items instanceof Backbone.Collection)) {
                 //  Silent because items is just being properly set.
                 this.set('items', new PlaylistItems(items, {
-                    playlistId: this.get('id')
-                }), {
-                    silent: true
-                });
+                        playlistId: this.get('id')
+                    }), {
+                        silent: true
+                    });
             }
         }
     });
