@@ -1,11 +1,10 @@
 ﻿.social {
     position: fixed;
-    bottom: 10px;
+    bottom: 5px;
     left: 10px;
-    max-width: 250px;
-    overflow: hidden;
     opacity: 0;
     transition: opacity 5s ease-in-out;
+    text-align: left;
 }
 
 .social.is-loaded {
@@ -16,6 +15,7 @@
     height: 25px;
     opacity: 0.8;
     transition: opacity .14s ease-in-out;
+    vertical-align: middle;
 }
 
 .social-widget:hover {
@@ -26,12 +26,6 @@
 .gc-reset,
 .pls-dropBottom{
     display: none !important;
-}
-
-@media (max-width: 1220px) {
-    .social {
-        display: none !important; 
-    }
 }
         
 .github-button--wrapper {

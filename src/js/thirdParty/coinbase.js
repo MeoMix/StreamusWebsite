@@ -32,36 +32,10 @@
                 return $(document).trigger("coinbase_button_loaded", o);
             }
         }
-    }, o = function (e) {
-        switch (e) {
-            case "custom_large":
-                return 276;
-            case "custom_small":
-                return 210;
-            case "subscription_large":
-                return 263;
-            case "subscription_small":
-                return 210;
-            case "donation_large":
-                return 189;
-            case "donation_small":
-                return 148;
-            case "buy_now_large":
-                return 211;
-            case "buy_now_small":
-                return 170;
-            default:
-                return 211;
-        }
-    }, a = function (e) {
-        switch (e) {
-            case "custom_large":
-                return 62;
-            case "custom_small":
-                return 48;
-            default:
-                return 46;
-        }
+    }, o = function() {
+        return 153;
+    }, a = function () {
+        return 38;
     }, window.addEventListener("message", i, !1), $(".coinbase-button").each(function () {
         return function (n, i) {
             var c, d, l, u, m, _, p, b;

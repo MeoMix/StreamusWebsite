@@ -1,0 +1,16 @@
+﻿.marketing-header {
+    font-weight: bold;
+}
+
+@marketing-header-spacing: 28px;
+.marketing-header:not(:first-child) {
+    margin-top: @marketing-header-spacing;
+}
+
+//  TODO: max-width isn't 'mobile first', prefer min-width
+@media (max-width: 991px){
+    //  When the columns collapse the margin-top spacing gets off.
+    .marketing .col-md-6:not(:first-child) .marketing-header {
+        margin-top: @marketing-header-spacing;
+    }
+}

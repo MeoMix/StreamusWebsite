@@ -1,26 +1,20 @@
 ﻿@import "reset";
 @import "color";
 @import "utility";
+@import "home";
+@import "gettingStarted";
 @import "social";
 @import "donate";
-//  Don't load font-awesome from a CDN because it issues a second request to load the font
-//  which causes icons to flicker on first load because 2nd request is still processing.
-@import "fontAwesome";
 
 body {
     padding-top: 20px;
     padding-bottom: 40px;
     color: @dark--primary;
     text-rendering: optimizeLegibility;
-}
-
-.container-narrow {
-    max-width: 1000px;
-    margin: 0 auto;
+    text-align: center;
 }
 
 .jumbotron {
-    text-align: center;
     background-color: transparent;
 }
 
@@ -29,70 +23,32 @@ h2 {
     font-weight: bold;
 }
 
-//  TODO: This gives spacing to the elements in home after the first, but is pretty confusing.
-.marketing p + h4 {
-    margin-top: 28px;
-}
-
-.marketing h4 {
-    font-weight: bold;
-}
-
-//  TODO: Do I really want nowrap here?
-.badgeWrapper {
-    white-space: nowrap;
-}
-
-//  Sync the height of legalWrapper with badgeWrapper
-//  TODO: Be more clear about this..
-.legalWrapper {
+//  Sync the height of legal with badges
+.legal {
     line-height: 40px;
-}
+}   
 
 .nav {
     display: inline-block;
-    margin-top: 12px;
+    //  Align the navigation items with the logo
+    margin-top: 14px;
 }
 
-//  TODO: Change this to an HTML5 video with changing text on the side instead.
-.featurette {
-    overflow: hidden;
-}
-
-.image-left {
-    margin-right: 40px;
-}
-
-.image-right {
-    margin-left: 40px;
-}
-
-@media (max-width: 1220px) {
+@media (max-width: 1399px) {
+    .social,
     .zopim {
         display: none; 
     }
 }
 
-@media (max-width: 622px) {
-    .logoWrapper,
-    .navigationWrapper,
-    .badgeWrapper,
-    .legalWrapper {
-        text-align: center;
-        float: none;
+@media (min-width: 768px ){
+    .legal,
+    .logo {
+        float: left;
     }
 
-    .badgeWrapper {
-        margin-top: 0;
-    }
-
-    .logoWrapper img {
-        display: inline-block;
-        margin-bottom: 10px;
-    }
-
-    .marketing h4,
-    .marketing p {
-        text-align: center;
+    .badges,
+    .nav {
+        float: right;
     }
 }

@@ -27,14 +27,10 @@
     max-width: 200px;
 }
 
+//  TODO: max-width isn't 'mobile first', prefer min-width
 @media (max-width: 767px) {
     .icon-beerMug {
-        zoom: .6;
-    }
-}
-
-@media (max-width: 520px) {
-    .donate-payPalButton {
-        margin-top: 15px;
+        //  This value is synced with the fact that text scales from 36 to 63px under Bootstrap's breakpoint.
+        zoom: .571;
     }
 }
