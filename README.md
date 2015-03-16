@@ -11,14 +11,15 @@ Overview
 ========
 The Streamus website is an alternative download point for the Streamus Google Chrome extension. It also contains a small instructional guide, a brief history of the program and a donation page.
 
-Deployment
+Development
 ========
 
-Once you have NPM and Grunt installed you'll need to run "npm install" from the StreamusWebsite directory. This will cause all the necessary packages to install.
-Then, call "grunt build" to spitout a dist folder with all the files needed to run a deploy version of the website. You shouldn't have to do anything special
-to run a development version of the website -- simply open index.html in your favorite browser with Apache 2.4 running on your machine.
-
-If you've touched any images -- you'll probably want to re-install grunt-contrib-imagemin and compress the images before uploading. This module isn't included by default because it is pretty bulky.
+1. Ensure you have Node, NPM, and Grunt installed.
+2. Run "npm install" to install necessary dependencies.
+3. Install Apache 2.4 and configure it such that it can find src/index.html
+4. Run "grunt less" and then "grunt watch" to compile LESS to CSS and monitor for changes.
+5. Navigate to index.html in the browser.
+6. To build a release, run "grunt build". Versioning is not yet supported.
 
 Third-Party Libraries
 ------
