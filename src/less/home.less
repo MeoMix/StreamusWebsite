@@ -1,16 +1,54 @@
-﻿.marketing-header {
-    font-weight: bold;
+﻿// keep navs in single line on tiny screens
+@media (max-width: 360px) {
+  .nav-pills>li>a {
+    padding: 10px 8px;
+  }
 }
 
-@marketing-header-spacing: 28px;
-.marketing-header:not(:first-child) {
-    margin-top: @marketing-header-spacing;
+.jumbotron {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+
+  h1 {
+    margin: 0 auto .5em;
+  }
+
+  h2 {
+    font-weight: 400;
+    color: #666;
+  }
+
+  .lead {
+    margin: 1.5em auto;
+    color: #555;
+  }
 }
 
-//  TODO: max-width isn't 'mobile first', prefer min-width
-@media (max-width: 991px){
-    //  When the columns collapse the margin-top spacing gets off.
-    .marketing .col-md-6:not(:first-child) .marketing-header {
-        margin-top: @marketing-header-spacing;
-    }
+/* Fix up spacing */
+.marketing {
+  // offset for last marketing -item margin
+  margin-bottom: -2em;
+}
+
+@media (min-width: 768px) {
+  .marketing {
+    margin-top: 2em;
+    margin-bottom: 0;
+  }
+}
+
+.marketing-item {
+  margin: 0 auto 2em;
+   // center text on smaller screens rather than one wide sentence
+  p {
+    max-width: 26em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.marketing-header {
+  font-weight: bold;
+  font-style: italic;
 }
