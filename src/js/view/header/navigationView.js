@@ -11,6 +11,7 @@
         ui: {
             home: '.navigation-home',
             gettingStarted: '.navigation-gettingStarted',
+            share: '.navigation-share',
             about: '.navigation-about',
             donate: '.navigation-donate'
         },
@@ -41,6 +42,9 @@
                     break;
                 case Route.GettingStarted:
                     navigationItem = this.ui.gettingStarted;
+                    break;
+                case Route.Share:
+                    navigationItem = this.ui.share;
                     break;
                 case Route.About:
                     navigationItem = this.ui.about;

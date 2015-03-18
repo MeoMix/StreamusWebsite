@@ -28,30 +28,20 @@
 
         return timeString;
     },
+    
+    isBrowserMobile: function() {
+        return $.browser.mobile;
+    },
+    
+    isBrowserOpera: function() {
+        return $.browser.opr;
+    },
 
-    //  Similar to prettyPrintTime, but incorporates "days" "hours" "minutes" into the end result instead of just using numbers.
-    prettyPrintTimeWithWords: function (timeInSeconds) {
-        var prettyTime;
-        var timeInMinutes = Math.floor(timeInSeconds / 60);
-
-        var minutesInDay = 1440;
-        var threeDaysInMinutes = 4320;
-        var minutesInHour = 60;
-        var threeHoursInMinutes = 180;
-
-        //  Print the total duration of content in minutes unless there is 3+ hours, then just print hours.
-        if (timeInMinutes === 1) {
-            prettyTime = timeInMinutes + ' ' + 'minute';
-        }
-        else if (timeInMinutes > threeDaysInMinutes) {
-            prettyTime = Math.floor(timeInMinutes / minutesInDay) + ' ' + 'days';
-        }
-        else if (timeInMinutes > threeHoursInMinutes) {
-            prettyTime = Math.floor(timeInMinutes / minutesInHour) + ' ' + 'hours';
-        } else {
-            prettyTime = timeInMinutes + ' ' + 'minutes';
-        }
-
-        return prettyTime;
+    isBrowserChrome: function() {
+        return $.browser.chrome;
+    },
+    
+    getBrowserVersion: function() {
+        return $.browser.version;
     }
 });
