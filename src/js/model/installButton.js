@@ -39,8 +39,10 @@
                 var browserVersion = utility.getBrowserVersion();
                 var minimumOperaVersion = this.get('minimumOperaVersion');
                 var minimumChromeVersion = this.get('minimumChromeVersion');
-
-                if (utility.isBrowserOpera() && browserVersion < minimumOperaVersion || utility.isBrowserChrome() && browserVersion < minimumChromeVersion) {
+                var isInvalidOperaVersion = utility.isBrowserOpera() && browserVersion < minimumOperaVersion;
+                var isInvalidChromeVersion = utility.isBrowserChrome() && browserVersion < minimumChromeVersion;
+                
+                if (isInvalidOperaVersion || isInvalidChromeVersion) {
                     this.set({
                         enabled: false,
                         text: 'Chrome v' + minimumChromeVersion + '+ or Opera v' + minimumOperaVersion + '+ required'

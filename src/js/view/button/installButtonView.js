@@ -40,7 +40,8 @@
                 });
 
                 if (utility.isBrowserOpera()) {
-                    opr.addons.installExtension(Streamus.extensionData.get('operaId'), this._onInstallSuccess.bind(this), this._onInstallError.bind(this));
+                    var operaExtensionId = Streamus.extensionData.get('operaId');
+                    opr.addons.installExtension(operaExtensionId, this._onInstallSuccess.bind(this), this._onInstallError.bind(this));
                 } else {
                     var chromeWebstoreUrl = 'https://chrome.google.com/webstore/detail/' + Streamus.extensionData.get('chromeId');
                     chrome.webstore.install(chromeWebstoreUrl, this._onInstallSuccess.bind(this), this._onInstallError.bind(this));
