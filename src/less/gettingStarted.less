@@ -1,12 +1,45 @@
 ﻿//  TODO: Change this to an HTML5 video with changing text on the side instead.
 .featurette {
-    overflow: hidden;
+  overflow: hidden;
+  // add some space around text on small screens
+  .lead {
+    padding: 0 1em;
+  }
 }
 
-.image-left {
-    margin-right: 40px;
+.featurette-heading {
+  margin-top: .25em;
+  margin-bottom: .75em;
 }
 
+
+// center images when stacked on mobile and bring back heading margins lost due to floating
+.image-left,
 .image-right {
-    margin-left: 40px;
+  margin: 0 auto 2em;
+}
+
+// previous larger screen styling
+@media (min-width: 991px) {
+  .image-left {
+    float: left;
+    margin-right: 2.75em;
+  }
+
+  .image-right {
+    float: right;
+    margin-left: 2.75em;
+  }
+
+  .featurette-heading {
+    margin-top: 1.5em;
+  }
+
+  .featurette .lead {
+    padding: 0;
+    margin-top: 1.5em;
+  }
+}
+
+@media (min-width: 1200px) {
 }

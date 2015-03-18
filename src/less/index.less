@@ -5,6 +5,7 @@
 @import "gettingStarted";
 @import "social";
 @import "donate";
+@import "about";
 
 body {
     padding-top: 20px;
@@ -38,10 +39,17 @@ h2 {
     margin-top: 14px;
 }
 
+// Slight transition on hovers rather than instant color change
+a,
+a.btn,
+button.btn {
+    transition: all .4s;
+}
+
 @media (max-width: 1399px) {
     .social,
     .zopim {
-        display: none; 
+        display: none;
     }
 }
 
