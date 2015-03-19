@@ -30,12 +30,14 @@
         },
 
         _ensureValidBrowser: function() {
+            //  Can't install Streamus on mobile browsers.
             if (utility.isBrowserMobile()) {
                 this.set({
                     enabled: false,
                     text: 'Desktop required'
                 });
             } else {
+                //  Can't install Streamus on non-webkit browsers nor non-current webkit browsers.
                 var browserVersion = utility.getBrowserVersion();
                 var minimumOperaVersion = this.get('minimumOperaVersion');
                 var minimumChromeVersion = this.get('minimumChromeVersion');

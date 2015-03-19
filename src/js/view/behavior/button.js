@@ -1,19 +1,22 @@
 ﻿define(function() {
     'use strict';
 
-    //  TODO: Consider putting onClick event here, too.
+    //  TODO: Why is Button a behavior but Dialog a sub-view? Should be standardized.
     var Button = Marionette.Behavior.extend({
+        events: {
+            'click': '_onClick'
+        },
+
         modelEvents: {
             'change:enabled': '_onChangeEnabled',
             'change:text': '_onChangeText'
         },
-        
+
         onRender: function() {
-            //  TODO: pretty sure I will be able to get this.model in Marionette 3.x
             this._setDisabled(!this.view.options.model.get('enabled'));
             this._setText(this.view.options.model.get('text'));
         },
-        
+
         _onChangeEnabled: function(model, enabled) {
             this._setDisabled(!enabled);
         },
@@ -21,11 +24,17 @@
         _onChangeText: function(model, text) {
             this.view.$el.text(text);
         },
-        
+
+        _onClick: function() {
+            if (!this.view.model.get('disabled')) {
+                this.view.triggerMethod('click');
+            }
+        },
+
         _setDisabled: function(disabled) {
             this.view.$el.attr('disabled', disabled);
         },
-        
+
         _setText: function(text) {
             this.$el.text(text);
         }

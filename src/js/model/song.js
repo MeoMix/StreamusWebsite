@@ -12,8 +12,6 @@
             author: '',
             //  Duration in seconds for the length of the given song.
             duration: -1,
-
-            //  These are calculated:
             prettyDuration: '',
             url: ''
         },
@@ -23,7 +21,6 @@
             this._setUrl(this.get('id'));
         },
 
-        //  Calculate this value pre-emptively because when rendering I don't want to incur inefficiency
         _setPrettyDuration: function(duration) {
             this.set('prettyDuration', Utility.prettyPrintTime(duration));
         },

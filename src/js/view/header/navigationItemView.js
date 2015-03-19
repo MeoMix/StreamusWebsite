@@ -1,38 +1,38 @@
-﻿define(function() {
+﻿define(function(require) {
     'use strict';
 
-    var NavigationItemView = Marionette.ItemView.extend({
-        template: false,
+    var NavigationItemTemplate = require('text!template/navigationItem.html');
 
-        events: {
-            'click': '_onClick'
-        },
+    var NavigationItemView = Marionette.ItemView.extend({
+        tagName: 'li',
+        template: _.template(NavigationItemTemplate),
 
         modelEvents: {
-            'change:hidden': '_onChangeHidden'
+            'change:active': '_onChangeActive'
+        },
+
+        initialize: function() {
+            this.listenTo(Streamus.channels.route.vent, 'shown', this._onRouteShown);
         },
 
         onRender: function() {
-            var hidden = this.model.get('hidden');
-            this._setActiveClass(!hidden);
+            var active = this.model.get('active');
+            this._setActiveClass(active);
+        },
+        
+        //  Respond to routes showing to ensure that the proper navigation item is highlighted.
+        _onRouteShown: function(routeType) {
+            if (routeType === this.model.get('routeType')) {
+                this.model.set('active', true);
+            }
         },
 
-        _onClick: function() {
-            this._navigateToRoute(this.model.get('route'));
-        },
-
-        _onChangeHidden: function(model, hidden) {
-            this._setActiveClass(!hidden);
+        _onChangeActive: function(model, active) {
+            this._setActiveClass(active);
         },
 
         _setActiveClass: function(active) {
             this.$el.toggleClass('active', active);
-        },
-
-        _navigateToRoute: function(route) {
-            Streamus.router.navigate(route, {
-                trigger: true
-            });
         }
     });
 

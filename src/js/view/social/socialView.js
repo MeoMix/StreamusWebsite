@@ -14,8 +14,8 @@
 
         onAttach: function() {
             //  Fade the buttons in over a short period of time to make the loading animations less jarring.
+            //  Defer to ensure that the browser knows the isLoaded class was not present when the view was attached to the DOM.
             _.defer(this._setIsLoaded.bind(this));
-
             window.onGitHubApiResponse = this._onGitHubApiResponse.bind(this);
 
             //  Scripts can't be added through a template because Marionette will not run their logic.

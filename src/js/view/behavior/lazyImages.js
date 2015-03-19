@@ -1,6 +1,7 @@
 ﻿define(function() {
     'use strict';
 
+    //  Lazy load images which are not currently in the viewport to save on bandwidth.
     var LazyImages = Marionette.Behavior.extend({
         ui: {
             lazyImages: 'img[data-src]'

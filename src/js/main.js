@@ -30,6 +30,8 @@
             '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min',
             'thirdParty/backbone'
         ],
+        'backbone.base-router': 'thirdParty/backbone.base-router',
+        'backbone.intercept': 'thirdParty/backbone.intercept',
         'backbone.marionette': [
             '//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/2.4.1/backbone.marionette.min',
             'thirdParty/backbone.marionette'
@@ -71,9 +73,10 @@
 define(function(require) {
     'use strict';
 
+    require('backbone.base-router');
+    require('backbone.intercept');
     require('backbone.marionette');
     require('bootstrap');
-    require('coinbase');
     require('googleAnalytics');
     require('jquery.browser');
     require('jquery.unveil');

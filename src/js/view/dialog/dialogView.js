@@ -7,13 +7,6 @@
         className: 'modal fade',
         template: _.template(DialogTemplate),
 
-        attributes: {
-            tabindex: '-1',
-            role: 'dialog',
-            'aria-labelledby': 'dialog-title',
-            'aria-hidden': 'true'
-        },
-
         events: {
             'hidden.bs.modal': '_onHidden'
         },

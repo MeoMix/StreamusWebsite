@@ -1,22 +1,15 @@
 ﻿define(function(require) {
     'use strict';
 
-    var Routable = require('view/behavior/routable');
     var InstallButton = require('model/installButton');
     var InstallButtonView = require('view/button/installButtonView');
+    var HomeTemplate = require('text!template/home.html');
 
-    var HomePageView = Marionette.LayoutView.extend({
-        el: '.homePage',
-        template: false,
-        
+    var HomeView = Marionette.LayoutView.extend({
+        template: _.template(HomeTemplate),
+
         regions: {
             buttonRegion: '.buttonRegion'
-        },
-
-        behaviors: {
-            Routable: {
-                behaviorClass: Routable
-            }
         },
 
         onRender: function() {
@@ -26,5 +19,5 @@
         }
     });
 
-    return HomePageView;
+    return HomeView;
 });

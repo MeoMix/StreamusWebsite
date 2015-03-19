@@ -1,9 +1,11 @@
 ﻿//  Store all possible routes in an enum to prevent magic route strings throughout application.
 define({
-    None: 'none',
-    Home: 'home',
+    //  Home is empty on purpose.
+    Home: '',
     GettingStarted: 'getting-started',
     About: 'about',
     Donate: 'donate',
-    Share: 'share'
+    Share: 'share',
+    //  Match all other routes and assume 404
+    NotFound: '*notFound'
 });

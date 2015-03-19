@@ -2,11 +2,6 @@
     'use strict';
 
     var HeaderRegion = require('view/header/headerRegion');
-    var HomePageRegion = require('view/page/home/homePageRegion');
-    var GettingStartedPageRegion = require('view/page/gettingStarted/gettingStartedPageRegion');
-    var AboutPageRegion = require('view/page/about/aboutPageRegion');
-    var DonatePageRegion = require('view/page/donate/donatePageRegion');
-    var SharePageRegion = require('view/page/share/sharePageRegion');
     var FooterRegion = require('view/footer/footerRegion');
     var SocialRegion = require('view/social/socialRegion');
     var DialogRegion = require('view/dialog/dialogRegion');
@@ -20,26 +15,7 @@
                 selector: '.headerRegion',
                 regionClass: HeaderRegion
             },
-            homePageRegion: {
-                selector: '.homePageRegion',
-                regionClass: HomePageRegion
-            },
-            gettingStartedPageRegion: {
-                selector: '.gettingStartedPageRegion',
-                regionClass: GettingStartedPageRegion
-            },
-            aboutPageRegion: {
-                selector: '.aboutPageRegion',
-                regionClass: AboutPageRegion
-            },
-            donatePageRegion: {
-                selector: '.donatePageRegion',
-                regionClass: DonatePageRegion
-            },
-            sharePageRegion: {
-                selector: '.sharePageRegion',
-                regionClass: SharePageRegion
-            },
+            contentRegion: '.contentRegion',
             footerRegion: {
                 selector: '.footerRegion',
                 regionClass: FooterRegion
@@ -54,9 +30,18 @@
             }
         },
 
+        initialize: function() {
+            this.listenTo(Streamus.channels.body.commands, 'showIn:region', this._showInRegion);
+        },
+
         onRender: function() {
+            //  Announce the body has been rendered so don't have to explicitly tell every region to load its contents.
             Streamus.channels.body.vent.trigger('rendered');
             this.$el.removeClass('is-hidden');
+        },
+
+        _showInRegion: function(view) {
+            this.contentRegion.show(view);
         }
     });
 

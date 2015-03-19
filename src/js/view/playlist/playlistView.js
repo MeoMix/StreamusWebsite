@@ -15,7 +15,7 @@
             playlistItemsRegion: '.playlistItemsRegion',
             buttonRegion: '.buttonRegion'
         },
-        
+
         initialize: function() {
             this.listenTo(Streamus.extensionData, 'change:installed', this._onExtensionDataChangeInstalled);
         },
@@ -27,14 +27,14 @@
                 collection: this.model.get('items')
             }));
         },
-        
+
         _onExtensionDataChangeInstalled: function(model, installed) {
             this._renderButton(installed);
         },
-        
+
         _renderButton: function(extensionInstalled) {
             //  The Streamus extension will inject its ID into this webpage if it is installed.
-            //  If it is not installed then saving is not possible.
+            //  If it is not installed then saving is not possible. So, prompt the user to install.
             if (extensionInstalled) {
                 this.buttonRegion.show(new SavePlaylistButtonView({
                     model: new SavePlaylistButton({

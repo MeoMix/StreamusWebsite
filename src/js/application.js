@@ -2,7 +2,6 @@
     'use strict';
 
     var Router = require('router');
-    var Pages = require('collection/pages');
     var BodyView = require('view/bodyView');
     var ExtensionData = require('model/extensionData');
 
@@ -16,8 +15,8 @@
 
         channels: {
             dialog: Backbone.Wreqr.radio.channel('dialog'),
-            share: Backbone.Wreqr.radio.channel('share'),
-            body: Backbone.Wreqr.radio.channel('body')
+            body: Backbone.Wreqr.radio.channel('body'),
+            route: Backbone.Wreqr.radio.channel('route')
         },
 
         initialize: function () {
@@ -32,19 +31,18 @@
         },
         
         _onStart: function() {
-            //  TODO: Make this not as order-dependent
-            this.pages = new Pages();
-
             var bodyView = new BodyView();
             bodyView.render();
-
-            this.router = new Router();
             
-            //  Starting Backbone's history is a necessary first step for using the router.
-            //  http://backbonejs.org/#Router
+            this.router = new Router();
+
+            //  Enable Backbone History to use routing. Only modern browsers are anticipated so set pushState to true.
             Backbone.history.start({
                 pushState: true
             });
+            
+            //  Intercept href links so that HTML5 pushState is used instead of a full page reload.
+            Backbone.Intercept.start();
         }
     });
 

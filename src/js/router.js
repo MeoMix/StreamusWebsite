@@ -1,33 +1,39 @@
 ﻿define(function(require) {
     'use strict';
 
-    //  TODO: 404 page
-    var Route = require('enum/route');
+    var Route = require('route');
+    var RouteType = require('enum/routeType');
+    var HomeRoute = require('view/home/homeRoute');
+    var GettingStartedRoute = require('view/gettingStarted/gettingStartedRoute');
+    var ShareRoute = require('view/share/shareRoute');
+    var AboutRoute = require('view/about/aboutRoute');
+    var DonateRoute = require('view/donate/donateRoute');
+    var NotFoundRoute = require('view/notFound/notFoundRoute');
 
-    var Router = Marionette.AppRouter.extend({
-        routes: {
-            '': '_showHomePage',
-            'share/:entityType/:shortId/:urlFriendlyEntityTitle': '_showSharePage',
-            //  TODO: Is this an OK approach?
-            '*allPages': '_showPage',
+    var Router = Backbone.BaseRouter.extend({
+        onNavigate: function(routeData) {
+            var newRoute = routeData.linked;
+
+            if (!(newRoute instanceof Route)) {
+                throw new Error('A Route object must be associated with each route.');
+            }
+
+            newRoute.show(routeData);
+            Streamus.channels.route.vent.trigger('shown', newRoute.type);
         },
 
-        _showHomePage: function() {
-            Streamus.pages.showByRoute(Route.Home);
-        },
-        
-        _showPage: function (route) {
-            Streamus.pages.showByRoute(route);
-        },
+        routes: function() {
+            var routes = {};
+            
+            routes[RouteType.Home] = new HomeRoute();
+            routes[RouteType.GettingStarted] = new GettingStartedRoute();
+            routes[RouteType.Share] = new ShareRoute();
+            routes[RouteType.Share + '/:entityType/:shortId/:urlFriendlyEntityTitle'] = new ShareRoute();
+            routes[RouteType.About] = new AboutRoute();
+            routes[RouteType.Donate] = new DonateRoute();
+            routes[RouteType.NotFound] = new NotFoundRoute();
 
-        //  TODO: This is ass backwards. How can I have the ShareView give this to the router without causing a circular-reference
-        _showSharePage: function (entityType, shortId, urlFriendlyEntityTitle) {
-            Streamus.pages.showByRoute(Route.Share);
-            Streamus.channels.share.commands.trigger('load:entity', {
-                entityType: entityType,
-                shortId: shortId,
-                urlFriendlyEntityTitle: urlFriendlyEntityTitle
-            });
+            return routes;
         }
     });
 

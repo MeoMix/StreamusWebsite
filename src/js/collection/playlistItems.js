@@ -7,6 +7,7 @@
     var PlaylistItems = Backbone.Collection.extend({
         model: PlaylistItem,
 
+        //  Convert total duration of the collection's models to a user friendly format.
         getDisplayInfo: function() {
             var totalItemsDuration = this._getTotalDuration();
             var prettyTimeWithWords = Utility.prettyPrintTimeWithWords(totalItemsDuration);

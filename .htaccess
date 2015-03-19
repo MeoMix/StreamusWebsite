@@ -1,28 +1,38 @@
 Options +FollowSymLinks -MultiViews
 
-# Turn mod_rewrite on
-RewriteEngine On
-
-## HTML5 pushstate support ##
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ / [L]
-## HTML5 pushstate support ##
-
-## Redirect HTTP to HTTPS and www to non-www ##
-RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
-RewriteCond %{HTTP_HOST} !=localhost
-RewriteCond %{HTTP_HOST} !=127.0.0.1
-RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
-## Redirect HTTP to HTTPS and www to non-www ##
-
 ## Support UTF-8 Encoding ##
 AddDefaultCharset utf-8
 AddCharset utf-8 .css .js
-## Support UTF-8 Encoding ##
+
+<IfModule mod_rewrite.c>
+	# Turn mod_rewrite on
+	RewriteEngine On
+
+	## HTML5 pushstate support ##
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^ / [L]
+	## HTML5 pushstate support ##
+
+	## Redirect HTTP to HTTPS and www to non-www ##
+	RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
+	RewriteCond %{HTTP_HOST} !=localhost
+	RewriteCond %{HTTP_HOST} !=127.0.0.1
+	RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
+	## Redirect HTTP to HTTPS and www to non-www ##
+
+    RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
+    RewriteCond %{QUERY_STRING} _escaped_fragment_
+        
+    # Only proxy the request to Prerender if it's a request for HTML
+    RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://www.streamus/$2 [P,L]
+</ifModule>
 
 <ifModule mod_headers.c>
     Header set Connection keep-alive
+
+	# prerender.io token
+	RequestHeader set X-Prerender-Token "ZPCpeEvx2NbcN1aAx7Jc"
 </ifModule>
 
 <IfModule mod_headers.c>

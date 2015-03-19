@@ -3,9 +3,10 @@
 @import "utility";
 @import "home";
 @import "gettingStarted";
-@import "social";
-@import "donate";
+@import "share";
 @import "about";
+@import "donate";
+@import "social";
 
 body {
     padding-top: 20px;
@@ -16,12 +17,32 @@ body {
 }
 
 .jumbotron {
-    background-color: transparent;
+    margin-bottom: 0;
+    background-color: transparent;    
+    
+    .lead {
+        margin: 1.5em auto;
+    }
 }
 
 h1,
 h2 {
     font-weight: bold;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: 26px;
+}
+
+@media (min-width: 1200px) {
+    .footer {
+        font-size: 1.1em;
+    }
 }
 
 //  Sync the height of legal with badges
@@ -33,23 +54,30 @@ h2 {
     padding-left: 4px;
 }
 
+.badges {
+    margin-top: 10px;
+}
+
 .nav {
     display: inline-block;
-    //  Align the navigation items with the logo
-    margin-top: 14px;
+    margin-top: 24px;
 }
 
-// Slight transition on hovers rather than instant color change
-a,
-a.btn,
-button.btn {
-    transition: all .4s;
+.social,
+.zopim {
+    display: none;
 }
 
-@media (max-width: 1399px) {
+@transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
+.navigation-link,
+.btn {
+    transition: all .14s @transition-easeOutSine;
+}
+
+@media (min-width: 1400px) {
     .social,
     .zopim {
-        display: none;
+        display: block;
     }
 }
 
@@ -62,5 +90,36 @@ button.btn {
     .badges,
     .nav {
         float: right;
+    }
+
+    .badges {
+        margin-top: 0;
+    }
+
+    .nav {
+        //  Align the navigation items with the logo
+        margin-top: 14px;
+    }
+}
+
+@media (min-width: 768px) {
+    .jumbotron {
+        padding: 32px 0;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
+
+// keep navs in single line on tiny screens
+.navigation-link {
+    padding: 10px 6px;
+}
+
+@media (min-width: 500px) {
+    // provide more spacing on larger screens
+    .navigation-link {
+        padding: 10px 15px;
     }
 }
