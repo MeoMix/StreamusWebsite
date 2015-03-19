@@ -27,6 +27,8 @@ Third-Party Libraries
 Streamus Website utilizes several third-party libraries:
 
 * [BackboneJS](http://backbonejs.org/)
+* [Backbone.Base-Router](https://github.com/jmeas/backbone.base-router)
+* [Backbone.Intercept](https://github.com/jmeas/backbone.intercept)
 * [Backbone MarionetteJS](http://marionettejs.com)
 * [Bootstrap](http://getbootstrap.com)
 * [jQuery](http://jquery.com/)
@@ -44,7 +46,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use any files in this repository except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
