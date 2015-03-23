@@ -145,7 +145,6 @@
     <Content Include="src\js\view\social\socialView.js" />
     <Content Include="src\js\view\dialog\termsOfUseView.js" />
     <Content Include="src\js\thirdParty\jquery.browser.js" />
-    <Content Include="src\js\thirdParty\googleAnalytics.js" />
     <Content Include="src\js\thirdParty\text.js" />
     <Content Include="src\js\thirdParty\zopim.js" />
     <Content Include="src\less\reset.less" />
