@@ -79,7 +79,7 @@ module.exports = function(grunt) {
                         jquery: 'thirdParty/jquery',
                         'jquery.browser': 'thirdParty/jquery.browser',
                         'jquery.unveil': 'thirdParty/jquery.unveil',
-                        underscore: 'thirdParty/lodash',
+                        lodash: 'thirdParty/lodash',
                         text: 'thirdParty/text'
                     },
                     dir: 'dist',
@@ -153,9 +153,20 @@ module.exports = function(grunt) {
                 }
             }
         },
-        
         usemin: {
             html: 'dist/index.html'
+        },
+        replace: {
+            //  Ensure that the localDebug flag is not set to true when building a release.
+            localDebug: {
+                src: ['dist/js/application.js'],
+                overwrite: true,
+                replacements: [{
+                    //	Find the line that looks like: "localDebug: true" and set it to false. Local debugging is for development only.
+                    from: 'localDebug: true',
+                    to: 'localDebug: false'
+                }]
+            }
         }
     });
 
@@ -163,5 +174,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', 'Run tests and code-quality analysis', ['jshint', 'recess']);
 
-    grunt.registerTask('build', ['test', 'requirejs', 'less', 'useminPrepare', 'concat:generated', 'usemin', 'htmlmin', 'imagemin', 'clean:dist']);
+    grunt.registerTask('build', ['test', 'requirejs', 'less', 'useminPrepare', 'concat:generated', 'usemin', 'htmlmin', 'imagemin', 'replace:localDebug', 'clean:dist']);
 };

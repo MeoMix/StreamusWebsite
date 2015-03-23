@@ -4,13 +4,14 @@
     var Router = require('router');
     var BodyView = require('view/bodyView');
     var ExtensionData = require('model/common/extensionData');
+    var AnalyticsManager = require('model/common/analyticsManager');
 
     var Application = Marionette.Application.extend({
         //  Set this flag to true to enable localhost server & debugging flags.
         localDebug: true,
         router: null,
-        pages: null,
         extensionData: null,
+        analyticsManager: null,
         serverUrl: '',
 
         channels: {
@@ -23,6 +24,7 @@
         initialize: function() {
             this._setServerUrl();
             this.extensionData = new ExtensionData();
+            this.analyticsManager = new AnalyticsManager();
 
             this.on('start', this._onStart);
         },
@@ -44,6 +46,8 @@
 
             //  Intercept href links so that HTML5 pushState is used instead of a full page reload.
             Backbone.Intercept.start();
+
+            this.analyticsManager.sendPageView();
         }
     });
 

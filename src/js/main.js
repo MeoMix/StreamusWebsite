@@ -17,7 +17,7 @@
             deps: ['jquery'],
             exports: '$.fn.unveil'
         },
-        googleAnalytics: {
+        '//www.google-analytics.com/analytics.js': {
             exports: 'window.ga'
         },
         zopim: {
@@ -54,8 +54,7 @@
             '//cdnjs.cloudflare.com/ajax/libs/unveil/1.3.0/jquery.unveil.min',
             'thirdParty/jquery.unveil'
         ],
-        //  Rename lodash to underscore since functionally equivilant but underscore is expected by other third party libraries.
-        underscore: [
+        lodash: [
             '//cdnjs.cloudflare.com/ajax/libs/lodash.js/3.4.0/lodash.min',
             'thirdParty/lodash'
         ],
@@ -65,6 +64,12 @@
             'thirdParty/text'
         ],
         zopim: 'thirdParty/zopim'
+    },
+
+    map: {
+        '*': {
+            'underscore': 'lodash'
+        }
     }
 });
 
@@ -77,7 +82,6 @@ define(function(require) {
     require('backbone.intercept');
     require('backbone.marionette');
     require('bootstrap');
-    require('googleAnalytics');
     require('jquery.browser');
     require('jquery.unveil');
     require('text');

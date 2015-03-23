@@ -15,9 +15,11 @@ AddCharset utf-8 .css .js
 	## HTML5 pushstate support ##
 
 	## Redirect HTTP to HTTPS and www to non-www ##
-	RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
+    RewriteCond %{HTTP_HOST} !^src\.streamus\.com$ [NC]
+    RewriteCond %{HTTP_HOST} !^dist\.streamus\.com$ [NC]
 	RewriteCond %{HTTP_HOST} !=localhost
 	RewriteCond %{HTTP_HOST} !=127.0.0.1
+	RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
 	RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
 	## Redirect HTTP to HTTPS and www to non-www ##
 

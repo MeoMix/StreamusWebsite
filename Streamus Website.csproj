@@ -68,6 +68,7 @@
     <Content Include="src\js\collection\playlistItems.js" />
     <Content Include="src\js\collection\playlists.js" />
     <Content Include="src\js\enum\routeType.js" />
+    <Content Include="src\js\model\common\analyticsManager.js" />
     <Content Include="src\js\model\common\browser.js" />
     <Content Include="src\js\model\common\extensionData.js" />
     <Content Include="src\js\model\dialog\dialog.js" />
