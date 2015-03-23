@@ -107,6 +107,7 @@
     <Content Include="src\js\view\dialog\privacyDialogView.js" />
     <Content Include="src\js\view\dialog\termsOfUseDialogView.js" />
     <Content Include="src\js\view\header\logoView.js" />
+    <Content Include="src\js\view\header\navigationItemsView.js" />
     <Content Include="src\js\view\header\navigationItemView.js" />
     <Content Include="src\js\view\content\about\aboutRoute.js" />
     <Content Include="src\js\view\content\donate\donateRoute.js" />
@@ -162,6 +163,7 @@
     <Content Include="src\template\content\faq.html" />
     <Content Include="src\template\content\gettingStarted.html" />
     <Content Include="src\template\content\home.html" />
+    <Content Include="src\template\header\navigation.html" />
     <Content Include="src\template\header\logo.html" />
     <Content Include="src\template\header\navigationItem.html" />
     <Content Include="src\template\content\notFound.html" />
