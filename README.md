@@ -6,7 +6,6 @@
   </a>
 </p>
 
-
 Overview
 ========
 The Streamus website is an alternative download point for the Streamus Google Chrome extension. It also contains a small instructional guide, a brief history of the program and a donation page.

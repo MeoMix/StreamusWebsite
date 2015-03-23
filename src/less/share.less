@@ -1,4 +1,26 @@
-﻿.loading,
-.error {
-    font-size: 1.2em;
+﻿.playlistItem {
+    display: flex;
+    align-items: center;
+}
+
+@badge-fixedWidth: 55px;
+
+.playlistItem-title {
+    flex: 1;
+    margin-left: @badge-fixedWidth;
+}
+
+.playlistItems {
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.playlist:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.badge-wrapper {
+    width: @badge-fixedWidth;
+    line-height: 0;
 }

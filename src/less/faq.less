@@ -1,0 +1,16 @@
+﻿@import "color";
+@transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
+
+.panel-heading {
+    cursor: pointer;
+    transition: all .14s @transition-easeOutSine;
+}
+
+.panel-heading:not(.collapsed){
+    background-color: @blue;
+    color: white;
+}
+
+.panel-heading.collapsed:hover {
+    background-color: @dark--highlight;
+}

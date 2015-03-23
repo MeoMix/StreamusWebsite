@@ -1,0 +1,171 @@
+﻿<div class="jumbotron">
+    <h1>Frequently Asked Questions</h1>
+    <h2>You've got questions. I've got answers.</h2>
+</div>
+
+<hr />
+
+<div class="panel-group" id="faq-accordion">
+    <h2>General</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-mobile-app" data-parent="#faq-accordion">
+            <div class="panel-title">
+                Is there a mobile app?
+            </div>
+        </div>
+        <div id="general-mobile-app" class="panel-collapse collapse">
+            <div class="panel-body">
+                No. Additionally, there are no plans to create one in the near future. It's too much work for one person to develop an app for
+                multiple environments. I will need to receive investments and hire additional developers before mobile would be a possibility.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-firefox" data-parent="#faq-accordion">
+            <div class="panel-title">
+                Firefox support?
+            </div>
+        </div>
+        <div id="general-firefox" class="panel-collapse collapse">
+            <div class="panel-body">
+                No. However, it is on my list of features to explore in the future. I do not have a timeframe. It is 
+                non-trivial to support multiple browsers and Firefox has far fewer users than Webkit browsers.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-bandwidth" data-parent="#faq-accordion">
+            <div class="panel-title">
+                Does Streamus use less bandwidth than regular YouTube?
+            </div>
+        </div>
+        <div id="general-bandwidth" class="panel-collapse collapse">
+            <div class="panel-body">
+                Not substantially. The full YouTube video is still loaded and played. It is a violation of YouTube's Terms of Service to separate the audio from the video. However,
+                you will not load all the additional content on YouTube pages which will save some bandwidth.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-import-playlist" data-parent="#faq-accordion">
+            <div class="panel-title">
+                How can I import a YouTube playlist?
+            </div>
+        </div>
+        <div id="general-import-playlist" class="panel-collapse collapse">
+            <div class="panel-body">
+                You have two options. You can either copy/paste the playlist's URL into Streamus' search and work with the songs individually, or you can open the left-side navigation drawer,
+                click the 'Create Playlist' button, and copy/paste the playlist's URL into the URL input box. Streamus will then import the playlist for you.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-refresh-playlist" data-parent="#faq-accordion">
+            <div class="panel-title">
+                Will imported YouTube playlists refresh when new content is added on YouTube?
+            </div>
+        </div>
+        <div id="general-refresh-playlist" class="panel-collapse collapse">
+            <div class="panel-body">
+                There is no support for refreshing imported YouTube playlists, but it is on the <a href="https://github.com/MeoMix/StreamusChromeExtension/issues/16" target="_blank">to do list</a>.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-soundcloud" data-parent="#faq-accordion">
+            <div class="panel-title">
+                SoundCloud support?
+            </div>
+        </div>
+        <div id="general-soundcloud" class="panel-collapse collapse">
+            <div class="panel-body">
+                This is on my short list of features to added soon. Hopefully within a couple of months.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-lastfm" data-parent="#faq-accordion">
+            <div class="panel-title">
+                Last.FM support?
+            </div>
+        </div>
+        <div id="general-lastfm" class="panel-collapse collapse">
+            <div class="panel-body">
+                There is no support for Last.FM, but it is on the <a href="https://github.com/MeoMix/StreamusChromeExtension/issues/116" target="_blank">to do list</a>.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-omnibox-keyword" data-parent="#faq-accordion">
+            <div class="panel-title">
+                Can I change the keyword using for triggering omnibox search?
+            </div>
+        </div>
+        <div id="general-omnibox-keyword" class="panel-collapse collapse">
+            <div class="panel-body">
+                This is currently not possible, but I reported the concern to Google and I am hopeful they will make a change to the browser to support this.
+                You can see the bug report <a href="https://code.google.com/p/chromium/issues/detail?id=459236" target="_blank">here</a>.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#general-background" data-parent="#faq-accordion">
+            <div class="panel-title">
+                How can I control whether Streamus continues playing after all Chrome windows are closed?
+            </div>
+        </div>
+        <div id="general-background" class="panel-collapse collapse">
+            <div class="panel-body">
+                Go to chrome://settings/. Click 'Show advanced settings' and scroll down to 'System.' You may then toggle on/off the feature 'Continue running background apps when Google Chrome is closed.'
+            </div>
+        </div>
+    </div>
+
+    <h2>Troubleshooting</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#troubleshooting-network-failed" data-parent="#faq-accordion">
+            <div class="panel-title">
+                I received the error "NETWORK_FAILED" when I tried to installed.
+            </div>
+        </div>
+        <div id="troubleshooting-network-failed" class="panel-collapse collapse">
+            <div class="panel-body">
+                The NETWORK_FAILED error indicates that there's an issue with your Google Chrome or Opera installation. The easiest way to fix this is by uninstalling your browser and
+                then reinstalling it. Otherwise, you can try clearing your browser's cache and restarting your PC. This may or may not fix your issue.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#troubleshooting-flash" data-parent="#faq-accordion">
+            <div class="panel-title">
+                I received a message about Streamus detecting Flash.
+            </div>
+        </div>
+        <div id="troubleshooting-flash" class="panel-collapse collapse">
+            <div class="panel-body">
+                This issue can usually be solved by either going to <a href="https://www.youtube.com/html5" target="_blank">https://www.youtube.com/html5</a> and ensuring HTML5 is enabled, or by disabling all
+                your extensions including Streamus and then re-enabling Streamus. You can enable/disable extensions by going to chrome://extensions/ and clicking the
+                'Enabled' checkbox next to each extension.
+                
+                If you continue to experience issues, please e-mail me and I will help you work through the problem.
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#troubleshooting-blank-screen" data-parent="#faq-accordion">
+            <div class="panel-title">
+                All I see when I open Streamus is a blank screen.
+            </div>
+        </div>
+        <div id="troubleshooting-blank-screen" class="panel-collapse collapse">
+            <div class="panel-body">
+                This issue is most commonly caused by an out-of-date browser. Please ensure that you're using a current version of Google Chrome or Opera. In Chrome, you can check this by going to chrome://chrome/.
+                In Opera, you should go to 'Opera -> About Opera' through the menu in the upper-left corner.
+                
+                Also, ensure that you have JavaScript enabled for Streamus. You may need to whitelist the extension if you have JavaScript disabled by default.
+                
+                If you continue to experience issues, please e-mail me and I will help you work through the problem.
+            </div>
+        </div>
+    </div>
+</div>

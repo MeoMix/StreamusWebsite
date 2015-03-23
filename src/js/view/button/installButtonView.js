@@ -3,7 +3,7 @@
 
     var RouteType = require('enum/routeType');
     var Button = require('view/behavior/button');
-    var utility = require('utility');
+    var Browser = require('model/common/browser');
 
     var InstallButtonView = Marionette.ItemView.extend({
         tagName: 'a',
@@ -34,7 +34,9 @@
                 text: 'Installing...'
             });
 
-            if (utility.isBrowserOpera()) {
+            var browser = new Browser();
+
+            if (browser.get('isOpera')) {
                 var operaExtensionId = Streamus.extensionData.get('operaId');
                 opr.addons.installExtension(operaExtensionId, this._onInstallSuccess.bind(this), this._onInstallError.bind(this));
             } else {

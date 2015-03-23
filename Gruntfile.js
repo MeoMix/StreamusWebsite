@@ -99,7 +99,7 @@ module.exports = function(grunt) {
                     }],
                     //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
-                    fileExclusionRegExp: /^\.|vsdoc.js$|.less$/
+                    fileExclusionRegExp: /^\.|vsdoc.js$|.less|.css$/
                 }
             }
         },
@@ -138,6 +138,24 @@ module.exports = function(grunt) {
                     src: ['template', 'build.txt']
                 }]
             }
+        },
+        
+        useminPrepare: {
+            html: 'dist/index.html',
+            options: {
+                flow: {
+                    html: {
+                        steps: {
+                            css: ['concat']
+                        },
+                        post: {}
+                    }
+                }
+            }
+        },
+        
+        usemin: {
+            html: 'dist/index.html'
         }
     });
 
@@ -145,5 +163,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', 'Run tests and code-quality analysis', ['jshint', 'recess']);
 
-    grunt.registerTask('build', ['test', 'requirejs', 'less', 'htmlmin', 'imagemin', 'clean:dist']);
+    grunt.registerTask('build', ['test', 'requirejs', 'less', 'useminPrepare', 'concat:generated', 'usemin', 'htmlmin', 'imagemin', 'clean:dist']);
 };

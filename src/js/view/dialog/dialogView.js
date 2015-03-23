@@ -1,7 +1,8 @@
 ﻿define(function(require) {
     'use strict';
 
-    var DialogTemplate = require('text!template/dialog.html');
+    var Dialog = require('model/dialog/dialog');
+    var DialogTemplate = require('text!template/dialog/dialog.html');
 
     var DialogView = Marionette.LayoutView.extend({
         className: 'modal fade',
@@ -15,8 +16,17 @@
             contentRegion: '.contentRegion'
         },
 
+        contentViewClass: null,
+        modelOptions: null,
+
+        initialize: function() {
+            this.model = new Dialog(this.modelOptions);
+        },
+
         onRender: function() {
-            this.contentRegion.show(this.contentView);
+            var contentView = new this.contentViewClass();
+            this.contentRegion.show(contentView);
+
             this.$el.modal();
         },
 

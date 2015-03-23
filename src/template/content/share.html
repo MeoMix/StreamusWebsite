@@ -1,0 +1,41 @@
+﻿<div class="share-introduction">
+    <div class="jumbotron">
+        <h1>Sharing Playlists</h1>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class='col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0'>
+            <p>
+                Share playlists with friends by sending them a custom Streamus' playlist URL. This page will change if it detects a playlist in the URL!
+            </p>
+            <p>
+                To get you started, here's one of my playlists:
+
+                <a href="<%= shareRouteType %>/playlist/1f9edabfdeb8/tropical_house">
+                    <strong>
+                        Tropical House playlist
+                    </strong>
+                </a>
+            </p>
+        </div>
+    
+        <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
+            <img src="img/share.png" class="share-image img-thumbnail img-responsive" alt="Image of Sharing Playlist"/>
+        </div>
+    </div>
+</div>
+
+<div class="share-loadedPlaylist">
+    <div class="row">
+        <div class='share-loading is-hidden'>
+            Loading share data...
+        </div>
+
+        <div class='share-error is-hidden'>
+            Failed to load share data. Sorry. :(
+        </div>
+    </div>
+</div>
+
+<div class='playlistsRegion'></div>

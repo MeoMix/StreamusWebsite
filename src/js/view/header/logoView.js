@@ -2,7 +2,7 @@
     'use strict';
 
     var RouteType = require('enum/routeType');
-    var LogoTemplate = require('text!template/logo.html');
+    var LogoTemplate = require('text!template/header/logo.html');
 
     var LogoView = Marionette.ItemView.extend({
         tagName: 'a',

@@ -1,7 +1,7 @@
 ﻿define(function(require) {
     'use strict';
 
-    var NavigationItem = require('model/navigationItem');
+    var NavigationItem = require('model/header/navigationItem');
 
     var NavigationItems = Backbone.Collection.extend({
         model: NavigationItem,

@@ -5,7 +5,7 @@
 
     var PlaylistItemsView = Marionette.CollectionView.extend({
         tagName: 'ul',
-        className: 'list-group',
+        className: 'list-group playlistItems',
         childView: PlaylistItemView,
         template: false
     });

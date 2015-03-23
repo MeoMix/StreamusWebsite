@@ -1,7 +1,7 @@
 ﻿define(function(require) {
     'use strict';
 
-    var SocialTemplate = require('text!template/social.html');
+    var SocialTemplate = require('text!template/social/social.html');
 
     var SocialView = Marionette.ItemView.extend({
         tagName: 'aside',

@@ -1,7 +1,6 @@
 ﻿define(function() {
     'use strict';
 
-    //  TODO: Why is Button a behavior but Dialog a sub-view? Should be standardized.
     var Button = Marionette.Behavior.extend({
         events: {
             'click': '_onClick'

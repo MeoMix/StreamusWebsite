@@ -6,8 +6,8 @@
             this.listenTo(Streamus.channels.dialog.commands, 'show:dialog', this._showDialog);
         },
 
-        _showDialog: function(DialogView, options) {
-            this.show(new DialogView(options));
+        _showDialog: function(DialogView) {
+            this.show(new DialogView());
         }
     });
 

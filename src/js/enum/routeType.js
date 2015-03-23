@@ -3,6 +3,7 @@ define({
     //  Home is empty on purpose.
     Home: '',
     GettingStarted: 'getting-started',
+    Faq: 'frequently-asked-questions',
     About: 'about',
     Donate: 'donate',
     Share: 'share',

@@ -1,7 +1,7 @@
 ﻿define(function(require) {
     'use strict';
 
-    var NavigationItemTemplate = require('text!template/navigationItem.html');
+    var NavigationItemTemplate = require('text!template/header/navigationItem.html');
 
     var NavigationItemView = Marionette.ItemView.extend({
         tagName: 'li',
@@ -21,8 +21,9 @@
         },
         
         //  Respond to routes showing to ensure that the proper navigation item is highlighted.
-        _onRouteShown: function(routeType) {
-            if (routeType === this.model.get('routeType')) {
+        _onRouteShown: function(routeType, routeData) {
+            //  TODO: I just hacked in the Coachella activator here.
+            if (routeType === this.model.get('route') || routeData.uriFragment.indexOf('coachella') !== -1 && this.model.get('route').indexOf('coachella') !== -1) {
                 this.model.set('active', true);
             }
         },

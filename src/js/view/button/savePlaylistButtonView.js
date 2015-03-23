@@ -1,12 +1,12 @@
 ﻿define(function(require) {
     'use strict';
 
-    var SavePlaylistButtonTemplate = require('text!template/savePlaylistButton.html');
+    var SavePlaylistButtonTemplate = require('text!template/button/savePlaylistButton.html');
     var Button = require('view/behavior/button');
 
     var SavePlaylistButtonView = Marionette.ItemView.extend({
         tagName: 'a',
-        className: 'savePlaylistButton btn btn-success',
+        className: 'savePlaylistButton btn btn-lg btn-success',
         template: _.template(SavePlaylistButtonTemplate),
 
         behaviors: {
