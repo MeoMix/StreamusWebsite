@@ -52,7 +52,7 @@ module.exports = function(grunt) {
                 maxdepth: 4,
                 maxstatements: 15,
                 maxcomplexity: 5,
-                maxlen: 150,
+                maxlen: 200,
                 //	Don't validate third-party libraries
                 ignores: ['src/js/thirdParty/**/*.js']
             },
