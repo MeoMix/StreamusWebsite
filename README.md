@@ -8,7 +8,14 @@
 
 Overview
 ========
-The Streamus website is an alternative download point for the Streamus Google Chrome extension. It also contains a small instructional guide, a brief history of the program and a donation page.
+The Streamus website consists of:
+
+* Home: An introduction to Streamus and a download button.
+* Getting Started: A more in-depth introduction to Streamus accompanied by screenshots.
+* FAQ: Responses to commonly asked feature requests and troubleshooting inquiries.
+* Share: A page which allows users to share playlists with others.
+* About: An outline of the project as well as the developer behind it.
+* Donate: A donation page which supports PayPal and Bitcoin.
 
 Development
 ========
