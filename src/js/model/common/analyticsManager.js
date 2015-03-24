@@ -40,6 +40,10 @@
             } else {
                 this.get('module')('send', 'pageview', url);
             }
+        },
+        
+        trackEvent: function(category, action, label) {
+            this.get('module')('_trackEvent', category, action, label);
         }
     });
 

@@ -30,7 +30,9 @@
         _onSendMessageResponse: function(response) {
             if (response.result === 'success') {
                 this.model.set('text', 'Playlist added');
+                Streamus.analyticsManager.trackEvent('Playlist', 'AddedSuccess', this.model.get('playlistId'));
             } else {
+                Streamus.analyticsManager.trackEvent('Playlist', 'AddedError', this.model.get('playlistId'));
                 this.model.reset();
             }
         }

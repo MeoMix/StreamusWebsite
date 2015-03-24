@@ -57,7 +57,7 @@ module.exports = function(grunt) {
                 ignores: ['src/js/thirdParty/**/*.js']
             },
 
-            files: ['Gruntfile.js', 'src/js/**/*.js']
+            files: ['src/js/**/*.js']
         },
         //  Ensure LESS code-quality by comparing it against Twitter's ruleset.
         //  Using a slightly modified version which has support for modern browser properties
@@ -161,13 +161,31 @@ module.exports = function(grunt) {
         replace: {
             //  Ensure that the localDebug flag is not set to true when building a release.
             localDebug: {
-                src: ['dist/js/main.js'],
+                src: ['dist/js/main.min.js'],
                 overwrite: true,
                 replacements: [{
                     //	Find the line that looks like: "localDebug:!0" and set it to !1. Local debugging is for development only.
                     from: 'localDebug:!0',
                     to: 'localDebug:!1'
                 }]
+            },
+            mainReferences: {
+                src: ['dist/index.html', 'dist/js/main.min.js'],
+                overwrite: true,
+                replacements: [{
+                    from: 'data-main=js/main',
+                    to: 'data-main=js/main.min'
+                }, {
+                    from: 'define("main"',
+                    to: 'define("main.min"'
+                }]
+            }
+        },
+        //  Rename main.js to main.min.js since it has been minified by r.js
+        rename: {
+            main: {
+                src: ['dist/js/main.js'],
+                dest: ['dist/js/main.min.js']
             }
         }
     });
@@ -176,5 +194,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', 'Run tests and code-quality analysis', ['jshint', 'recess']);
 
-    grunt.registerTask('build', ['test', 'requirejs', 'less', 'useminPrepare', 'concat:generated', 'usemin', 'htmlmin', 'imagemin', 'replace:localDebug', 'clean:dist']);
+    grunt.registerTask('build', ['test', 'requirejs', 'less', 'useminPrepare', 'concat:generated', 'usemin', 'htmlmin', 'imagemin', 'rename:main', 'replace:mainReferences', 'replace:localDebug', 'clean:dist']);
 };

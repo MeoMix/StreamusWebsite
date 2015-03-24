@@ -51,6 +51,7 @@
             Streamus.router.navigate(RouteType.GettingStarted, {
                 trigger: true
             });
+            Streamus.analyticsManager.trackEvent('Extension', 'InstallSuccess');
         },
 
         _onInstallError: function(error) {
@@ -60,6 +61,7 @@
                 this.model.set({
                     text: 'Error: ' + error
                 });
+                Streamus.analyticsManager.trackEvent('Extension', 'InstallError', error);
             }
         }
     });

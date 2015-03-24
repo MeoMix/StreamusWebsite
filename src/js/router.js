@@ -21,6 +21,7 @@
 
             newRoute.show(routeData);
             Streamus.channels.route.vent.trigger('shown', newRoute.type, routeData);
+            Streamus.analyticsManager.sendPageView();
         },
 
         routes: function() {

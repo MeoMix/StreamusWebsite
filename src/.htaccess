@@ -8,6 +8,16 @@ AddCharset utf-8 .css .js
 	# Turn mod_rewrite on
 	RewriteEngine On
 
+	## block libwww-perl ##
+	RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+	RewriteRule .* – [F,L]
+	## block libwww-perl ##
+
+	## redirect site IP to site domain ##
+	RewriteCond %{HTTP_HOST} ^66\.175\.216\.246
+	RewriteRule (.*) http://www.streamus.com/$1 [R=301,L]
+	## redirect site IP to site domain ##
+
 	## HTML5 pushstate support ##
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
@@ -32,19 +42,17 @@ AddCharset utf-8 .css .js
 		#RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus/$2 [P,L]
     </IfModule>
 	## prerender.io request interception for web crawlers ##
-</ifModule>
+</IfModule>
 
-<ifModule mod_headers.c>
+<IfModule mod_headers.c>
     Header set Connection keep-alive
 
 	# prerender.io token
 	RequestHeader set X-Prerender-Token "ZPCpeEvx2NbcN1aAx7Jc"
-</ifModule>
-
-<IfModule mod_headers.c>
-  <FilesMatch "\.(svg)$">
-    Header append Vary: Accept-Encoding
-  </FilesMatch>
+	
+	<FilesMatch "\.(svg)$">
+		Header append Vary: Accept-Encoding
+    </FilesMatch>
 </IfModule>
 
 ## Expiration caching ##
@@ -73,7 +81,7 @@ AddCharset utf-8 .css .js
     AddType application/x-font-woff         woff
     AddType image/svg+xml                   svg svgz 
     AddEncoding gzip                        svgz
-</Ifmodule>
+</IfModule>
 ## Defining MIME types
 
 ## Compressing output

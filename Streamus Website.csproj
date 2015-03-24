@@ -42,7 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include=".htaccess" />
     <Content Include="Gruntfile.js" />
     <Content Include="src\css\font-awesome.min.css" />
     <Content Include="src\css\index.min.css" />
@@ -135,6 +134,7 @@
     <Content Include="src\fonts\fontawesome-webfont.woff" />
     <Content Include="src\fonts\fontawesome-webfont.woff2" />
     <Content Include="src\fonts\FontAwesome.otf" />
+    <Content Include="src\.htaccess" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
     <Content Include="src\js\view\playlist\playlistItemsView.js" />
     <Content Include="src\js\view\playlist\playlistItemView.js" />
