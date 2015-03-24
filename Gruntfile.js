@@ -68,6 +68,7 @@ module.exports = function(grunt) {
         },
         requirejs: {
             production: {
+                //  All r.js options can be found here: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     appDir: 'src',
                     mainConfigFile: 'src/js/main.js',
@@ -99,7 +100,8 @@ module.exports = function(grunt) {
                     }],
                     //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
-                    fileExclusionRegExp: /^\vsdoc.js$|.less|.css$/
+                    fileExclusionRegExp: /vsdoc.js$|.less$|.css$/,
+                    preserveLicenseComments: false
                 }
             }
         },
@@ -159,12 +161,12 @@ module.exports = function(grunt) {
         replace: {
             //  Ensure that the localDebug flag is not set to true when building a release.
             localDebug: {
-                src: ['dist/js/application.js'],
+                src: ['dist/js/main.js'],
                 overwrite: true,
                 replacements: [{
-                    //	Find the line that looks like: "localDebug: true" and set it to false. Local debugging is for development only.
-                    from: 'localDebug: true',
-                    to: 'localDebug: false'
+                    //	Find the line that looks like: "localDebug:!0" and set it to !1. Local debugging is for development only.
+                    from: 'localDebug:!0',
+                    to: 'localDebug:!1'
                 }]
             }
         }
