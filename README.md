@@ -25,19 +25,19 @@ Development
 * You'll want to navigate to your hosts file and add entries for: "127.0.0.1 src.streamus.com" and "127.0.0.1 dist.streamus.com". This will allow for named websites instead of just localhost which helps satisfy CORS.
 * You then need to modify your VHosts to expect these websites. My config looks like:
 
-><VirtualHost src.streamus.com:80=''>
->  DocumentRoot "${WEBSITEROOT}/src"
->  ServerName src.streamus.com
-></VirtualHost>
+```<VirtualHost src.streamus.com:80=''>
+```  DocumentRoot "${WEBSITEROOT}/src"
+```  ServerName src.streamus.com
+```</VirtualHost>
 
-><VirtualHost dist.streamus.com:80=''>
->  DocumentRoot "${WEBSITEROOT}/dist"
->  ServerName dist.streamus.com
-></VirtualHost>
+```<VirtualHost dist.streamus.com:80=''>
+```  DocumentRoot "${WEBSITEROOT}/dist"
+```  ServerName dist.streamus.com
+```</VirtualHost>
 
 where WEBSITEROOT points to my src directory such as:
 
-> Define WEBSITEROOT "/Users/Meo/Documents/GitHub/StreamusWebsite"
+````Define WEBSITEROOT "/Users/Meo/Documents/GitHub/StreamusWebsite"
 
 **Server settings:** Be sure to set localDebug to false in application.js unless you have a local instance of Streamus' server running.
 
