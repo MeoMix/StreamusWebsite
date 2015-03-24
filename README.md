@@ -17,7 +17,7 @@ Development
 2. Run "npm install" to install necessary dependencies.
 3. Install Apache 2.4 and configure it such that it can find src/index.html
 4. Run "grunt less" and then "grunt watch" to compile LESS to CSS and monitor for changes.
-5. Navigate to index.html in the browser.
+5. Navigate to src.streamus.com in your browser.
 6. To build a release, run "grunt build". Versioning is not yet supported.
 
 **Apache Configuration for Windows:** In order to develop Streamus' website properly you'll need to configure Apache. A few things are needed:
