@@ -99,7 +99,7 @@ module.exports = function(grunt) {
                     }],
                     //  Don't leave a copy of the file if it has been concatenated into a larger one.
                     removeCombined: true,
-                    fileExclusionRegExp: /^\.|vsdoc.js$|.less|.css$/
+                    fileExclusionRegExp: /^\vsdoc.js$|.less|.css$/
                 }
             }
         },

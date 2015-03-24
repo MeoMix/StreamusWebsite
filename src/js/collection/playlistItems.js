@@ -4,6 +4,7 @@
     var PlaylistItem = require('model/playlist/playlistItem');
 
     var PlaylistItems = Backbone.Collection.extend({
+        comparator: 'sequence',
         model: PlaylistItem,
 
         //  Convert total duration of the collection's models to a user friendly format.

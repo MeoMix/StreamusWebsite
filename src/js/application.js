@@ -8,7 +8,7 @@
 
     var Application = Marionette.Application.extend({
         //  Set this flag to true to enable localhost server & debugging flags.
-        localDebug: true,
+        localDebug: false,
         router: null,
         extensionData: null,
         analyticsManager: null,
