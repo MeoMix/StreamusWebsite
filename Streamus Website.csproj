@@ -60,6 +60,7 @@
     <Content Include="src\img\sean.jpg" />
     <Content Include="src\img\iconLocation.png" />
     <Content Include="src\img\selectingItems.png" />
+    <Content Include="src\img\share.png" />
     <Content Include="src\img\youTubeBadge.png" />
     <Content Include="src\index.html" />
     <Content Include="src\js\application.js" />
@@ -157,6 +158,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
+    <Content Include="src\robots.txt" />
+    <Content Include="src\sitemap.xml" />
     <Content Include="src\template\content\about.html" />
     <Content Include="src\template\dialog\contact.html" />
     <Content Include="src\template\content\donate.html" />

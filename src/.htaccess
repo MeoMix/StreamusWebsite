@@ -1,5 +1,3 @@
-Options +FollowSymLinks -MultiViews
-
 ## Support UTF-8 Encoding ##
 AddDefaultCharset utf-8
 AddCharset utf-8 .css .js
@@ -7,6 +5,7 @@ AddCharset utf-8 .css .js
 <IfModule mod_rewrite.c>
 	# Turn mod_rewrite on
 	RewriteEngine On
+	Options +FollowSymLinks -MultiViews
 
 	## block libwww-perl ##
 	RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
@@ -23,6 +22,11 @@ AddCharset utf-8 .css .js
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^ / [L]
 	## HTML5 pushstate support ##
+
+	## Redirect index.html and index.htm requests to root ##
+	RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
+	RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
+	## Redirect index.html and index.htm requests to root ##
 
 	## Redirect HTTP to HTTPS and www to non-www ##
     RewriteCond %{HTTP_HOST} !^src\.streamus\.com$ [NC]

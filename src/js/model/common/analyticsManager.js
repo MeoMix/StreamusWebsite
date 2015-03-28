@@ -43,7 +43,7 @@
         },
         
         trackEvent: function(category, action, label) {
-            this.get('module')('_trackEvent', category, action, label);
+            this.get('module')('send', 'event', category, action, label);
         }
     });
 
