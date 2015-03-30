@@ -3,76 +3,80 @@ AddDefaultCharset utf-8
 AddCharset utf-8 .css .js
 
 <IfModule mod_rewrite.c>
-	# Turn mod_rewrite on
-	RewriteEngine On
-	Options +FollowSymLinks -MultiViews
+    # Turn mod_rewrite on
+    RewriteEngine On
+    Options +FollowSymLinks -MultiViews
 
-	## block libwww-perl ##
-	RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
-	RewriteRule .* – [F,L]
-	## block libwww-perl ##
+    ## block libwww-perl ##
+    RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+    RewriteRule .* – [F,L]
+    ## block libwww-perl ##
 
-	## redirect site IP to site domain ##
-	RewriteCond %{HTTP_HOST} ^66\.175\.216\.246
-	RewriteRule (.*) http://www.streamus.com/$1 [R=301,L]
-	## redirect site IP to site domain ##
+    ## redirect site IP to site domain ##
+    RewriteCond %{HTTP_HOST} ^66\.175\.216\.246
+    RewriteRule (.*) http://www.streamus.com/$1 [R=301,L]
+    ## redirect site IP to site domain ##
 
-	## HTML5 pushstate support ##
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^ / [L]
-	## HTML5 pushstate support ##
+    ## Redirect index.html and index.htm requests to root ##
+    RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
+    RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
+    ## Redirect index.html and index.htm requests to root ##
 
-	## Redirect index.html and index.htm requests to root ##
-	RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
-	RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
-	## Redirect index.html and index.htm requests to root ##
-
-	## Redirect HTTP to HTTPS and www to non-www ##
+    ## Redirect HTTP to HTTPS and www to non-www ##
     RewriteCond %{HTTP_HOST} !^src\.streamus\.com$ [NC]
     RewriteCond %{HTTP_HOST} !^dist\.streamus\.com$ [NC]
-	RewriteCond %{HTTP_HOST} !=localhost
-	RewriteCond %{HTTP_HOST} !=127.0.0.1
-	RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
-	RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
-	## Redirect HTTP to HTTPS and www to non-www ##
+    RewriteCond %{HTTP_HOST} !=localhost
+    RewriteCond %{HTTP_HOST} !=127.0.0.1
+    RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
+    RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
+    ## Redirect HTTP to HTTPS and www to non-www ##
 
-	## prerender.io request interception for web crawlers ##
-	<IfModule mod_proxy_http.c>
-		#RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
-		#RewriteCond %{QUERY_STRING} _escaped_fragment_
-        
-		# Only proxy the request to Prerender if it's a request for HTML
-		#RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus/$2 [P,L]
+    ## prerender.io request interception for web crawlers ##
+    <IfModule mod_headers.c>
+        ## prerender.io token ##
+        ## NOTE: This should come BEFORE prerender.io logic to ensure that RequestHeader is modified before the rewrite rule is issued ##
+        RequestHeader set X-Prerender-Token "ZPCpeEvx2NbcN1aAx7Jc"
     </IfModule>
-	## prerender.io request interception for web crawlers ##
+
+    <IfModule mod_proxy_http.c>
+        #RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
+        #RewriteCond %{QUERY_STRING} _escaped_fragment_
+        
+        # Only proxy the request to Prerender if it's a request for HTML
+        #RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus/$2 [P,L]
+    </IfModule>
+    ## prerender.io request interception for web crawlers ##
+
+    ## HTML5 pushstate support ##
+    ## NOTE: This needs to come AFTER prerender.io logic for correct execution of prerender.io ##
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ / [L]
+    ## HTML5 pushstate support ##
 </IfModule>
 
 <IfModule mod_headers.c>
     Header set Connection keep-alive
 
-	# prerender.io token
-	RequestHeader set X-Prerender-Token "ZPCpeEvx2NbcN1aAx7Jc"
-	
-	<FilesMatch "\.(svg)$">
-		Header append Vary: Accept-Encoding
+    <FilesMatch "\.(svg)$">
+        Header append Vary: Accept-Encoding
     </FilesMatch>
 </IfModule>
 
 ## Expiration caching ##
 <IfModule mod_expires.c>
-	ExpiresActive On
-	ExpiresByType image/jpg "access 1 year"
-	ExpiresByType image/jpeg "access 1 year"
-	ExpiresByType image/gif "access 1 year"
-	ExpiresByType image/png "access 1 year"
-	ExpiresByType text/css "access 1 month"
-	ExpiresByType text/html "access 1 month"
-	ExpiresByType application/pdf "access 1 month"
-	ExpiresByType text/x-javascript "access 1 month"
-	ExpiresByType application/x-shockwave-flash "access 1 month"
-	ExpiresByType image/x-icon "access 1 year"
-	ExpiresDefault "access 1 month"
+    ExpiresActive On
+    ExpiresByType image/jpg "access 1 year"
+    ExpiresByType image/jpeg "access 1 year"
+    ExpiresByType image/gif "access 1 year"
+    ExpiresByType image/png "access 1 year"
+    ExpiresByType text/css "access 1 month"
+    ExpiresByType text/html "access 1 month"
+    ExpiresByType application/pdf "access 1 month"
+    ExpiresByType text/x-javascript "access 1 month"
+    ExpiresByType application/x-shockwave-flash "access 1 month"
+    ExpiresByType image/x-icon "access 1 year"
+    ExpiresDefault "access 1 month"
 </IfModule>
 ## Expiration caching ##
 
