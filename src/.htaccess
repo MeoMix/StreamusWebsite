@@ -12,6 +12,22 @@ AddCharset utf-8 .css .js
     RewriteRule .* – [F,L]
     ## block libwww-perl ##
 
+    ## prerender.io request interception for web crawlers ##
+    <IfModule mod_headers.c>
+        ## prerender.io token ##
+        ## NOTE: This should come BEFORE prerender.io logic to ensure that RequestHeader is modified before the rewrite rule is issued ##
+        RequestHeader set X-Prerender-Token "ZPCpeEvx2NbcN1aAx7Jc"
+    </IfModule>
+
+    <IfModule mod_proxy_http.c>
+        RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
+        RewriteCond %{QUERY_STRING} _escaped_fragment_
+        
+        # Only proxy the request to Prerender if it's a request for HTML
+        RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus/$2 [P,L]
+    </IfModule>
+    ## prerender.io request interception for web crawlers ##
+
     ## redirect site IP to site domain ##
     RewriteCond %{HTTP_HOST} ^66\.175\.216\.246
     RewriteRule (.*) http://www.streamus.com/$1 [R=301,L]
@@ -30,22 +46,6 @@ AddCharset utf-8 .css .js
     RewriteCond %{HTTP_HOST}::%{HTTPS} ^(?:www\.(.+?)::o(?:ff|n)|(?!www\.)(.+?)::off)$ [NC]
     RewriteRule ^ https://%1%2%{REQUEST_URI} [R=302,L,NE]
     ## Redirect HTTP to HTTPS and www to non-www ##
-
-    ## prerender.io request interception for web crawlers ##
-    <IfModule mod_headers.c>
-        ## prerender.io token ##
-        ## NOTE: This should come BEFORE prerender.io logic to ensure that RequestHeader is modified before the rewrite rule is issued ##
-        RequestHeader set X-Prerender-Token "ZPCpeEvx2NbcN1aAx7Jc"
-    </IfModule>
-
-    <IfModule mod_proxy_http.c>
-        RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
-        RewriteCond %{QUERY_STRING} _escaped_fragment_
-        
-        # Only proxy the request to Prerender if it's a request for HTML
-        RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus/$2 [P,L]
-    </IfModule>
-    ## prerender.io request interception for web crawlers ##
 
     ## HTML5 pushstate support ##
     ## NOTE: This needs to come AFTER prerender.io logic for correct execution of prerender.io ##
