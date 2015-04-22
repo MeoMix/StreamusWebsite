@@ -12,11 +12,19 @@
         },
 
         initialize: function() {
-            this._setIsInstalled();
+            this._checkIsInstalled();
         },
-        
-        //  Attempt to ping Streamus Chrome Extension. If a response is received then it is known to be installed.
-        _setIsInstalled: function() {
+
+        markAsInstalled: function () {
+            var extensionId = this._getExtensionId();
+
+            if (extensionId !== '') {
+                this.set('installed', true);
+                this.set('id', extensionId);
+            }
+        },
+
+        _getExtensionId: function() {
             var extensionId = '';
             var browser = new Browser();
 
@@ -25,6 +33,13 @@
             } else if (browser.get('isOpera')) {
                 extensionId = this.get('operaId');
             }
+
+            return extensionId;
+        },
+        
+        //  Attempt to ping Streamus Chrome Extension. If a response is received then it is known to be installed.
+        _checkIsInstalled: function () {
+            var extensionId = this._getExtensionId();
 
             if (extensionId !== '') {
                 chrome.runtime.sendMessage(extensionId, {

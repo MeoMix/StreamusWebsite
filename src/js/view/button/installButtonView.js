@@ -47,10 +47,17 @@
 
         _onInstallSuccess: function() {
             this.model.set('text', 'Installed');
-            Streamus.extensionData.set('installed', true);
-            Streamus.router.navigate(RouteType.GettingStarted, {
-                trigger: true
-            });
+
+            Streamus.extensionData.markAsInstalled();
+
+            //  Take the user to the GettingStarted page if they're on Home when installing because that will help them learn to use the program.
+            //  In other parts of the website, it's bad UX to force them away from what they were reading.
+            if (Backbone.history.fragment === RouteType.Home) {
+                Streamus.router.navigate(RouteType.GettingStarted, {
+                    trigger: true
+                });
+            }
+
             Streamus.analyticsManager.trackEvent('Extension', 'InstallSuccess');
         },
 

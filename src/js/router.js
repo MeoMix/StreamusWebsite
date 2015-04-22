@@ -34,7 +34,6 @@
             routes[RouteType.Share] = new ShareRoute();
             routes[RouteType.Share + '/:entityType/:shortId'] = new ShareRoute();
             routes[RouteType.Share + '/:entityType/:shortId/:urlFriendlyEntityTitle'] = new ShareRoute();
-            routes[RouteType.Coachella + '/:entityType/:shortId'] = new ShareRoute();
             routes[RouteType.About] = new AboutRoute();
             routes[RouteType.Donate] = new DonateRoute();
             routes[RouteType.NotFound] = new NotFoundRoute();

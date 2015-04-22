@@ -36,9 +36,6 @@
             }, {
                 text: 'Donate',
                 route: RouteType.Donate
-            }, {
-                text: 'Coachella!',
-                route: RouteType.Share + '/playlist/coachella'
             }]);
             
             this.navigationItemsRegion.show(new NavigationItemsView({

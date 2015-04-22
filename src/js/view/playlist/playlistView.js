@@ -77,7 +77,7 @@
             this.ui.displayInfo.text(displayInfo);
         },
 
-        _renderButton: function(extensionInstalled) {
+        _renderButton: function (extensionInstalled) {
             //  The Streamus extension will inject its ID into this webpage if it is installed.
             //  If it is not installed then saving is not possible. So, prompt the user to install.
             if (extensionInstalled) {

@@ -21,9 +21,8 @@
         },
         
         //  Respond to routes showing to ensure that the proper navigation item is highlighted.
-        _onRouteShown: function(routeType, routeData) {
-            //  TODO: I just hacked in the Coachella activator here.
-            if (routeType === this.model.get('route') || routeData.uriFragment.indexOf('coachella') !== -1 && this.model.get('route').indexOf('coachella') !== -1) {
+        _onRouteShown: function(routeType) {
+            if (routeType === this.model.get('route')) {
                 this.model.set('active', true);
             }
         },

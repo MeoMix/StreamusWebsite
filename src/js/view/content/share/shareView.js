@@ -58,25 +58,13 @@
             this.ui.introduction.addClass('is-hidden');
             this.ui.loading.removeClass('is-hidden');
             
-            //  TODO: It would be nice not to hard-code this, but I don't have a great system in place for 'special' playlists just yet.
-            //  Instead of using just 1 share code, I'll just fetch the playlists by hardcoded IDs.
-            if (shareCode.get('shortId') === 'coachella') {
-                this._fetchCoachellaPlaylists();
-            } else {
-                //  Figure out the actual entity ID from the ShareCode by asking the server for more information.
-                shareCode.fetchByShortIdAndEntityTitle({
-                    success: this._onShareCodeFetchSuccess.bind(this),
-                    error: this._onShareCodeFetchError.bind(this)
-                });
-            }
+            //  Figure out the actual entity ID from the ShareCode by asking the server for more information.
+            shareCode.fetchByShortIdAndEntityTitle({
+                success: this._onShareCodeFetchSuccess.bind(this),
+                error: this._onShareCodeFetchError.bind(this)
+            });
         },
-        
-        _fetchCoachellaPlaylists: function() {
-            this.ui.loading.addClass('is-hidden');
-            //  Coachella Friday, Saturday, and Sunday playlists.
-            this._showPlaylists(['E9B725F7-EF8C-49BB-8F80-A462016BA72F', 'DA54345F-E117-4B44-AF39-A462016BAD74', '6B091508-7276-4591-A376-A462016BB178']);
-        },
-
+       
         _onShareCodeFetchSuccess: function(model) {
             this.ui.loading.addClass('is-hidden');
 
