@@ -12,15 +12,19 @@
         },
 
         initialize: function() {
-            this._checkIsInstalled();
+            var browser = new Browser();
+
+            if (!browser.get('isMobile')) {
+                this._checkIsInstalled();
+            }
         },
 
         markAsInstalled: function () {
             var extensionId = this._getExtensionId();
 
             if (extensionId !== '') {
-                this.set('installed', true);
                 this.set('id', extensionId);
+                this.set('installed', true);
             }
         },
 

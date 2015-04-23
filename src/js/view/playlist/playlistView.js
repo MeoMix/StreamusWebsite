@@ -26,8 +26,6 @@
         },
         
         initialize: function() {
-            this.listenTo(Streamus.extensionData, 'change:installed', this._onExtensionDataChangeInstalled);
-            
             //  TODO: This is weird. I know the playlist's ID, but it has not loaded the rest of it's information.
             //  So, I check the title and, if it's empty, I know it has not been loaded yet and should be.
             if (this.model.get('title') === '') {
@@ -41,7 +39,7 @@
         onRender: function() {
             this._setTitle(this.model.get('title'));
             this._setDisplayInfo(this.model.get('items').getDisplayInfo());
-            this._renderButton(Streamus.extensionData.get('installed'));
+            this._renderButton();
 
             this.playlistItemsRegion.show(new PlaylistItemsView({
                 collection: this.model.get('items')
@@ -65,10 +63,6 @@
             this.ui.error.removeClass('is-hidden');
         },
 
-        _onExtensionDataChangeInstalled: function(model, installed) {
-            this._renderButton(installed);
-        },
-        
         _setTitle: function(title) {
             this.ui.title.text(title);
         },
@@ -77,20 +71,14 @@
             this.ui.displayInfo.text(displayInfo);
         },
 
-        _renderButton: function (extensionInstalled) {
-            //  The Streamus extension will inject its ID into this webpage if it is installed.
-            //  If it is not installed then saving is not possible. So, prompt the user to install.
-            if (extensionInstalled) {
-                this.buttonRegion.show(new SavePlaylistButtonView({
-                    model: new SavePlaylistButton({
-                        playlistId: this.model.get('id')
-                    })
-                }));
-            } else {
-                this.buttonRegion.show(new InstallButtonView({
-                    model: new InstallButton()
-                }));
-            }
+        _renderButton: function () {
+            this.buttonRegion.show(new SavePlaylistButtonView({
+                model: new SavePlaylistButton({
+                    playlistId: this.model.get('id')
+                }),
+                //  TODO: Rename 'button' models to 'action' to ensure they aren't coupled to a given view.
+                installButton: new InstallButton()
+            }));
         }
     });
 

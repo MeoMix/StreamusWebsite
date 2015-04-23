@@ -1,3 +1,6 @@
+## Ensure index.html is always served ##
+DirectoryIndex index.html
+
 ## Support UTF-8 Encoding ##
 AddDefaultCharset utf-8
 AddCharset utf-8 .css .js
