@@ -187,6 +187,21 @@ module.exports = function(grunt) {
                 src: ['dist/js/main.js'],
                 dest: ['dist/js/main.min.js']
             }
+        },
+
+        'sftp-deploy': {
+            build: {
+                auth: {
+                    host: 's01.lumoushosting.com',
+                    port: 2232,
+                    authKey: 'key1'
+                },
+                cache: 'sftpCache.json',
+                src: 'dist',
+                dest: '/home/stream12/public_html',
+                concurrency: 4,
+                progress: true
+            }
         }
     });
 
@@ -195,4 +210,6 @@ module.exports = function(grunt) {
     grunt.registerTask('test', 'Run tests and code-quality analysis', ['jshint', 'recess']);
 
     grunt.registerTask('build', ['test', 'requirejs', 'less', 'useminPrepare', 'concat:generated', 'usemin', 'htmlmin', 'imagemin', 'rename:main', 'replace:mainReferences', 'replace:localDebug', 'clean:dist']);
+
+    grunt.registerTask('deploy', ['sftp-deploy']);
 };

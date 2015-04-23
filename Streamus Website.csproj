@@ -136,6 +136,8 @@
     <Content Include="src\fonts\fontawesome-webfont.woff2" />
     <Content Include="src\fonts\FontAwesome.otf" />
     <Content Include="src\.htaccess" />
+    <Content Include=".ftppass" />
+    <Content Include="sftpCache.json" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
     <Content Include="src\js\view\playlist\playlistItemsView.js" />
     <Content Include="src\js\view\playlist\playlistItemView.js" />

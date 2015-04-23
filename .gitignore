@@ -2,6 +2,11 @@
 dist
 release
 
+# Grunt deploy password
+.ftppass
+# Cache of deployed files
+sftpCache.json
+
 # CSS is compiled with LESS. Commit the LESS file rather than the CSS
 src/css/*.css
 

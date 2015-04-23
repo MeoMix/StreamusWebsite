@@ -19,7 +19,7 @@
 
         initialize: function(options) {
             this.installButton = options.installButton;
-            this.listenTo(Streamus.extensionData, 'change:installed', this._onExtensionDataChangeInstalled);
+            this.listenTo(Streamus.extensionData, 'change:isUserLoaded', this._onExtensionDataChangeIsUserLoaded);
         },
 
         onClick: function() {
@@ -33,17 +33,11 @@
             }
         },
 
-        _onExtensionDataChangeInstalled: function(extensionData, installed) {
-            if (installed && this.model.get('saveOnInstallSuccess')) {
-                this.model.set('saveOnInstallSuccess', false);
+        _onExtensionDataChangeIsUserLoaded: function(extensionData, isUserLoaded) {
+            //  TODO: Could potentially be a long time to wait between install and user loaded.
+            if (isUserLoaded && this.model.get('saveOnInstallSuccess')) {
                 this.model.beginSaving();
-
-                //  TODO: Have the extension emit an 'onReady' event so that I know when I can actually save rather than waiting.
-                //  It's a lot harder to do than it would seem, though, because the extension's code loads asynchronously and there's no easy way
-                //  to know when I can save.
-                setTimeout(function() {
-                    this.model.save();
-                }.bind(this), 3000);
+                this.model.save();
             }
         }
     });

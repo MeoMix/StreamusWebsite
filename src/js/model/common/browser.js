@@ -1,7 +1,7 @@
 ﻿define(function() {
     'use strict';
 
-    var BrowserData = Backbone.Model.extend({
+    var Browser = Backbone.Model.extend({
         defaults: {
             isMobile: $.browser.mobile,
             isOpera: $.browser.opr,
@@ -10,5 +10,5 @@
         }
     });
 
-    return BrowserData;
+    return Browser;
 });

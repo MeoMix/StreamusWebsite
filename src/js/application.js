@@ -5,6 +5,7 @@
     var BodyView = require('view/bodyView');
     var ExtensionData = require('model/common/extensionData');
     var AnalyticsManager = require('model/common/analyticsManager');
+    var Browser = require('model/common/browser');
 
     var Application = Marionette.Application.extend({
         //  Set this flag to true to enable localhost server & debugging flags.
@@ -12,6 +13,7 @@
         router: null,
         extensionData: null,
         analyticsManager: null,
+        browser: null,
         serverUrl: '',
 
         channels: {
@@ -23,7 +25,10 @@
 
         initialize: function() {
             this._setServerUrl();
-            this.extensionData = new ExtensionData();
+            this.browser = new Browser();
+            this.extensionData = new ExtensionData({
+                browser: this.browser
+            });
             this.analyticsManager = new AnalyticsManager();
 
             this.on('start', this._onStart);

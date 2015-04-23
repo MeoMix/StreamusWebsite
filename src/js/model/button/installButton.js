@@ -1,7 +1,6 @@
 ﻿define(function(require) {
     'use strict';
 
-    var Browser = require('model/common/browser');
     var RouteType = require('enum/routeType');
 
     var InstallButton = Backbone.Model.extend({
@@ -23,9 +22,7 @@
                 text: 'Installing...'
             });
 
-            var browser = new Browser();
-
-            if (browser.get('isOpera')) {
+            if (Streamus.browser.get('isOpera')) {
                 var operaExtensionId = Streamus.extensionData.get('operaId');
                 opr.addons.installExtension(operaExtensionId, this._onInstallSuccess.bind(this), this._onInstallError.bind(this));
             } else {
@@ -75,7 +72,7 @@
         },
 
         _ensureValidBrowser: function() {
-            var browser = new Browser();
+            var browser = Streamus.browser;
 
             //  Can't install Streamus on mobile browsers.
             if (browser.get('isMobile')) {
