@@ -15,6 +15,11 @@ AddCharset utf-8 .css .js
     RewriteRule .* – [F,L]
     ## block libwww-perl ##
 
+    ## Redirect index.html and index.htm requests to root ##
+    RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
+    RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
+    ## Redirect index.html and index.htm requests to root ##
+
     ## prerender.io request interception for web crawlers ##
     <IfModule mod_headers.c>
         ## prerender.io token ##
@@ -25,6 +30,8 @@ AddCharset utf-8 .css .js
     <IfModule mod_proxy_http.c>
         RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
         RewriteCond %{QUERY_STRING} _escaped_fragment_
+		## Don't cache dynamic shared playlist URLs as they dont impact SEO and are limitless ##
+		RewriteCond %{REQUEST_URI} !/share/playlist/ [NC]
         
         # Only proxy the request to Prerender if it's a request for HTML
         RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus.com/$2 [P,L]
@@ -32,14 +39,9 @@ AddCharset utf-8 .css .js
     ## prerender.io request interception for web crawlers ##
 
     ## redirect site IP to site domain ##
-    RewriteCond %{HTTP_HOST} ^66\.175\.216\.246
+    RewriteCond %{HTTP_HOST} ^66\.175\.216\.246	
     RewriteRule (.*) http://www.streamus.com/$1 [R=301,L]
     ## redirect site IP to site domain ##
-
-    ## Redirect index.html and index.htm requests to root ##
-    RewriteCond %{THE_REQUEST} ^.*\/index\.html?\ HTTP/
-    RewriteRule ^(.*)index\.html?$ "/$1" [R=301,L]
-    ## Redirect index.html and index.htm requests to root ##
 
     ## Redirect HTTP to HTTPS and www to non-www ##
     RewriteCond %{HTTP_HOST} !^src\.streamus\.com$ [NC]
