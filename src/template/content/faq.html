@@ -214,4 +214,23 @@
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading accordion-toggle collapsed" data-toggle="collapse" data-target="#troubleshooting-truncated-screen" data-parent="#faq-accordion">
+            <div class="panel-title">
+                I can't see all of Streamus when I open it. Some of the UI is cut off.
+            </div>
+        </div>
+        <div id="troubleshooting-blank-screen" class="panel-collapse collapse">
+            <div class="panel-body">
+                This issue is most commonly caused by too high of a zoom level. Chrome forces extensions to have a maximum width of 800px. Streamus is 640px wide.
+                However, the actual width is modified by your zoom level. So, if you have 125% zoom, then Streamus is actually 800px wide. 150% zoom causes Streamus' UI
+                to become truncated.
+
+                To resolve this, you'll need to go to: chrome://settings/ --> Show advanced settings --> Web Content and set Zoom to 125% or less.
+
+                Additionally, I consider this issue to be a bug in Google Chrome. I reported it to Google here: https://code.google.com/p/chromium/issues/detail?id=420382.
+                Please consider +1'ing and 'starring' the issue to increase its priority, thanks!
+            </div>
+        </div>
+    </div>
 </div>
