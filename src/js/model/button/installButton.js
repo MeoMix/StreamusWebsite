@@ -84,10 +84,11 @@
                 //  Can't install Streamus on non-webkit browsers nor non-current webkit browsers.
                 var minimumOperaVersion = this.get('minimumOperaVersion');
                 var minimumChromeVersion = this.get('minimumChromeVersion');
+                var isWebKit = browser.get('isWebKit');
                 var isInvalidOperaVersion = browser.get('isOpera') && browser.get('version') < minimumOperaVersion;
                 var isInvalidChromeVersion = browser.get('isChrome') && browser.get('version') < minimumChromeVersion;
 
-                if (isInvalidOperaVersion || isInvalidChromeVersion) {
+                if (!isWebKit || isInvalidOperaVersion || isInvalidChromeVersion) {
                     this.set({
                         enabled: false,
                         text: 'Chrome v' + minimumChromeVersion + '+ or Opera v' + minimumOperaVersion + '+ required'
