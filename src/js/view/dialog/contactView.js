@@ -1,11 +1,11 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var ContactTemplate = require('text!template/dialog/contact.html');
+  var ContactTemplate = require('text!template/dialog/contact.html');
 
-    var ContactView = Marionette.ItemView.extend({
-        template: _.template(ContactTemplate)
-    });
+  var ContactView = Marionette.ItemView.extend({
+    template: _.template(ContactTemplate)
+  });
 
-    return ContactView;
+  return ContactView;
 });

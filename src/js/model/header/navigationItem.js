@@ -1,15 +1,15 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var RouteType = require('enum/routeType');
+  var RouteType = require('enum/routeType');
 
-    var NavigationItem = Backbone.Model.extend({
-        defaults: {
-            route: RouteType.NotFound,
-            active: false,
-            text: ''
-        }
-    });
+  var NavigationItem = Backbone.Model.extend({
+    defaults: {
+      route: RouteType.NotFound,
+      active: false,
+      text: ''
+    }
+  });
 
-    return NavigationItem;
+  return NavigationItem;
 });

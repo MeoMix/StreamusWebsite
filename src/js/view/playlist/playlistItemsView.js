@@ -1,14 +1,14 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var PlaylistItemView = require('view/playlist/playlistItemView');
+  var PlaylistItemView = require('view/playlist/playlistItemView');
 
-    var PlaylistItemsView = Marionette.CollectionView.extend({
-        tagName: 'ul',
-        className: 'list-group playlistItems',
-        childView: PlaylistItemView,
-        template: false
-    });
+  var PlaylistItemsView = Marionette.CollectionView.extend({
+    tagName: 'ul',
+    className: 'list-group playlistItems',
+    childView: PlaylistItemView,
+    template: false
+  });
 
-    return PlaylistItemsView;
+  return PlaylistItemsView;
 });

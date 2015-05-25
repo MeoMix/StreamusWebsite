@@ -1,49 +1,49 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var Route = require('route');
-    var RouteType = require('enum/routeType');
-    var ShareView = require('view/content/share/shareView');
-    var ShareCode = require('model/content/shareCode');
-    var Share = require('model/content/share');
+  var Route = require('route');
+  var RouteType = require('enum/routeType');
+  var ShareView = require('view/content/share/shareView');
+  var ShareCode = require('model/content/shareCode');
+  var Share = require('model/content/share');
 
-    var ShareRoute = Route.extend({
-        type: RouteType.Share,
-        viewClass: ShareView,
+  var ShareRoute = Route.extend({
+    type: RouteType.Share,
+    viewClass: ShareView,
 
-        //  The ShareView can be constructed either by itself or with a ShareCode's information for showing a shareable entity to the user.
-        getViewOptions: function(routeDataParams) {
-            var shareOptions = this._getShareOptions(routeDataParams);
+    // The ShareView can be built by itself or with a information for showing a shareable entity.
+    getViewOptions: function(routeDataParams) {
+      var shareOptions = this._getShareOptions(routeDataParams);
 
-            var viewOptions = {
-                model: new Share(shareOptions)
-            };
+      var viewOptions = {
+        model: new Share(shareOptions)
+      };
 
-            return viewOptions;
-        },
+      return viewOptions;
+    },
 
-        _getShareOptions: function(routeDataParams) {
-            var shareOptions = null;
+    _getShareOptions: function(routeDataParams) {
+      var shareOptions = null;
 
-            if (!_.isUndefined(routeDataParams.entityType)) {
-                shareOptions = {
-                    shareCode: this._getShareCode(routeDataParams)
-                };
-            }
+      if (!_.isUndefined(routeDataParams.entityType)) {
+        shareOptions = {
+          shareCode: this._getShareCode(routeDataParams)
+        };
+      }
 
-            return shareOptions;
-        },
+      return shareOptions;
+    },
 
-        _getShareCode: function(routeDataParams) {
-            var shareCode = new ShareCode({
-                entityType: routeDataParams.entityType,
-                shortId: routeDataParams.shortId,
-                urlFriendlyEntityTitle: routeDataParams.urlFriendlyEntityTitle,
-            });
+    _getShareCode: function(routeDataParams) {
+      var shareCode = new ShareCode({
+        entityType: routeDataParams.entityType,
+        shortId: routeDataParams.shortId,
+        urlFriendlyEntityTitle: routeDataParams.urlFriendlyEntityTitle,
+      });
 
-            return shareCode;
-        }
-    });
+      return shareCode;
+    }
+  });
 
-    return ShareRoute;
+  return ShareRoute;
 });

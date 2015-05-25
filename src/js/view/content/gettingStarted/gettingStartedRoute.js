@@ -1,14 +1,14 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var Route = require('route');
-    var RouteType = require('enum/routeType');
-    var GettingStartedView = require('view/content/gettingStarted/gettingStartedView');
+  var Route = require('route');
+  var RouteType = require('enum/routeType');
+  var GettingStartedView = require('view/content/gettingStarted/gettingStartedView');
 
-    var GettingStartedRoute = Route.extend({
-        type: RouteType.GettingStarted,
-        viewClass: GettingStartedView
-    });
+  var GettingStartedRoute = Route.extend({
+    type: RouteType.GettingStarted,
+    viewClass: GettingStartedView
+  });
 
-    return GettingStartedRoute;
+  return GettingStartedRoute;
 });

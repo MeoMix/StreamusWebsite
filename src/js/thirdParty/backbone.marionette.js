@@ -1339,9 +1339,9 @@
         //
         // ```js
         // {
-        //   selector: "#foo",
-        //   regionClass: MyCustomRegion,
-        //   allowMissingEl: false
+        //  selector: "#foo",
+        //  regionClass: MyCustomRegion,
+        //  allowMissingEl: false
         // }
         // ```
         //
@@ -2106,8 +2106,8 @@
         //
         // ```js
         // attachElContent: function(html) {
-        //   this.el.innerHTML = html;
-        //   return this;
+        //  this.el.innerHTML = html;
+        //  return this;
         // }
         // ```
         attachElContent: function (html) {
@@ -2676,9 +2676,9 @@
         // Return false otherwise
         // The filter will be passed (child, index, collection)
         // Where
-        //  'child' is the given model
-        //  'index' is the index of that model in the collection
-        //  'collection' is the collection referenced by this CollectionView
+        // 'child' is the given model
+        // 'index' is the index of that model in the collection
+        // 'collection' is the collection referenced by this CollectionView
         _shouldAddChild: function (child, index) {
             var filter = this.getOption('filter');
             return !_.isFunction(filter) || filter.call(this, child, index, this.collection);
@@ -2829,8 +2829,8 @@
         //
         // ```js
         // attachElContent: function(html) {
-        //   this.el.innerHTML = html;
-        //   return this;
+        //  this.el.innerHTML = html;
+        //  return this;
         // }
         // ```
         attachElContent: function (html) {
@@ -3213,7 +3213,7 @@
             //
             // ```js
             // Marionette.Behaviors.behaviorsLookup: function() {
-            //   return App.Behaviors
+            //  return App.Behaviors
             // }
             // ```
             behaviorsLookup: function () {

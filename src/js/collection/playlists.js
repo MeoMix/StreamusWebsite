@@ -1,11 +1,11 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var Playlist = require('model/playlist/playlist');
+  var Playlist = require('model/playlist/playlist');
 
-    var Playlists = Backbone.Collection.extend({
-        model: Playlist
-    });
+  var Playlists = Backbone.Collection.extend({
+    model: Playlist
+  });
 
-    return Playlists;
+  return Playlists;
 });

@@ -1,9 +1,9 @@
-﻿//     Backbone.js 1.1.2
+﻿//    Backbone.js 1.1.2
 
-//     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-//     Backbone may be freely distributed under the MIT license.
-//     For all details and documentation:
-//     http://backbonejs.org
+//    (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+//    Backbone may be freely distributed under the MIT license.
+//    For all details and documentation:
+//    http://backbonejs.org
 
 (function (root, factory) {
 
@@ -73,10 +73,10 @@
     // functions to an event; `trigger`-ing an event fires all callbacks in
     // succession.
     //
-    //     var object = {};
-    //     _.extend(object, Backbone.Events);
-    //     object.on('expand', function(){ alert('expanded'); });
-    //     object.trigger('expand');
+    //    var object = {};
+    //    _.extend(object, Backbone.Events);
+    //    object.on('expand', function(){ alert('expanded'); });
+    //    object.trigger('expand');
     //
     var Events = Backbone.Events = {
 
@@ -1053,11 +1053,11 @@
         //
         // *{"event selector": "callback"}*
         //
-        //     {
-        //       'mousedown .title':  'edit',
-        //       'click .button':     'save',
-        //       'click .open':       function(e) { ... }
-        //     }
+        //    {
+        //      'mousedown .title':  'edit',
+        //      'click .button':     'save',
+        //      'click .open':       function(e) { ... }
+        //    }
         //
         // pairs. Callbacks will be bound to the view, with `this` set properly.
         // Uses event delegation for efficiency.
@@ -1237,9 +1237,9 @@
 
         // Manually bind a single named route to a callback. For example:
         //
-        //     this.route('search/:query/p:num', 'search', function(query, num) {
-        //       ...
-        //     });
+        //    this.route('search/:query/p:num', 'search', function(query, num) {
+        //      ...
+        //    });
         //
         route: function (route, name, callback) {
             if (!_.isRegExp(route)) route = this._routeToRegExp(route);

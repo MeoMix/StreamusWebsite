@@ -11,7 +11,7 @@ AddCharset utf-8 .css .js
     Options +FollowSymLinks -MultiViews
 
     ## block libwww-perl ##
-    RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+    RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
     RewriteRule .* – [F,L]
     ## block libwww-perl ##
 
@@ -32,14 +32,14 @@ AddCharset utf-8 .css .js
         RewriteCond %{QUERY_STRING} _escaped_fragment_
 		## Don't cache dynamic shared playlist URLs as they dont impact SEO and are limitless ##
 		RewriteCond %{REQUEST_URI} !/share/playlist/ [NC]
-        
+
         # Only proxy the request to Prerender if it's a request for HTML
         RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/https://streamus.com/$2 [P,L]
     </IfModule>
     ## prerender.io request interception for web crawlers ##
 
     ## redirect site IP to site domain ##
-    RewriteCond %{HTTP_HOST} ^66\.175\.216\.246	
+    RewriteCond %{HTTP_HOST} ^66\.175\.216\.246
     RewriteRule (.*) http://www.streamus.com/$1 [R=301,L]
     ## redirect site IP to site domain ##
 
@@ -92,7 +92,7 @@ AddCharset utf-8 .css .js
     AddType application/x-font-ttf          ttf ttc
     AddType font/opentype                   otf
     AddType application/x-font-woff         woff
-    AddType image/svg+xml                   svg svgz 
+    AddType image/svg+xml                   svg svgz
     AddEncoding gzip                        svgz
 </IfModule>
 ## Defining MIME types

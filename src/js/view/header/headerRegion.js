@@ -1,17 +1,17 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var HeaderView = require('view/header/headerView');
+  var HeaderView = require('view/header/headerView');
 
-    var FooterRegion = Marionette.Region.extend({
-        initialize: function() {
-            this.listenTo(Streamus.channels.body.vent, 'rendered', this._onBodyRendered);
-        },
+  var FooterRegion = Marionette.Region.extend({
+    initialize: function() {
+      this.listenTo(Streamus.channels.body.vent, 'rendered', this._onBodyRendered);
+    },
 
-        _onBodyRendered: function() {
-            this.show(new HeaderView());
-        }
-    });
+    _onBodyRendered: function() {
+      this.show(new HeaderView());
+    }
+  });
 
-    return FooterRegion;
+  return FooterRegion;
 });

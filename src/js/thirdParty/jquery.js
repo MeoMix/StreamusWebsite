@@ -1906,7 +1906,7 @@
                 "empty": function (elem) {
                     // http://www.w3.org/TR/selectors/#empty-pseudo
                     // :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
-                    //   but not by others (comment: 8; processing instruction: 7; etc.)
+                    //  but not by others (comment: 8; processing instruction: 7; etc.)
                     // nodeType < 6 works because attributes (2) do not appear as children
                     for (elem = elem.firstChild; elem; elem = elem.nextSibling) {
                         if (elem.nodeType < 6) {
@@ -3518,11 +3518,11 @@
      */
     jQuery.acceptData = function (owner) {
         // Accepts only:
-        //  - Node
-        //    - Node.ELEMENT_NODE
-        //    - Node.DOCUMENT_NODE
-        //  - Object
-        //    - Any
+        // - Node
+        //   - Node.ELEMENT_NODE
+        //   - Node.DOCUMENT_NODE
+        // - Object
+        //   - Any
         /* jshint -W018 */
         return owner.nodeType === 1 || owner.nodeType === 9 || !(+owner.nodeType);
     };
@@ -3621,14 +3621,14 @@
             var stored;
             // In cases where either:
             //
-            //   1. No key was specified
-            //   2. A string key was specified, but no value provided
+            //  1. No key was specified
+            //  2. A string key was specified, but no value provided
             //
             // Take the "read" path and allow the get method to determine
             // which value to return, respectively either:
             //
-            //   1. The entire cache object
-            //   2. The data stored at the key
+            //  1. The entire cache object
+            //  2. The data stored at the key
             //
             if (key === undefined ||
                     ((key && typeof key === "string") && value === undefined)) {
@@ -3642,8 +3642,8 @@
             // [*]When the key is not a string, or both a key and value
             // are specified, set or extend (existing objects) with either:
             //
-            //   1. An object of properties
-            //   2. A key and value
+            //  1. An object of properties
+            //  2. A key and value
             //
             this.set(owner, key, value);
 

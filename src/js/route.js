@@ -1,23 +1,26 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var RouteType = require('enum/routeType');
+  var RouteType = require('enum/routeType');
 
-    var Route = Marionette.Object.extend({
-        type: RouteType.NotFound,
-        viewClass: null,
+  var Route = Marionette.Object.extend({
+    type: RouteType.NotFound,
+    viewClass: null,
 
-        show: function(routeData) {
-            Streamus.channels.content.commands.trigger('region:hideView');
-            Streamus.channels.content.commands.trigger('region:showView:' + this.type, this.viewClass, this.getViewOptions(routeData.params));
-        },
+    show: function(routeData) {
+      Streamus.channels.content.commands.trigger('region:hideView');
 
-        getViewOptions: _.noop,
+      var commandName = 'region:showView:' + this.type;
+      var viewOptions = this.getViewOptions(routeData.params);
+      Streamus.channels.content.commands.trigger(commandName, this.viewClass, viewOptions);
+    },
 
-        onError: function(error) {
-            console.error(error);
-        }
-    });
+    getViewOptions: _.noop,
 
-    return Route;
+    onError: function(error) {
+      console.error(error);
+    }
+  });
+
+  return Route;
 });

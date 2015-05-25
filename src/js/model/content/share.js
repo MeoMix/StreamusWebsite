@@ -1,15 +1,15 @@
 ﻿define(function() {
-    'use strict';
+  'use strict';
 
-    var Share = Backbone.Model.extend({
-        defaults: {
-            shareCode: null
-        },
+  var Share = Backbone.Model.extend({
+    defaults: {
+      shareCode: null
+    },
 
-        reset: function() {
-            this.set(this.defaults);
-        }
-    });
+    reset: function() {
+      this.set(this.defaults);
+    }
+  });
 
-    return Share;
+  return Share;
 });

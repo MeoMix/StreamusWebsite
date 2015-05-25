@@ -1,13 +1,13 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var PlaylistItemTemplate = require('text!template/playlist/playlistItem.html');
+  var PlaylistItemTemplate = require('text!template/playlist/playlistItem.html');
 
-    var PlaylistItemView = Marionette.ItemView.extend({
-        tagName: 'li',
-        className: 'playlistItem list-group-item',
-        template: _.template(PlaylistItemTemplate)
-    });
+  var PlaylistItemView = Marionette.ItemView.extend({
+    tagName: 'li',
+    className: 'playlistItem list-group-item',
+    template: _.template(PlaylistItemTemplate)
+  });
 
-    return PlaylistItemView;
+  return PlaylistItemView;
 });

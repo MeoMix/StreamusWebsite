@@ -138,6 +138,9 @@
     <Content Include="src\.htaccess" />
     <Content Include=".ftppass" />
     <Content Include="sftpCache.json" />
+    <Content Include=".jscsrc" />
+    <Content Include=".travis.yml" />
+    <Content Include="changelog.md" />
     <None Include="src\js\thirdParty\chrome-api-vsdoc.js" />
     <Content Include="src\js\view\playlist\playlistItemsView.js" />
     <Content Include="src\js\view\playlist\playlistItemView.js" />

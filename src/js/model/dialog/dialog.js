@@ -1,11 +1,11 @@
 ﻿define(function() {
-    'use strict';
+  'use strict';
 
-    var Dialog = Backbone.Model.extend({
-        defaults: {
-            title: ''
-        }
-    });
+  var Dialog = Backbone.Model.extend({
+    defaults: {
+      title: ''
+    }
+  });
 
-    return Dialog;
+  return Dialog;
 });

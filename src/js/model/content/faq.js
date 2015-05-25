@@ -1,11 +1,11 @@
 ﻿define(function() {
-    'use strict';
+  'use strict';
 
-    var Faq = Backbone.Model.extend({
-        defaults: {
-            activeSubjectId: ''
-        }
-    });
+  var Faq = Backbone.Model.extend({
+    defaults: {
+      activeSubjectId: ''
+    }
+  });
 
-    return Faq;
+  return Faq;
 });

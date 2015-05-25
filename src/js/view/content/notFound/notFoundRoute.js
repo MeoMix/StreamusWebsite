@@ -1,14 +1,14 @@
 ﻿define(function(require) {
-    'use strict';
+  'use strict';
 
-    var Route = require('route');
-    var RouteType = require('enum/routeType');
-    var NotFoundView = require('view/content/notFound/notFoundView');
+  var Route = require('route');
+  var RouteType = require('enum/routeType');
+  var NotFoundView = require('view/content/notFound/notFoundView');
 
-    var NotFoundRoute = Route.extend({
-        type: RouteType.NotFound,
-        viewClass: NotFoundView
-    });
+  var NotFoundRoute = Route.extend({
+    type: RouteType.NotFound,
+    viewClass: NotFoundView
+  });
 
-    return NotFoundRoute;
+  return NotFoundRoute;
 });

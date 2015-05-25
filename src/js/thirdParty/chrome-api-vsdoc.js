@@ -3,10 +3,10 @@
 // </copyright>
 
 // This file containts documented stubs to support Visual Studio Intellisense
-//     when working with Google's chrome extension apis.
+//    when working with Google's chrome extension apis.
 // You should not reference this file in a page at design time or runtme.
 // To enable intellisense when authroing chrome extensions, place a commented
-//     reference to this file in your extension's JavaScript files like so: ///<reference path="chrome-api-vsdoc.js"/>
+//    reference to this file in your extension's JavaScript files like so: ///<reference path="chrome-api-vsdoc.js"/>
 
 chrome =
 {
@@ -21,7 +21,7 @@ chrome =
         function (idOrIdList, callback) {
             ///<summary>Retrieves the specified BookmarkTreeNode(s).</summary>
             ///<param name="idOrIdList" type="String">A single string-valued id, or an array of string-valued ids.</param>
-            ///<param name="callback" type="Function">function(BookmarkTreeNode result) {...}</param>            
+            ///<param name="callback" type="Function">function(BookmarkTreeNode result) {...}</param>
         },
         getChildren:
         function (id, callback) {
@@ -44,7 +44,7 @@ chrome =
         getTree:
         function (callback) {
             ///<summary>Retrieves the entire Bookmarks hierarchy.</summary>
-            ///<param name="callback" type="Function">function(BookmarkTreeNode result) {...}</param>  
+            ///<param name="callback" type="Function">function(BookmarkTreeNode result) {...}</param>
         },
         move:
         function (id, destination, callback) {
@@ -260,12 +260,12 @@ chrome =
         isAllowedFileSchemeAccess:
         function (callback) {
             ///<summary>Retrieves the state of the extension's access to the 'file://' scheme (as determined by the user-controlled 'Allow access to File URLs' checkbox.</summary>
-            ///<param name="callback" type="Function">function(boolean isAllowedAccess) {...}</param> 
+            ///<param name="callback" type="Function">function(boolean isAllowedAccess) {...}</param>
         },
         isAllowedIncognitoAccess:
         function (callback) {
             ///<summary>Retrieves the state of the extension's access to Incognito-mode (as determined by the user-controlled 'Allowed in Incognito' checkbox.</summary>
-            ///<param name="callback" type="Function">function(boolean isAllowedAccess) {...}</param> 
+            ///<param name="callback" type="Function">function(boolean isAllowedAccess) {...}</param>
         },
         sendRequest:
         function (extensionId, request, responseCallback) {
@@ -326,13 +326,13 @@ chrome =
         deleteAll:
         function (callback) {
             ///<summary>Deletes all items from the history.</summary>
-            ///<param name="callback" type="Function">function(){...}</param>            
+            ///<param name="callback" type="Function">function(){...}</param>
         },
         deleteRange:
         function (range, callback) {
             ///<summary>Removes all items within the specified date range from the history. Pages will not be removed from the history unless all visits fall within the range.</summary>
             ///<param name="range" type="Object">{startTime: (number), endTime: (number)}</param>
-            ///<param name="callback" type="Function">function(){...}</param>            
+            ///<param name="callback" type="Function">function(){...}</param>
         },
         deleteUrl:
         function (details) {
@@ -343,13 +343,13 @@ chrome =
         function (details, callback) {
             ///<summary>Retrieve information about visits to a URL.</summary>
             ///<param name="details" type="Object">{url: (string)}</param>
-            ///<param name="callback" type="Function">function(array of VisitItem results){...}</param>   
+            ///<param name="callback" type="Function">function(array of VisitItem results){...}</param>
         },
         search:
         function (query, callback) {
             ///<summary>Search the history for the last visit time of each page matching the query.</summary>
             ///<param name="query" type="Object">{text: (string), startTime: (number), endTime: (number), maxResults: (integer)}</param>
-            ///<param name="callback" type="Function">function(array of HistoryItem results){...}</param>   
+            ///<param name="callback" type="Function">function(array of HistoryItem results){...}</param>
         },
         onVisitRemoved: {
             addListener:
@@ -550,7 +550,7 @@ chrome =
         function (windowId, callback) {
             ///<summary>Captures the visible area of the currently selected tab in the specified window.</summary>
             ///<param name="windowId" type="int" > (optional) Defaults to the current window.</param>
-            ///<param name="callback" type="Function">function(string dataUrl) {...}</param>            
+            ///<param name="callback" type="Function">function(string dataUrl) {...}</param>
         },
         connect:
         function (tabId, connectInfo) {
@@ -562,50 +562,50 @@ chrome =
         function (createProperties, callback) {
             ///<summary>Creates a new tab.</summary>
             ///<param name="createProperties" type="Object">{windowId: (optional integer), index: (optional interger), url: (optional string), selected: (optional boolean)}</param>
-            ///<param name="callback" type="Function" > (optional) function(Tab tab) {...}</param> 
+            ///<param name="callback" type="Function" > (optional) function(Tab tab) {...}</param>
         },
         detectLanguage:
         function (tabId, callback) {
             ///<summary>Detects the primary language of the content in a tab.</summary>
             ///<param name="tabId" type="int" > (optional) Defaults to the selected tab of current window.</param>
-            ///<param name="callback" type="Function">function(string language) {...}</param> 
+            ///<param name="callback" type="Function">function(string language) {...}</param>
         },
         executeScript:
         function (tabId, details, callback) {
             ///<summary>Executes scripts against a tab's content.</summary>
             ///<param name="tabId" type="int" > (optional) Defaults to the selected tab of current window.</param>
             ///<param name="details" type="Object">{code: (optional string), file: (optional string), allFrames: (optional boolean)} NOTE: Either the code or file property must be set, but both may not be set at the same time.</param>
-            ///<param name="callback" type="Function" > (optional) function(string language) {...}</param> 
+            ///<param name="callback" type="Function" > (optional) function(string language) {...}</param>
         },
         get:
         function (tabId, callback) {
             ///<summary>Retrieves details about the specified tab.</summary>
             ///<param name="tabId" type="int"></param>
-            ///<param name="callback" type="Function">function(Tab tab) {...}</param> 
+            ///<param name="callback" type="Function">function(Tab tab) {...}</param>
         },
         getAllInWindow:
         function (windowId, callback) {
             ///<summary>Gets details about all tabs in the specified window.</summary>
             ///<param name="windowId" type="int" > (optional) Defaults to the current window.</param>
-            ///<param name="callback" type="Function">function(array of Tab tabs) {...}</param>            
+            ///<param name="callback" type="Function">function(array of Tab tabs) {...}</param>
         },
         getCurrent:
         function (callback) {
             ///<summary>Gets the tab that this script call is being made from. May be undefined if called from a non-tab context (for example: a background page or popup view).</summary>
-            ///<param name="callback" type="Function">function(Tab tab) {...}</param> 
+            ///<param name="callback" type="Function">function(Tab tab) {...}</param>
         },
         getSelected:
         function (windowId, callback) {
             ///<summary>Gets the tab that is selected in the specified window.</summary>
             ///<param name="windowId" type="int" > (optional) Defaults to the current window.</param>
-            ///<param name="callback" type="Function">function(Tab tab) {...}</param> 
+            ///<param name="callback" type="Function">function(Tab tab) {...}</param>
         },
         insertCSS:
         function (tabId, details, callback) {
             ///<summary>Retrieves details about the specified tab.</summary>
             ///<param name="tabId" type="int" > (optional) Defaults to the selected tab of current window.</param>
             ///<param name="details" type="Object">{code: (optional string), file: (optional string), allFrame: (optional boolean)} NOTE: Either the code or file property must be set, but both may not be set at the same time.</param>
-            ///<param name="callback" type="Function" > (optional) function() {...}</param> 
+            ///<param name="callback" type="Function" > (optional) function() {...}</param>
         },
         move:
         function (tabId, moveProperties, callback) {
@@ -618,14 +618,14 @@ chrome =
         function (tabId, callback) {
             ///<summary>Closes a tab.</summary>
             ///<param name="tabId" type="int"></param>
-            ///<param name="callback" type="Function" > (optional) function() {...}</param> 
+            ///<param name="callback" type="Function" > (optional) function() {...}</param>
         },
         sendRequest:
         function (tabId, request, responseCallback) {
             ///<summary>Sends a single request to the content script(s) in the specified tab, with an optional callback to run when a response is sent back. The chrome.extension.onRequest event is fired in each content script running in the specified tab for the current extension.</summary>
             ///<param name="tabId" type="int"></param>
             ///<param name="request" type="any"></param>
-            ///<param name="responseCallback" type="Function" > (optional) function(any response) {...}</param> 
+            ///<param name="responseCallback" type="Function" > (optional) function(any response) {...}</param>
         },
         update:
         function (tabId, updateProperties, callback) {
@@ -688,12 +688,12 @@ chrome =
         getVoices:
         function (callback) {
             ///<summary>Gets an array of all available voices.</summary>
-            ///<param name="callback" type="Function" >function(array of TtsVoice voices) {...}</param>            
+            ///<param name="callback" type="Function" >function(array of TtsVoice voices) {...}</param>
         },
         isSpeaking:
         function (callback) {
             ///<summary>Checks if the engine is currently speaking.</summary>
-            ///<param name="callback" type="Function" >function(boolean speaking) {...}</param>   
+            ///<param name="callback" type="Function" >function(boolean speaking) {...}</param>
         },
         speak:
         function (utterance, options, callback) {
