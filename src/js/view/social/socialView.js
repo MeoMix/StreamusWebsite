@@ -7,8 +7,7 @@
     tagName: 'aside',
     className: 'social',
     template: _.template(SocialTemplate),
-    //  TODO: Why is callbackURL set to test?
-    facebookWidgetUrl: '//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252&callbackURL=test',
+    facebookWidgetUrl: '//connect.facebook.net/en_US/all.js#xfbml=1&appId=104501109590252',
     twitterWidgetUrl: '//platform.twitter.com/widgets.js',
     googleWidgetUrl: '//apis.google.com/js/plusone.js',
     githubWidgetUrl: '//api.github.com/repos/meomix/streamuschromeextension?callback=onGitHubApiResponse',

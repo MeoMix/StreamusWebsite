@@ -80,11 +80,16 @@
     _setIsInstalled: function() {
       var extensionId = this.get('id');
       if (extensionId !== null) {
-        chrome.runtime.sendMessage(extensionId, {
-          message: 'isInstalled'
-        }, function(response) {
-          this.set('installed', response && response.isInstalled);
-        }.bind(this));
+        // Opera doesn't have chrome.runtime defined until an extension is installed. Weird.
+        if (_.isUndefined(chrome.runtime)) {
+          this.set('installed', false);
+        } else {
+          chrome.runtime.sendMessage(extensionId, {
+            message: 'isInstalled'
+          }, function(response) {
+            this.set('installed', response && response.isInstalled);
+          }.bind(this));
+        }
       }
     }
   });
