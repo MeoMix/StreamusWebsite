@@ -61,6 +61,7 @@
     <Content Include="src\img\iconLocation.png" />
     <Content Include="src\img\selectingItems.png" />
     <Content Include="src\img\share.png" />
+    <Content Include="src\img\streamus_1069_232_transparent.png" />
     <Content Include="src\img\youTubeBadge.png" />
     <Content Include="src\index.html" />
     <Content Include="src\js\application.js" />

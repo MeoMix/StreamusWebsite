@@ -191,7 +191,7 @@ module.exports = function(grunt) {
         auth: {
           host: 's01.lumoushosting.com',
           port: 2232,
-          authKey: 'key1'
+          authKey: 'default'
         },
         cache: 'sftpCache.json',
         src: 'dist',
