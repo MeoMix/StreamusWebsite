@@ -3,7 +3,7 @@
 
   var HeaderView = require('view/header/headerView');
 
-  var FooterRegion = Marionette.Region.extend({
+  var HeaderRegion = Marionette.Region.extend({
     initialize: function() {
       this.listenTo(Streamus.channels.body.vent, 'rendered', this._onBodyRendered);
     },
@@ -13,5 +13,5 @@
     }
   });
 
-  return FooterRegion;
+  return HeaderRegion;
 });
