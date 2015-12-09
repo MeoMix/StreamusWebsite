@@ -1,0 +1,17 @@
+﻿@import "../../common/css/color";
+@transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
+
+.panel-heading {
+  cursor: pointer;
+  transition: all .14s @transition-easeOutSine;
+
+  @nest &:not(.collapsed),
+  @:not(.collapsed):hover {
+    color: white;
+    background-color: var(--blue);
+  }
+
+  @nest &:hover {
+    background-color: var(--darkhighlight);
+  }
+}

@@ -1,0 +1,170 @@
+﻿/*@import '/common/css/reset.css';*/
+/* prefer loading font-awesome locally over CDN because of delay in loading fonts in second request to CDN */
+@import '/common/css/font-awesome.css';
+@import '/common/css/color.css';
+@import '/common/css/utility.css';
+
+body {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-size: 15px;
+  color: var(--darkprimary);
+  text-align: center;
+  text-rendering: optimizeLegibility;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+  background-color: transparent;
+
+  @nest & .lead {
+    margin: 1.5em auto;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 26px;
+}
+
+/* Sync the height of legal with badges */
+.legal {
+  line-height: 40px;
+}
+
+.legal a {
+  padding-left: 4px;
+}
+
+.badges {
+  margin-top: 10px;
+}
+
+.social,
+.zopim {
+  display: none;
+}
+
+@transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
+
+.navigation-link,
+.btn {
+  transition: all .14s @transition-easeOutSine;
+}
+
+@media (min-width: 1400px) {
+  .social,
+  .zopim {
+    display: block;
+  }
+}
+
+.icon-bar {
+  background-color: #337ab7;
+}
+
+.logo {
+  float: left;
+}
+
+.nav > .active > a,
+.nav > .active > a:hover,
+.nav > .active > a:focus {
+  color: white;
+  background-color: #337ab7;
+}
+
+@media (max-width: 992px) {
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar-left, .navbar-right {
+    float: none !important;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+
+    @nest & > li {
+      float: none;
+
+      @nest & > a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .collapse.in {
+    display: block !important;
+  }
+}
+
+@media (min-width: 992px ) {
+  .navigationRegion {
+    float: right;
+  }
+
+  .navigation-link {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px ) {
+  .legal {
+    float: left;
+  }
+
+  .badges {
+    float: right;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding: 32px 0;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+}

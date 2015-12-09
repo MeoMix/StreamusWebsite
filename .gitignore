@@ -1,6 +1,10 @@
 # Streamus
 dist
 release
+compiled
+
+#jspm
+jspm_packages
 
 # Grunt deploy password
 .ftppass

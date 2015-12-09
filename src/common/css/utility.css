@@ -1,0 +1,9 @@
+﻿@transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
+
+.is-hidden {
+  display: none !important;
+}
+
+.u-clickable {
+  cursor: pointer;
+}

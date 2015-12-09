@@ -1,0 +1,10 @@
+﻿.marketing-item {
+  margin: 0 auto 2em;
+
+  /* center text on smaller screens rather than one wide sentence */
+  @nest & p {
+    max-width: 26em;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

@@ -199,14 +199,7 @@ module.exports = function(grunt) {
         concurrency: 4,
         progress: true
       }
-    },
-    jscs: {
-          src: ['src/js/**/*.js', '!src/js/thirdParty/**/*.js', 'Gruntfile.js'],
-          options: {
-            config: '.jscsrc',
-            verbose: true
-          }
-        }
+    }
   });
 
   grunt.registerTask('default', 'An alias task for running tests.', ['test']);

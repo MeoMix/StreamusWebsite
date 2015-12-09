@@ -1,5 +1,35 @@
 language: node_js
 node_js:
-  - "0.10"
-before_install: npm install -g grunt-cli
-install: npm install
+  - 4.1
+env:
+  global:
+    ## node-gyp under node 4.x requires newer version of C++ compiler
+    - CXX=g++-4.8
+    ##
+    ## Prevent 'GitHub rate limit reached' error
+    ## https://gist.github.com/topheman/25241e48a1b4f91ec6d4
+    - secure: dzCEDT52igBNZO9Icz0GNBl4Y9COeRM29/NUjrJEnviHaL8hP17jjAxeoSNzshAqdH9i1dQgDyI/q17xM1vA88XIEVd2mHC8noIdtk5DukApHdIOdvAzEM5vo5t6Zlpuujgo2PVyzwZb7zlNhBI9k6K9njE/tWUFilv/jqvltbfQ0o8aAxCG/QbEg6CCzxqXvSyDSb218+tQBg9Lu4sS1tm8P/lcVo7lW8MTKmHfnL+wIqguowNs4OyCNJoRBw7uRe9ADs6Vce3u5fAqRA3RMCcxFQcTNt/saxsSHXj5tQM74EGNzOPcd6o/0UE6FzExSP6Ap55K0a8oJKn7d7q14tnsHQCPoOQKXMZdeovNiAQv+zZg4yapqecN0DvGHuDVDKkrGOpTFlwspZhyuQw0fJ5z0KYUWXh4krDvfGWKHpNmcbcDI/fI5EaSnF8tCGstX/5YSbBQuc0D7NlD0nub993hrLT95HE6Qvl2QEYh9oXJ3egKcS4fsXlU/r6TMKGro8v+bd47SJ5+ff6sLl6Q+YSJMc7A4SA6CbJ4GxzW4HQ9vCW32tofcwPC4Hsbm3l0P/Kfl/HbO9vSJGVC3wUWJaUkE8ejz6/G+eOZzCuXtzJDkynCSz3mb4LfYo0qGO+8nY2MUDPG6Ey30pKvGOx338LoaB9alwR6FrB0/FZKjL8=
+    ##
+## node-gyp under node 4.x requires newer version of C++ compiler
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
+##
+before_install:
+  ## Enable Chrome support for KarmaJS
+  ## http://stackoverflow.com/a/25661593/633438
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  ##
+  - npm install -g gulp
+  - npm install -g jspm
+  ## Prevent 'GitHub rate limit reached' error
+  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+  ##
+before_script:
+  - jspm install

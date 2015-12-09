@@ -1,0 +1,26 @@
+﻿.playlistItem {
+  display: flex;
+  align-items: center;
+}
+
+@badge-fixedWidth: 55px;
+
+.playlistItem-title {
+  margin-left: @badge-fixedWidth;
+  flex: 1;
+}
+
+.playlistItems {
+  max-height: 420px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.playlist:not(:last-child){
+  margin-bottom: 20px;
+}
+
+.badge-wrapper {
+  width: @badge-fixedWidth;
+  line-height: 0;
+}
