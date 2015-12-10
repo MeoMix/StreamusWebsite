@@ -3,8 +3,8 @@ const eslint = require('gulp-eslint');
 const cached = require('gulp-cached');
 const paths = require('../paths.js');
 
-// Lint and enforce code quality style. Configuration found in .jscsrc files.
-// http://jscs.info/
+// Lint and enforce code quality style. Configuration found in .eslintrc files.
+// http://eslint.org/
 gulp.task('lint', () => {
   return gulp.src(paths.allJs)
     .pipe(cached('lint'))

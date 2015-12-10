@@ -30,9 +30,7 @@ export default LayoutView.extend({
   },
 
   _onGitHubApiResponse(response) {
-    // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
     const stargazerCount = response.data.stargazers_count;
-    // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
     // Add commas to the returned value. For example, 6237 ==> 6,237
     const formattedCount = String(stargazerCount).replace(/(\d)(?=(\d{3})+$)/g, '$1,');
     this.ui.githubCount.html(formattedCount);

@@ -164,7 +164,7 @@ throw 'foo';
 - `setter` methods should not return a value.
 - `getter` methods should not change any state.
 - Globals should never be used except when explicitly needed for interfacing with third-party libraries.
-- Always oblige JSCS, JSHint, and Recess. If you disagree with a coding style rule then talk to @MeoMix.
+- Always oblige ESLint. If you disagree with a coding style rule then talk to @MeoMix.
 
 ## More to write about:
 
