@@ -1,4 +1,5 @@
-module.exports = function(config) {
+/* global process */
+module.exports = function (config) {
   var configuration = {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -33,8 +34,6 @@ module.exports = function(config) {
       '/test/': '/base/test/',
       '/jspm_packages/': '/base/jspm_packages/'
     },
-
-    browserNoActivityTimeout: 200000,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

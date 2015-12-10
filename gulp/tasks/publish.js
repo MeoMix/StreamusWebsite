@@ -1,6 +1,6 @@
 ﻿const gulp = require('gulp');
 const sftp = require('gulp-sftp');
-const paths = require('../paths.js');
+//const paths = require('../paths.js');
 
 // TODO: This task doesn't work. It's throwing permission errors.
 // Also, it would be good to implement a caching system for it.

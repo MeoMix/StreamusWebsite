@@ -23,3 +23,4 @@ node_modules
 obj
 bin
 *.config
+.ntvs_analysis.dat
