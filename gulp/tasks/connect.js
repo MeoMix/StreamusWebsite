@@ -34,8 +34,8 @@ gulp.task('connect', (done) => {
 
 // Notify the connect server that it should reload files
 // from the compiled directory which have changed since last reload.
-gulp.task('connect-reloadCompiledFiles', () => {
+gulp.task('connect:reloadCompiledFiles', () => {
   gulp.src(paths.compiledFiles)
-    .pipe(cached('connect-reloadCompiledFiles'))
+    .pipe(cached('connect:reloadCompiledFiles'))
     .pipe(connect.reload());
 });

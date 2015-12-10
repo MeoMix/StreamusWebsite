@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import PlaylistItems from './playlistItems';
 // Polyfill is needed for Reflect API
-//import 'babel/polyfill';
+import 'babel/polyfill';
 
 // Playlist holds a collection of PlaylistItems as well as properties pertaining to a playlist.
 export default Model.extend({
@@ -33,7 +33,7 @@ export default Model.extend({
       this.get('items').playlistId = playlistDto.id;
 
       // Remove so parse doesn't set and overwrite instance after parse returns.
-      //Reflect.deleteProperty(playlistDto, 'items');
+      Reflect.deleteProperty(playlistDto, 'items');
     }
 
     return playlistDto;

@@ -9,13 +9,15 @@ const atImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
 const paths = require('../paths.js');
 
-gulp.task('compile', ['compile-src', 'copy-jspmPackages', 'copy-jspm.config', 'copy-miscAssets']);
+/* eslint-disable max-len */
+gulp.task('compile', ['compile:transformSrc', 'compile:copyJspmPackages', 'compile:copyJspmConfig', 'compile:copyAssets']);
+/* eslint-enable max-len */
 
 // Create a directory, /compiled, and copy all files from /src into it.
 // Transpile ES6 to ES5 while copying and apply postCSS plugins against CSS.
 // Use the /compiled directory instead of /src during development
 // to avoid waiting for ES6 to transpile.
-gulp.task('compile-src', () => {
+gulp.task('compile:transformSrc', () => {
   const jsFilter = filter(['**/*.js'], { restore: true });
   // Exclude common css as it will have been inlined into modules.
   const cssFilter = filter(['**/*.css', '!**/common/css/*.css'], { restore: true });
@@ -36,7 +38,7 @@ gulp.task('compile-src', () => {
     .pipe(plumber())
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
-    //.pipe(changed(paths.compiled))
+    .pipe(changed(paths.compiled))
     // Transpile ES6 files through babel and copy results to destination directory.
     .pipe(jsFilter)
     .pipe(babel({
@@ -63,7 +65,7 @@ gulp.task('compile-src', () => {
     .pipe(gulp.dest(paths.compiled));
 });
 
-gulp.task('copy-jspmPackages', () => {
+gulp.task('compile:copyJspmPackages', () => {
   return gulp.src(paths.jspmPackages, { base: './' })
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
@@ -71,16 +73,16 @@ gulp.task('copy-jspmPackages', () => {
     .pipe(gulp.dest(paths.compiled));
 });
 
-gulp.task('copy-jspm.config', () => {
-  return gulp.src('jspm.config.js')
+gulp.task('compile:copyJspmConfig', () => {
+  return gulp.src(paths.jspmConfig)
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
     .pipe(changed(paths.compiled))
     .pipe(gulp.dest(paths.compiled));
 });
 
-gulp.task('copy-miscAssets', () => {
-  return gulp.src('src/*', { dot: true })
+gulp.task('compile:copyAssets', () => {
+  return gulp.src(paths.srcAssets, { dot: true })
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
     .pipe(changed(paths.compiled))

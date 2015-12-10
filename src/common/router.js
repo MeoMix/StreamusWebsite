@@ -37,8 +37,8 @@ export default BaseRouter.extend({
     };
 
     // Ensure that trailing slash on all routes is optional.
-    routes = _.mapKeys(routes, function(value, key) {
-      return key + '(/)';
+    routes = _.mapKeys(routes, (value, key) => {
+      return `${key}(/)`;
     });
 
     return routes;

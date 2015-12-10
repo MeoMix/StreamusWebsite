@@ -1,10 +1,7 @@
 ﻿import { Model } from 'backbone';
 import _ from 'lodash';
-import 'ga';
-
-//import 'https://www.google-analytics.com/analytics.js';
 // Polyfill is needed for Reflect API
-//import 'babel/polyfill';
+import 'babel/polyfill';
 
 export default Model.extend({
   defaults: {
@@ -32,7 +29,7 @@ export default Model.extend({
     // This allows dependant modules to use `window.ga` without knowingly
     // programming against a global object.
     this.set('module', () => {
-      //Reflect.apply(window.ga, this, arguments);
+      Reflect.apply(window.ga, this, arguments);
     });
   },
 

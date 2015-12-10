@@ -1,4 +1,5 @@
-﻿// Options:
+﻿/* eslint-env node */
+// Options:
 // * gulp: Compile src files, spin-up local server, open browser, watch files for changes.
 // * gulp build: Build a release from /compiled and place it into /dist.
 // * gulp compile: Move files from /src to /compiled while transpiling ES6 to ES5.

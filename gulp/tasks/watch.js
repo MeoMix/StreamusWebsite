@@ -10,7 +10,6 @@ const WatchEventType = {
   Deleted: 'deleted'
 };
 
-// TODO: I might want to use piping here to prevent compile errors from breaking watch.
 // Watch source files for changes. Run compile task when changes detected.
 gulp.task('watch', (done) => {
   const logChanges = (event) => {
@@ -20,12 +19,16 @@ gulp.task('watch', (done) => {
     );
   };
 
+  // TODO: Probably should watch for other assets being added/removed from root.
   gulp.watch(paths.srcFiles, ['compile']).on('change', logChanges);
+  gulp.watch(paths.jspmConfig, ['compile:copyJspmConfig']).on('change', logChanges);
+  gulp.watch(paths.jspmPackagesJs, ['compile:copyJspmPackagesJs']).on('change', logChanges);
+  // TODO: What if jspmConfig or jspmPackagesJs or assets are deleted?
   gulp.watch(paths.srcFiles, (event) => {
     if (event.type === WatchEventType.Deleted) {
       del(event.path.replace('src/', 'compiled/'));
     }
   });
-  gulp.watch(paths.compiledFiles, ['connect-reloadCompiledFiles']).on('change', logChanges);
+  gulp.watch(paths.compiledFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
   done();
 });

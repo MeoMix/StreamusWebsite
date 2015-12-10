@@ -11,7 +11,7 @@ import ApplicationView from './applicationView';
 import ExtensionData from 'common/extensionData';
 import AnalyticsManager from 'common/analyticsManager';
 import Browser from 'common/browser';
-//import 'zopim';
+import 'bootstrap/css/bootstrap.css!';
 import 'bootstrap';
 
 export default Application.extend({
