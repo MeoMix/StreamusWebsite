@@ -50,8 +50,6 @@ where WEBSITEROOT points to my src directory such as:
 Define WEBSITEROOT "/Users/Meo/Documents/GitHub/StreamusWebsite"
 ```
 
-**Server settings:** Be sure to set localDebug to false in application.js unless you have a local instance of Streamus' server running.
-
 Third-Party Libraries
 ------
 

@@ -43,7 +43,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="Gruntfile.js" />
     <Content Include="gulpfile.babel.js" />
     <Content Include="gulp\paths.js" />
     <Content Include="gulp\tasks\build.js" />
@@ -52,6 +51,7 @@
     <Content Include="gulp\tasks\default.js" />
     <Content Include="gulp\tasks\lint.js" />
     <Content Include="gulp\tasks\test.js" />
+    <Content Include="gulp\tasks\publish.js" />
     <Content Include="gulp\tasks\watch.js" />
     <Content Include="jspm.config.js" />
     <Content Include="karma.config.js" />
@@ -148,7 +148,6 @@
     <Content Include="src\common\fonts\FontAwesome.otf" />
     <Content Include="src\.htaccess" />
     <Content Include=".ftppass" />
-    <Content Include="sftpCache.json" />
     <Content Include=".travis.yml" />
     <Content Include="changelog.md" />
     <Content Include="gulp\.eslintrc" />

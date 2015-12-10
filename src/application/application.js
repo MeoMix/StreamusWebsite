@@ -15,13 +15,11 @@ import 'bootstrap/css/bootstrap.css!';
 import 'bootstrap';
 
 export default Application.extend({
-  // Set this flag to true to enable localhost server & debugging flags.
-  localDebug: false,
   router: null,
   extensionData: null,
   analyticsManager: null,
   browser: null,
-  serverUrl: '',
+  serverUrl: 'https://aws-server.streamus.com/Streamus/',
 
   channels: {
     dialog: Wreqr.radio.channel('dialog'),
@@ -31,7 +29,6 @@ export default Application.extend({
   },
 
   initialize() {
-    this._setServerUrl();
     this.browser = new Browser();
     this.extensionData = new ExtensionData({
       browser: this.browser
@@ -39,10 +36,6 @@ export default Application.extend({
     this.analyticsManager = new AnalyticsManager();
 
     this.on('start', this._onStart);
-  },
-
-  _setServerUrl() {
-    this.serverUrl = this.localDebug ? 'http://localhost:39853/' : 'https://aws-server.streamus.com/Streamus/';
   },
 
   _onStart() {

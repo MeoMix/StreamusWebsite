@@ -13,6 +13,7 @@ module.exports = {
   compiledAssets: ['compiled/*.*', '!compiled/index.html', '!compiled/main.js'],
   srcAssets: ['src/*.*', '!src/index.html', '!src/main.js'],
   dist: 'dist/',
+  distFiles: 'dist/**/*',
   jspmPackages: 'jspm_packages/**/*.+(js|css)',
   jspmConfig: 'jspm.config.js'
 };
