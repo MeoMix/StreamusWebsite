@@ -17,7 +17,7 @@
     <ProjectGuid>bd55e736-9741-442b-9961-8e3e9f6bd69b</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>gulpfile.babel.js</StartupFile>
+    <StartupFile>gulpfile.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -39,6 +39,7 @@
     <Content Include=".ftppass" />
     <Content Include=".gitattributes" />
     <Content Include=".gitignore" />
+    <Content Include=".node-inspectorrc" />
     <Content Include=".travis.yml" />
     <Content Include="changelog.md" />
     <Content Include="CONTRIBUTING.md" />
@@ -134,7 +135,7 @@
     <Folder Include="test\unit\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="gulpfile.babel.js" />
+    <Compile Include="gulpfile.js" />
     <Compile Include="gulp\paths.js" />
     <Compile Include="gulp\tasks\build.js" />
     <Compile Include="gulp\tasks\compile.js" />

@@ -1,40 +1,39 @@
-﻿const gulp = require('gulp');
-const connect = require('gulp-connect');
-const pushState = require('connect-pushstate');
-const cached = require('gulp-cached');
-const opn = require('opn');
-const path = require('path');
-const argv = require('yargs').argv;
-const paths = require('../paths.js');
+﻿var gulp = require('gulp');
+var connect = require('gulp-connect');
+var pushState = require('connect-pushstate');
+var cached = require('gulp-cached');
+var opn = require('opn');
+var path = require('path');
+var argv = require('yargs').argv;
+var paths = require('../paths.js');
 
 // Create a local server for hosting the project.
 // Responds to livereload commands so file changes don't require refreshing.
-gulp.task('connect', (done) => {
-  const host = 'localhost';
-  const port = 8080;
-
+gulp.task('connect', function(done) {
+  var host = 'localhost';
+  var port = 8080;
   // Open default browser to the compiled or dist directory depending on build status.
-  const directoryName = argv._[0] === 'build' ? 'dist' : 'compiled';
+  var directoryName = argv._[0] === 'build' ? 'dist' : 'compiled';
 
   connect.server({
-    host,
-    port,
+    host: host,
+    port: port,
     // Needs to be path.resolve and not just './'
     // https://github.com/AveVlad/gulp-connect/issues/54
-    root: path.resolve(`./${directoryName}`),
+    root: path.resolve('./' + directoryName),
     livereload: true,
-    middleware: () => {
+    middleware: function() {
       return [pushState()];
     }
   });
 
-  opn(`http://${host}:${port}/`);
+  opn('http://' + host + ':' + port + '/');
   done();
 });
 
 // Notify the connect server that it should reload files
 // from the compiled directory which have changed since last reload.
-gulp.task('connect:reloadCompiledFiles', () => {
+gulp.task('connect:reloadCompiledFiles', function() {
   gulp.src(paths.compiledFiles)
     .pipe(cached('connect:reloadCompiledFiles'))
     .pipe(connect.reload());

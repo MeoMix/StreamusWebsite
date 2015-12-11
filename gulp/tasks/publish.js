@@ -1,10 +1,10 @@
-﻿const gulp = require('gulp');
-const sftp = require('gulp-sftp');
-//const paths = require('../paths.js');
+﻿var gulp = require('gulp');
+var sftp = require('gulp-sftp');
+var paths = require('../paths.js');
 
 // TODO: This task doesn't work. It's throwing permission errors.
 // Also, it would be good to implement a caching system for it.
-gulp.task('publish', () => {
+gulp.task('publish', function() {
   return gulp.src('jspm.config.js')
     .pipe(sftp({
       host: 's01.lumoushosting.com',

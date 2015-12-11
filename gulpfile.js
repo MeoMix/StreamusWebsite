@@ -6,7 +6,7 @@
 // * gulp lint: Lint /src files for errors.
 // * gulp test: Instantiate a Karma server and run specs found in /test.
 // * gulp watch: Watch /src and /compiled files for changes.
-const requireDir = require('require-dir');
+var requireDir = require('require-dir');
 
 // Load all the gulp tasks declared in /gulp directory so that gulp cli can leverage them.
 requireDir('./gulp/tasks');
