@@ -8,7 +8,7 @@ env:
     ##
     ## Prevent 'GitHub rate limit reached' error
     ## https://gist.github.com/topheman/25241e48a1b4f91ec6d4
-    - secure: dzCEDT52igBNZO9Icz0GNBl4Y9COeRM29/NUjrJEnviHaL8hP17jjAxeoSNzshAqdH9i1dQgDyI/q17xM1vA88XIEVd2mHC8noIdtk5DukApHdIOdvAzEM5vo5t6Zlpuujgo2PVyzwZb7zlNhBI9k6K9njE/tWUFilv/jqvltbfQ0o8aAxCG/QbEg6CCzxqXvSyDSb218+tQBg9Lu4sS1tm8P/lcVo7lW8MTKmHfnL+wIqguowNs4OyCNJoRBw7uRe9ADs6Vce3u5fAqRA3RMCcxFQcTNt/saxsSHXj5tQM74EGNzOPcd6o/0UE6FzExSP6Ap55K0a8oJKn7d7q14tnsHQCPoOQKXMZdeovNiAQv+zZg4yapqecN0DvGHuDVDKkrGOpTFlwspZhyuQw0fJ5z0KYUWXh4krDvfGWKHpNmcbcDI/fI5EaSnF8tCGstX/5YSbBQuc0D7NlD0nub993hrLT95HE6Qvl2QEYh9oXJ3egKcS4fsXlU/r6TMKGro8v+bd47SJ5+ff6sLl6Q+YSJMc7A4SA6CbJ4GxzW4HQ9vCW32tofcwPC4Hsbm3l0P/Kfl/HbO9vSJGVC3wUWJaUkE8ejz6/G+eOZzCuXtzJDkynCSz3mb4LfYo0qGO+8nY2MUDPG6Ey30pKvGOx338LoaB9alwR6FrB0/FZKjL8=
+    - secure: ASbzd8ow6GL8Mc7RjTW6n2wa4EjlNdx0faYzHKA7P+x0UrJsbNeUJXplRHFbM9xI78ouT5B/6npdopvBCQ9d1X22vtIHmkAtNeeMN2TxVhokHJJnfExVn9IoWgiaoyJRAl0/cHmLuIjmP3KDIfZGlqCKebxDst85CceWGI5FAHY=
     ##
 ## node-gyp under node 4.x requires newer version of C++ compiler
 addons:
