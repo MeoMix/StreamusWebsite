@@ -1,4 +1,4 @@
-﻿@import "../../common/css/color";
+﻿@import 'common/css/color.css';
 @transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
 
 .panel-heading {

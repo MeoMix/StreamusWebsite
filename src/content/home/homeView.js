@@ -1,6 +1,6 @@
 ﻿import { LayoutView } from 'marionette';
-import InstallButton from '../../button/installButton';
-import InstallButtonView from '../../button/installButtonView';
+import InstallButton from 'button/installButton';
+import InstallButtonView from 'button/installButtonView';
 import template from './home.hbs!';
 import './home.css!';
 

@@ -1,11 +1,11 @@
 ﻿import { LayoutView } from 'marionette';
 import _ from 'lodash';
-import Playlists from '../../playlist/playlists';
-import PlaylistsView from '../../playlist/playlistsView';
+import Playlists from 'playlist/playlists';
+import PlaylistsView from 'playlist/playlistsView';
 import template from './share.hbs!';
 import './share.css!';
-import RouteType from '../../common/enum/routeType';
-import Updatable from '../../behavior/updatable';
+import RouteType from 'common/enum/routeType';
+import Updatable from 'behavior/updatable';
 
 export default LayoutView.extend({
   className: 'share content',

@@ -17,7 +17,8 @@
     <ProjectGuid>bd55e736-9741-442b-9961-8e3e9f6bd69b</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>gulpfile.js</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -92,6 +93,7 @@
     <Content Include="src\dialog\termsOfUse.hbs" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\googlee6d26778f04ae1ed.html" />
+    <Content Include="src\header\logo.css" />
     <Content Include="src\header\logo.hbs" />
     <Content Include="src\header\logo.png" />
     <Content Include="src\header\navigation.hbs" />

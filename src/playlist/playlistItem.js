@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import Song from './song';
 // Polyfill is needed for Reflect API
-import 'babel/polyfill';
+//import 'babel/polyfill';
 
 export default Model.extend({
   defaults: {
@@ -23,7 +23,7 @@ export default Model.extend({
 
       // Take json of song and set into model. Delete to prevent overriding on return of data object.
       this.get('song').set(playlistItemDto.song);
-      Reflect.deleteProperty(playlistItemDto, 'song');
+      //Reflect.deleteProperty(playlistItemDto, 'song');
     }
 
     return playlistItemDto;
