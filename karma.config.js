@@ -1,4 +1,23 @@
 /* global process */
+var fs = require('fs');
+var path = require('path');
+var _ = require('lodash');
+
+// Determine all potential paths which need to be proxied by KarmaJS
+// Replace requests to '/proxyTarget' with '/base/proxyTarget'
+var proxyTargets = fs.readdirSync('compiled/').filter(function(file) {
+  return fs.statSync(path.join('compiled/', file)).isDirectory();
+});
+
+var base = '/base/compiled';
+var proxyValues = _.map(proxyTargets, function(proxyTarget) {
+  return base + '/' + proxyTarget + '/';
+});
+
+var proxies = _.indexBy(proxyValues, function(proxyValue) {
+  return proxyValue.replace(base, '');
+});
+
 module.exports = function(config) {
   var configuration = {
     // frameworks to use
@@ -20,13 +39,14 @@ module.exports = function(config) {
     },
     
     // Karma serves all files under a /base/ directory.
-    // This conflicts with any explicit 'root' paths in the application.
-    // So, proxy all 'root' paths through '/base/' to ensure tests work properly.
-    proxies: {
-      '/': '/base/'
-    },
-    
-    urlRoot: '/root/',
+    // This conflicts with the baseURL param provided through jspm's configuration file.
+    // So, proxy requests to known paths through /base/ to keep everything working.
+    // Don't proxy '/' because an infinite loop will occur when looking up non-trivial paths.
+    proxies: _.defaults({
+      '/compiled/': '/base/compiled/',
+      '/test/': '/base/test/',
+      '/jspm_packages/': '/base/jspm_packages/'
+    }, proxies),
     
     // test results reporter to use
     // possible values: 'dots', 'progress'
