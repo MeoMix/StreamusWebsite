@@ -13,6 +13,6 @@ gulp.task('test:startKarmaServer', function(done) {
   const server = new Server({
     configFile: path.resolve('karma.config.js')
   }, done);
-  
+
   server.start();
 });

@@ -2,7 +2,8 @@
 var path = require('path');
 var util = require('gulp-util');
 var del = require('del');
-var paths = require('../paths.js');
+var packageConfig = require('../../package.json');
+var GlobFilter = require('../globFilter.js');
 // https://github.com/gulpjs/gulp/blob/master/docs/API.md#eventtype
 var WatchEventType = {
   Added: 'added',
@@ -20,15 +21,16 @@ gulp.task('watch', function(done) {
   };
 
   // TODO: Probably should watch for other assets being added/removed from root.
-  gulp.watch(paths.srcFiles, ['compile']).on('change', logChanges);
-  gulp.watch(paths.jspmConfig, ['compile:copyJspmConfig']).on('change', logChanges);
-  gulp.watch(paths.jspmPackagesJs, ['compile:copyJspmPackagesJs']).on('change', logChanges);
+  gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, ['compile']).on('change', logChanges);
+  const jspmConfigFile = packageConfig.jspm.configFile || GlobFilter.DefaultJspmConfigFile;
+  gulp.watch(jspmConfigFile, ['compile:copyJspmConfig']).on('change', logChanges);
+  gulp.watch(GlobFilter.AllJspmPackageFiles, ['compile:copyJspmPackages']).on('change', logChanges);
   // TODO: What if jspmConfig or jspmPackagesJs or assets are deleted?
-  gulp.watch(paths.srcFiles, function(event) {
+  gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, function(event) {
     if (event.type === WatchEventType.Deleted) {
-      del(event.path.replace('src/', 'compiled/'));
+      del(event.path.replace(GlobFilter.SrcFolder, GlobFilter.CompiledFolder));
     }
   });
-  gulp.watch(paths.compiledFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
+  gulp.watch(GlobFilter.CompiledFolder + GlobFilter.AllFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
   done();
 });

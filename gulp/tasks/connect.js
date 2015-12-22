@@ -5,7 +5,7 @@ var cached = require('gulp-cached');
 var opn = require('opn');
 var path = require('path');
 var argv = require('yargs').argv;
-var paths = require('../paths.js');
+var GlobFilter = require('../globFilter.js');
 
 // Create a local server for hosting the project.
 // Responds to livereload commands so file changes don't require refreshing.
@@ -13,7 +13,7 @@ gulp.task('connect', function(done) {
   var host = 'localhost';
   var port = 8080;
   // Open default browser to the compiled or dist directory depending on build status.
-  var directoryName = argv._[0] === 'build' ? 'dist' : 'compiled';
+  var directoryName = argv._[0] === 'build' ? GlobFilter.DistFolder : GlobFilter.CompiledFolder;
 
   connect.server({
     host: host,
@@ -34,7 +34,7 @@ gulp.task('connect', function(done) {
 // Notify the connect server that it should reload files
 // from the compiled directory which have changed since last reload.
 gulp.task('connect:reloadCompiledFiles', function() {
-  gulp.src(paths.compiledFiles)
+  gulp.src(GlobFilter.CompiledFolder + GlobFilter.AllFiles)
     .pipe(cached('connect:reloadCompiledFiles'))
     .pipe(connect.reload());
 });
