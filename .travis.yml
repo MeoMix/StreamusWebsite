@@ -10,6 +10,14 @@ env:
     ## https://gist.github.com/topheman/25241e48a1b4f91ec6d4
     - secure: ASbzd8ow6GL8Mc7RjTW6n2wa4EjlNdx0faYzHKA7P+x0UrJsbNeUJXplRHFbM9xI78ouT5B/6npdopvBCQ9d1X22vtIHmkAtNeeMN2TxVhokHJJnfExVn9IoWgiaoyJRAl0/cHmLuIjmP3KDIfZGlqCKebxDst85CceWGI5FAHY=
     ##
+## notify gitter channel of build status changes.
+notifications:
+  webhooks:
+    urls:
+      https://webhooks.gitter.im/e/2ab9471055b0f588dfa3
+    on_success: change
+    on_failure: always
+    on_start: never
 ## node-gyp under node 4.x requires newer version of C++ compiler
 addons:
   apt:
