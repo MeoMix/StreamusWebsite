@@ -2,7 +2,6 @@
 var path = require('path');
 var util = require('gulp-util');
 var del = require('del');
-var packageConfig = require('../../package.json');
 var GlobFilter = require('../globFilter.js');
 // https://github.com/gulpjs/gulp/blob/master/docs/API.md#eventtype
 var WatchEventType = {
@@ -20,17 +19,18 @@ gulp.task('watch', function(done) {
     );
   };
 
-  // TODO: Probably should watch for other assets being added/removed from root.
-  gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, ['compile']).on('change', logChanges);
-  const jspmConfigFile = packageConfig.jspm.configFile || GlobFilter.DefaultJspmConfigFile;
-  gulp.watch(jspmConfigFile, ['compile:copyJspmConfig']).on('change', logChanges);
-  gulp.watch(GlobFilter.AllJspmPackageFiles, ['compile:copyJspmPackages']).on('change', logChanges);
-  // TODO: What if jspmConfig or jspmPackagesJs or assets are deleted?
-  gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, function(event) {
-    if (event.type === WatchEventType.Deleted) {
-      del(event.path.replace(GlobFilter.SrcFolder, GlobFilter.CompiledFolder));
-    }
-  });
-  gulp.watch(GlobFilter.CompiledFolder + GlobFilter.AllFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
+  //gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, ['compile:transformSrc']).on('change', logChanges);
+  //gulp.watch(GlobFilter.JspmFolder + GlobFilter.AllFiles, ['compile:copyJspmFolder']).on('change', logChanges);
+  
+  //// Clean-up deleted files manually by finding and removing their counterpart.
+  //gulp.watch([GlobFilter.SrcFolder + GlobFilter.AllFiles, GlobFilter.JspmFolder + GlobFilter.AllFiles], function(event) {
+  //  if (event.type === WatchEventType.Deleted) {
+  //    var regexp = new RegExp(GlobFilter.Src + '|' + GlobFilter.Jspm);
+  //    var compiledPath = event.path.replace(regexp, GlobFilter.Compiled);
+  //    del(compiledPath);
+  //  }
+  //});
+
+  //gulp.watch(GlobFilter.CompiledFolder + GlobFilter.AllFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
   done();
 });

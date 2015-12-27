@@ -5,7 +5,6 @@ var runSequence = require('run-sequence');
 var Builder = require('systemjs-builder');
 var util = require('gulp-util');
 var del = require('del');
-var packageConfig = require('../../package.json');
 var GlobFilter = require('../globFilter.js');
 
 // Create a bundled distribution from the compiled directory and put it into the dist directory.
@@ -41,10 +40,7 @@ gulp.task('build:transformHtml', function() {
 // Use jspm's builder to create a self-executing bundle of files.
 // Written to a destination directory and ready for production use.
 gulp.task('build:transformJs', function(done) {
-  // By default, the config file can be found in the root directory. If defaults have been
-  // changed then jspm's entry in packageConfig will know the correct value.
-  const jspmConfigFile = packageConfig.jspm.configFile || GlobFilter.DefaultJspmConfigFile;
-  const builder = new Builder(GlobFilter.CompiledFolder, jspmConfigFile);
+  const builder = new Builder(GlobFilter.CompiledFolder, GlobFilter.JspmConfigFile);
   const options = {
     runtime: false,
     // TODO: What are sourcemaps exactly?

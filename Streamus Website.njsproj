@@ -109,8 +109,10 @@
     <Content Include="test\.eslintrc" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="compiled\" />
     <Folder Include="gulp\" />
     <Folder Include="gulp\tasks\" />
+    <Folder Include="jspm\" />
     <Folder Include="src\" />
     <Folder Include="src\application\" />
     <Folder Include="src\behavior\" />
@@ -138,7 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gulpfile.js" />
-    <Compile Include="gulp\paths.js" />
+    <Compile Include="gulp\globFilter.js" />
     <Compile Include="gulp\tasks\build.js" />
     <Compile Include="gulp\tasks\compile.js" />
     <Compile Include="gulp\tasks\connect.js" />
@@ -147,8 +149,10 @@
     <Compile Include="gulp\tasks\publish.js" />
     <Compile Include="gulp\tasks\test.js" />
     <Compile Include="gulp\tasks\watch.js" />
-    <Compile Include="jspm.config.js" />
+    <Content Include="jspm\css-builder.js" />
     <Compile Include="karma.config.js" />
+    <Content Include="jspm\css.js" />
+    <Content Include="jspm\jspm.config.js" />
     <Content Include="src\application\application.js" />
     <Content Include="src\application\applicationView.js" />
     <Content Include="src\behavior\button.js" />
