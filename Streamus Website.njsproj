@@ -57,6 +57,7 @@
     <Content Include="src\common\css\color.css" />
     <Content Include="src\common\css\font-awesome.css" />
     <Content Include="src\common\css\reset.css" />
+    <Content Include="src\common\css\transition.css" />
     <Content Include="src\common\css\utility.css" />
     <Content Include="src\common\fonts\fontawesome-webfont.eot" />
     <Content Include="src\common\fonts\fontawesome-webfont.svg" />
@@ -150,6 +151,7 @@
     <Compile Include="gulp\tasks\test.js" />
     <Compile Include="gulp\tasks\watch.js" />
     <Content Include="jspm\css-builder.js" />
+    <Content Include="jspm\autoprefixer.js" />
     <Compile Include="karma.config.js" />
     <Content Include="jspm\css.js" />
     <Content Include="jspm\jspm.config.js" />

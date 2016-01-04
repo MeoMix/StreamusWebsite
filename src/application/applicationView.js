@@ -1,5 +1,5 @@
 ﻿import { LayoutView } from 'marionette';
-import './application.css!';
+import styles from './application.css!';
 import template from './application.hbs!';
 import HeaderRegion from 'header/headerRegion';
 import FooterRegion from 'footer/footerRegion';

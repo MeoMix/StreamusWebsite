@@ -5,6 +5,7 @@ var runSequence = require('run-sequence');
 var Builder = require('systemjs-builder');
 var util = require('gulp-util');
 var del = require('del');
+var imagemin = require('gulp-imagemin');
 var GlobFilter = require('../globFilter.js');
 
 // Create a bundled distribution from the compiled directory and put it into the dist directory.
@@ -18,7 +19,7 @@ gulp.task('build', function(done) {
     'build:transformHtml',
     'build:transformJs',
     // All other files can be copied in parallel
-    ['build:copyImages', 'build:copyFonts', 'build:copyAssets'],
+    ['build:minifyImages', 'build:copyFonts', 'build:copyAssets'],
     'connect',
     done);
 });
@@ -60,8 +61,9 @@ gulp.task('build:transformJs', function(done) {
     .finally(done);
 });
 
-gulp.task('build:copyImages', function() {
+gulp.task('build:minifyImages', function() {
   return gulp.src(GlobFilter.CompiledFolder + GlobFilter.AllImages)
+    .pipe(imagemin())
     .pipe(gulp.dest(GlobFilter.DistFolder));
 });
 

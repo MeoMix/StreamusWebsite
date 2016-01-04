@@ -47,10 +47,22 @@ exports.bundle = function(loads, compileOpts, outputOpts) {
 
   //});
 
-  return Promise.all([loader['import']('clean-css'), loader['import']('postcss'), loader['import']('postcss-import')]).then(function(modules) {
-    var CleanCSS = modules[0];
-    var postcss = modules[1];
-    var atImport = modules[2];
+  return Promise.all([
+    loader['import']('postcss'),
+    loader['import']('postcss-import'),
+    loader['import']('jspm/autoprefixer'),
+    loader['import']('postcss-custom-properties'),
+    loader['import']('postcss-url'),
+    loader['import']('postcss-nesting'),
+    //loader['import']('cssnano')
+  ]).then(function(modules) {
+    var postcss = modules[0];
+    var atImport = modules[1];
+    var autoprefixer = modules[2];
+    var customProperties = modules[3];
+    var url = modules[4];
+    var nesting = modules[5];
+    //var cssnano = modules[6];
 
     // SystemJS Builder 0.14 will write the stubs for use, we detect by the 3 argument over 2 argument bundle call
     var writeStubs = typeof outputOpts == 'undefined';
@@ -84,8 +96,26 @@ exports.bundle = function(loads, compileOpts, outputOpts) {
     var postCssPlugins = [
       // From postcss-import notes: This plugin should probably be used as the first plugin of your list.
       atImport({
-        path: './'
-      })
+        path: './src/'
+        //root: '/',
+        //skipDuplicates: false,
+        //async: true
+      }),
+      autoprefixer({ browsers: ['last 2 versions'] }),
+      customProperties(),
+      //url({
+      //  url: function(URL, decl, from, dirname, to, options, result) {
+      //    //console.log('hi:', URL, decl, from, dirname, to, options, result);
+      //    var transformedUrl = URL;
+
+      //    if (!URL.includes('data:')) {
+      //      transformedUrl = System.normalizeSync(URL);
+      //    }
+
+      //    return transformedUrl;
+      //  }
+      //}),
+      nesting()
     ];
     var processor = postcss(postCssPlugins);
 
@@ -112,8 +142,9 @@ exports.bundle = function(loads, compileOpts, outputOpts) {
 
     return [stubDefines, cssInject, '("' + escape(cssOutput) + '");'].join('\n');
   }, function(err) {
-    if (err.toString().indexOf('ENOENT') != -1)
-      throw new Error('Install Clean CSS via `jspm install npm:clean-css --dev` for CSS build support. Set System.buildCSS = false to skip CSS builds.');
+    console.log('err?', err);
+    //if (err.toString().indexOf('ENOENT') != -1)
+    //  throw new Error('Install Clean CSS via `jspm install npm:clean-css --dev` for CSS build support. Set System.buildCSS = false to skip CSS builds.');
     throw err;
   });
 };

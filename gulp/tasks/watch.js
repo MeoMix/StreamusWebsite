@@ -19,17 +19,17 @@ gulp.task('watch', function(done) {
     );
   };
 
-  //gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, ['compile:transformSrc']).on('change', logChanges);
-  //gulp.watch(GlobFilter.JspmFolder + GlobFilter.AllFiles, ['compile:copyJspmFolder']).on('change', logChanges);
+  gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, ['compile:transformSrc']).on('change', logChanges);
+  gulp.watch(GlobFilter.JspmFolder + '*', ['compile:copyJspmFolder']).on('change', logChanges);
   
-  //// Clean-up deleted files manually by finding and removing their counterpart.
-  //gulp.watch([GlobFilter.SrcFolder + GlobFilter.AllFiles, GlobFilter.JspmFolder + GlobFilter.AllFiles], function(event) {
-  //  if (event.type === WatchEventType.Deleted) {
-  //    var regexp = new RegExp(GlobFilter.Src + '|' + GlobFilter.Jspm);
-  //    var compiledPath = event.path.replace(regexp, GlobFilter.Compiled);
-  //    del(compiledPath);
-  //  }
-  //});
+  // Clean-up deleted files manually by finding and removing their counterpart.
+  gulp.watch([GlobFilter.SrcFolder + GlobFilter.AllFiles, GlobFilter.JspmFolder + '*'], function(event) {
+    if (event.type === WatchEventType.Deleted) {
+      var regexp = new RegExp(GlobFilter.Src + '|' + GlobFilter.Jspm);
+      var compiledPath = event.path.replace(regexp, GlobFilter.Compiled);
+      del(compiledPath);
+    }
+  });
 
   //gulp.watch(GlobFilter.CompiledFolder + GlobFilter.AllFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
   done();

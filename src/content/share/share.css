@@ -1,12 +1,14 @@
-﻿.playlistItem {
+﻿:root {
+  --badge-FixedWidth: 55px;
+}
+
+.playlistItem {
   display: flex;
   align-items: center;
 }
 
-@badge-fixedWidth: 55px;
-
 .playlistItem-title {
-  margin-left: @badge-fixedWidth;
+  margin-left: var(--badge-FixedWidth);
   flex: 1;
 }
 
@@ -21,6 +23,6 @@
 }
 
 .badge-wrapper {
-  width: @badge-fixedWidth;
+  width: var(--badge-FixedWidth);
   line-height: 0;
 }

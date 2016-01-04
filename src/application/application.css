@@ -1,8 +1,9 @@
-﻿/*@import 'common/css/reset.css';*/
+﻿/*@import 'common/css/reset.css'; */
 /* prefer loading font-awesome locally over CDN because of delay in loading fonts in second request to CDN */
 @import 'common/css/font-awesome.css';
 @import 'common/css/color.css';
 @import 'common/css/utility.css';
+@import 'common/css/transition.css';
 
 body {
   padding-top: 20px;
@@ -56,11 +57,9 @@ h2 {
   display: none;
 }
 
-@transition-easeOutSine: cubic-bezier(.39,.575,.565,1);
-
 .navigation-link,
 .btn {
-  transition: all .14s @transition-easeOutSine;
+  transition: all .14s var(--transition-easeOutSine);
 }
 
 @media (min-width: 1400px) {

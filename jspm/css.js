@@ -58,43 +58,75 @@
   };
 
   exports.fetch = function(load, systemFetch) {
-    console.log('fetch fetch fetch');
     // dont reload styles loaded in the head
     for (var i = 0; i < linkHrefs.length; i++)
       if (load.address == linkHrefs[i])
         return '';
 
     var loader = this;
-    Promise.all([loader['import']('postcss'), loader['import']('postcss-import'), loader['import']('path')]).then(function(modules) {
-      var postcss = modules[0];
-      var atImport = modules[1];
-      var path = modules[2];
 
-      var postCssPlugins = [
-        // From postcss-import notes: This plugin should probably be used as the first plugin of your list.
-        atImport({
-          root: '/',
-          //path: 'http://localhost:8080/'
-        })
-      ];
-      var processor = postcss(postCssPlugins);
+    console.log('this:', this, System, this === System);
 
-      systemFetch(load).then((source) => {
-        //var rootURL = loader.rootURL || fromFileURL(loader.baseURL);
-        console.log('address:', load.address);
-        const sourcePath = (load.address.startsWith(System.baseURL) ? path.relative(System.baseURL, load.address) : load.address).replace(/!.*$/, '');
-        console.log('got source hi', sourcePath);
-        var cssOutput = processor.process(source, {
-          from: ''
-        }).css;
-        const blob = new Blob([processor.process(cssOutput)], { type: 'text/css' });
-        console.log('got blob');
-        const blobUrl = URL.createObjectURL(blob);
+    window.systemFetch = systemFetch;
+    return new Promise(function(resolve, reject) {
+      Promise.all([
+        loader['import']('postcss'),
+        loader['import']('postcss-import'),
+        loader['import']('jspm/autoprefixer'),
+        loader['import']('postcss-custom-properties'),
+        loader['import']('postcss-url'),
+        loader['import']('postcss-nesting')
+      ]).then(function(modules) {
+        var postcss = modules[0];
+        var atImport = modules[1];
+        var autoprefixer = modules[2];
+        var customProperties = modules[3];
+        var url = modules[4];
+        var nesting = modules[5];
 
-        return loadCSS(blobUrl);
+        var postCssPlugins = [
+          // From postcss-import notes: This plugin should probably be used as the first plugin of your list.
+          atImport({
+            root: '/',
+            skipDuplicates: false,
+            async: true
+          }),
+          autoprefixer({ browsers: ['last 2 versions'] }),
+          customProperties(),
+          url({
+            url: function(URL, decl, from, dirname, to, options, result) {
+              console.log('hi:', URL, decl, from, dirname, to, options, result);
+              var transformedUrl = URL;
+
+              if (!URL.includes('data:')) {
+                transformedUrl = System.normalizeSync(URL);
+              }
+
+              return transformedUrl;
+            }
+          }),
+          nesting()
+        ];
+        var processor = postcss(postCssPlugins);
+
+        systemFetch(load).then(function(source) {
+          processor.process(source, {
+            from: ''
+          }).then(function(result) {
+            var cssOutput = result.css;
+
+            var blob = new Blob([cssOutput], { type: 'text/css' });
+            var blobUrl = URL.createObjectURL(blob);
+
+            loadCSS(blobUrl).then(function() {
+              resolve('');
+            });
+          });
+        });
+      }, function(error) {
+        console.log(error);
+        reject(error);
       });
-    }, function(error) {
-      console.log(error);
     });
   };
 }
