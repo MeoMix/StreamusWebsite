@@ -6,17 +6,17 @@ export default Behavior.extend({
   },
 
   modelEvents: {
-    'change:enabled': '_onChangeEnabled',
+    'change:isEnabled': '_onChangeIsEnabled',
     'change:text': '_onChangeText'
   },
 
   onRender() {
-    this._setDisabled(!this.view.options.model.get('enabled'));
+    this._setDisabled(!this.view.options.model.get('isEnabled'));
     this._setText(this.view.options.model.get('text'));
   },
 
-  _onChangeEnabled(model, enabled) {
-    this._setDisabled(!enabled);
+  _onChangeIsEnabled(model, isEnabled) {
+    this._setDisabled(!isEnabled);
   },
 
   _onChangeText(model, text) {
@@ -24,7 +24,7 @@ export default Behavior.extend({
   },
 
   _onClick() {
-    if (!this.view.model.get('disabled')) {
+    if (this.view.model.get('isEnabled')) {
       this.view.triggerMethod('click');
     }
   },

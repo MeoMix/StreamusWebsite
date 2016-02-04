@@ -1,23 +1,21 @@
 ﻿import { Model } from 'backbone';
-import _ from 'lodash';
 
 export default Model.extend({
   defaults: {
     id: null,
     chromeId: 'jbnkffmindojffecdhbbmekbmkkfpmjd',
     operaId: 'nnmcpagedcgekmljdamaeahfbmmjloho',
-    installed: false,
+    isInstalled: false,
     isUserLoaded: false,
     pollAttemptCount: 0,
     maxPollAttemptCount: 10,
     // How often to poll the extension in ms
     pollInterval: 500,
-
     browser: null
   },
 
   initialize() {
-    this.on('change:installed', this._onChangeInstalled);
+    this.on('change:isInstalled', this._onChangeIsInstalled);
 
     if (!this.get('browser').get('isMobile')) {
       this.set('id', this._getExtensionId());
@@ -25,13 +23,8 @@ export default Model.extend({
     }
   },
 
-  // Called once an installation has successfully occurred.
-  markAsInstalled() {
-    this.set('installed', true);
-  },
-
-  _onChangeInstalled(model, installed) {
-    if (installed) {
+  _onChangeIsInstalled(model, isInstalled) {
+    if (isInstalled) {
       if (this.get('pollAttemptCount') === 0) {
         this._pollForUserLoaded();
       }
@@ -55,7 +48,7 @@ export default Model.extend({
           this.set('isUserLoaded', true);
           this.set('pollAttemptCount', 0);
         } else {
-          setTimeout(this._pollForUserLoaded.bind(this), 500);
+          setTimeout(() => this._pollForUserLoaded(), 500);
         }
       });
     } else {
@@ -81,15 +74,15 @@ export default Model.extend({
     const extensionId = this.get('id');
 
     if (extensionId !== null) {
-      // Opera doesn't have chrome.runtime defined until an extension is installed. Weird.
-      if (_.isUndefined(window.chrome.runtime)) {
-        this.set('installed', false);
-      } else {
+      // Opera doesn't have chrome.runtime defined until an extension is installed.
+      if (window.chrome.runtime) {
         window.chrome.runtime.sendMessage(extensionId, {
           message: 'isInstalled'
         }, (response) => {
-          this.set('installed', response && response.isInstalled);
+          this.set('isInstalled', response && response.isInstalled);
         });
+      } else {
+        this.set('isInstalled', false);
       }
     }
   }

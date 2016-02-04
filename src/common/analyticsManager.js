@@ -1,7 +1,6 @@
 ﻿import { Model } from 'backbone';
-import _ from 'lodash';
 // Polyfill is needed for Reflect API
-//import 'babel/polyfill';
+import 'babel/polyfill';
 
 export default Model.extend({
   defaults: {
@@ -29,15 +28,15 @@ export default Model.extend({
     // This allows dependant modules to use `window.ga` without knowingly
     // programming against a global object.
     this.set('module', () => {
-      //Reflect.apply(window.ga, this, arguments);
+      Reflect.apply(window.ga, this, arguments);
     });
   },
 
   sendPageView(url) {
-    if (_.isUndefined(url)) {
-      this.get('module')('send', 'pageview');
-    } else {
+    if (url) {
       this.get('module')('send', 'pageview', url);
+    } else {
+      this.get('module')('send', 'pageview');
     }
   },
 

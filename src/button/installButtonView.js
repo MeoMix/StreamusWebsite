@@ -1,26 +1,24 @@
 ﻿import { LayoutView } from 'marionette';
+import styles from './installButton.css!';
 import Button from 'behavior/button';
+import ViewEntityContainer from 'behavior/viewEntityContainer';
 
 export default LayoutView.extend({
   tagName: 'a',
-  className: 'installButton btn btn-lg btn-success',
+  className: styles.installButton,
   template: false,
 
   behaviors: {
     Button: {
       behaviorClass: Button
+    },
+    ViewEntityContainer: {
+      behaviorClass: ViewEntityContainer,
+      viewEntityNames: ['model']
     }
-  },
-
-  initialize() {
-    this.listenTo(App.extensionData, 'change:installed', this._onExtensionDataChangeInstalled);
   },
 
   onClick() {
     this.model.install();
-  },
-
-  _onExtensionDataChangeInstalled(model, installed) {
-    this.model.setInstalledState(installed);
   }
 });

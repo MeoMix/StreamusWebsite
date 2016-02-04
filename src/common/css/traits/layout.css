@@ -1,0 +1,26 @@
+﻿.layout {
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline;
+}
+
+.fixed {
+  display: fixed;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.mw100 {
+  max-width: 100%;
+}

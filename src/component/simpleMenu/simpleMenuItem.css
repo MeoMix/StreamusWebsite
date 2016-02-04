@@ -1,0 +1,32 @@
+﻿.simpleMenuItem {
+  display: flex;
+  width: 100%;
+  transition: color .2s cubic-bezier(.39,.575,.565,1), background .2s cubic-bezier(.39,.575,.565,1), opacity .2s cubic-bezier(.39,.575,.565,1);
+  height: 44px;
+  cursor: pointer;
+}
+
+.simpleMenuItem:hover {
+  background-color:  rgba(0, 0, 0, .03);
+}
+
+.content {
+  display: flex;
+  padding-right: 16px;
+  padding-left: 16px;
+  flex: 1;
+}
+
+.title {
+  margin: auto 0;
+  font-size: 15px;
+}
+
+.isActive .title {
+   color: rgb(66,133,244);
+}
+
+.isDisabled {
+  cursor: default;
+  color: rgba(0, 0, 0, .26);
+}

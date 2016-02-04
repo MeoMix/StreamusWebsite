@@ -1,12 +1,12 @@
 ﻿var gulp = require('gulp');
-var minifyHtml = require('gulp-minify-html');
+var htmlmin = require('gulp-htmlmin');
 var useref = require('gulp-useref');
 var runSequence = require('run-sequence');
 var Builder = require('systemjs-builder');
 var util = require('gulp-util');
 var del = require('del');
 var imagemin = require('gulp-imagemin');
-var GlobFilter = require('../globFilter.js');
+var Glob = require('../glob.js');
 
 // Create a bundled distribution from the compiled directory and put it into the dist directory.
 // Ensure the dist directory is emptied before bundling to ensure no previous build artifacts remain.
@@ -15,6 +15,8 @@ gulp.task('build', function(done) {
   runSequence(
     // Cleaning and compilation can run in parallel.
     ['build:cleanDist', 'compile'],
+    // NOTE: Minification of hbs not currently supported.
+    // https://github.com/MeoMix/jspm-marionette-boilerplate/issues/14
     // Compile html before js to ensure minified templates are inlined into js files.
     'build:transformHtml',
     'build:transformJs',
@@ -26,32 +28,45 @@ gulp.task('build', function(done) {
 
 // Delete the contents of build location to ensure no build artifacts remain.
 gulp.task('build:cleanDist', function() {
-  return del(GlobFilter.DistFolder);
+  return del(Glob.DistFolder);
 });
 
 // Move html from src to dest while transforming for production.
 gulp.task('build:transformHtml', function() {
-  return gulp.src(GlobFilter.CompiledFolder + GlobFilter.AllHtml)
+  return gulp.src([
+    Glob.CompiledFolder + Glob.AllHtml,
+    '!' + Glob.CompiledFolder + Glob.JspmFolder + Glob.AllHtml
+  ])
     // Replace js references with a single reference to bundled js.
-    .pipe(useref())
-    .pipe(minifyHtml())
-    .pipe(gulp.dest(GlobFilter.DistFolder));
+    .pipe(useref({
+      // htmlmin will throw an error if assets are piped to it.
+      noAssets: true
+    }))
+    // Options for htmlmin found here: https://github.com/kangax/html-minifier#options-quick-reference
+    .pipe(htmlmin({
+      removeComments: true,
+      collapseWhitespace: true
+    }))
+    .pipe(gulp.dest(Glob.DistFolder));
 });
 
 // Use jspm's builder to create a self-executing bundle of files.
 // Written to a destination directory and ready for production use.
 gulp.task('build:transformJs', function(done) {
-  const builder = new Builder(GlobFilter.CompiledFolder, GlobFilter.JspmConfigFile);
+  // More information on using SystemJS builder here: https://github.com/systemjs/builder
+  const builder = new Builder(Glob.CompiledFolder, Glob.JspmConfigFile);
   const options = {
+    // Don't include runtime because any dependencies on System are incorrect.
+    // A properly built distribution should not need to run System at runtime.
     runtime: false,
-    // TODO: What are sourcemaps exactly?
-    sourceMaps: false,
+    sourceMaps: true,
+    // Note: Default is minify: true, but often want to toggle it off for debugging. So, I've mentioned the option here.
     minify: true
   };
 
-  builder.buildStatic('main.js', GlobFilter.DistFolder + 'main.js', options)
+  builder.buildStatic('main.js', Glob.DistFolder + 'main.js', options)
     .then(function() {
-      util.log(util.colors.green('Built successfully to ' + GlobFilter.DistFolder));
+      util.log(util.colors.green('Built successfully to ' + Glob.DistFolder));
     })
     .catch(function(errorMessage) {
       util.log(util.colors.red(errorMessage));
@@ -62,17 +77,23 @@ gulp.task('build:transformJs', function(done) {
 });
 
 gulp.task('build:minifyImages', function() {
-  return gulp.src(GlobFilter.CompiledFolder + GlobFilter.AllImages)
+  return gulp.src([
+    Glob.CompiledFolder + Glob.AllImages,
+    '!' + Glob.CompiledFolder + Glob.JspmFolder + Glob.AllImages
+  ])
     .pipe(imagemin())
-    .pipe(gulp.dest(GlobFilter.DistFolder));
+    .pipe(gulp.dest(Glob.DistFolder));
 });
 
 gulp.task('build:copyFonts', function() {
-  return gulp.src(GlobFilter.CompiledFolder + GlobFilter.AllFonts)
-    .pipe(gulp.dest(GlobFilter.DistFolder));
+  return gulp.src([
+    Glob.CompiledFolder + Glob.AllFonts,
+    '!' + Glob.CompiledFolder + Glob.JspmFolder + Glob.AllFonts
+  ])
+    .pipe(gulp.dest(Glob.DistFolder));
 });
 
 gulp.task('build:copyAssets', function() {
-  return gulp.src(GlobFilter.CompiledFolder + GlobFilter.Assets, { dot: true })
-    .pipe(gulp.dest(GlobFilter.DistFolder));
+  return gulp.src(Glob.CompiledFolder + Glob.Assets, { dot: true })
+    .pipe(gulp.dest(Glob.DistFolder));
 });

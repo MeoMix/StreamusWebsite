@@ -1,15 +1,15 @@
-﻿<div data-ui='loading'>
+﻿<div data-ui='loading' class='{{styles.loading}}'>
   Loading playlist...
 </div>
 
-<div data-ui='error' class='is-hidden'>
+<div data-ui='error' class='{{styles.error}}'>
   Failed to load playlist. Sorry. :(
 </div>
 
-<div data-ui='details' class='is-hidden'>
-  <h2 data-ui='title'></h2>
-  <h4 data-ui='displayInfo'></h4>
+<div data-ui='details' class='{{styles.details}}'>
+  <h4 data-ui='title' class='{{styles.title}}'></h4>
+  <div data-ui='displayInfo' class='{{styles.subtitle}}'></div>
 
   <div data-region='playlistItems'></div>
-  <span data-region='button'></span>
+  <div data-region='button'></div>
 </div>

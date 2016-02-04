@@ -1,0 +1,14 @@
+﻿.raisedButton {
+  font-size: 14px;
+  padding: 0 16px;
+  display: inline-block;
+  line-height: 36px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  composes: lowElevation from 'box-shadow';
+  cursor: pointer;
+  font-weight: 500;
+  transition: box-shadow .1s cubic-bezier(.39,.575,.565,1);
+  min-width: 88px;
+  user-select: none;
+}

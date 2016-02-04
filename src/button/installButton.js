@@ -1,55 +1,51 @@
 ﻿import { Model, history } from 'backbone';
-import RouteType from 'common/enum/routeType';
+import RouteType from 'route/routeType';
+import { result } from 'lodash';
 
 export default Model.extend({
   defaults: {
-    enabled: true,
-    text: 'Install extension now',
-    minimumChromeVersion: 37,
-    minimumOperaVersion: 24
+    isEnabled: true,
+    isInstalling: false,
+    text: 'Install'
   },
 
   initialize() {
     this._ensureValidBrowser();
-    this.setInstalledState(App.extensionData.get('installed'));
+
+    if (App.extensionData.get('isInstalled')) {
+      this._markInstalled();
+    }
+
+    this.listenTo(App.extensionData, 'change:isInstalled', this._onExtensionDataChangeIsInstalled);
   },
 
   install() {
-    this.set({
-      enabled: false,
-      text: 'Installing...'
+    this.set('isInstalling', true);
+
+    App.channels.notification.commands.trigger('show:notification', {
+      message: 'Installing Streamus.'
     });
 
-    let installTarget;
-    let installer;
-
-    if (App.browser.get('isOpera')) {
-      installTarget = App.extensionData.get('operaId');
-      installer = window.opr.addons.installExtension;
-    } else {
-      installTarget = `https://chrome.google.com/webstore/detail/${App.extensionData.get('chromeId')}`;
-      installer = window.chrome.webstore.install;
-    }
-
+    const { installer, installTarget } = this._getInstallData();
     installer(installTarget, this._onInstallSuccess.bind(this), this._onInstallError.bind(this));
   },
 
   reset() {
-    this.set(this.defaults);
+    this.set(result(this, 'defaults'));
   },
 
-  setInstalledState(extensionInstalled) {
-    if (extensionInstalled) {
-      this.set({
-        enabled: false,
-        text: 'Installed'
-      });
+  _onExtensionDataChangeIsInstalled(extensionData, isInstalled) {
+    if (isInstalled) {
+      this._markInstalled();
+    } else {
+      this.reset();
     }
   },
 
   _onInstallSuccess() {
-    this.set('text', 'Installed');
-    App.extensionData.markAsInstalled();
+    // TODO: I feel like only one of these is needed.
+    this._markInstalled();
+    App.extensionData.set('isInstalled', true);
 
     // TODO: Model shouldn't know about the router.
     // Take the user to the GettingStarted page if they're on Home when installing.
@@ -65,14 +61,40 @@ export default Model.extend({
   },
 
   _onInstallError(error) {
-    if (error === 'User cancelled install') {
-      this.reset();
-    } else {
-      this.set({
-        text: `Error: ${error}`
+    this.reset();
+
+    if (error !== 'User cancelled install') {
+      App.channels.notification.commands.trigger('show:notification', {
+        message: `${error}.`
       });
       App.analyticsManager.trackEvent('Extension', 'InstallError', error);
     }
+  },
+
+  _markInstalled() {
+    this.set({
+      isEnabled: false,
+      isInstalling: false,
+      text: 'Installed'
+    });
+  },
+
+  _getInstallData() {
+    let installTarget;
+    let installer;
+
+    if (App.browser.get('isOpera')) {
+      installTarget = App.extensionData.get('operaId');
+      installer = window.opr.addons.installExtension;
+    } else {
+      installTarget = `https://chrome.google.com/webstore/detail/${App.extensionData.get('chromeId')}`;
+      installer = window.chrome.webstore.install;
+    }
+
+    return {
+      installTarget,
+      installer
+    };
   },
 
   _ensureValidBrowser() {
@@ -86,16 +108,16 @@ export default Model.extend({
       });
     } else {
       // Can't install Streamus on non-webkit browsers nor non-current webkit browsers.
-      const minimumOperaVersion = this.get('minimumOperaVersion');
-      const minimumChromeVersion = this.get('minimumChromeVersion');
+      const minOperaVersion = 24;
+      const minChromeVersion = 37;
       const isWebKit = browser.get('isWebKit');
-      const isInvalidOperaVersion = browser.get('isOpera') && browser.get('version') < minimumOperaVersion;
-      const isInvalidChromeVersion = browser.get('isChrome') && browser.get('version') < minimumChromeVersion;
+      const isInvalidOperaVersion = browser.get('isOpera') && browser.get('version') < minOperaVersion;
+      const isInvalidChromeVersion = browser.get('isChrome') && browser.get('version') < minChromeVersion;
 
       if (!isWebKit || isInvalidOperaVersion || isInvalidChromeVersion) {
         this.set({
           enabled: false,
-          text: `Chrome v${minimumChromeVersion} or Opera v${minimumOperaVersion} required`
+          text: `Chrome v${minChromeVersion} or Opera v${minOperaVersion} required`
         });
       }
     }

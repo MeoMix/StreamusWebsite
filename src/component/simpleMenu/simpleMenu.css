@@ -1,0 +1,26 @@
+﻿.simpleMenu {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.isVisible {
+  pointer-events: all;
+}
+
+.isVisible .content {
+  opacity: 1;
+}
+
+.content {
+  max-width: 200px;
+  padding: 8px 0;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28);
+  background-color: white;
+  opacity: 0;
+  transition-duration: .2s;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(.39,.575,.565,1);
+  will-change: opacity;
+}

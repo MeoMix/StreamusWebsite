@@ -1,0 +1,82 @@
+﻿.title {
+  composes: title from '../contentPage.css';
+}
+
+.description {
+  composes: description from '../contentPage.css';
+}
+
+.card {
+  border-radius: 2px;
+  composes: lowElevation from 'box-shadow';
+  padding: 24px 8px 16px 8px;
+  background-color: white;
+  line-height: 24px;
+  margin-top: 48px;
+}
+
+.inputs {
+  margin: 0 8px;
+}
+
+.note {
+  font-size: 12px;
+  composes: darkSecondary from 'color';
+  margin-left: 8px;
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+  align-items: center;
+}
+
+/*.button {
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4285f4;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background-color .2s cubic-bezier(.39, .575, .565, 1);
+}
+
+.button:hover:not(.isDisabled) {
+  background-color: rgba(153, 153, 153, .2);
+}
+
+.button:active:not(.isDisabled) {
+  background-color: rgba(153, 153, 153, .4);
+}*/
+
+.button {
+  composes: raisedButton from 'button/button.css';
+  background-color: rgb(40,112,238);
+  color: white;
+  margin-right: 8px;
+}
+
+.button:hover {
+  will-change: box-shadow;
+}
+
+.button[disabled] {
+  background-color: rgba(0, 0, 0, .12);
+  color: rgba(0, 0, 0, .26);
+  cursor: default;
+  box-shadow: none;
+}
+
+.button:not([disabled]):active {
+  box-shadow:  0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.22)
+}
+
+.required {
+  color: rgb(221, 44, 0);
+}

@@ -1,0 +1,63 @@
+﻿.faqItem {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: height .28s cubic-bezier(.39, .575, .565, 1), box-shadow .28s cubic-bezier(.39, .575, .565, 1);
+  border-radius: 2px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0), inset 0 -1px rgba(0, 0, 0, 0);
+}
+
+.faqItem:hover {
+  will-change: height, box-shadow;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 16px;
+  height: 48px;
+  flex-shrink: 0;
+  transition: background-color .1s cubic-bezier(.39, .575, .565, 1);
+}
+
+.header:hover {
+  background-color: rgba(0, 0, 0, .03);
+}
+
+.title {
+  flex: 1;
+}
+
+.description {
+  padding: 0 16px 8px 16px;
+  flex-shrink: 0;
+}
+
+.expandCollapseIcon {
+  composes: fa fa-lg fa-angle-down from 'font-awesome';
+  transition: transform .28s cubic-bezier(.39, .575, .565, 1);
+}
+
+.isActive {
+  box-shadow: inset 0 1px rgba(0, 0, 0, .12), inset 0 -1px rgba(0, 0, 0, .12);
+}
+
+.isActive .title{
+  color: rgb(66,133,244);
+  /*font-weight: 500;*/
+}
+
+.isActive .expandCollapseIcon {
+  transform: rotate(180deg);
+}
+
+.link {
+  composes: blue from 'color';
+  font-weight: 500;
+}
+
+.paragraph:not(:last-of-type) {
+  margin-bottom: 12px;
+}

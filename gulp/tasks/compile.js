@@ -3,7 +3,7 @@ var babel = require('gulp-babel');
 var changed = require('gulp-changed');
 var filter = require('gulp-filter');
 var plumber = require('gulp-plumber');
-var GlobFilter = require('../globFilter');
+var Glob = require('../glob');
 
 gulp.task('compile', ['compile:transformSrc', 'compile:copyJspmFolder']);
 
@@ -12,29 +12,37 @@ gulp.task('compile', ['compile:transformSrc', 'compile:copyJspmFolder']);
 // Use the /compiled directory instead of /src during development
 // to avoid waiting for ES6 to transpile.
 gulp.task('compile:transformSrc', function() {
-  var jsFilter = filter(GlobFilter.AllJs, { restore: true });
+  var jsFilter = filter(Glob.AllJs, { restore: true });
 
-  return gulp.src(GlobFilter.SrcFolder + GlobFilter.AllFiles, { dot: true })
+  return gulp.src(Glob.SrcFolder + Glob.AllFiles, { dot: true })
     .pipe(plumber())
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
-    .pipe(changed(GlobFilter.CompiledFolder))
+    .pipe(changed(Glob.CompiledFolder))
     // Transpile ES6 files through babel and copy results to destination directory.
     .pipe(jsFilter)
     .pipe(babel({
+      // Don't transpile into global scope. Functionality will break (e.g. Marionette.Object)
       modules: 'system'
     }))
-    .pipe(gulp.dest(GlobFilter.CompiledFolder))
+    .pipe(gulp.dest(Glob.CompiledFolder))
     .pipe(jsFilter.restore)
-    .pipe(filter([GlobFilter.AllCss, GlobFilter.AllHtml, GlobFilter.AllTemplates, GlobFilter.AllImages, GlobFilter.AllFonts, GlobFilter.Assets]))
-    .pipe(gulp.dest(GlobFilter.CompiledFolder));
+    .pipe(filter([
+      Glob.AllCss,
+      Glob.AllHtml,
+      Glob.AllTemplates,
+      Glob.AllImages,
+      Glob.AllFonts,
+      Glob.Assets
+    ]))
+    .pipe(gulp.dest(Glob.CompiledFolder));
 });
 
 gulp.task('compile:copyJspmFolder', function() {
   // Set base to preserve the /jspm directory.
-  return gulp.src(GlobFilter.JspmFolder + GlobFilter.AllFiles, { base: './'})
+  return gulp.src(Glob.JspmFolder + Glob.AllFiles, { base: './' })
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
-    .pipe(changed(GlobFilter.CompiledFolder))
-    .pipe(gulp.dest(GlobFilter.CompiledFolder));
+    .pipe(changed(Glob.CompiledFolder))
+    .pipe(gulp.dest(Glob.CompiledFolder));
 });

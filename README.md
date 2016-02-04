@@ -59,7 +59,6 @@ Streamus Website utilizes several third-party libraries:
 * [Backbone.Base-Router](https://github.com/jmeas/backbone.base-router)
 * [Backbone.Intercept](https://github.com/jmeas/backbone.intercept)
 * [Backbone MarionetteJS](http://marionettejs.com)
-* [Bootstrap](http://getbootstrap.com)
 * [jQuery](http://jquery.com/)
 * [jQuery Browser](https://github.com/gabceb/jquery-browser-plugin)
 * [jQuery Unveil](https://github.com/luis-almeida/unveil)

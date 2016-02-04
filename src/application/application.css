@@ -1,165 +1,86 @@
-﻿/*@import 'common/css/reset.css'; */
-/* prefer loading font-awesome locally over CDN because of delay in loading fonts in second request to CDN */
-@import 'common/css/font-awesome.css';
-@import 'common/css/color.css';
-@import 'common/css/utility.css';
-@import 'common/css/transition.css';
-
-body {
-  padding-top: 20px;
-  padding-bottom: 40px;
-  font-size: 15px;
-  color: var(--darkprimary);
-  text-align: center;
-  text-rendering: optimizeLegibility;
+﻿.application {
+  display: flex;
+  flex-direction: row;
+  height: 100%; /* Avoid IE 10-11 `min-height` issue */
+  composes: darkPrimary from 'color';
 }
 
-.jumbotron {
-  margin-bottom: 0;
-  background-color: transparent;
-
-  @nest & .lead {
-    margin: 1.5em auto;
-  }
+.headerRegion {
+  display: flex;
+  width: 100%;
+  height: 64px;
+  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
+  flex: none;
+  position: fixed;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-weight: bold;
+.contentRegion {
+  margin-top: 56px;
+  padding: 48px 0;
+  width: 976px;
+  margin-left: auto;
+  margin-right: auto;
+  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
+  flex: 1 0 auto;
 }
 
-h1 {
-  font-size: 40px;
+.contentRegion::before {
+  content: '';
+  background-color: rgb(66, 133, 244);
+  height: 512px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-h2 {
-  margin-top: 10px;
-  font-size: 26px;
+.footerRegion {
+  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
+  flex: none;
+  background-color: rgba(0, 0, 0, .87);
+  padding: 24px 0;
 }
 
-/* Sync the height of legal with badges */
-.legal {
-  line-height: 40px;
-}
-
-.legal a {
-  padding-left: 4px;
-}
-
-.badges {
-  margin-top: 10px;
-}
-
-.social,
-.zopim {
+.navigationRegion {
+  display: flex;
+  flex-direction: column;
+  /*flex: 0 0 280px;*/
+  composes: right from 'box-shadow';
+  position: fixed;
+  height: 100%;
+  width: 280px;
   display: none;
 }
 
-.navigation-link,
-.btn {
-  transition: all .14s var(--transition-easeOutSine);
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /*padding-left: 280px;*/
 }
 
-@media (min-width: 1400px) {
-  .social,
-  .zopim {
-    display: block;
-  }
+.notificationRegion {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
 }
 
-.icon-bar {
-  background-color: #337ab7;
+/*
+  When interacting with 'native' UI elements such as scrollbars and sliders - ensure that
+  the browser stops responding to the mouse while dragging because that's how browsers work with
+  actually native elements.
+*/
+.isClickingScrollbar {
+  user-select: none !important;
 }
 
-.nav > .active > a,
-.nav > .active > a:hover,
-.nav > .active > a:focus {
-  color: white;
-  background-color: #337ab7;
-}
-
-@media (max-width: 992px) {
-  .navbar-header {
-    float: none;
-  }
-
-  .navbar-left, .navbar-right {
-    float: none !important;
-  }
-
-  .navbar-toggle {
-    display: block;
-  }
-
-  .navbar-collapse {
-    border-top: 1px solid transparent;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-  }
-
-  .navbar-fixed-top {
-    top: 0;
-    border-width: 0 0 1px;
-  }
-
-  .navbar-collapse.collapse {
-    display: none !important;
-  }
-
-  .navbar-nav {
-    float: none !important;
-    margin-top: 7.5px;
-
-    @nest & > li {
-      float: none;
-
-      @nest & > a {
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-    }
-  }
-
-  .collapse.in {
-    display: block !important;
-  }
-}
-
-@media (min-width: 992px ) {
-  .navigationRegion {
-    float: right;
-  }
-
-  .navigation-link {
-    border-radius: 4px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 992px) {
-  .navbar-collapse {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-@media (min-width: 768px ) {
-  .legal {
-    float: left;
-  }
-
-  .badges {
-    float: right;
-    margin-top: 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding: 32px 0;
-  }
-
-  h2 {
-    font-size: 30px;
-  }
+.isClickingScrollbar *,
+.isClickingScrollbar *::before,
+.isClickingScrollbar *::after {
+  user-select: none !important;
 }

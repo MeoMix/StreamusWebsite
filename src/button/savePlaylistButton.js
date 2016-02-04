@@ -1,26 +1,32 @@
 ﻿import { Model } from 'backbone';
+import { result } from 'lodash';
 
 export default Model.extend({
   defaults: {
-    enabled: true,
-    text: 'Add to Streamus',
-    playlistId: '',
-    saveOnInstallSuccess: false
+    isEnabled: true,
+    isSaving: false,
+    text: 'Add Playlist',
+    playlistId: null,
+    isSavePending: false
+  },
+
+  initialize() {
+    this.listenTo(App.extensionData, 'change:isUserLoaded', this._onExtensionDataChangeIsUserLoaded);
   },
 
   reset() {
-    this.set(this.defaults);
-  },
-
-  beginSaving() {
-    this.set({
-      enabled: false,
-      text: 'Saving...'
-    });
+    this.set(result(this, 'defaults'));
   },
 
   save() {
-    this.beginSaving();
+    this.set({
+      isEnabled: false,
+      text: 'Saving...'
+    });
+
+    App.channels.notification.commands.trigger('show:notification', {
+      message: 'Adding playlist.'
+    });
 
     window.chrome.runtime.sendMessage(App.extensionData.get('id'), {
       method: 'copyPlaylist',
@@ -32,12 +38,31 @@ export default Model.extend({
     const success = response.result === 'success';
 
     if (success) {
-      this.set('text', 'Playlist added');
+      App.channels.notification.commands.trigger('show:notification', {
+        message: 'Playlist added.'
+      });
+
+      this.set({
+        isEnabled: false,
+        isSaving: false,
+        text: 'Playlist added'
+      });
     } else {
+      App.channels.notification.commands.trigger('show:notification', {
+        message: 'Failed to add playlist.'
+      });
+
       this.reset();
     }
 
     const eventName = success ? 'AddedSuccess' : 'AddedError';
     App.analyticsManager.trackEvent('Playlist', eventName, this.get('playlistId'));
+  },
+
+  _onExtensionDataChangeIsUserLoaded(extensionData, isUserLoaded) {
+    // TODO: Could potentially be a long time to wait between install and user loaded.
+    if (isUserLoaded && this.get('isSavePending')) {
+      this.save();
+    }
   }
 });

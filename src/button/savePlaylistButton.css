@@ -1,0 +1,20 @@
+﻿.savePlaylistButton {
+  composes: raisedButton from './button.css';
+  background-color: rgb(40,112,238);
+  color: white;
+}
+
+.savePlaylistButton:hover {
+  will-change: box-shadow;
+}
+
+.savePlaylistButton[disabled] {
+  background-color: rgba(0, 0, 0, .12);
+  color: rgba(0, 0, 0, .26);
+  cursor: default;
+  box-shadow: none;
+}
+
+.savePlaylistButton:not([disabled]):active {
+  box-shadow:  0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.22)
+}

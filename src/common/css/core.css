@@ -1,0 +1,85 @@
+﻿*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type='submit'],
+button {
+  border: none;
+  text-rendering: optimizeLegibility;
+  white-space: normal;
+  text-align: start;
+  align-items: stretch;
+}
+
+input,
+select {
+  outline: none;
+  font: inherit;
+  color: inherit;
+  border-color: rgba(0, 0, 0, .26);
+  border-width: 0 0 1px 0;
+}
+
+input {
+  padding: 8px 0 7px 0;
+}
+
+select {
+  padding: 10px 0 9px 0;
+}
+
+textarea {
+  resize: none;
+  overflow: hidden;
+}
+
+strong {
+  font-weight: 500;
+}
+
+html {
+  /* Use percentage to allow for browser to describe initial font-size. */
+  font: 93.75% 'Roboto';
+  -webkit-font-smoothing: subpixel-antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  background-color: #FAFAFA;
+}
+
+h1 {
+  font-size: 56px;
+}
+
+h2 {
+  font-size: 45px;
+  line-height: 48px;
+}
+
+h3 {
+  font-size: 34px;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: 500;
+}

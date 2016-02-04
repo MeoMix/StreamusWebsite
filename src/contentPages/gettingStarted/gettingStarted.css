@@ -1,0 +1,33 @@
+﻿.title {
+  composes: title from '../contentPage.css';
+}
+
+.description {
+  composes: description from '../contentPage.css';
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  border-radius: 2px;
+  composes: lowElevation from 'box-shadow';
+  background-color: white;
+  line-height: 24px;
+  margin-top: 48px;
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  padding: 20px 16px 12px 16px;
+  composes: top from 'box-shadow';
+}
+
+.cardSupportingText {
+  padding: 12px 16px 20px 16px;
+}

@@ -1,0 +1,24 @@
+﻿.navigationItem {
+  display: flex;
+}
+
+.link {
+  padding: 16px;
+  height: 48px;
+  flex: 1;
+  font-size: 17px;
+  opacity: 0.7;
+  will-change: opacity;
+  transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
+  user-select: none;
+}
+
+.link:hover {
+  opacity: 1;
+}
+
+.isActive {
+  opacity: 1;
+  cursor: default;
+  pointer-events: none;
+}

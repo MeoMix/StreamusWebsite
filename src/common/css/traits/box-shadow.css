@@ -1,0 +1,27 @@
+﻿.top {
+  box-shadow: inset 0 1px rgba(0, 0, 0, .12);
+}
+
+.bottom {
+  box-shadow: inset 0 -1px rgba(0, 0, 0, .12);
+}
+
+.left {
+  box-shadow: inset 1px 0 rgba(0, 0, 0, .12);
+}
+
+.right {
+  box-shadow: inset -1px 0 rgba(0, 0, 0, .12);
+}
+
+.outline {
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, .26);
+}
+
+.lowElevation {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28);
+}
+
+.mediumLowElevation {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.14), 0 3px 4px rgba(0, 0, 0, 0.22);
+}

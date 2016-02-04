@@ -1,6 +1,6 @@
 ﻿import { Collection } from 'backbone';
-import _ from 'lodash';
 import PlaylistItem from './playlistItem';
+import { invoke, reduce } from 'lodash';
 
 export default Collection.extend({
   comparator: 'sequence',
@@ -8,21 +8,20 @@ export default Collection.extend({
 
   // Convert total duration of the collection's models to a user friendly format.
   getDisplayInfo() {
-    const totalItemsDuration = this._getTotalDuration();
-    const prettyTimeWithWords = this._prettyPrintTimeWithWords(totalItemsDuration);
+    const totalDuration = this._getTotalDuration();
+    const prettyTimeWithWords = this._prettyPrintTimeWithWords(totalDuration);
 
-    const songs = this.pluck('song');
-    const songString = songs.length === 1 ? 'song' : 'songs';
+    const videos = this.pluck('video');
+    const videoString = videos.length === 1 ? 'video' : 'videos';
 
-    const displayInfo = `${songs.length} ${songString}, ${prettyTimeWithWords}`;
-    return displayInfo;
+    return `${videos.length} ${videoString}, ${prettyTimeWithWords}`;
   },
 
   _getTotalDuration() {
-    const songDurations = _.invoke(this.pluck('song'), 'get', 'duration');
+    const videoDurations = invoke(this.pluck('video'), 'get', 'duration');
 
-    const totalDuration = _.reduce(songDurations, (memo, songDuration) => {
-      return memo + songDuration;
+    const totalDuration = reduce(videoDurations, (memo, videoDuration) => {
+      return memo + videoDuration;
     }, 0);
 
     return totalDuration;

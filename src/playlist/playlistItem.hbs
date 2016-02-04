@@ -1,8 +1,13 @@
-﻿<a class='playlistItem-title' href='{{song get url}}' target='_blank'>
-  {{title}}
-</a>
-<div class='badge-wrapper'>
-  <span class='playlistItem-duration badge'>
-    {{ song get prettyDuration}}
-  </span>
+﻿<div class='{{styles.thumbnail}}' style='background-image: url(https://img.youtube.com/vi/{{get video 'id'}}/mqdefault.jpg)' />
+
+<div class='{{styles.content}}'>
+  <div class='{{styles.title}}'>
+    <a href='{{get video 'url'}}' target='_blank'>
+      {{get video 'title'}}
+    </a>
+  </div>
+
+  <div class='{{styles.duration}}'>
+    {{get video 'prettyDuration'}}
+  </div>
 </div>

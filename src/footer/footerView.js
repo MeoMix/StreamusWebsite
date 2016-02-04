@@ -1,45 +1,29 @@
 ﻿import { LayoutView } from 'marionette';
-import TermsOfUseDialogView from 'dialog/termsOfUseDialogView';
-import PrivacyDialogView from 'dialog/privacyDialogView';
-import ContactDialogView from 'dialog/contactDialogView';
+import template from './footer.hbs!';
+import styles from './footer.css!';
+import RouteType from 'route/routeType';
+import NavigationItemsView from 'navigationitems/navigationItemsView';
 
 export default LayoutView.extend({
-  el: '.footer',
-  template: false,
-
-  ui: {
-    termsOfUse: 'termsOfUse',
-    privacy: 'privacy',
-    contact: 'contact'
+  className: styles.footer,
+  template,
+  templateHelpers: {
+    styles,
+    RouteType
   },
 
-  events: {
-    'click @ui.termsOfUse': '_onClickTermsOfUse',
-    'click @ui.privacy': '_onClickPrivacy',
-    'click @ui.contact': '_onClickContact'
+  regions: {
+    navigationItems: 'navigationItems'
   },
 
-  _onClickTermsOfUse() {
-    this._showTermsOfUseDialog();
+  onRender() {
+    this._renderNavigationItems();
   },
 
-  _onClickPrivacy() {
-    this._showPrivacyDialog();
-  },
-
-  _onClickContact() {
-    this._showContactDialog();
-  },
-
-  _showTermsOfUseDialog() {
-    App.channels.dialog.commands.trigger('show:dialog', TermsOfUseDialogView);
-  },
-
-  _showPrivacyDialog() {
-    App.channels.dialog.commands.trigger('show:dialog', PrivacyDialogView);
-  },
-
-  _showContactDialog() {
-    App.channels.dialog.commands.trigger('show:dialog', ContactDialogView);
+  _renderNavigationItems() {
+    this.showChildView('navigationItems', new NavigationItemsView({
+      collection: App.navigationItems,
+      isSecondary: true
+    }));
   }
 });

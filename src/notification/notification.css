@@ -1,0 +1,36 @@
+﻿.notification {
+  will-change: transform;
+  transition: transform .28s cubic-bezier(.39, .575, .565, 1);
+  transform: translateY(110%);
+  min-width: 288px;
+  max-width: 568px;
+  padding: 0 24px;
+  cursor: default;
+  background-color:  rgba(50, 50, 50, 1);
+  border-radius: 2px 2px 0 0;
+  composes: mediumLowElevation from 'box-shadow';
+  pointer-events: none;
+}
+
+.message {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: inherit;
+  transition-timing-function: inherit;
+  will-change: opacity;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: white;
+  font-size: 15px;
+  line-height: 48px;
+}
+
+.isVisible {
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.isVisible .message {
+  opacity: 1;
+}

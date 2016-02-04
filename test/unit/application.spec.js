@@ -1,10 +1,14 @@
-﻿import Application from 'compiled/application/application';
+﻿// Import from 'compiled' because tests work off of pre-compiled logic not raw ES6.
+import Application from 'compiled/application/application';
+import indexText from 'compiled/index.html!text';
 
 describe('Application', () => {
-  let application;
-  // This needs to be kept sync'ed with the 'main' element in src/index.html
-  document.body.appendChild(document.createElement('main'));
+  // Ensure the 'main' element in index.html stays synchronized with our test page.
+  const indexElement = document.createElement('div');
+  indexElement.innerHTML = indexText;
+  document.body.appendChild(indexElement.querySelector('main'));
 
+  let application;
   beforeEach(() => {
     application = new Application();
     window.App = application;

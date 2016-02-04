@@ -1,0 +1,36 @@
+﻿.title {
+  composes: title from '../contentPage.css';
+}
+
+.description {
+  composes: description from '../contentPage.css';
+}
+
+.card {
+  border-radius: 2px;
+  composes: lowElevation from 'box-shadow';
+  padding: 24px 16px;
+  background-color: white;
+  line-height: 24px;
+  margin-top: 48px;
+}
+
+.subsectionTitle,
+.sectionTitle {
+  margin-bottom: 12px;
+}
+
+.subsection,
+.section:not(:first-child) {
+  margin-top: 16px;
+}
+
+.subsectionParagraph,
+.sectionParagraph:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.link {
+  composes: blue from 'color';
+  font-weight: 500;
+}

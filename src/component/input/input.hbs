@@ -1,0 +1,16 @@
+﻿<div class='{{styles.labelValueWrapper}}' data-ui='inputWrapper'>
+  <label class='{{styles.placeholder}}'>{{placeholder}}<span class='{{styles.required}}'>{{ternary isRequired ' *' ''}}</span></label>
+
+  {{#if isMultiline}}
+    <textarea data-ui='input' class='{{styles.value}}' maxlength='{{maxLength}}' rows='1' name='{{name}}' rv-text='model:value'></textarea>
+  {{else}}
+    <input data-ui='input' class='{{styles.value}}' type='{{type}}' min='{{min}}' maxlength='{{maxLength}}' rv-value='model:value' name='{{name}}'>
+  {{/if}}
+</div>
+
+<div class='{{styles.footer}}'>
+  <span data-ui='errorMessage' class='{{styles.errorMessage}}'>{{errorMessage}}</span>
+  <span class='{{styles.characterCountWrapper}} {{ternary showCharacterCount '' styles.isHidden}}'>
+    <span data-ui='characterCount' rv-text='model:value | stringLength'></span> / {{maxLength}}
+  </span>
+</div>

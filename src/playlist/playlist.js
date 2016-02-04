@@ -1,8 +1,8 @@
 ﻿import { Model, Collection } from 'backbone';
-import _ from 'lodash';
 import PlaylistItems from './playlistItems';
+import { mapValues } from 'lodash';
 // Polyfill is needed for Reflect API
-//import 'babel/polyfill';
+import 'babel/polyfill';
 
 // Playlist holds a collection of PlaylistItems as well as properties pertaining to a playlist.
 export default Model.extend({
@@ -22,9 +22,9 @@ export default Model.extend({
   // Need to recreate submodels as Backbone.Models else they will just be regular Objects.
   parse(playlistDto) {
     // Patch requests do not return information.
-    if (!_.isUndefined(playlistDto)) {
+    if (playlistDto) {
       // Convert C# Guid.Empty into BackboneJS null
-      playlistDto = _.mapValues(playlistDto, (value) => {
+      playlistDto = mapValues(playlistDto, (value) => {
         return value === '00000000-0000-0000-0000-000000000000' ? null : value;
       });
 
@@ -33,7 +33,7 @@ export default Model.extend({
       this.get('items').playlistId = playlistDto.id;
 
       // Remove so parse doesn't set and overwrite instance after parse returns.
-      //Reflect.deleteProperty(playlistDto, 'items');
+      Reflect.deleteProperty(playlistDto, 'items');
     }
 
     return playlistDto;

@@ -1,0 +1,120 @@
+﻿.input {
+  
+}
+
+.value {
+  width: 100%;
+  /*
+    This needs to be 7px because of 1px border-bottom, otherwise I get into odd-pixel math.
+    I need 1px border-bottom due to a bug in Chrome: http://stackoverflow.com/questions/26951053/jumpy-transition-when-only-modifying-box-shadow-looks-fine-with-box-shadow-bo
+  */
+  padding: 8px 0 7px 0;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  outline: none;
+  transition: box-shadow .28s cubic-bezier(.39,.575,.565,1), border .28s cubic-bezier(.39,.575,.565,1);
+  border-bottom-color: rgba(0, 0, 0, .26);
+  font-size: 16px;
+  /*
+    The MD spec. is a little unclear on how to fulfill 72px value height. There's 4px remaining.
+    So, I'm applying it to the value.
+
+    Set line-height instead of adjusting height to allow for multiline to grow/shrink correctly.
+  */
+  line-height: 20px;
+}
+
+.hasFocus:not(.isInvalid) .value {
+  border-bottom-color: rgb(66,133,244);
+  box-shadow: inset 0 -1px rgb(66,133,244);
+}
+
+.hasFocus:not(.isInvalid) .placeholder,
+.hasFocus:not(.isInvalid) .characterCountWrapper {
+  color: rgb(66,133,244);
+}
+
+.isInvalid .value {
+  border-bottom-color: rgb(221, 44, 0);
+}
+
+.hasFocus.isInvalid .value {
+  box-shadow: inset 0 -1px rgb(221, 44, 0);
+}
+
+.isInvalid .characterCount,
+.isInvalid .placeholder {
+  color: rgb(221, 44, 0);
+}
+
+.isInvalid .errorMessage {
+  opacity: 1;
+}
+
+.hasFocus .placeholder,
+.hasValue .placeholder {
+  transform: translate(-12.5%, 0) scale(0.75);
+}
+
+.hasFocus .required,
+.hasValue .required {
+  color: rgb(221, 44, 0);
+}
+
+.placeholder {
+  font-size: 16px;
+  line-height: 16px;
+  composes: hint from 'color';
+  display: inline-block;
+  transform: translate(0, 25px) scale(1);
+  transition: transform .28s cubic-bezier(.39, .575, .565, 1);
+  pointer-events: none;
+  user-select: none;
+}
+
+.required {
+  transition: color .28s cubic-bezier(.39, .575, .565, 1);
+}
+
+.labelValueWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 16px;
+}
+
+.footer {
+  display: flex;
+  font-size: 12px;
+  line-height: 12px;
+  composes: hint from 'color';
+  cursor: default;
+  transition: color .28s cubic-bezier(.39, .575, .565, 1);
+  user-select: none;
+  margin-top: 8px;
+}
+
+.errorMessage {
+  flex: 1;
+  color: rgb(221, 44, 0);
+  opacity: 0;
+  transition: opacity .28s cubic-bezier(.39, .575, .565, 1);
+}
+
+.errorMessage:first-letter {
+  text-transform: capitalize;
+}
+
+.characterCountWrapper {
+  text-align: right;
+  padding-left: 8px;
+}
+
+.isHidden {
+  display: none;
+}

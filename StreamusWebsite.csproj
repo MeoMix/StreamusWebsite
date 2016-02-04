@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F206E056-5C52-472C-B455-53A28089ECD1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Streamus_Website</RootNamespace>
+    <AssemblyName>Streamus Website</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <ExcludeFilesFromDeployment>minifier.proj;optipng.exe</ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>bin;obj;Properties</ExcludeFoldersFromDeployment>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
+    <Content Include="gulpfile.js" />
+    <Content Include="gulp\glob.js" />
+    <Content Include="gulp\tasks\build.js" />
+    <Content Include="gulp\tasks\compile.js" />
+    <Content Include="gulp\tasks\connect.js" />
+    <Content Include="gulp\tasks\default.js" />
+    <Content Include="gulp\tasks\lint.js" />
+    <Content Include="gulp\tasks\publish.js" />
+    <Content Include="gulp\tasks\test.js" />
+    <Content Include="gulp\tasks\watch.js" />
+    <Content Include="jspm\autoprefixer.js" />
+    <Content Include="jspm\css-builder.js" />
+    <Content Include="jspm\css.js" />
+    <Content Include="jspm\css3.js" />
+    <Content Include="jspm\css2.js" />
+    <Content Include="jspm\jspm.config.js" />
+    <Content Include="karma.config.js" />
+    <Content Include="src\application\application.css" />
+    <Content Include="src\application\application.js" />
+    <Content Include="src\application\applicationView.js" />
+    <Content Include="src\application\chromeWebStoreBadge.png" />
+    <Content Include="src\application\youTubeBadge.png" />
+    <Content Include="src\behavior\button.js" />
+    <Content Include="src\behavior\lazyImages.js" />
+    <Content Include="src\behavior\viewEntityContainer.js" />
+    <Content Include="src\button\installButton.css" />
+    <Content Include="src\button\installButton.js" />
+    <Content Include="src\button\installButtonView.js" />
+    <Content Include="src\button\button.css" />
+    <Content Include="src\button\savePlaylistButton.css" />
+    <Content Include="src\button\savePlaylistButton.js" />
+    <Content Include="src\button\savePlaylistButtonView.js" />
+    <Content Include="src\common\analyticsManager.js" />
+    <Content Include="src\common\browser.js" />
+    <Content Include="src\common\css\components\button.css" />
+    <Content Include="src\common\css\traits\box-shadow.css" />
+    <Content Include="src\common\css\traits\color.css" />
+    <Content Include="src\common\css\core.css" />
+    <Content Include="src\common\css\traits\fill.css" />
+    <Content Include="src\common\css\traits\font-awesome.css" />
+    <Content Include="src\common\css\reset.css" />
+    <Content Include="src\common\css\traits\flex-child.css" />
+    <Content Include="src\common\css\traits\flex.css" />
+    <Content Include="src\common\css\traits\layout.css" />
+    <Content Include="src\common\css\traits\transition.css" />
+    <Content Include="src\route\routeType.js" />
+    <Content Include="src\common\extensionData.js" />
+    <Content Include="src\common\fonts\fontawesome-webfont.svg" />
+    <Content Include="src\route\route.js" />
+    <Content Include="src\route\router.js" />
+    <Content Include="src\common\shim\backbone.marionette.region.shim.js" />
+    <Content Include="src\common\shim\backbone.marionette.toJson.shim.js" />
+    <Content Include="src\common\shim\backbone.marionette.view.shim.js" />
+    <Content Include="src\common\shim\handlebars.helpers.shim.js" />
+    <Content Include="src\common\shim\lodash.mixin.shim.js" />
+    <Content Include="src\common\shim\webcomponents.shim.js" />
+    <Content Include="src\common\utility.js" />
+    <Content Include="src\component\input\input.css" />
+    <Content Include="src\component\input\input.js" />
+    <Content Include="src\component\input\inputType.js" />
+    <Content Include="src\component\input\inputView.js" />
+    <Content Include="src\component\select\option.js" />
+    <Content Include="src\component\select\options.js" />
+    <Content Include="src\component\select\select.css" />
+    <Content Include="src\component\select\select.js" />
+    <Content Include="src\component\select\selectView.js" />
+    <Content Include="src\component\simpleMenu\fixedPosition.js" />
+    <Content Include="src\component\simpleMenu\simpleMenu.css" />
+    <Content Include="src\component\simpleMenu\simpleMenu.js" />
+    <Content Include="src\component\simpleMenu\simpleMenuItem.css" />
+    <Content Include="src\component\simpleMenu\simpleMenuItem.js" />
+    <Content Include="src\component\simpleMenu\simpleMenuItems.css" />
+    <Content Include="src\component\simpleMenu\simpleMenuItems.js" />
+    <Content Include="src\component\simpleMenu\simpleMenuItemsView.js" />
+    <Content Include="src\component\simpleMenu\simpleMenuItemView.js" />
+    <Content Include="src\component\simpleMenu\simpleMenuView.js" />
+    <Content Include="src\contentPages\about\about.css" />
+    <Content Include="src\contentPages\about\aboutRoute.js" />
+    <Content Include="src\contentPages\about\aboutView.js" />
+    <Content Include="src\contentPages\about\sean.jpg" />
+    <Content Include="src\contentPages\contact\contact.css" />
+    <Content Include="src\contentPages\contact\contact.js" />
+    <Content Include="src\contentPages\contact\contactRoute.js" />
+    <Content Include="src\contentPages\contentPage.css" />
+    <Content Include="src\contentPages\contentPagesRegion.js" />
+    <Content Include="src\contentPages\donate\donate.css" />
+    <Content Include="src\contentPages\donate\donateRoute.js" />
+    <Content Include="src\contentPages\donate\donateView.js" />
+    <Content Include="src\contentPages\faq\descriptions\lastfm.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\import.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\bandwidth.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\download.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\firefox.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\networkFailed.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\flash.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\blankScreen.hbs" />
+    <Content Include="src\component\select\select.hbs" />
+    <Content Include="src\component\simpleMenu\simpleMenu.hbs" />
+    <Content Include="src\component\simpleMenu\simpleMenuItem.hbs" />
+    <Content Include="src\component\input\input.hbs" />
+    <None Include="src\contentPages\faq\descriptions\omnibox.hbs" />
+    <Content Include="src\contentPages\faq\faq.css" />
+    <Content Include="src\contentPages\faq\faq.js" />
+    <Content Include="src\contentPages\faq\faqItem.css" />
+    <Content Include="src\contentPages\faq\faqItem.js" />
+    <Content Include="src\contentPages\faq\faqItems.css" />
+    <Content Include="src\contentPages\faq\faqItems.js" />
+    <Content Include="src\contentPages\faq\faqItemsView.js" />
+    <Content Include="src\contentPages\faq\faqItemView.js" />
+    <Content Include="src\contentPages\faq\faqRoute.js" />
+    <Content Include="src\contentPages\faq\faqType.js" />
+    <Content Include="src\contentPages\faq\faqView.js" />
+    <Content Include="src\contentPages\gettingStarted\beatport.png" />
+    <Content Include="src\contentPages\gettingStarted\createPlaylist.png" />
+    <Content Include="src\contentPages\gettingStarted\draggingItems.png" />
+    <Content Include="src\contentPages\gettingStarted\emptyPlaylist.png" />
+    <Content Include="src\contentPages\gettingStarted\gettingStarted.css" />
+    <Content Include="src\contentPages\gettingStarted\gettingStartedRoute.js" />
+    <Content Include="src\contentPages\gettingStarted\gettingStartedView.js" />
+    <Content Include="src\contentPages\gettingStarted\keyboardShortcuts.png" />
+    <Content Include="src\contentPages\gettingStarted\omnibox.png" />
+    <Content Include="src\contentPages\gettingStarted\playing.png" />
+    <Content Include="src\contentPages\gettingStarted\selectingItems.png" />
+    <Content Include="src\contentPages\home\home.css" />
+    <Content Include="src\contentPages\home\homeRoute.js" />
+    <Content Include="src\contentPages\home\homeView.js" />
+    <Content Include="src\contentPages\notFound\notFound.css" />
+    <Content Include="src\contentPages\notFound\notFoundRoute.js" />
+    <Content Include="src\contentPages\notFound\notFoundView.js" />
+    <Content Include="src\contentPages\privacyPolicy\privacyPolicy.css" />
+    <Content Include="src\contentPages\privacyPolicy\privacyPolicyRoute.js" />
+    <Content Include="src\contentPages\share\share.css" />
+    <Content Include="src\contentPages\share\share.js" />
+    <Content Include="src\contentPages\share\share.png" />
+    <Content Include="src\contentPages\share\shareCode.js" />
+    <Content Include="src\contentPages\share\shareRoute.js" />
+    <Content Include="src\contentPages\share\shareView.js" />
+    <Content Include="src\contentPages\contact\contactView.js" />
+    <Content Include="src\contentPages\privacyPolicy\privacyPolicyView.js" />
+    <Content Include="src\contentPages\termsOfUse\termsOfUse.css" />
+    <Content Include="src\contentPages\termsOfUse\termsOfUseRoute.js" />
+    <Content Include="src\contentPages\termsOfUse\termsOfUseView.js" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\footer\footer.css" />
+    <Content Include="src\footer\footerRegion.js" />
+    <Content Include="src\footer\footerView.js" />
+    <Content Include="src\footer\youTube.png" />
+    <Content Include="src\googlee6d26778f04ae1ed.html" />
+    <Content Include="src\header\header.css" />
+    <Content Include="src\header\headerRegion.js" />
+    <Content Include="src\header\headerView.js" />
+    <Content Include="src\header\logo.png" />
+    <Content Include="src\navigationDrawer\navigationDrawer.css" />
+    <Content Include="src\navigationItems\navigationItem.css" />
+    <Content Include="src\navigationItems\navigationItem.js" />
+    <Content Include="src\navigationItems\navigationItems.css" />
+    <Content Include="src\navigationItems\navigationItems.js" />
+    <Content Include="src\navigationItems\navigationItemsView.js" />
+    <Content Include="src\navigationItems\navigationItemView.js" />
+    <Content Include="src\navigationDrawer\navigationDrawerRegion.js" />
+    <Content Include="src\navigationDrawer\navigationDrawerView.js" />
+    <Content Include="src\index.html" />
+    <Content Include="package.json" />
+    <Content Include="LICENSE" />
+    <Content Include="README.md" />
+    <Content Include="src\.htaccess" />
+    <Content Include=".ftppass" />
+    <Content Include=".travis.yml" />
+    <Content Include="changelog.md" />
+    <Content Include="CONTRIBUTING.md" />
+    <Content Include="gulp\.eslintrc" />
+    <Content Include="src\main.js" />
+    <Content Include="src\notification\notification.css" />
+    <Content Include="src\notification\notification.js" />
+    <Content Include="src\notification\notificationRegion.js" />
+    <Content Include="src\notification\notifications.js" />
+    <Content Include="src\notification\notificationView.js" />
+    <Content Include="src\playlist\playlist.css" />
+    <Content Include="src\playlist\playlist.js" />
+    <Content Include="src\playlist\playlistItem.css" />
+    <Content Include="src\playlist\playlistItem.js" />
+    <Content Include="src\playlist\playlistItems.css" />
+    <Content Include="src\playlist\playlistItems.js" />
+    <Content Include="src\playlist\playlistItemsView.js" />
+    <Content Include="src\playlist\playlistItemView.js" />
+    <Content Include="src\playlist\playlistView.js" />
+    <Content Include="src\playlist\video.js" />
+    <Content Include="src\streamus_1069_232_transparent.png" />
+    <Content Include="test\unit\application.spec.js" />
+    <Content Include=".eslintrc" />
+    <Content Include="src\application\application.hbs" />
+    <Content Include="src\button\savePlaylistButton.hbs" />
+    <Content Include="src\common\fonts\fontawesome-webfont.eot" />
+    <Content Include="src\common\fonts\fontawesome-webfont.ttf" />
+    <Content Include="src\common\fonts\fontawesome-webfont.woff" />
+    <Content Include="src\common\fonts\fontawesome-webfont.woff2" />
+    <Content Include="src\common\fonts\FontAwesome.otf" />
+    <Content Include="src\contentPages\about\about.hbs" />
+    <Content Include="src\contentPages\donate\donate.hbs" />
+    <Content Include="src\contentPages\faq\faq.hbs" />
+    <Content Include="src\contentPages\gettingStarted\gettingStarted.hbs" />
+    <Content Include="src\contentPages\home\home.hbs" />
+    <Content Include="src\contentPages\notFound\notFound.hbs" />
+    <Content Include="src\contentPages\share\share.hbs" />
+    <Content Include="src\contentPages\contact\contact.hbs" />
+    <Content Include="src\contentPages\privacyPolicy\privacyPolicy.hbs" />
+    <Content Include="src\contentPages\termsOfUse\termsOfUse.hbs" />
+    <Content Include="src\navigationDrawer\navigationDrawer.hbs" />
+    <Content Include="src\navigationItems\navigationItem.hbs" />
+    <Content Include="test\.eslintrc" />
+    <Content Include="src\playlist\playlist.hbs" />
+    <Content Include="src\playlist\playlistItem.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\soundCloud.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\refresh.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\truncatedScreen.hbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Streamus Website.pubxml" />
+    <Content Include="src\robots.txt" />
+    <Content Include="src\sitemap.xml" />
+    <Content Include="src\header\header.hbs" />
+    <Content Include="src\footer\footer.hbs" />
+    <Content Include="src\notification\notification.hbs" />
+    <Content Include="src\contentPages\faq\faqItem.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\permissions.hbs" />
+    <Content Include="src\contentPages\faq\descriptions\mobile.hbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49553</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49553/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://share.streamus.com</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

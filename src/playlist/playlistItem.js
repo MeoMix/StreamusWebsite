@@ -1,45 +1,44 @@
 ﻿import { Model } from 'backbone';
-import _ from 'lodash';
-import Song from './song';
+import Video from './video';
+import { mapValues } from 'lodash';
 // Polyfill is needed for Reflect API
-//import 'babel/polyfill';
+import 'babel/polyfill';
 
 export default Model.extend({
   defaults: {
     id: null,
     playlistId: null,
     sequence: -1,
-    title: '',
-    song: null
+    video: null
   },
 
   parse(playlistItemDto) {
     // Patch requests do not return information.
-    if (!_.isUndefined(playlistItemDto)) {
+    if (playlistItemDto) {
       // Convert C# Guid.Empty into BackboneJS null
-      playlistItemDto = _.mapValues(playlistItemDto, (value) => {
+      playlistItemDto = mapValues(playlistItemDto, (value) => {
         return value === '00000000-0000-0000-0000-000000000000' ? null : value;
       });
 
-      // Take json of song and set into model. Delete to prevent overriding on return of data object.
-      this.get('song').set(playlistItemDto.song);
-      //Reflect.deleteProperty(playlistItemDto, 'song');
+      // Take json of video and set into model. Delete to prevent overriding on return of data object.
+      this.get('video').set(playlistItemDto.video);
+      Reflect.deleteProperty(playlistItemDto, 'video');
     }
 
     return playlistItemDto;
   },
 
   initialize() {
-    this._ensureSongModel();
+    this._ensureVideoModel();
   },
 
-  _ensureSongModel() {
-    const song = this.get('song');
+  _ensureVideoModel() {
+    const video = this.get('video');
 
-    // Need to convert song object to Backbone.Model
-    if (!(song instanceof Model)) {
-      // Silent because song is just being properly set.
-      this.set('song', new Song(song), {
+    // Need to convert video object to Backbone.Model
+    if (!(video instanceof Model)) {
+      // Silent because video is just being properly set.
+      this.set('video', new Video(video), {
         silent: true
       });
     }

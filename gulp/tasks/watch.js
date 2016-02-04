@@ -1,8 +1,9 @@
 ﻿var gulp = require('gulp');
 var path = require('path');
 var util = require('gulp-util');
+var connect = require('gulp-connect');
 var del = require('del');
-var GlobFilter = require('../globFilter.js');
+var Glob = require('../glob.js');
 // https://github.com/gulpjs/gulp/blob/master/docs/API.md#eventtype
 var WatchEventType = {
   Added: 'added',
@@ -12,25 +13,43 @@ var WatchEventType = {
 
 // Watch source files for changes. Run compile task when changes detected.
 gulp.task('watch', function(done) {
-  var logChanges = function(event) {
+  var onFileChange = function(event) {
+    // Write to log that change happened.
     util.log(
       util.colors.yellow(path.basename(event.path)) +
       util.colors.green(' was ' + event.type + ', recompiling...')
     );
-  };
 
-  gulp.watch(GlobFilter.SrcFolder + GlobFilter.AllFiles, ['compile:transformSrc']).on('change', logChanges);
-  gulp.watch(GlobFilter.JspmFolder + '*', ['compile:copyJspmFolder']).on('change', logChanges);
-  
-  // Clean-up deleted files manually by finding and removing their counterpart.
-  gulp.watch([GlobFilter.SrcFolder + GlobFilter.AllFiles, GlobFilter.JspmFolder + '*'], function(event) {
+    // Clean-up deleted files manually by finding and removing their counterpart.
     if (event.type === WatchEventType.Deleted) {
-      var regexp = new RegExp(GlobFilter.Src + '|' + GlobFilter.Jspm);
-      var compiledPath = event.path.replace(regexp, GlobFilter.Compiled);
+      var compiledPath = '';
+
+      if (event.path.indexOf(Glob.Src) !== -1) {
+        compiledPath = event.path.replace(Glob.Src, Glob.Compiled);
+      } else if (event.path.indexOf(Glob.Jspm) !== -1) {
+        // jspm's directory structure changes when moving into compiled.
+        compiledPath = event.path.replace(Glob.Jspm, Glob.Compiled + '\\' + Glob.Jspm);
+      } else {
+        throw new Error('Unexpected path:' + event.path);
+      }
+
       del(compiledPath);
     }
-  });
+  };
 
-  //gulp.watch(GlobFilter.CompiledFolder + GlobFilter.AllFiles, ['connect:reloadCompiledFiles']).on('change', logChanges);
+  gulp.watch(Glob.SrcFolder + Glob.AllFiles, ['compile:transformSrc']).on('change', onFileChange);
+  gulp.watch([
+    Glob.JspmFolder + Glob.AllFiles,
+    // It's too slow to watch jspm packages for changes. Increases watch task time by ~20s
+    '!' + Glob.JspmFolder + Glob.JspmPackagesFolder + Glob.AllFiles
+  ], ['compile:copyJspmFolder']).on('change', onFileChange);
+  gulp.watch([
+    Glob.CompiledFolder + Glob.AllFiles,
+    // It's too slow to watch jspm packages for changes. Increases watch task time by ~20s
+    '!' + Glob.CompiledFolder + Glob.JspmFolder + Glob.JspmPackagesFolder + Glob.AllFiles
+  ]).on('change', function(event) {
+    gulp.src(event.path)
+      .pipe(connect.reload());
+  });
   done();
 });

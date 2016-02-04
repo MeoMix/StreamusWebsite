@@ -1,0 +1,72 @@
+﻿.footer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: white;
+  padding-right: 48px;
+  flex: 1;
+  box-shadow: 1px 0 rgba(255, 255, 255, 0.7);
+  text-align: right;
+}
+
+.rightSection {
+  color: white;
+  padding-left: 48px;
+  flex: 1;
+}
+
+.item {
+  display: flex;
+}
+
+.badge {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  opacity: 0.87;
+  will-change: opacity;
+  transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
+}
+
+.badge:hover {
+  opacity: 1;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.87;
+  will-change: opacity;
+  transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
+.twitter:traits {
+  font-awesome: fa fa-twitter fa-lg;
+}
+
+.facebook:traits {
+  font-awesome: fa fa-facebook fa-lg;
+}
+
+.github:traits {
+  font-awesome: fa fa-github fa-lg;
+}
+
+.reddit:traits {
+  font-awesome: fa fa-reddit fa-lg;
+}

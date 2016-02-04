@@ -1,0 +1,36 @@
+﻿.playlistItem {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 24px;
+  /*margin-left: var(--badge-FixedWidth);*/
+  /*margin-left: 55px;
+  flex: 1;*/
+}
+
+.duration {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .54);
+  /*width: var(--badge-FixedWidth);*/
+  /*width: 55px;
+  line-height: 0;*/
+}
+
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, .26);
+  margin-right: 16px;
+}
+
+.content {
+}

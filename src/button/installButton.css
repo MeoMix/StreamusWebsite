@@ -1,0 +1,20 @@
+﻿.installButton {
+  composes: raisedButton from './button.css';
+  background-color: rgb(40,112,238);
+  color: white;
+}
+
+.installButton:hover {
+  will-change: box-shadow;
+}
+
+.installButton[disabled] {
+  background-color: rgba(255, 255, 255, .12);
+  color: rgba(255, 255, 255, .3);
+  cursor: default;
+  box-shadow: none;
+}
+
+.installButton:not([disabled]):active {
+  box-shadow:  0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.22)
+}

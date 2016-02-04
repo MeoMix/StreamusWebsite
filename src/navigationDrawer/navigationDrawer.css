@@ -1,0 +1,36 @@
+﻿.navigationDrawer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.header {
+  height: 56px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  composes: bottom from 'box-shadow';
+}
+
+.footer {
+  height: 56px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  composes: top from 'box-shadow';
+}
+
+.logo {
+}
+
+.navigationItemsRegion {
+  padding-top: 8px;
+  flex: 1;
+}
+
+.link {
+}

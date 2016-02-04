@@ -1,0 +1,43 @@
+﻿.playlist {
+}
+
+.playlist:not(.isLoading) .loading {
+  display: none;
+}
+
+.playlist:not(.hasError) .error {
+  display: none;
+}
+
+.playlist:not(.isLoaded) .details {
+  display: none;
+}
+
+.playlist:not(:last-child){
+  margin-bottom: 20px;
+}
+
+.loading {
+  color: black;
+}
+
+.title {
+  
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, .54);
+}
+
+.details {
+  border-radius: 2px;
+  composes: lowElevation from 'box-shadow';
+  padding: 24px 16px;
+  background-color: white;
+  line-height: 24px;
+  margin-top: 48px;
+}
+
+.isHidden {
+  display: none;
+}
