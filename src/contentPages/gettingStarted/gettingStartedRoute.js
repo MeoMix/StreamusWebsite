@@ -1,6 +1,6 @@
-﻿import Route from 'route/route';
-import RouteType from 'route/routeType';
-import GettingStartedView from './gettingStartedView';
+﻿import Route from 'route/route.js';
+import RouteType from 'route/routeType.js';
+import GettingStartedView from './gettingStartedView.js';
 
 export default Route.extend({
   type: RouteType.GettingStarted,

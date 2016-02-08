@@ -1,5 +1,5 @@
 ﻿import { Region } from 'marionette';
-import HeaderView from './headerView';
+import HeaderView from './headerView.js';
 
 export default Region.extend({
   initialize() {

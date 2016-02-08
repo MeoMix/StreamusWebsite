@@ -1,7 +1,7 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './about.hbs!';
-import styles from './about.css!';
-import LazyImages from 'behavior/lazyImages';
+import template from './about.hbs';
+import styles from './about.css';
+import LazyImages from 'behavior/lazyImages.js';
 
 export default LayoutView.extend({
   className: styles.about,

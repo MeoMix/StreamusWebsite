@@ -1,5 +1,5 @@
 ﻿import { Collection } from 'backbone';
-import Option from './option';
+import Option from './option.js';
 import { result } from 'lodash';
 
 export default Collection.extend({

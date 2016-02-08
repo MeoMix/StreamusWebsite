@@ -1,5 +1,5 @@
 ﻿import { Collection } from 'backbone';
-import PlaylistItem from './playlistItem';
+import PlaylistItem from './playlistItem.js';
 import { invoke, reduce } from 'lodash';
 
 export default Collection.extend({

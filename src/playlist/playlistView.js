@@ -1,10 +1,10 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './playlist.hbs!';
-import styles from './playlist.css!';
-import PlaylistItemsView from './playlistItemsView';
-import InstallButton from 'button/installButton';
-import SavePlaylistButtonView from 'button/savePlaylistButtonView';
-import SavePlaylistButton from 'button/savePlaylistButton';
+import template from './playlist.hbs';
+import styles from './playlist.css';
+import PlaylistItemsView from './playlistItemsView.js';
+import InstallButton from 'button/installButton.js';
+import SavePlaylistButtonView from 'button/savePlaylistButtonView.js';
+import SavePlaylistButton from 'button/savePlaylistButton.js';
 
 export default LayoutView.extend({
   className: styles.playlist,
@@ -19,15 +19,8 @@ export default LayoutView.extend({
   },
 
   ui: {
-    loading: 'loading',
-    error: 'error',
-    details: 'details',
-    title: 'title',
+    // TODO: Make this able to be databound.
     displayInfo: 'displayInfo'
-  },
-
-  modelEvents: {
-    'change:title': '_onChangeTitle'
   },
 
   initialize() {
@@ -39,7 +32,6 @@ export default LayoutView.extend({
   },
 
   onRender() {
-    this._setTitle(this.model.get('title'));
     this._setDisplayInfo(this.model.get('items').getDisplayInfo());
 
     this.showChildView('button', new SavePlaylistButtonView({
@@ -55,10 +47,6 @@ export default LayoutView.extend({
     }));
   },
 
-  _onChangeTitle(model, title) {
-    this._setTitle(title);
-  },
-
   _onFetchResolve() {
     this._setDisplayInfo(this.model.get('items').getDisplayInfo());
 
@@ -69,10 +57,6 @@ export default LayoutView.extend({
   _onFetchReject() {
     this.$el.addClass(styles.hasError);
     this.$el.removeClass(styles.isLoading);
-  },
-
-  _setTitle(title) {
-    this.ui.title.text(title);
   },
 
   _setDisplayInfo(displayInfo) {

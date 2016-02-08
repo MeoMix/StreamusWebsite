@@ -1,6 +1,6 @@
 ﻿import { CollectionView } from 'marionette';
-import styles from './simpleMenuItems.css!';
-import SimpleMenuItemView from './simpleMenuItemView';
+import styles from './simpleMenuItems.css';
+import SimpleMenuItemView from './simpleMenuItemView.js';
 
 export default CollectionView.extend({
   className: styles.simpleMenuItems,

@@ -1,10 +1,10 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './simpleMenu.hbs!';
-import styles from './simpleMenu.css!';
-import SimpleMenuItemsView from './simpleMenuItemsView';
-import SimpleMenuItemView from './simpleMenuItemView';
-import FixedPosition from './fixedPosition';
-import Utility from 'common/utility';
+import template from './simpleMenu.hbs';
+import styles from './simpleMenu.css';
+import SimpleMenuItemsView from './simpleMenuItemsView.js';
+import SimpleMenuItemView from './simpleMenuItemView.js';
+import FixedPosition from './fixedPosition.js';
+import Utility from 'common/utility.js';
 import { defer } from 'lodash';
 
 export default LayoutView.extend({

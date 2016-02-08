@@ -1,5 +1,5 @@
 ﻿import { Object } from 'marionette';
-import RouteType from 'route/routeType';
+import RouteType from 'route/routeType.js';
 
 export default Object.extend({
   type: RouteType.NotFound,

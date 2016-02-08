@@ -1,5 +1,5 @@
 ﻿import { Model } from 'backbone';
-import RouteType from 'route/routeType';
+import RouteType from 'route/routeType.js';
 
 export default Model.extend({
   defaults: {

@@ -1,26 +1,26 @@
 // Load globals before initialization the application to ensure all dependencies utilize the globals.
 // Shim helpful/expected functionality into third-party libraries.
-import 'common/shim/backbone.marionette.region.shim';
-import 'common/shim/backbone.marionette.toJson.shim';
-import 'common/shim/backbone.marionette.view.shim';
-import 'common/shim/handlebars.helpers.shim';
-import 'common/shim/lodash.mixin.shim';
-import 'common/shim/webcomponents.shim';
+import 'common/shim/marionette.region.shim.js';
+import 'common/shim/marionette.toJson.shim.js';
+import 'common/shim/marionette.view.shim.js';
+import 'common/shim/handlebars.helpers.shim.js';
+import 'common/shim/lodash.mixin.shim.js';
+import 'common/shim/webcomponents.shim.js';
 // Load global CSS reset to standardize CSS across browsers.
-import 'common/css/reset.css!';
+import 'common/css/reset.css';
 // Load core CSS which isn't specific to a given module.
-import 'common/css/core.css!';
+import 'common/css/core.css';
 import { Application } from 'marionette';
 import { history } from 'backbone';
 import Wreqr from 'backbone.wreqr';
 import Intercept from 'backbone.intercept';
-import Router from 'route/router';
-import RouteType from 'route/routeType';
-import ApplicationView from './applicationView';
-import ExtensionData from 'common/extensionData';
-import AnalyticsManager from 'common/analyticsManager';
-import Browser from 'common/browser';
-import NavigationItems from 'navigationItems/navigationItems';
+import Router from 'route/router.js';
+import RouteType from 'route/routeType.js';
+import ApplicationView from './applicationView.js';
+import ExtensionData from 'common/extensionData.js';
+import AnalyticsManager from 'common/analyticsManager.js';
+import Browser from 'common/browser.js';
+import NavigationItems from 'navigationItems/navigationItems.js';
 
 export default Application.extend({
   router: null,

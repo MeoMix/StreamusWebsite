@@ -8,13 +8,13 @@
   will-change: box-shadow;
 }
 
-.savePlaylistButton[disabled] {
+.savePlaylistButton.isDisabled  {
   background-color: rgba(0, 0, 0, .12);
   color: rgba(0, 0, 0, .26);
   cursor: default;
   box-shadow: none;
 }
 
-.savePlaylistButton:not([disabled]):active {
+.savePlaylistButton:not(.isDisabled):active {
   box-shadow:  0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.22)
 }

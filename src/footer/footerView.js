@@ -1,8 +1,8 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './footer.hbs!';
-import styles from './footer.css!';
-import RouteType from 'route/routeType';
-import NavigationItemsView from 'navigationitems/navigationItemsView';
+import template from './footer.hbs';
+import styles from './footer.css';
+import RouteType from 'route/routeType.js';
+import NavigationItemsView from 'navigationitems/navigationItemsView.js';
 
 export default LayoutView.extend({
   className: styles.footer,

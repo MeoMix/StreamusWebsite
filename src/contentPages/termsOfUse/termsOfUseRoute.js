@@ -1,6 +1,6 @@
-﻿import Route from 'route/route';
-import RouteType from 'route/routeType';
-import TermsOfUseView from './termsOfUseView';
+﻿import Route from 'route/route.js';
+import RouteType from 'route/routeType.js';
+import TermsOfUseView from './termsOfUseView.js';
 
 export default Route.extend({
   type: RouteType.TermsOfUse,

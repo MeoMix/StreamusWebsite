@@ -1,11 +1,11 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './select.hbs!';
-import styles from './select.css!';
-import Select from './select';
-import Options from './options';
-import SimpleMenuItems from '../simpleMenu/simpleMenuItems';
-import SimpleMenu from '../simpleMenu/simpleMenu';
-import SimpleMenuView from '../simpleMenu/simpleMenuView';
+import template from './select.hbs';
+import styles from './select.css';
+import Select from './select.js';
+import Options from './options.js';
+import SimpleMenuItems from '../simpleMenu/simpleMenuItems.js';
+import SimpleMenu from '../simpleMenu/simpleMenu.js';
+import SimpleMenuView from '../simpleMenu/simpleMenuView.js';
 import { isUndefined, extend } from 'lodash';
 
 const SelectView = LayoutView.extend({
@@ -29,6 +29,7 @@ const SelectView = LayoutView.extend({
   },
 
   initialize() {
+    // Since element already existed, need to append className manually.
     this.el.classList.add(this.className);
     this.el.classList.toggle(styles.hasValue, this.model.hasValue());
     this.listenTo(this.model.get('options'), 'change:isSelected', this._onOptionsChangeIsSelected);

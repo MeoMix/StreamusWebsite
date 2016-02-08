@@ -1,16 +1,10 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './input.hbs!';
-import styles from './input.css!';
-import Input from './input';
-import InputType from './inputType';
+import template from './input.hbs';
+import styles from './input.css';
+import Input from './input.js';
+import InputType from './inputType.js';
 import { extend, parseInt, isString } from 'lodash';
 
-import rivets from 'rivets';
-import rivetsBackbone from 'rivets-backbone-adapter';
-
-rivets.formatters.stringLength = (value) => {
-  return isString(value) ? value.length : 0;
-}
 // TODO: Add two-way databinding to reduce amount of code.
 // TODO: Suspect I'll need to use alt. fix for multiline.
 const InputView = LayoutView.extend({
@@ -23,12 +17,10 @@ const InputView = LayoutView.extend({
 
   ui: {
     input: 'input',
-    errorMessage: 'errorMessage',
     characterCount: 'characterCount'
   },
 
   events: {
-    //'input': '_onInput',
     'focus @ui.input': '_onFocusInput',
     'blur @ui.input': '_onBlurInput'
   },
@@ -39,15 +31,9 @@ const InputView = LayoutView.extend({
   },
 
   initialize() {
+    // Since element already existed, need to append className manually.
     this.el.classList.add(this.className);
     this.el.classList.toggle(styles.hasValue, this.model.hasValue());
-  },
-
-  onRender() {
-    this._binding = rivets.bind(this.el, {
-      model: this.model,
-      view: this
-    });
   },
 
   onAttach() {
@@ -56,17 +42,9 @@ const InputView = LayoutView.extend({
     }
   },
 
-  onBeforeDestroy() {
-    this._binding.unbind();
-  },
-
   validate() {
     this.el.classList.toggle(styles.isInvalid, !this.model.get('isValid'));
   },
-
-  //_onInput() {
-  //  this.model.set('value', this.ui.input.val());
-  //},
 
   _onFocusInput() {
     this.el.classList.add(styles.hasFocus);
@@ -80,13 +58,13 @@ const InputView = LayoutView.extend({
   _onChangeValue(model, value) {
     this.ui.characterCount.text(value.length);
     this.el.classList.toggle(styles.hasValue, model.hasValue());
+    // TODO: Is this necessary? Doesn't the subelement return it?
+    // Be sure to record value on the element so $.val() and .value will yield proper values.
+    this.el.value = value;
 
     if (model.get('isMultiline')) {
       // If height is not set to 'auto' then input will not shrink on text deletion.
       this._setMultilineHeight(model.previous('value').length > value.length);
-    } else {
-      // Be sure to record value on the element so $.val() and .value will yield proper values.
-      this.el.value = value;
     }
   },
 

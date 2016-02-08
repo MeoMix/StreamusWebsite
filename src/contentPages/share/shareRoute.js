@@ -1,8 +1,8 @@
-﻿import Route from 'route/route';
-import RouteType from 'route/routeType';
-import ShareView from './shareView';
-import ShareCode from './shareCode';
-import Share from './share';
+﻿import Route from 'route/route.js';
+import RouteType from 'route/routeType.js';
+import ShareView from './shareView.js';
+import ShareCode from './shareCode.js';
+import Share from './share.js';
 
 export default Route.extend({
   type: RouteType.Share,

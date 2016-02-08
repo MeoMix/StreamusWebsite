@@ -4,21 +4,25 @@ import { Plugins } from 'jspm-loader-css/lib/plugins'
 import { CSSLoader } from 'jspm-loader-css/lib/CSSLoader'
 import values from 'postcss-modules-values';
 import url from 'postcss-url';
+import mixins from 'postcss-mixins';
+import nesting from 'postcss-nesting';
+import autoprefixer from 'autoprefixer';
+//import atImport from 'postcss-import';
 
-// Make life easier by automating away most of the boilerplate for using traits.
-// OLD:
-// .foo {
-//   composes: primary from '../common/css/traits/color.css';
-// }
-// 
-// NEW:
-// .foo:traits {
-//   color: primary;
-// }
+ //Make life easier by automating away most of the boilerplate for using traits.
+ //OLD:
+ //.foo {
+ //  composes: primary from '../common/css/traits/color.css';
+ //}
+ 
+ //NEW:
+ //.foo:traits {
+ //  color: primary;
+ //}
 
 let traits = (css) => {
   const isBundling = typeof window === 'undefined';
-  const rootDir = isBundling ? 'compiled/' : '';
+  const rootDir = isBundling ? 'compiled/' : '/';
   const traitPath = `${rootDir}common/css/traits/`;
 
   const traitRegexp = /\:traits$/;
@@ -44,7 +48,14 @@ let traits = (css) => {
 
 let plugins = [
   traits,
+  //atImport({
+  //  root: '/',
+  //  skipDuplicates: false,
+  //  async: true
+  //}),
   values,
+  mixins,
+  nesting(),
   url({
     url: function(url) {
       var transformedUrl = url;
@@ -60,9 +71,8 @@ let plugins = [
   Plugins.localByDefault,
   Plugins.extractImports,
   Plugins.scope,
-  Plugins.autoprefixer()
+  autoprefixer()
 ];
 
 const { fetch, bundle } = new CSSLoader(plugins);
-
 export { fetch, bundle };

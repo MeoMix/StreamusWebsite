@@ -56,7 +56,7 @@
 }*/
 
 .button {
-  composes: raisedButton from 'button/button.css';
+  composes: raisedButton from '/button/button.css';
   background-color: rgb(40,112,238);
   color: white;
   margin-right: 8px;

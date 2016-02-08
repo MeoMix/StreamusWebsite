@@ -1,7 +1,7 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './header.hbs!';
-import styles from './header.css!';
-import NavigationItemsView from 'navigationItems/navigationItemsView';
+import template from './header.hbs';
+import styles from './header.css';
+import NavigationItemsView from 'navigationItems/navigationItemsView.js';
 
 export default LayoutView.extend({
   className: styles.header,
@@ -30,6 +30,6 @@ export default LayoutView.extend({
   },
 
   _onWindowScroll(eventData) {
-    this.$el.toggleClass(styles.isFloating, eventData.scrollY > 0);
+    this.el.classList.toggle(styles.isFloating, eventData.scrollY > 0);
   }
 });

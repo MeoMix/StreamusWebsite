@@ -1,5 +1,5 @@
 ﻿import { Model } from 'backbone';
-import FixedPosition from './fixedPosition';
+import FixedPosition from './fixedPosition.js';
 
 export default Model.extend({
   defaults: {

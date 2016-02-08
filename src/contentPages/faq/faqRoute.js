@@ -1,8 +1,8 @@
 ﻿import _ from 'lodash';
-import Route from 'route/route';
-import RouteType from 'route/routeType';
-import FaqView from './faqView';
-import Faq from './faq';
+import Route from 'route/route.js';
+import RouteType from 'route/routeType.js';
+import FaqView from './faqView.js';
+import Faq from './faq.js';
 
 export default Route.extend({
   type: RouteType.Faq,

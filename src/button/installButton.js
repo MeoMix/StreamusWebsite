@@ -1,11 +1,12 @@
 ﻿import { Model, history } from 'backbone';
-import RouteType from 'route/routeType';
+import RouteType from 'route/routeType.js';
 import { result } from 'lodash';
 
 export default Model.extend({
   defaults: {
-    isEnabled: true,
+    isDisabled: false,
     isInstalling: false,
+    // TODO: Feel like text shouldn't be in the model.
     text: 'Install'
   },
 
@@ -73,7 +74,7 @@ export default Model.extend({
 
   _markInstalled() {
     this.set({
-      isEnabled: false,
+      isDisabled: true,
       isInstalling: false,
       text: 'Installed'
     });

@@ -54,11 +54,11 @@
     <Content Include="gulp\tasks\publish.js" />
     <Content Include="gulp\tasks\test.js" />
     <Content Include="gulp\tasks\watch.js" />
-    <Content Include="jspm\autoprefixer.js" />
     <Content Include="jspm\css-builder.js" />
     <Content Include="jspm\css.js" />
     <Content Include="jspm\css3.js" />
     <Content Include="jspm\css2.js" />
+    <Content Include="jspm\jspm.browser.js" />
     <Content Include="jspm\jspm.config.js" />
     <Content Include="karma.config.js" />
     <Content Include="src\application\application.css" />
@@ -66,7 +66,6 @@
     <Content Include="src\application\applicationView.js" />
     <Content Include="src\application\chromeWebStoreBadge.png" />
     <Content Include="src\application\youTubeBadge.png" />
-    <Content Include="src\behavior\button.js" />
     <Content Include="src\behavior\lazyImages.js" />
     <Content Include="src\behavior\viewEntityContainer.js" />
     <Content Include="src\button\installButton.css" />
@@ -94,9 +93,9 @@
     <Content Include="src\common\fonts\fontawesome-webfont.svg" />
     <Content Include="src\route\route.js" />
     <Content Include="src\route\router.js" />
-    <Content Include="src\common\shim\backbone.marionette.region.shim.js" />
-    <Content Include="src\common\shim\backbone.marionette.toJson.shim.js" />
-    <Content Include="src\common\shim\backbone.marionette.view.shim.js" />
+    <Content Include="src\common\shim\marionette.region.shim.js" />
+    <Content Include="src\common\shim\marionette.toJson.shim.js" />
+    <Content Include="src\common\shim\marionette.view.shim.js" />
     <Content Include="src\common\shim\handlebars.helpers.shim.js" />
     <Content Include="src\common\shim\lodash.mixin.shim.js" />
     <Content Include="src\common\shim\webcomponents.shim.js" />
@@ -235,7 +234,6 @@
     <Content Include="test\unit\application.spec.js" />
     <Content Include=".eslintrc" />
     <Content Include="src\application\application.hbs" />
-    <Content Include="src\button\savePlaylistButton.hbs" />
     <Content Include="src\common\fonts\fontawesome-webfont.eot" />
     <Content Include="src\common\fonts\fontawesome-webfont.ttf" />
     <Content Include="src\common\fonts\fontawesome-webfont.woff" />
@@ -304,6 +302,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

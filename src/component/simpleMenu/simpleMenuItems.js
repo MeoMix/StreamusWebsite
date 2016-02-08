@@ -1,5 +1,5 @@
 ﻿import { Collection } from 'backbone';
-import SimpleMenuItem from './simpleMenuItem';
+import SimpleMenuItem from './simpleMenuItem.js';
 
 export default Collection.extend({
   model: SimpleMenuItem,

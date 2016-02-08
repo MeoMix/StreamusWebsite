@@ -5,6 +5,7 @@ export default Model.extend({
   defaults: {
     isEnabled: true,
     isSaving: false,
+    // TODO: Feel like text shouldn't be in the model.
     text: 'Add Playlist',
     playlistId: null,
     isSavePending: false

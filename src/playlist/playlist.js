@@ -1,8 +1,8 @@
 ﻿import { Model, Collection } from 'backbone';
-import PlaylistItems from './playlistItems';
+import PlaylistItems from './playlistItems.js';
 import { mapValues } from 'lodash';
 // Polyfill is needed for Reflect API
-import 'babel/polyfill';
+import 'babel-polyfill';
 
 // Playlist holds a collection of PlaylistItems as well as properties pertaining to a playlist.
 export default Model.extend({

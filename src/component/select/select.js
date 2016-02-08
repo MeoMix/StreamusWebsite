@@ -1,5 +1,5 @@
 ﻿import { Model } from 'backbone';
-import Options from './options';
+import Options from './options.js';
 
 export default Model.extend({
   defaults() {

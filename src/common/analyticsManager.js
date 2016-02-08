@@ -1,6 +1,6 @@
 ﻿import { Model } from 'backbone';
 // Polyfill is needed for Reflect API
-import 'babel/polyfill';
+import 'babel-polyfill';
 
 export default Model.extend({
   defaults: {

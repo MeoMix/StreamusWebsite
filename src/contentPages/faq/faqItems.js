@@ -1,5 +1,5 @@
 ﻿import { Collection } from 'backbone';
-import FaqItem from './faqItem';
+import FaqItem from './faqItem.js';
 
 export default Collection.extend({
   model: FaqItem,

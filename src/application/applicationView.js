@@ -1,11 +1,11 @@
 ﻿import { LayoutView } from 'marionette';
-import styles from './application.css!';
-import template from './application.hbs!';
-import HeaderRegion from 'header/headerRegion';
-import FooterRegion from 'footer/footerRegion';
-import NavigationDrawerRegion from 'navigationDrawer/navigationDrawerRegion';
-import NotificationRegion from 'notification/notificationRegion';
-import ContentPagesRegion from 'contentPages/contentPagesRegion';
+import styles from './application.css';
+import template from './application.hbs';
+import HeaderRegion from 'header/headerRegion.js';
+import FooterRegion from 'footer/footerRegion.js';
+import NavigationDrawerRegion from 'navigationDrawer/navigationDrawerRegion.js';
+import NotificationRegion from 'notification/notificationRegion.js';
+import ContentPagesRegion from 'contentPages/contentPagesRegion.js';
 import _ from 'lodash';
 
 export default LayoutView.extend({

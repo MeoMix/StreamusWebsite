@@ -1,5 +1,5 @@
 ﻿import { Region } from 'marionette';
-import FooterView from './footerView';
+import FooterView from './footerView.js';
 
 export default Region.extend({
   initialize() {

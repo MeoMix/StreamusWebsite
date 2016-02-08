@@ -1,5 +1,5 @@
 ﻿import { Collection } from 'backbone';
-import NavigationItem from './navigationItem';
+import NavigationItem from './navigationItem.js';
 
 export default Collection.extend({
   model: NavigationItem,

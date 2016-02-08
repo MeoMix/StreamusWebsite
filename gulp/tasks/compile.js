@@ -22,8 +22,9 @@ gulp.task('compile:transformSrc', function() {
     // Transpile ES6 files through babel and copy results to destination directory.
     .pipe(jsFilter)
     .pipe(babel({
+      presets: ['es2015'],
       // Don't transpile into global scope. Functionality will break (e.g. Marionette.Object)
-      modules: 'system'
+      plugins: ['transform-es2015-modules-systemjs']
     }))
     .pipe(gulp.dest(Glob.CompiledFolder))
     .pipe(jsFilter.restore)

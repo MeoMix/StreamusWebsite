@@ -1,8 +1,8 @@
 ﻿import { Model } from 'backbone';
-import Video from './video';
+import Video from './video.js';
 import { mapValues } from 'lodash';
 // Polyfill is needed for Reflect API
-import 'babel/polyfill';
+import 'babel-polyfill';
 
 export default Model.extend({
   defaults: {
