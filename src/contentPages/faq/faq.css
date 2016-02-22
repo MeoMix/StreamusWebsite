@@ -1,0 +1,20 @@
+﻿.title {
+  @mixin title from '../contentPage';
+}
+
+.description {
+  @mixin description from '../contentPage';
+}
+
+.card {
+  border-radius: 2px;
+  trait: lowElevation from 'box-shadow';
+  padding: 24px 0;
+  background-color: white;
+  line-height: 24px;
+  margin-top: 48px;
+}
+
+.header {
+  padding-left: 16px;
+}

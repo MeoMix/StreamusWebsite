@@ -1,0 +1,84 @@
+﻿.title {
+  @mixin title from '../contentPage';
+}
+
+.description {
+  @mixin description from '../contentPage';
+}
+
+.card {
+  border-radius: 2px;
+  trait: lowElevation from 'box-shadow';
+  padding: 24px 8px 8px 8px;
+  background-color: white;
+  line-height: 24px;
+  margin-top: 48px;
+}
+
+.cardContent {
+  padding: 16px 8px 16px 8px;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+}
+
+.dollarSign {
+  composes: fa fa-usd from 'font-awesome';
+  trait: green from 'color';
+  padding: 0 8px;
+}
+
+.arrow {
+  composes: fa fa-long-arrow-right from 'font-awesome';
+  trait: yellow from 'color';
+  padding: 0 16px;
+}
+
+.heart {
+  composes: fa fa-heart from 'font-awesome';
+  trait: red from 'color';
+  padding: 0 8px;
+}
+
+.equalSign {
+  trait: blue from 'color';
+  padding: 0 16px;
+  font-weight: 500;
+  cursor: default;
+  /* The equalSign is text and so it doesn't align properly with icons. */
+  margin-top: -2px;
+}
+
+.beer {
+  trait: brown from 'fill';
+}
+
+.paragraph {
+  padding: 8px 0;
+}
+
+.donationArea {
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.payPalAmount {
+  margin-left: 16px;
+}
+
+.payPalButton {
+  @mixin raisedButton from 'button/button';
+  background-color: rgb(40,112,238);
+  color: white;
+  margin-left: 16px;
+}
+
+.donate-payPalInput {
+  display: inline-block;
+  max-width: 200px;
+}

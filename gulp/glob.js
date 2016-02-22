@@ -33,5 +33,5 @@ module.exports = {
   JspmPackagesFolder: 'jspm_packages/',
   // By default, the config file can be found in the root directory. If defaults have been changed then jspm's
   // entry in packageConfig will know the correct value.
-  JspmConfigFile: packageConfig.jspm.configFile || 'jspm.config.js'
+  JspmConfigFile: packageConfig.jspm.configFiles.jspm || 'jspm.config.js'
 };

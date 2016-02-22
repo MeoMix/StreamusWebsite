@@ -70,7 +70,7 @@
 .placeholder {
   font-size: 16px;
   line-height: 16px;
-  composes: hint from 'color';
+  trait: hint from 'color';
   display: inline-block;
   transform: translate(0, 25px) scale(1);
   transition: transform .28s cubic-bezier(.39, .575, .565, 1);
@@ -92,7 +92,7 @@
   display: flex;
   font-size: 12px;
   line-height: 12px;
-  composes: hint from 'color';
+  trait: hint from 'color';
   cursor: default;
   transition: color .28s cubic-bezier(.39, .575, .565, 1);
   user-select: none;

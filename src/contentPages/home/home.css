@@ -1,0 +1,48 @@
+﻿.title {
+  @mixin title from '../contentPage';
+}
+
+.description {
+  @mixin description from '../contentPage';
+}
+
+.button {
+  margin: 48px 0;
+  text-align: center;
+}
+
+.video {
+  width: 640px;
+  height: 360px;
+}
+
+.card {
+  border-radius: 2px;
+  trait: lowElevation from 'box-shadow';
+  padding: 24px 16px;
+  background-color: white;
+}
+
+.cardHeader {
+  margin-bottom: 24px;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+
+.feature {
+  flex-basis: 33%;
+  padding: 12px;
+  text-align: center;
+}
+
+.featureTitle {
+  margin-bottom: 12px;
+}
+
+.featureDescription {
+  line-height: 24px;
+}

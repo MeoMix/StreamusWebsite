@@ -50,13 +50,13 @@ export default LayoutView.extend({
   _onFetchResolve() {
     this._setDisplayInfo(this.model.get('items').getDisplayInfo());
 
-    this.$el.addClass(styles.isLoaded);
-    this.$el.removeClass(styles.isLoading);
+    this.el.classList.add(styles.isLoaded);
+    this.el.classList.remove(styles.isLoading);
   },
 
   _onFetchReject() {
-    this.$el.addClass(styles.hasError);
-    this.$el.removeClass(styles.isLoading);
+    this.el.classList.add(styles.hasError);
+    this.el.classList.remove(styles.isLoading);
   },
 
   _setDisplayInfo(displayInfo) {

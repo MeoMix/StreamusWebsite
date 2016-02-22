@@ -41,7 +41,7 @@ gulp.task('compile:transformSrc', function() {
 
 gulp.task('compile:copyJspmFolder', function() {
   // Set base to preserve the /jspm directory.
-  return gulp.src(Glob.JspmFolder + Glob.AllFiles, { base: './' })
+  return gulp.src(Glob.JspmFolder + Glob.AllFiles, { base: './', dot: true })
     // Don't waste time compiling files which have not changed.
     // Don't compare using sha1. Changed thinks all files changed when saving through Visual Studio.
     .pipe(changed(Glob.CompiledFolder))

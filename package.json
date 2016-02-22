@@ -25,9 +25,8 @@
       "jspm:browser": "jspm/jspm.browser.js",
       "jspm": "jspm/jspm.config.js"
     },
-    "configFile": "jspm/jspm.config.js",
     "dependencies": {
-      "autoprefixer": "npm:autoprefixer@^6.3.1",
+      "autoprefixer": "npm:autoprefixer@^6.3.2",
       "babel-polyfill": "npm:babel-polyfill@^6.5.0",
       "backbone": "npm:backbone@^1.2.3",
       "backbone.babysitter": "github:marionettejs/backbone.babysitter@^0.1.10",
@@ -37,16 +36,22 @@
       "backbone.wreqr": "github:marionettejs/backbone.wreqr@^1.3.5",
       "handlebars": "github:components/handlebars.js@^4.0.5",
       "hbs": "github:davis/plugin-hbs@^1.2.1",
+      "icss-replace-symbols": "npm:icss-replace-symbols@^1.0.2",
       "jquery": "github:components/jquery@^2.1.4",
       "jquery.browser": "npm:jquery.browser@^0.1.0",
-      "jspm-loader-css": "github:MeoMix/jspm-loader-css@1.0.4",
+      "jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
       "lodash": "npm:lodash@^3.10.1",
       "marionette": "github:marionettejs/backbone.marionette@^2.4.4",
+      "path": "github:jspm/nodelibs-path@0.2.0-alpha",
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2",
+      "postcss": "npm:postcss@^5.0.14",
+      "postcss-import": "npm:postcss-import@^8.0.2",
+      "postcss-inline-trait": "github:MeoMix/postcss-inline-trait@master",
+      "postcss-mixin-from": "github:MeoMix/postcss-mixin-from@master",
       "postcss-mixins": "npm:postcss-mixins@^4.0.0",
-      "postcss-modules-values": "npm:postcss-modules-values@^1.1.1",
       "postcss-nesting": "npm:postcss-nesting@^2.2.0",
       "postcss-url": "npm:postcss-url@^5.0.2",
+      "process": "github:jspm/nodelibs-process@0.2.0-alpha",
       "text": "github:systemjs/plugin-text@^0.0.4",
       "webcomponents.js": "npm:webcomponents.js@^0.7.20"
     },
@@ -63,18 +68,24 @@
       "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
       "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
       "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
       "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
-      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
       "uglify-js": "npm:uglify-js@~2.3",
       "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
       "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
       "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
     },
     "overrides": {
-      "github:MeoMix/jspm-loader-css@1.0.4": {
+      "github:MeoMix/jspm-loader-css@master": {
+        "registry": "npm"
+      },
+      "github:MeoMix/postcss-inline-trait@master": {
+        "registry": "npm"
+      },
+      "github:MeoMix/postcss-mixin-from@master": {
         "registry": "npm"
       },
       "github:components/jquery@2.2.0": {
@@ -142,7 +153,7 @@
     "gulp-sftp": "^0.1.5",
     "gulp-useref": "^3.0.4",
     "gulp-util": "^3.0.6",
-    "jspm": "^0.17.0-beta.6",
+    "jspm": "^0.17.0-beta.7",
     "karma": "^0.13.10",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
@@ -159,7 +170,7 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.4",
     "sinon": "^1.17.1",
-    "systemjs-builder": "^0.15.7",
+    "systemjs-builder": "^0.15.9",
     "yargs": "^3.27.0"
   },
   "dependencies": {

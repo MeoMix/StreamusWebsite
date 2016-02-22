@@ -56,8 +56,6 @@
     <Content Include="gulp\tasks\watch.js" />
     <Content Include="jspm\css-builder.js" />
     <Content Include="jspm\css.js" />
-    <Content Include="jspm\css3.js" />
-    <Content Include="jspm\css2.js" />
     <Content Include="jspm\jspm.browser.js" />
     <Content Include="jspm\jspm.config.js" />
     <Content Include="karma.config.js" />
@@ -84,10 +82,6 @@
     <Content Include="src\common\css\traits\fill.css" />
     <Content Include="src\common\css\traits\font-awesome.css" />
     <Content Include="src\common\css\reset.css" />
-    <Content Include="src\common\css\traits\flex-child.css" />
-    <Content Include="src\common\css\traits\flex.css" />
-    <Content Include="src\common\css\traits\layout.css" />
-    <Content Include="src\common\css\traits\transition.css" />
     <Content Include="src\route\routeType.js" />
     <Content Include="src\common\extensionData.js" />
     <Content Include="src\common\fonts\fontawesome-webfont.svg" />

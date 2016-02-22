@@ -54,7 +54,7 @@
 }
 
 .link {
-  composes: blue from 'color';
+  trait: blue from 'color';
   font-weight: 500;
 }
 

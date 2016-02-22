@@ -1,9 +1,9 @@
 ﻿.title {
-  composes: title from '../contentPage.css';
+  @mixin title from '../contentPage';
 }
 
 .description {
-  composes: description from '../contentPage.css';
+  @mixin description from '../contentPage';
 }
 
 .cards {
@@ -14,7 +14,7 @@
 
 .card {
   border-radius: 2px;
-  composes: lowElevation from 'box-shadow';
+  trait: lowElevation from 'box-shadow';
   background-color: white;
   line-height: 24px;
   margin-top: 48px;
@@ -25,7 +25,7 @@
 
 .cardTitle {
   padding: 20px 16px 12px 16px;
-  composes: top from 'box-shadow';
+  trait: top from 'box-shadow';
 }
 
 .cardSupportingText {

@@ -6,11 +6,10 @@
   background-color: rgb(66, 133, 244);
   color: white;
   transition: box-shadow .2s cubic-bezier(.39, .575, .565, 1);
-
 }
 
 .isFloating {
-  composes: mediumLowElevation from 'box-shadow';
+  trait: mediumLowElevation from 'box-shadow';
 }
 
 .logo {

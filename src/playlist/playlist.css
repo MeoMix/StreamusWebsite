@@ -31,7 +31,7 @@
 
 .details {
   border-radius: 2px;
-  composes: lowElevation from 'box-shadow';
+  trait: lowElevation from 'box-shadow';
   padding: 24px 16px;
   background-color: white;
   line-height: 24px;

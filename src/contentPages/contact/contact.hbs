@@ -1,0 +1,22 @@
+﻿<h1 class='{{styles.title}}'>
+  Contact
+</h1>
+
+<h4 class='{{styles.description}}'>
+  Got somethin' to say? Drop me a line!
+</h4>
+
+<div class='{{styles.card}}'> 
+  <form data-ui='form'>
+    <div class='{{styles.inputs}}'>
+      <streamus-input data-ui='input' maxlength='{{nameMaxLength}}' placeholder='Name' name='name' type='{{InputType.Text}}' required></streamus-input>
+      <streamus-input data-ui='input' maxlength='{{emailMaxLength}}' placeholder='Email' name='email' type='{{InputType.Email}}' required></streamus-input>
+      <streamus-input data-ui='input' maxlength='{{messageMaxLength}}' placeholder='Message' name='message' type='{{InputType.Text}}' required multiline></streamus-input>
+    </div>
+
+    <div class='{{styles.footer}}'>
+      <div class='{{styles.note}}'><span class='{{styles.required}}'>*</span> indicates required field</div>
+      <input type='submit' value='Send Message' class='{{styles.button}}' data-ui='submit' />
+    </div>
+  </form>
+</div>

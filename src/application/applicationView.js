@@ -44,7 +44,7 @@ export default LayoutView.extend({
 
   initialize() {
     // Decorate in initialize because 'el' exists on the page already.
-    this.$el.addClass(styles.application);
+    this.el.classList.add(styles.application);
 
     // Provide a throttled version of _onWindowScroll because event can fire at a high rate.
     // https://developer.mozilla.org/en-US/docs/Web/Events/scroll

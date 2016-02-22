@@ -64,14 +64,14 @@ export default LayoutView.extend({
     this.getChildView('simpleMenuItems').ensureActiveIsVisible();
     this._centerActive(this.model.get('listItemHeight'));
 
-    this.$el.addClass(styles.isVisible);
+    this.el.classList.add(styles.isVisible);
   },
 
   hide() {
     App.channels.simpleMenu.vent.trigger('hidden');
     // TODO: Fix + namespace.
     this.ui.panelContent.off('webkitTransitionEnd').one('webkitTransitionEnd', this._onTransitionOutComplete.bind(this));
-    this.$el.removeClass(styles.isVisible);
+    this.el.classList.remove(styles.isVisible);
   },
 
   _onClickItem() {

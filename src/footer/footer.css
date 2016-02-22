@@ -55,18 +55,18 @@
   opacity: 1;
 }
 
-.twitter:traits {
-  font-awesome: fa fa-twitter fa-lg;
+.twitter {
+  composes: fa fa-twitter fa-lg from 'font-awesome';
 }
 
-.facebook:traits {
-  font-awesome: fa fa-facebook fa-lg;
+.facebook {
+  composes: fa fa-facebook fa-lg from 'font-awesome';
 }
 
-.github:traits {
-  font-awesome: fa fa-github fa-lg;
+.github {
+  composes: fa fa-github fa-lg from 'font-awesome';
 }
 
-.reddit:traits {
-  font-awesome: fa fa-reddit fa-lg;
+.reddit {
+  composes: fa fa-reddit fa-lg from 'font-awesome';
 }

@@ -2,72 +2,77 @@
 // https://github.com/MeoMix/jspm-marionette-boilerplate/issues/12
 import { Plugins } from 'jspm-loader-css/lib/plugins'
 import { CSSLoader } from 'jspm-loader-css/lib/CSSLoader'
-import values from 'postcss-modules-values';
+import path from 'path';
 import url from 'postcss-url';
 import mixins from 'postcss-mixins';
 import nesting from 'postcss-nesting';
 import autoprefixer from 'autoprefixer';
-//import atImport from 'postcss-import';
+import mixinFrom from 'postcss-mixin-from/src/index.js';
+import inlineTrait from 'postcss-inline-trait';
 
- //Make life easier by automating away most of the boilerplate for using traits.
- //OLD:
- //.foo {
- //  composes: primary from '../common/css/traits/color.css';
- //}
- 
- //NEW:
- //.foo:traits {
- //  color: primary;
- //}
-
-let traits = (css) => {
+const composesHelper = (css) => {
   const isBundling = typeof window === 'undefined';
-  const rootDir = isBundling ? 'compiled/' : '/';
+  const rootDir = isBundling ? '/compiled/' : '/';
   const traitPath = `${rootDir}common/css/traits/`;
 
-  const traitRegexp = /\:traits$/;
-  // Translate any .module:traits usages
   css.walkRules(rule => {
-    if (rule.selector.match(traitRegexp)) {
-      rule.selector = rule.selector.replace(traitRegexp, '');
-      rule.walkDecls(decl => {
-        decl.value = `${decl.prop} ${decl.value} from "${traitPath}${decl.prop}.css"`;
-        decl.prop = 'composes';
-      });
-    } else {
-      rule.walkDecls(decl => {
-        // Allow for omission of full path from composes statements. Assume traits path.
-        // Don't assume relative paths are traits.
-        if (decl.prop === 'composes' && decl.value.indexOf('.') === -1) {
-          decl.value = decl.value.replace(/'(.*)'$/, `'${traitPath}$1.css'`);
-        }
-      });
-    }
+    rule.walkDecls(decl => {
+      // Allow for omission of full path from composes statements. Assume traits path.
+      // Don't assume relative paths are traits.
+      if (decl.prop === 'composes' && decl.value.indexOf('.') === -1) {
+        decl.value = decl.value.replace(/'(.*)'$/, `'${traitPath}$1.css'`);
+      }
+    });
   });
-}
+};
 
-let plugins = [
-  traits,
-  //atImport({
-  //  root: '/',
-  //  skipDuplicates: false,
-  //  async: true
-  //}),
-  values,
+const getFileText = (filePath, relativeToPath) => {
+  const isBundling = typeof window === 'undefined';
+  let absolutePath = filePath;
+
+  if (isBundling && filePath[0] === '.') {
+    // TODO: I suspect I still need to call toFileURL on these.
+    absolutePath = path.resolve(path.dirname(relativeToPath), filePath);
+    // css.source.input.from is incorrect when building. Need to convert from relative and then drop root
+    // so that when giving the path to SystemJS' fetch it works as expected.
+    absolutePath = absolutePath.replace(path.parse(absolutePath).root, '');
+  }
+
+  const canonicalParent = relativeToPath.replace(/^\//, '');
+
+  return System.normalize(absolutePath, path.join(System.baseURL, canonicalParent))
+    .then((normalizedPath) => {
+      return System.fetch({
+        address: normalizedPath,
+        metadata: {}
+      });
+    });
+};
+
+const plugins = [
+  composesHelper,
+  inlineTrait({
+    getFileText
+  }),
+  mixinFrom({
+    getFileText
+  }),
   mixins,
   nesting(),
   url({
     url: function(url) {
+      const isBundling = typeof window === 'undefined';
       var transformedUrl = url;
 
       // urls which reference data: don't need to be transformed since they reference static rather than a path.
-      if (!url.includes('data:')) {
+      if (!isBundling && !url.includes('data:')) {
         transformedUrl = `${System.baseURL}${url}`;
       }
 
       return transformedUrl;
     }
   }),
+  Plugins.values,
   Plugins.localByDefault,
   Plugins.extractImports,
   Plugins.scope,

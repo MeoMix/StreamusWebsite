@@ -1,0 +1,44 @@
+﻿.darkPrimary {
+  color: rgba(0, 0, 0, .87);
+}
+
+.darkSecondary {
+  color: rgba(0, 0, 0, .54);
+}
+
+.darkHighlight {
+  color: rgba(0, 0, 0, .12);
+}
+
+.hint {
+  color: rgba(0, 0, 0, .38);
+}
+
+.yellow {
+  color: rgb(244,180,0);
+}
+
+/* TODO: How can I share variable between color/fill/other traits? */
+.brown {
+  color: #654321;
+}
+
+.green {
+  color: rgb(15,157,88);
+}
+
+.blue {
+  color: rgb(66,133,244);
+}
+
+.darkBlue {
+  color:  rgb(40,112,238);
+}
+
+.red {
+  color: rgb(219,68,55);
+}
+
+.error {
+  color: rgb(221, 44, 0);
+}

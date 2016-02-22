@@ -1,14 +1,14 @@
 ﻿.title {
-  composes: title from '../contentPage.css';
+  @mixin title from '../contentPage';
 }
 
 .description {
-  composes: description from '../contentPage.css';
+  @mixin description from '../contentPage';
 }
 
 .card {
   border-radius: 2px;
-  composes: lowElevation from 'box-shadow';
+  trait: lowElevation from 'box-shadow';
   padding: 24px 16px;
   background-color: white;
   line-height: 24px;
@@ -31,6 +31,6 @@
 }
 
 .link {
-  composes: blue from 'color';
+  trait: blue from 'color';
   font-weight: 500;
 }

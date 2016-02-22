@@ -1,37 +1,5 @@
-﻿@define-mixin raisedButton {
-  font-size: 14px;
-  padding: 0 16px;
-  display: inline-block;
-  line-height: 36px;
-  text-transform: uppercase;
-  border-radius: 2px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: box-shadow .1s cubic-bezier(.39,.575,.565,1);
-  min-width: 88px;
-  user-select: none;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28);
-
-  &.isDisabled {
-    background-color: rgba(255, 255, 255, .12);
-    color: rgba(255, 255, 255, .3);
-    cursor: default;
-    box-shadow: none;
-  }
-
-  &:not(.isDisabled) {
-    &:hover {
-      will-change: box-shadow;
-    }
-
-    &:active {
-      box-shadow:  0 0 4px rgba(0, 0, 0, 0.14), 0 4px 4px rgba(0, 0, 0, 0.22)
-    }
-  }
-}
-
-.installButton {
-  @mixin raisedButton;
+﻿.installButton {
+  @mixin raisedButton from './button';
   background-color: rgb(40,112,238);
   color: white;
 }

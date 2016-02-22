@@ -1,10 +1,10 @@
-﻿.title {
+﻿@define-mixin title {
   color: white;
   margin: 24px 0;
   text-align: center;
 }
 
-.description {
+@define-mixin description {
   color: white;
   text-align: center;
 }

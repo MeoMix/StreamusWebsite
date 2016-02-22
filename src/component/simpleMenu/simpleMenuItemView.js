@@ -15,7 +15,7 @@ export default LayoutView.extend({
   },
 
   initialize() {
-    this.$el.toggleClass(styles.isDisabled, this.model.get('disabled'));
+    this.el.classList.toggle(styles.isDisabled, this.model.get('disabled'));
     this._setFixedPositionClass(this.model.get('fixedPosition'));
   },
 
@@ -44,7 +44,7 @@ export default LayoutView.extend({
   },
 
   _setState(active) {
-    this.$el.toggleClass(styles.isActive, active);
+    this.el.classList.toggle(styles.isActive, active);
   },
 
   // Add a border dividing a fixed ItemView's position from the other collection of ItemViews.
