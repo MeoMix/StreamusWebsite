@@ -7,27 +7,25 @@ import url from 'postcss-url';
 import mixins from 'postcss-mixins';
 import nesting from 'postcss-nesting';
 import autoprefixer from 'autoprefixer';
-import mixinFrom from 'postcss-mixin-from/src/index.js';
+import mixinFrom from 'postcss-mixin-from';
 import inlineTrait from 'postcss-inline-trait';
 
-const composesHelper = (css) => {
-  const isBundling = typeof window === 'undefined';
-  const rootDir = isBundling ? '/compiled/' : '/';
-  const traitPath = `${rootDir}common/css/traits/`;
+const isBundling = typeof window === 'undefined';
+const rootDir = isBundling ? '/compiled/' : '/';
+const traitPath = `${rootDir}common/css/traits/`;
 
+// Allow for omission of full path from composes statements. Assume traits path.
+// Transforms: composes: fa fa-usd from 'font-awesome';
+// into: composes: fa fa-usd from '/common/css/traits/font-awesome.css';
+const composesHelper = (css) => {
   css.walkRules(rule => {
-    rule.walkDecls(decl => {
-      // Allow for omission of full path from composes statements. Assume traits path.
-      // Don't assume relative paths are traits.
-      if (decl.prop === 'composes' && decl.value.indexOf('.') === -1) {
-        decl.value = decl.value.replace(/'(.*)'$/, `'${traitPath}$1.css'`);
-      }
+    rule.walkDecls('composes', decl => {
+      decl.value = decl.value.replace(/'(.*)'$/, `'${traitPath}$1.css'`);
     });
   });
 };
 
 const getFileText = (filePath, relativeToPath) => {
-  const isBundling = typeof window === 'undefined';
   let absolutePath = filePath;
 
   if (isBundling && filePath[0] === '.') {
@@ -49,10 +47,12 @@ const getFileText = (filePath, relativeToPath) => {
     });
 };
 
+
 const plugins = [
   composesHelper,
   inlineTrait({
-    getFileText
+    getFileText,
+    traitPath
   }),
   mixinFrom({
     getFileText
@@ -61,7 +61,6 @@ const plugins = [
   nesting(),
   url({
     url: function(url) {
-      const isBundling = typeof window === 'undefined';
       var transformedUrl = url;
 
       // urls which reference data: don't need to be transformed since they reference static rather than a path.

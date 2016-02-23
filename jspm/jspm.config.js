@@ -49,8 +49,8 @@ SystemJS.config({
                     "plugin-babel": "npm:systemjs-plugin-babel@0.0.2",
                     postcss: "npm:postcss@5.0.16",
                     "postcss-import": "npm:postcss-import@8.0.2",
-                    "postcss-inline-trait": "github:MeoMix/postcss-inline-trait@master",
-                    "postcss-mixin-from": "github:MeoMix/postcss-mixin-from@master",
+                    "postcss-inline-trait": "npm:postcss-inline-trait@0.1.0",
+                    "postcss-mixin-from": "npm:postcss-mixin-from@0.3.0",
                     "postcss-mixins": "npm:postcss-mixins@4.0.0",
                     "postcss-nesting": "npm:postcss-nesting@2.2.0",
                     "postcss-url": "npm:postcss-url@5.1.1",
@@ -72,16 +72,6 @@ SystemJS.config({
                                         "debounce": "npm:debounce@1.0.0",
                                         "path": "npm:path@0.12.7",
                                         "toposort": "npm:toposort@0.2.12"
-                              }
-                    },
-                    "github:MeoMix/postcss-inline-trait@master": {
-                              "map": {
-                                        "postcss": "npm:postcss@5.0.16"
-                              }
-                    },
-                    "github:MeoMix/postcss-mixin-from@master": {
-                              "map": {
-                                        "postcss": "npm:postcss@5.0.16"
                               }
                     },
                     "github:davis/plugin-hbs@1.2.1": {
@@ -508,9 +498,19 @@ SystemJS.config({
                                         "resolve": "npm:resolve@1.1.7"
                               }
                     },
+                    "npm:postcss-inline-trait@0.1.0": {
+                              "map": {
+                                        "postcss": "npm:postcss@5.0.16"
+                              }
+                    },
                     "npm:postcss-js@0.1.1": {
                               "map": {
                                         "camelcase-css": "npm:camelcase-css@1.0.0",
+                                        "postcss": "npm:postcss@5.0.16"
+                              }
+                    },
+                    "npm:postcss-mixin-from@0.3.0": {
+                              "map": {
                                         "postcss": "npm:postcss@5.0.16"
                               }
                     },

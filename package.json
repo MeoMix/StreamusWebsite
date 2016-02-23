@@ -46,8 +46,8 @@
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2",
       "postcss": "npm:postcss@^5.0.14",
       "postcss-import": "npm:postcss-import@^8.0.2",
-      "postcss-inline-trait": "github:MeoMix/postcss-inline-trait@master",
-      "postcss-mixin-from": "github:MeoMix/postcss-mixin-from@master",
+      "postcss-inline-trait": "npm:postcss-inline-trait@^0.1.0",
+      "postcss-mixin-from": "npm:postcss-mixin-from@^0.3.0",
       "postcss-mixins": "npm:postcss-mixins@^4.0.0",
       "postcss-nesting": "npm:postcss-nesting@^2.2.0",
       "postcss-url": "npm:postcss-url@^5.0.2",
@@ -80,12 +80,6 @@
     },
     "overrides": {
       "github:MeoMix/jspm-loader-css@master": {
-        "registry": "npm"
-      },
-      "github:MeoMix/postcss-inline-trait@master": {
-        "registry": "npm"
-      },
-      "github:MeoMix/postcss-mixin-from@master": {
         "registry": "npm"
       },
       "github:components/jquery@2.2.0": {
