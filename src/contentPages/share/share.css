@@ -26,6 +26,8 @@
 .cardTitle {
   padding: 20px 16px 12px 16px;
   trait: top from 'box-shadow';
+  font-size: 24px;
+  line-height: 32px;
 }
 
 .cardSupportingText {

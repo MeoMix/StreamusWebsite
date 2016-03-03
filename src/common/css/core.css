@@ -1,4 +1,9 @@
-﻿*,
+﻿/* @import rule will be inlined via postcss-import.
+  It is necessary to use @import to ensure reset.css is interpreted before core.css
+*/
+@import './reset.css';
+
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -9,35 +14,21 @@ a {
   color: inherit;
 }
 
-input[type='submit'],
-button {
+/* Reset input elements to sane starting values. Allows for easier styling to fit Material Design principles. */
+input[type='submit'] {
   border: none;
-  text-rendering: optimizeLegibility;
-  white-space: normal;
-  text-align: start;
-  align-items: stretch;
-}
-
-input,
-select {
-  outline: none;
-  font: inherit;
-  color: inherit;
-  border-color: rgba(0, 0, 0, .26);
-  border-width: 0 0 1px 0;
 }
 
 input {
-  padding: 8px 0 7px 0;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  text-rendering: inherit;
 }
 
-select {
-  padding: 10px 0 9px 0;
-}
-
+/* <textarea> should look visually identical to <input type='text'/> except it will automatically grow to fit its contents. */
 textarea {
   resize: none;
-  overflow: hidden;
 }
 
 strong {
@@ -59,27 +50,4 @@ body {
 
 body {
   background-color: #FAFAFA;
-}
-
-h1 {
-  font-size: 56px;
-}
-
-h2 {
-  font-size: 45px;
-  line-height: 48px;
-}
-
-h3 {
-  font-size: 34px;
-}
-
-h4 {
-  font-size: 24px;
-  line-height: 32px;
-}
-
-h5 {
-  font-size: 20px;
-  font-weight: 500;
 }

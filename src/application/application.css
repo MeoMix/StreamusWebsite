@@ -69,18 +69,3 @@
   justify-content: center;
   pointer-events: none;
 }
-
-/*
-  When interacting with 'native' UI elements such as scrollbars and sliders - ensure that
-  the browser stops responding to the mouse while dragging because that's how browsers work with
-  actually native elements.
-*/
-.isClickingScrollbar {
-  user-select: none !important;
-}
-
-.isClickingScrollbar *,
-.isClickingScrollbar *::before,
-.isClickingScrollbar *::after {
-  user-select: none !important;
-}

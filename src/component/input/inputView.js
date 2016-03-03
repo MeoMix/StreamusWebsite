@@ -21,6 +21,7 @@ const InputView = LayoutView.extend({
   },
 
   events: {
+    'input': '_onInput',
     'focus @ui.input': '_onFocusInput',
     'blur @ui.input': '_onBlurInput'
   },
@@ -46,6 +47,10 @@ const InputView = LayoutView.extend({
     this.el.classList.toggle(styles.isInvalid, !this.model.get('isValid'));
   },
 
+  _onInput() {
+    this.model.set('value', this.ui.input.val());
+  },
+
   _onFocusInput() {
     this.el.classList.add(styles.hasFocus);
   },
@@ -56,6 +61,7 @@ const InputView = LayoutView.extend({
   },
 
   _onChangeValue(model, value) {
+    console.log('input value has changed');
     this.ui.characterCount.text(value.length);
     this.el.classList.toggle(styles.hasValue, model.hasValue());
     // TODO: Is this necessary? Doesn't the subelement return it?

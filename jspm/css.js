@@ -1,7 +1,5 @@
-﻿// NOTE: CSS Minification not supported until jspm v0.17.
-// https://github.com/MeoMix/jspm-marionette-boilerplate/issues/12
-import { Plugins } from 'jspm-loader-css/lib/plugins'
-import { CSSLoader } from 'jspm-loader-css/lib/CSSLoader'
+﻿import Plugins from 'jspm-loader-css/lib/plugins.js'
+import CSSLoader from 'jspm-loader-css/lib/CSSLoader.js'
 import path from 'path';
 import url from 'postcss-url';
 import mixins from 'postcss-mixins';
@@ -9,46 +7,67 @@ import nesting from 'postcss-nesting';
 import autoprefixer from 'autoprefixer';
 import mixinFrom from 'postcss-mixin-from';
 import inlineTrait from 'postcss-inline-trait';
+import atImport from 'postcss-import';
 
 const isBundling = typeof window === 'undefined';
-const rootDir = isBundling ? '/compiled/' : '/';
-const traitPath = `${rootDir}common/css/traits/`;
+const traitPath = 'common/css/traits/';
 
-// Allow for omission of full path from composes statements. Assume traits path.
-// Transforms: composes: fa fa-usd from 'font-awesome';
-// into: composes: fa fa-usd from '/common/css/traits/font-awesome.css';
+// Support referencing CSS files found in traits folder without providing full path.
+// 
+// Original:
+// .foo { composes: trait from 'trait-file' }
+// 
+// Result:
+// .foo { composes: trait from 'common/css/traits/trait-file.css' }
 const composesHelper = (css) => {
-  css.walkRules(rule => {
-    rule.walkDecls('composes', decl => {
+  css.walkRules((rule) => {
+    rule.walkDecls('composes', (decl) => {
       decl.value = decl.value.replace(/'(.*)'$/, `'${traitPath}$1.css'`);
     });
   });
 };
 
-const getFileText = (filePath, relativeToPath) => {
-  let absolutePath = filePath;
+// TODO: This still feels overly messy to me. I feel like this work should be handled by normalize if I could only express it correctly.
+// Resolve relative directory path and drop the perceived 'root' of the generated path.
+// The root value is incorrect as it doesn't take into account System.baseURL.
+// The resulting path will be fed into SystemJS for propert, full resolution.
+const getResolvedFilePath = (filePath, relativeToPath) => {
+  let resolvedFilePath = filePath;
 
   if (isBundling && filePath[0] === '.') {
-    // TODO: I suspect I still need to call toFileURL on these.
-    absolutePath = path.resolve(path.dirname(relativeToPath), filePath);
+    resolvedFilePath = path.resolve(relativeToPath, filePath);
     // css.source.input.from is incorrect when building. Need to convert from relative and then drop root
     // so that when giving the path to SystemJS' fetch it works as expected.
-    absolutePath = absolutePath.replace(path.parse(absolutePath).root, '');
+    resolvedFilePath = resolvedFilePath.replace(path.parse(resolvedFilePath).root, '');
   }
 
-  const canonicalParent = relativeToPath.replace(/^\//, '');
-
-  return System.normalize(absolutePath, path.join(System.baseURL, canonicalParent))
-    .then((normalizedPath) => {
-      return System.fetch({
-        address: normalizedPath,
-        metadata: {}
-      });
-    });
+  return resolvedFilePath;
 };
 
+// Helper function given to PostCSS plugins. Used to retrieve CSS from other files without
+// coupling the PostCSS plugin to a specific environment.
+const getFileText = (filePath, relativeToPath) => {
+  // relativeToPath references a file not a directory. Call path.dirname to strip the file.
+  const resolvedFilePath = getResolvedFilePath(filePath, path.dirname(relativeToPath));
+  const canonicalParent = relativeToPath.replace(/^\//, '');
+
+  return System
+    .normalize(resolvedFilePath, `${System.baseURL}${canonicalParent}`)
+    .then((address) => System.fetch({ address, metadata: {} }));
+};
 
 const plugins = [
+  atImport({
+    resolve(filePath, relativeToPath) {
+      const resolvedFilePath = getResolvedFilePath(filePath, relativeToPath);
+      const canonicalParent = `${relativeToPath.replace(/^\//, '')}/`;
+
+      return System.normalize(resolvedFilePath, `${System.baseURL}${canonicalParent}`);
+    },
+    load(filename) {
+      return System.import(filename);
+    }
+  }),
   composesHelper,
   inlineTrait({
     getFileText,
@@ -63,6 +82,8 @@ const plugins = [
     url: function(url) {
       var transformedUrl = url;
 
+      // TODO: I don't especially feel like this plugin is necessary, but fontawesome fonts fail to load in dev environment without it.
+      // For some reason I need to rewrite to include my baseURL or they don't work.
       // urls which reference data: don't need to be transformed since they reference static rather than a path.
       if (!isBundling && !url.includes('data:')) {
         transformedUrl = `${System.baseURL}${url}`;

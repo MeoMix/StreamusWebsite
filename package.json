@@ -45,7 +45,7 @@
       "path": "github:jspm/nodelibs-path@0.2.0-alpha",
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2",
       "postcss": "npm:postcss@^5.0.14",
-      "postcss-import": "npm:postcss-import@^8.0.2",
+      "postcss-import": "github:MeoMix/postcss-import@master",
       "postcss-inline-trait": "npm:postcss-inline-trait@^0.1.0",
       "postcss-mixin-from": "npm:postcss-mixin-from@^0.3.0",
       "postcss-mixins": "npm:postcss-mixins@^4.0.0",
@@ -56,7 +56,8 @@
       "webcomponents.js": "npm:webcomponents.js@^0.7.20"
     },
     "devDependencies": {
-      "babel-runtime": "npm:babel-runtime@^5.8.24"
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "cssnano": "npm:cssnano@^3.5.2"
     },
     "peerDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
@@ -70,6 +71,7 @@
       "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
       "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
       "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "punycode": "github:jspm/nodelibs-punycode@^0.2.0-alpha",
       "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
       "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
       "tty": "github:jspm/nodelibs-tty@^0.2.0-alpha",
@@ -80,6 +82,9 @@
     },
     "overrides": {
       "github:MeoMix/jspm-loader-css@master": {
+        "registry": "npm"
+      },
+      "github:MeoMix/postcss-import@master": {
         "registry": "npm"
       },
       "github:components/jquery@2.2.0": {
@@ -125,6 +130,53 @@
       },
       "npm:jquery@2.2.0": {
         "format": "amd"
+      },
+      "npm:svgo@0.6.1": {
+        "meta": {
+          "lib/svgo/config.js": {
+            "deps": [
+              "../../plugins/removeDoctype",
+              "../../plugins/removeXMLProcInst",
+              "../../plugins/removeComments",
+              "../../plugins/removeMetadata",
+              "../../plugins/removeEditorsNSData",
+              "../../plugins/cleanupAttrs",
+              "../../plugins/minifyStyles",
+              "../../plugins/convertStyleToAttrs",
+              "../../plugins/cleanupIDs",
+              "../../plugins/removeRasterImages",
+              "../../plugins/removeUselessDefs",
+              "../../plugins/cleanupNumericValues",
+              "../../plugins/cleanupListOfValues",
+              "../../plugins/convertColors",
+              "../../plugins/removeUnknownsAndDefaults",
+              "../../plugins/removeNonInheritableGroupAttrs",
+              "../../plugins/removeUselessStrokeAndFill",
+              "../../plugins/removeViewBox",
+              "../../plugins/cleanupEnableBackground",
+              "../../plugins/removeHiddenElems",
+              "../../plugins/removeEmptyText",
+              "../../plugins/convertShapeToPath",
+              "../../plugins/moveElemsAttrsToGroup",
+              "../../plugins/moveGroupAttrsToElems",
+              "../../plugins/collapseGroups",
+              "../../plugins/convertPathData",
+              "../../plugins/convertTransform",
+              "../../plugins/removeEmptyAttrs",
+              "../../plugins/removeEmptyContainers",
+              "../../plugins/mergePaths",
+              "../../plugins/removeUnusedNS",
+              "../../plugins/transformsWithOnePath",
+              "../../plugins/sortAttrs",
+              "../../plugins/removeTitle",
+              "../../plugins/removeDesc",
+              "../../plugins/removeDimensions",
+              "../../plugins/removeAttrs",
+              "../../plugins/addClassesToSVGElement",
+              "../../plugins/removeStyleElement"
+            ]
+          }
+        }
       }
     }
   },

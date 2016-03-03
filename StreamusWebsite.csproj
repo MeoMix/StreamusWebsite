@@ -54,7 +54,6 @@
     <Content Include="gulp\tasks\publish.js" />
     <Content Include="gulp\tasks\test.js" />
     <Content Include="gulp\tasks\watch.js" />
-    <Content Include="jspm\css-builder.js" />
     <Content Include="jspm\css.js" />
     <Content Include="jspm\jspm.browser.js" />
     <Content Include="jspm\jspm.config.js" />

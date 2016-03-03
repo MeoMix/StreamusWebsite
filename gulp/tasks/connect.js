@@ -13,13 +13,14 @@ gulp.task('connect', function(done) {
   var port = 8080;
   // Open default browser to the compiled or dist directory depending on build status.
   var directoryName = argv._[0] === 'build' ? Glob.DistFolder : Glob.CompiledFolder;
+  // Needs to be path.resolve and not just './'
+  // https://github.com/AveVlad/gulp-connect/issues/54
+  var root = path.resolve('./' + directoryName);
 
   connect.server({
     host: host,
     port: port,
-    // Needs to be path.resolve and not just './'
-    // https://github.com/AveVlad/gulp-connect/issues/54
-    root: path.resolve('./' + directoryName),
+    root: root,
     livereload: true,
     liveCSS: false,
     liveJs: false,
