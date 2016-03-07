@@ -5,7 +5,6 @@ var runSequence = require('run-sequence');
 var jspm = require('jspm');
 var util = require('gulp-util');
 var del = require('del');
-var path = require('path');
 var imagemin = require('gulp-imagemin');
 var Glob = require('../glob.js');
 

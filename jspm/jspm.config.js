@@ -61,7 +61,7 @@ SystemJS.config({
     "punycode": "github:jspm/nodelibs-punycode@0.2.0-alpha",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "string_decoder": "github:jspm/nodelibs-string_decoder@0.2.0-alpha",
-    "text": "github:systemjs/plugin-text@0.0.4",
+    "text": "github:systemjs/plugin-text@0.0.7",
     "tty": "github:jspm/nodelibs-tty@0.2.0-alpha",
     "uglify-js": "npm:uglify-js@2.3.6",
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",

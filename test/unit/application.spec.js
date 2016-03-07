@@ -1,5 +1,5 @@
 ﻿// Import from 'compiled' because tests work off of pre-compiled logic not raw ES6.
-import Application from 'compiled/application/application';
+import Application from 'compiled/application/application.js';
 import indexText from 'compiled/index.html!text';
 
 describe('Application', () => {

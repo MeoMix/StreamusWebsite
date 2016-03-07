@@ -38,7 +38,7 @@ export default LayoutView.extend({
       this.model.set('isSavePending', true);
       // TODO: Button doesn't say 'Installing...'
       this.installButton.install();
-    } else if(!this.model.get('isDisabled')) {
+    } else if (!this.model.get('isDisabled')) {
       this.model.save();
     }
   },

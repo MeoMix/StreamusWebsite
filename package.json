@@ -52,12 +52,12 @@
       "postcss-nesting": "npm:postcss-nesting@^2.2.0",
       "postcss-url": "npm:postcss-url@^5.0.2",
       "process": "github:jspm/nodelibs-process@0.2.0-alpha",
-      "text": "github:systemjs/plugin-text@^0.0.4",
       "webcomponents.js": "npm:webcomponents.js@^0.7.20"
     },
     "devDependencies": {
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "cssnano": "npm:cssnano@^3.5.2"
+      "cssnano": "npm:cssnano@^3.5.2",
+      "text": "github:systemjs/plugin-text@^0.0.7"
     },
     "peerDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",

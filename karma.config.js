@@ -14,7 +14,7 @@ var proxyValues = _.map(proxyTargets, function(proxyTarget) {
   return base + '/' + proxyTarget + '/';
 });
 
-var proxies = _.indexBy(proxyValues, function(proxyValue) {
+var proxies = _.keyBy(proxyValues, function(proxyValue) {
   return proxyValue.replace(base, '');
 });
 

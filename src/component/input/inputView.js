@@ -3,7 +3,7 @@ import template from './input.hbs';
 import styles from './input.css';
 import Input from './input.js';
 import InputType from './inputType.js';
-import { extend, parseInt, isString } from 'lodash';
+import { extend, parseInt } from 'lodash';
 
 // TODO: Add two-way databinding to reduce amount of code.
 // TODO: Suspect I'll need to use alt. fix for multiline.
