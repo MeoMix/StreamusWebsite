@@ -1,5 +1,5 @@
-﻿import Plugins from 'jspm-loader-css/lib/plugins.js'
-import CSSLoader from 'jspm-loader-css/lib/CSSLoader.js'
+﻿import Plugins from 'jspm-loader-css/src/plugins.js'
+import Loader from 'jspm-loader-css/src/loader.js'
 import path from 'path';
 import url from 'postcss-url';
 import mixins from 'postcss-mixins';
@@ -99,5 +99,5 @@ const plugins = [
   autoprefixer()
 ];
 
-const { fetch, bundle } = new CSSLoader(plugins);
+const { fetch, bundle } = new Loader(plugins);
 export { fetch, bundle };

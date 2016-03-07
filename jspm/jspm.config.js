@@ -74,10 +74,7 @@ SystemJS.config({
     "github:MeoMix/jspm-loader-css@master": {
       "map": {
         "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0",
-        "cssnano": "npm:cssnano@3.5.2",
-        "debounce": "npm:debounce@1.0.0",
-        "path": "npm:path@0.12.7",
-        "toposort": "npm:toposort@0.2.12"
+        "cssnano": "npm:cssnano@3.5.2"
       }
     },
     "github:MeoMix/postcss-import@master": {
@@ -168,7 +165,7 @@ SystemJS.config({
     "npm:autoprefixer@6.3.3": {
       "map": {
         "browserslist": "npm:browserslist@1.1.3",
-        "caniuse-db": "npm:caniuse-db@1.0.30000415",
+        "caniuse-db": "npm:caniuse-db@1.0.30000420",
         "normalize-range": "npm:normalize-range@0.1.2",
         "num2fraction": "npm:num2fraction@1.2.2",
         "postcss": "npm:postcss@5.0.19",
@@ -275,7 +272,7 @@ SystemJS.config({
     },
     "npm:browserslist@1.1.3": {
       "map": {
-        "caniuse-db": "npm:caniuse-db@1.0.30000415"
+        "caniuse-db": "npm:caniuse-db@1.0.30000420"
       }
     },
     "npm:buffer-xor@1.0.3": {
@@ -388,7 +385,7 @@ SystemJS.config({
     "npm:cssnano@3.5.2": {
       "map": {
         "autoprefixer": "npm:autoprefixer@6.3.3",
-        "decamelize": "npm:decamelize@1.1.2",
+        "decamelize": "npm:decamelize@1.2.0",
         "defined": "npm:defined@1.0.0",
         "indexes-of": "npm:indexes-of@1.0.1",
         "object-assign": "npm:object-assign@4.0.1",
@@ -422,16 +419,6 @@ SystemJS.config({
     "npm:csso@1.4.4": {
       "map": {
         "clap": "npm:clap@1.0.10"
-      }
-    },
-    "npm:debounce@1.0.0": {
-      "map": {
-        "date-now": "npm:date-now@1.0.1"
-      }
-    },
-    "npm:decamelize@1.1.2": {
-      "map": {
-        "escape-string-regexp": "npm:escape-string-regexp@1.0.5"
       }
     },
     "npm:des.js@1.0.0": {
@@ -600,12 +587,6 @@ SystemJS.config({
     "npm:path-is-absolute@1.0.0": {
       "map": {}
     },
-    "npm:path@0.12.7": {
-      "map": {
-        "process": "npm:process@0.11.2",
-        "util": "npm:util@0.10.3"
-      }
-    },
     "npm:pbkdf2@3.0.4": {
       "map": {
         "create-hmac": "npm:create-hmac@1.1.4"
@@ -721,7 +702,7 @@ SystemJS.config({
       "map": {
         "alphanum-sort": "npm:alphanum-sort@1.0.2",
         "postcss": "npm:postcss@5.0.19",
-        "postcss-selector-parser": "npm:postcss-selector-parser@1.3.2"
+        "postcss-selector-parser": "npm:postcss-selector-parser@1.3.3"
       }
     },
     "npm:postcss-mixin-from@0.3.0": {
@@ -796,7 +777,7 @@ SystemJS.config({
         "postcss-value-parser": "npm:postcss-value-parser@3.3.0"
       }
     },
-    "npm:postcss-selector-parser@1.3.2": {
+    "npm:postcss-selector-parser@1.3.3": {
       "map": {
         "flatten": "npm:flatten@1.0.2",
         "indexes-of": "npm:indexes-of@1.0.1",
@@ -952,7 +933,7 @@ SystemJS.config({
         "csso": "npm:csso@1.4.4",
         "js-yaml": "npm:js-yaml@3.4.6",
         "mkdirp": "npm:mkdirp@0.5.1",
-        "sax": "npm:sax@1.1.5",
+        "sax": "npm:sax@1.1.6",
         "whet.extend": "npm:whet.extend@0.9.9"
       },
       "meta": {
@@ -1012,11 +993,6 @@ SystemJS.config({
       "map": {
         "punycode": "npm:punycode@1.3.2",
         "querystring": "npm:querystring@0.2.0"
-      }
-    },
-    "npm:util@0.10.3": {
-      "map": {
-        "inherits": "npm:inherits@2.0.1"
       }
     },
     "npm:webcomponents.js@0.7.20": {
