@@ -21,9 +21,9 @@ SystemJS.config({
   map: {
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "autoprefixer": "npm:autoprefixer@6.3.3",
-    "babel-polyfill": "npm:babel-polyfill@6.5.0",
+    "babel-polyfill": "npm:babel-polyfill@6.6.1",
     "babel-runtime": "npm:babel-runtime@5.8.35",
-    "backbone": "npm:backbone@1.2.3",
+    "backbone": "npm:backbone@1.3.1",
     "backbone.babysitter": "github:marionettejs/backbone.babysitter@0.1.10",
     "backbone.base-router": "npm:backbone.base-router@1.3.0",
     "backbone.intercept": "npm:backbone.intercept@0.4.2",
@@ -40,7 +40,7 @@ SystemJS.config({
     "handlebars": "github:components/handlebars.js@4.0.5",
     "hbs": "github:davis/plugin-hbs@1.2.1",
     "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
-    "jquery": "github:components/jquery@2.2.0",
+    "jquery": "github:components/jquery@2.2.1",
     "jquery.browser": "npm:jquery.browser@0.1.0",
     "jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
     "lodash": "npm:lodash@3.10.1",
@@ -54,8 +54,8 @@ SystemJS.config({
     "postcss-import": "github:MeoMix/postcss-import@master",
     "postcss-inline-trait": "npm:postcss-inline-trait@0.1.0",
     "postcss-mixin-from": "npm:postcss-mixin-from@0.3.0",
-    "postcss-mixins": "npm:postcss-mixins@4.0.0",
-    "postcss-nesting": "npm:postcss-nesting@2.2.0",
+    "postcss-mixins": "npm:postcss-mixins@4.0.1",
+    "postcss-nesting": "npm:postcss-nesting@2.3.0",
     "postcss-url": "npm:postcss-url@5.1.1",
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "punycode": "github:jspm/nodelibs-punycode@0.2.0-alpha",
@@ -67,7 +67,7 @@ SystemJS.config({
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
-    "webcomponents.js": "npm:webcomponents.js@0.7.20"
+    "webcomponents.js": "npm:webcomponents.js@0.7.21"
   },
 
   packages: {
@@ -152,9 +152,9 @@ SystemJS.config({
         "array-uniq": "npm:array-uniq@1.0.2"
       }
     },
-    "npm:asn1.js@4.4.0": {
+    "npm:asn1.js@4.5.1": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
+        "bn.js": "npm:bn.js@4.10.5",
         "inherits": "npm:inherits@2.0.1",
         "minimalistic-assert": "npm:minimalistic-assert@1.0.0"
       }
@@ -172,11 +172,11 @@ SystemJS.config({
         "postcss-value-parser": "npm:postcss-value-parser@3.3.0"
       }
     },
-    "npm:babel-polyfill@6.5.0": {
+    "npm:babel-polyfill@6.6.1": {
       "map": {
         "babel-regenerator-runtime": "npm:babel-regenerator-runtime@6.5.0",
         "babel-runtime": "npm:babel-runtime@5.8.35",
-        "core-js": "npm:core-js@1.2.6"
+        "core-js": "npm:core-js@2.1.3"
       }
     },
     "npm:babel-runtime@5.8.35": {
@@ -203,7 +203,7 @@ SystemJS.config({
     "npm:backbone.syphon@0.6.3": {
       "map": {
         "backbone": "npm:backbone@1.2.3",
-        "jquery": "npm:jquery@2.2.0",
+        "jquery": "npm:jquery@2.2.1",
         "underscore": "npm:underscore@1.8.3"
       }
     },
@@ -218,10 +218,12 @@ SystemJS.config({
         "underscore": "npm:underscore@1.8.3"
       }
     },
-    "npm:balanced-match@0.3.0": {
-      "map": {}
+    "npm:backbone@1.3.1": {
+      "map": {
+        "underscore": "npm:underscore@1.8.3"
+      }
     },
-    "npm:bn.js@4.10.1": {
+    "npm:balanced-match@0.3.0": {
       "map": {}
     },
     "npm:brace-expansion@1.1.3": {
@@ -253,16 +255,16 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.1"
       }
     },
-    "npm:browserify-rsa@4.0.0": {
+    "npm:browserify-rsa@4.0.1": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
-        "randombytes": "npm:randombytes@2.0.2"
+        "bn.js": "npm:bn.js@4.10.5",
+        "randombytes": "npm:randombytes@2.0.3"
       }
     },
     "npm:browserify-sign@4.0.0": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
-        "browserify-rsa": "npm:browserify-rsa@4.0.0",
+        "bn.js": "npm:bn.js@4.10.5",
+        "browserify-rsa": "npm:browserify-rsa@4.0.1",
         "create-hash": "npm:create-hash@1.1.2",
         "create-hmac": "npm:create-hmac@1.1.4",
         "elliptic": "npm:elliptic@6.2.3",
@@ -334,7 +336,7 @@ SystemJS.config({
     },
     "npm:create-ecdh@4.0.0": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
+        "bn.js": "npm:bn.js@4.10.5",
         "elliptic": "npm:elliptic@6.2.3"
       }
     },
@@ -343,7 +345,7 @@ SystemJS.config({
         "cipher-base": "npm:cipher-base@1.0.2",
         "inherits": "npm:inherits@2.0.1",
         "ripemd160": "npm:ripemd160@1.0.1",
-        "sha.js": "npm:sha.js@2.4.4"
+        "sha.js": "npm:sha.js@2.4.5"
       }
     },
     "npm:create-hmac@1.1.4": {
@@ -363,7 +365,7 @@ SystemJS.config({
         "inherits": "npm:inherits@2.0.1",
         "pbkdf2": "npm:pbkdf2@3.0.4",
         "public-encrypt": "npm:public-encrypt@4.0.0",
-        "randombytes": "npm:randombytes@2.0.2"
+        "randombytes": "npm:randombytes@2.0.3"
       }
     },
     "npm:css-modules-loader-core@1.0.0": {
@@ -429,9 +431,9 @@ SystemJS.config({
     },
     "npm:diffie-hellman@5.0.2": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
+        "bn.js": "npm:bn.js@4.10.5",
         "miller-rabin": "npm:miller-rabin@4.0.0",
-        "randombytes": "npm:randombytes@2.0.2"
+        "randombytes": "npm:randombytes@2.0.3"
       }
     },
     "npm:directory-encoder@0.7.2": {
@@ -443,7 +445,7 @@ SystemJS.config({
     },
     "npm:elliptic@6.2.3": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
+        "bn.js": "npm:bn.js@4.10.5",
         "brorand": "npm:brorand@1.0.5",
         "hash.js": "npm:hash.js@1.0.3",
         "inherits": "npm:inherits@2.0.1"
@@ -459,10 +461,19 @@ SystemJS.config({
         "graceful-fs": "npm:graceful-fs@4.1.3",
         "jsonfile": "npm:jsonfile@2.2.3",
         "path-is-absolute": "npm:path-is-absolute@1.0.0",
-        "rimraf": "npm:rimraf@2.5.1"
+        "rimraf": "npm:rimraf@2.5.2"
       }
     },
     "npm:glob@6.0.4": {
+      "map": {
+        "inflight": "npm:inflight@1.0.4",
+        "inherits": "npm:inherits@2.0.1",
+        "minimatch": "npm:minimatch@3.0.0",
+        "once": "npm:once@1.3.3",
+        "path-is-absolute": "npm:path-is-absolute@1.0.0"
+      }
+    },
+    "npm:glob@7.0.3": {
       "map": {
         "inflight": "npm:inflight@1.0.4",
         "inherits": "npm:inherits@2.0.1",
@@ -540,7 +551,7 @@ SystemJS.config({
     },
     "npm:miller-rabin@4.0.0": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
+        "bn.js": "npm:bn.js@4.10.5",
         "brorand": "npm:brorand@1.0.5"
       }
     },
@@ -577,7 +588,7 @@ SystemJS.config({
     },
     "npm:parse-asn1@5.0.0": {
       "map": {
-        "asn1.js": "npm:asn1.js@4.4.0",
+        "asn1.js": "npm:asn1.js@4.5.1",
         "browserify-aes": "npm:browserify-aes@1.0.6",
         "create-hash": "npm:create-hash@1.1.2",
         "evp_bytestokey": "npm:evp_bytestokey@1.0.0",
@@ -653,9 +664,9 @@ SystemJS.config({
         "postcss": "npm:postcss@5.0.19"
       }
     },
-    "npm:postcss-js@0.1.1": {
+    "npm:postcss-js@0.1.2": {
       "map": {
-        "camelcase-css": "npm:camelcase-css@1.0.0",
+        "camelcase-css": "npm:camelcase-css@1.0.1",
         "postcss": "npm:postcss@5.0.19"
       }
     },
@@ -710,11 +721,11 @@ SystemJS.config({
         "postcss": "npm:postcss@5.0.19"
       }
     },
-    "npm:postcss-mixins@4.0.0": {
+    "npm:postcss-mixins@4.0.1": {
       "map": {
         "globby": "npm:globby@4.0.0",
         "postcss": "npm:postcss@5.0.19",
-        "postcss-js": "npm:postcss-js@0.1.1",
+        "postcss-js": "npm:postcss-js@0.1.2",
         "postcss-simple-vars": "npm:postcss-simple-vars@1.2.0"
       }
     },
@@ -741,7 +752,7 @@ SystemJS.config({
         "postcss": "npm:postcss@5.0.19"
       }
     },
-    "npm:postcss-nesting@2.2.0": {
+    "npm:postcss-nesting@2.3.0": {
       "map": {
         "postcss": "npm:postcss@5.0.19"
       }
@@ -837,11 +848,11 @@ SystemJS.config({
     },
     "npm:public-encrypt@4.0.0": {
       "map": {
-        "bn.js": "npm:bn.js@4.10.1",
-        "browserify-rsa": "npm:browserify-rsa@4.0.0",
+        "bn.js": "npm:bn.js@4.10.5",
+        "browserify-rsa": "npm:browserify-rsa@4.0.1",
         "create-hash": "npm:create-hash@1.1.2",
         "parse-asn1": "npm:parse-asn1@5.0.0",
-        "randombytes": "npm:randombytes@2.0.2"
+        "randombytes": "npm:randombytes@2.0.3"
       }
     },
     "npm:punycode@1.3.2": {
@@ -851,9 +862,6 @@ SystemJS.config({
       "map": {
         "strict-uri-encode": "npm:strict-uri-encode@1.1.0"
       }
-    },
-    "npm:randombytes@2.0.2": {
-      "map": {}
     },
     "npm:read-cache@1.0.0": {
       "map": {
@@ -881,15 +889,15 @@ SystemJS.config({
         "balanced-match": "npm:balanced-match@0.1.0"
       }
     },
-    "npm:rimraf@2.5.1": {
+    "npm:rimraf@2.5.2": {
       "map": {
-        "glob": "npm:glob@6.0.4"
+        "glob": "npm:glob@7.0.3"
       }
     },
     "npm:ripemd160@1.0.1": {
       "map": {}
     },
-    "npm:sha.js@2.4.4": {
+    "npm:sha.js@2.4.5": {
       "map": {
         "inherits": "npm:inherits@2.0.1"
       }
@@ -994,9 +1002,6 @@ SystemJS.config({
         "punycode": "npm:punycode@1.3.2",
         "querystring": "npm:querystring@0.2.0"
       }
-    },
-    "npm:webcomponents.js@0.7.20": {
-      "map": {}
     },
     "npm:xmldom@0.1.22": {
       "map": {}

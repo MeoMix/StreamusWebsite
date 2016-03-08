@@ -61,7 +61,6 @@ const InputView = LayoutView.extend({
   },
 
   _onChangeValue(model, value) {
-    console.log('input value has changed');
     this.ui.characterCount.text(value.length);
     this.el.classList.toggle(styles.hasValue, model.hasValue());
     // TODO: Is this necessary? Doesn't the subelement return it?

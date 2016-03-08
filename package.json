@@ -84,7 +84,7 @@
       "github:MeoMix/postcss-import@master": {
         "registry": "npm"
       },
-      "github:components/jquery@2.2.0": {
+      "github:components/jquery@2.2.1": {
         "main": "jquery"
       },
       "github:marionettejs/backbone.marionette@2.4.4": {
@@ -125,7 +125,7 @@
           "test.js"
         ]
       },
-      "npm:jquery@2.2.0": {
+      "npm:jquery@2.2.1": {
         "format": "amd"
       },
       "npm:svgo@0.6.1": {

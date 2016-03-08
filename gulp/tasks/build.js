@@ -59,10 +59,10 @@ gulp.task('build:transformJs', function(done) {
   const options = {
     // Don't include runtime because any dependencies on System are incorrect.
     // A properly built distribution should not need to run System at runtime.
-    runtime: true,
+    runtime: false,
     sourceMaps: true,
     // Note: Default is minify: true, but often want to toggle it off for debugging. So, I've mentioned the option here.
-    minify: false,
+    minify: true,
     production: true,
     browser: true
   };
