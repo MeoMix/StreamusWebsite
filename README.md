@@ -6,78 +6,64 @@
   </a>
 </p>
 
-Overview
-========
-The Streamus website consists of:
+<h2>Overview</h2>
 
-* Home: An introduction to Streamus and a download button.
-* Getting Started: A more in-depth introduction to Streamus accompanied by screenshots.
-* FAQ: Responses to commonly asked feature requests and troubleshooting inquiries.
-* Share: A page which allows users to share playlists with others.
-* About: An outline of the project as well as the developer behind it.
-* Donate: A donation page which supports PayPal and Bitcoin.
+Streamus Website is a single-page website leveraging HTML5 push state. The design is shaped around Google's [Material Design specification](https://www.google.com/design/spec/material-design). Some portions of the website are able to communicate with [Streamus Chrome Extension](https://github.com/MeoMix/StreamusChromeExtension) and/or [Streamus Server](https://github.com/MeoMix/StreamusServer)
 
-Development
-========
+<h2>Development</h2>
 
-1. Ensure you have Node, NPM, and Grunt installed.
-2. Run "npm install" to install necessary dependencies.
-3. Install Apache 2.4 and configure it such that it can find src/index.html
-4. Run "grunt less" and then "grunt watch" to compile LESS to CSS and monitor for changes.
-5. Navigate to src.streamus.com in your browser.
-6. To build a release, run "grunt build". Versioning is not yet supported.
+Start by cloning the development branch. All PRs should be submitted to the development branch. Non-trivial PRs will be declined unless they are accompanied by test cases.
 
-**Apache Configuration for Windows:** In order to develop Streamus' website properly you'll need to configure Apache. A few things are needed:
+<h3>Dependencies</h3>
 
-* You'll want to navigate to your hosts file and add entries for: "127.0.0.1 src.streamus.com" and "127.0.0.1 dist.streamus.com". This will allow for named websites instead of just localhost which helps satisfy CORS.
-* You then need to modify your VHosts to expect these websites. My config looks like:
+You will need to have [Node](https://nodejs.org/) and [Gulp](http://gulpjs.com/) installed on your system. After installing Node, navigate useing a terminal to the direction in which you cloned this repository. Then, run the following command to install dependencies:
 
 ```
-<VirtualHost src.streamus.com:80=''>
-  DocumentRoot "${WEBSITEROOT}/src"
-  ServerName src.streamus.com
-</VirtualHost>
-
-<VirtualHost dist.streamus.com:80=''>
-  DocumentRoot "${WEBSITEROOT}/dist"
-  ServerName dist.streamus.com
-</VirtualHost>
+npm install
 ```
 
-where WEBSITEROOT points to my src directory such as:
+Successful installation of Node dependencies will result in [jspm](http://jspm.io/) being installed on your system in addition to all development dependencies. Successful installation of jspm will result in all production dependencies being installed, as well.
+
+You should then run the test case suite to ensure you're in a known good state:
 
 ```
-Define WEBSITEROOT "/Users/Meo/Documents/GitHub/StreamusWebsite"
+gulp test
 ```
 
-Third-Party Libraries
-------
+Karma's test suite will then be ran against both Google Chrome and Firefox, if available.
 
-Streamus Website utilizes several third-party libraries:
+<h3>Gulp Tasks</h3>
 
-* [BackboneJS](http://backbonejs.org/)
+The following Gulp tasks are available:
+
+* Build: Generate a production-ready build of the website and place it in the dist folder.
+* Compile: Transpile ES6 to ES5 through Babel and copy all other assets into the compiled folder. Suitable for development use.
+* Connect: Spin up a simple HTTP server via Node. Points at the compiled or dist directory depending on arguments given to connect.
+* Lint: Validate code quality with ESLint and output issues to the console.
+* Test: Run test case suite through Karma. Karma will open Chrome and Firefox and ensure test cases pass in both.
+* Watch: Monitor the src and compiled directories for changes. Simple HTTP server will reload as changes are detected.
+
+<h2>Libraries</h2>
+
+<h3>Production</h3>
+* [jQuery](http://jquery.com/)
+* [Backbone](http://backbonejs.org/)
+* [Marionette](http://marionettejs.com)
+* [lodash](http://lodash.com/)
+* [Handlebars](http://handlebarsjs.com/)
 * [Backbone.Base-Router](https://github.com/jmeas/backbone.base-router)
 * [Backbone.Intercept](https://github.com/jmeas/backbone.intercept)
-* [Backbone MarionetteJS](http://marionettejs.com)
-* [jQuery](http://jquery.com/)
-* [jQuery Browser](https://github.com/gabceb/jquery-browser-plugin)
-* [jQuery Unveil](https://github.com/luis-almeida/unveil)
-* [Less](http://lesscss.org)
-* [Lo-Dash](http://lodash.com/)
-* [RequireJS](http://requirejs.org/)
-* [Text](https://github.com/requirejs/text)
+* [Backbone.Syphon](https://github.com/marionettejs/backbone.syphon)
+* [jQuery.browser](https://github.com/gabceb/jquery-browser-plugin)
+* [webcomponents.js](https://github.com/WebComponents/webcomponentsjs)
 
-License
-=======
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use any files in this repository except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+<h3>Development</h3>
+* [jspm](http://jspm.io//)
+* [PostCSS](https://github.com/postcss/postcss)
+* [Babel](https://babeljs.io/)
+* [Gulp](http://gulpjs.com/)
+* [Mocha](http://visionmedia.github.io/mocha/)
+* [Chai](http://chaijs.com/)
+* [Sinon](http://sinonjs.org/)
+* [Karma](https://karma-runner.github.io/)
+* [ESLint](http://eslint.org/)
