@@ -48,6 +48,7 @@ body {
   min-height: 100%;
 }
 
+/* TODO: Move this to .application. Need to remove negative z-index. */
 body {
-  background-color: #FAFAFA;
+  trait: gray from 'background-color';
 }

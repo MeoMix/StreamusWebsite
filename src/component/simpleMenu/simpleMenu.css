@@ -17,7 +17,7 @@
   padding: 8px 0;
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.14), 0 2px 4px rgba(0, 0, 0, 0.28);
-  background-color: white;
+  trait: white from 'background-color';
   opacity: 0;
   transition-duration: .2s;
   transition-property: opacity;

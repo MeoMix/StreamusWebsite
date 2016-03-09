@@ -15,7 +15,7 @@
 .card {
   border-radius: 2px;
   trait: lowElevation from 'box-shadow';
-  background-color: white;
+  trait: white from 'background-color';
   line-height: 24px;
   margin-top: 48px;
   width: 640px;

@@ -11,7 +11,7 @@
   padding: 8px 0 7px 0;
   font: inherit;
   color: inherit;
-  background-color: transparent;
+  trait: transparent from 'background-color';
   border-top: none;
   border-right: none;
   border-left: none;
@@ -37,7 +37,7 @@
 
 .hasFocus:not(.isInvalid) .placeholder,
 .hasFocus:not(.isInvalid) .characterCountWrapper {
-  color: rgb(66,133,244);
+  trait: blue from 'color';
 }
 
 .isInvalid .value {
@@ -50,7 +50,7 @@
 
 .isInvalid .characterCount,
 .isInvalid .placeholder {
-  color: rgb(221, 44, 0);
+  trait: error from 'color';
 }
 
 .isInvalid .errorMessage {
@@ -64,7 +64,7 @@
 
 .hasFocus .required,
 .hasValue .required {
-  color: rgb(221, 44, 0);
+  trait: error from 'color';
 }
 
 .placeholder {
@@ -101,7 +101,7 @@
 
 .errorMessage {
   flex: 1;
-  color: rgb(221, 44, 0);
+  trait: error from 'color';
   opacity: 0;
   transition: opacity .28s cubic-bezier(.39, .575, .565, 1);
 }

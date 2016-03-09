@@ -1,0 +1,35 @@
+﻿.darkPrimary {
+  background-color: rgba(0, 0, 0, .87);
+}
+
+.blue {
+  background-color: rgb(66, 133, 244);
+}
+
+.white {
+  background-color: rgb(255, 255, 255);
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.gray {
+  background-color: rgb(250, 250, 250);
+}
+
+/* https://www.google.com/design/spec/components/buttons.html#buttons-raised-buttons */
+.disabledButton--light {
+  background-color: rgba(255, 255, 255, .12);
+}
+
+/* Use for :hover highlighting */
+.gray--highlight {
+  background-color: rgba(0, 0, 0, .03);
+}
+
+/* TODO: Rename notification to snackbar */
+/* https://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-specs */
+.gray--notification {
+  background-color:  rgba(50, 50, 50, 1);
+}

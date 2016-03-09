@@ -1,9 +1,21 @@
-﻿.darkPrimary {
+﻿.black {
+  color: rgba(0, 0, 0, 1);
+}
+
+.white {
+  color: rgba(255, 255, 255, 1);
+}
+
+.darkPrimary {
   color: rgba(0, 0, 0, .87);
 }
 
 .darkSecondary {
   color: rgba(0, 0, 0, .54);
+}
+
+.darkTertiary {
+  color: rgba(0, 0, 0, .26);
 }
 
 .darkHighlight {
@@ -15,7 +27,7 @@
 }
 
 .yellow {
-  color: rgb(244,180,0);
+  color: rgb(244, 180, 0);
 }
 
 /* TODO: How can I share variable between color/fill/other traits? */
@@ -41,4 +53,9 @@
 
 .error {
   color: rgb(221, 44, 0);
+}
+
+/* https://www.google.com/design/spec/components/buttons.html#buttons-raised-buttons */
+.disabledText--light {
+  color: rgba(255, 255, 255, .3);
 }

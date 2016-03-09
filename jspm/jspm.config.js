@@ -23,7 +23,7 @@ SystemJS.config({
     "autoprefixer": "npm:autoprefixer@6.3.3",
     "babel-polyfill": "npm:babel-polyfill@6.6.1",
     "babel-runtime": "npm:babel-runtime@5.8.35",
-    "backbone": "npm:backbone@1.3.1",
+    "backbone": "npm:backbone@1.2.3",
     "backbone.babysitter": "github:marionettejs/backbone.babysitter@0.1.10",
     "backbone.base-router": "npm:backbone.base-router@1.3.0",
     "backbone.intercept": "npm:backbone.intercept@0.4.2",
@@ -66,6 +66,7 @@ SystemJS.config({
     "uglify-js": "npm:uglify-js@2.3.6",
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
+    "underscore": "npm:lodash@3.10.1",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
     "webcomponents.js": "npm:webcomponents.js@0.7.21"
   },
@@ -73,8 +74,7 @@ SystemJS.config({
   packages: {
     "github:MeoMix/jspm-loader-css@master": {
       "map": {
-        "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0",
-        "cssnano": "npm:cssnano@3.5.2"
+        "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0"
       }
     },
     "github:MeoMix/postcss-import@master": {
@@ -126,14 +126,6 @@ SystemJS.config({
         "url-browserify": "npm:url@0.11.0"
       }
     },
-    "github:marionettejs/backbone.marionette@2.4.4": {
-      "map": {
-        "backbone": "npm:backbone@1.2.3",
-        "backbone.babysitter": "npm:backbone.babysitter@0.1.10",
-        "backbone.wreqr": "npm:backbone.wreqr@1.3.5",
-        "underscore": "npm:underscore@1.8.3"
-      }
-    },
     "npm:amdefine@1.0.0": {
       "map": {}
     },
@@ -182,12 +174,6 @@ SystemJS.config({
     "npm:babel-runtime@5.8.35": {
       "map": {}
     },
-    "npm:backbone.babysitter@0.1.10": {
-      "map": {
-        "backbone": "npm:backbone@1.2.3",
-        "underscore": "npm:underscore@1.8.3"
-      }
-    },
     "npm:backbone.base-router@1.3.0": {
       "map": {
         "backbone": "npm:backbone@1.2.3",
@@ -207,18 +193,7 @@ SystemJS.config({
         "underscore": "npm:underscore@1.8.3"
       }
     },
-    "npm:backbone.wreqr@1.3.5": {
-      "map": {
-        "backbone": "npm:backbone@1.2.3",
-        "underscore": "npm:underscore@1.8.3"
-      }
-    },
     "npm:backbone@1.2.3": {
-      "map": {
-        "underscore": "npm:underscore@1.8.3"
-      }
-    },
-    "npm:backbone@1.3.1": {
       "map": {
         "underscore": "npm:underscore@1.8.3"
       }

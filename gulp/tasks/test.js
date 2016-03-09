@@ -3,7 +3,7 @@ var path = require('path');
 var Server = require('karma').Server;
 var runSequence = require('run-sequence');
 
-// Start a Karma server and execute test suites. Configuraiton bound in karma.conf.js
+// Start a Karma server and execute test suites. Configuration bound in karma.conf.js
 // http://karma-runner.github.io/
 gulp.task('test', function(done) {
   runSequence('compile', 'test:startKarmaServer', done);

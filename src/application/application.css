@@ -26,7 +26,7 @@
 
 .contentRegion::before {
   content: '';
-  background-color: rgb(66, 133, 244);
+  trait: blue from 'background-color';
   height: 512px;
   width: 100%;
   position: absolute;
@@ -38,7 +38,7 @@
 .footerRegion {
   /* Ensure browsers don't allow items to shrink smaller than default minimum size */
   flex: none;
-  background-color: rgba(0, 0, 0, .87);
+  trait: darkPrimary from 'background-color';
   padding: 24px 0;
 }
 

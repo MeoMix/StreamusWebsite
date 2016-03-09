@@ -10,7 +10,7 @@
   border-radius: 2px;
   trait: lowElevation from 'box-shadow';
   padding: 24px 8px 8px 8px;
-  background-color: white;
+  trait: white from 'background-color';
   line-height: 24px;
   margin-top: 48px;
 }
@@ -73,8 +73,8 @@
 
 .payPalButton {
   @mixin raisedButton from 'button/button';
-  background-color: rgb(40,112,238);
-  color: white;
+  trait: blue from 'background-color';
+  trait: white from 'color';
   margin-left: 16px;
 }
 

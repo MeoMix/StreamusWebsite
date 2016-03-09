@@ -69,14 +69,15 @@ const plugins = [
     }
   }),
   composesHelper,
-  inlineTrait({
-    getFileText,
-    traitPath
-  }),
   mixinFrom({
     getFileText
   }),
   mixins,
+  // TODO: inlineTrait has to come after mixinFrom/mixins. I feel like they should be order-independent.
+  inlineTrait({
+    getFileText,
+    traitPath
+  }),
   nesting(),
   url({
     url: function(url) {

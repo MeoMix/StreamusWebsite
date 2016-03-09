@@ -75,6 +75,7 @@
     <Content Include="src\common\analyticsManager.js" />
     <Content Include="src\common\browser.js" />
     <Content Include="src\common\css\components\button.css" />
+    <Content Include="src\common\css\traits\background-color.css" />
     <Content Include="src\common\css\traits\box-shadow.css" />
     <Content Include="src\common\css\traits\color.css" />
     <Content Include="src\common\css\core.css" />

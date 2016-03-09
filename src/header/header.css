@@ -3,8 +3,8 @@
   flex: 1;
   align-items: center;
   padding: 0 12px;
-  background-color: rgb(66, 133, 244);
-  color: white;
+  trait: blue from 'background-color';
+  trait: white from 'color';
   transition: box-shadow .2s cubic-bezier(.39, .575, .565, 1);
 }
 

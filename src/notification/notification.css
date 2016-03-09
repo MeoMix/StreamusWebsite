@@ -6,7 +6,7 @@
   max-width: 568px;
   padding: 0 24px;
   cursor: default;
-  background-color:  rgba(50, 50, 50, 1);
+  trait: gray--notification from 'background-color';
   border-radius: 2px 2px 0 0;
   trait: mediumLowElevation from 'box-shadow';
   pointer-events: none;
@@ -21,7 +21,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: white;
+  trait: white from 'color';
   font-size: 15px;
   line-height: 48px;
 }

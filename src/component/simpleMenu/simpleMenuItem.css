@@ -7,7 +7,7 @@
 }
 
 .simpleMenuItem:hover {
-  background-color:  rgba(0, 0, 0, .03);
+  trait: gray--highlight from 'background-color';
 }
 
 .content {
@@ -23,10 +23,10 @@
 }
 
 .isActive .title {
-   color: rgb(66,133,244);
+  trait: blue from 'color';
 }
 
 .isDisabled {
   cursor: default;
-  color: rgba(0, 0, 0, .26);
+  trait: darkTertiary from 'color';
 }

@@ -1,12 +1,12 @@
 ﻿@define-mixin title {
-  color: white;
+  trait: white from 'color';
   margin: 24px 0;
   text-align: center;
   font-size: 56px;
 }
 
 @define-mixin description {
-  color: white;
+  trait: white from 'color';
   text-align: center;
   font-size: 24px;
   line-height: 32px;
