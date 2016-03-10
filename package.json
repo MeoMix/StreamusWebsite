@@ -46,8 +46,8 @@
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.2",
       "postcss": "npm:postcss@^5.0.14",
       "postcss-import": "github:MeoMix/postcss-import@master",
-      "postcss-inline-trait": "npm:postcss-inline-trait@^0.1.0",
-      "postcss-mixin-from": "npm:postcss-mixin-from@^0.3.0",
+      "postcss-inline-trait": "npm:postcss-inline-trait@^0.2.0",
+      "postcss-mixin-from": "npm:postcss-mixin-from@^0.5.0",
       "postcss-mixins": "npm:postcss-mixins@^4.0.0",
       "postcss-nesting": "npm:postcss-nesting@^2.2.0",
       "postcss-url": "npm:postcss-url@^5.0.2",
@@ -195,4 +195,4 @@
   "dependencies": {
     "jspm": "^0.16.11"
   }
-}
+}

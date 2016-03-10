@@ -1,4 +1,4 @@
-﻿@define-mixin raisedButton {
+﻿@mixin-definition raisedButton {
   font-size: 14px;
   padding: 0 16px;
   display: inline-block;

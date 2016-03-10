@@ -13,6 +13,9 @@ SystemJS.config({
     "*.css": {
       "loader": "jspm/css.js"
     },
+    "*.trait": {
+      "loader": "jspm/trait.js"
+    },
     "*.hbs": {
       "loader": "hbs"
     }
@@ -52,8 +55,8 @@ SystemJS.config({
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.2",
     "postcss": "npm:postcss@5.0.19",
     "postcss-import": "github:MeoMix/postcss-import@master",
-    "postcss-inline-trait": "npm:postcss-inline-trait@0.1.0",
-    "postcss-mixin-from": "npm:postcss-mixin-from@0.3.0",
+    "postcss-inline-trait": "npm:postcss-inline-trait@0.2.0",
+    "postcss-mixin-from": "npm:postcss-mixin-from@0.5.0",
     "postcss-mixins": "npm:postcss-mixins@4.0.1",
     "postcss-nesting": "npm:postcss-nesting@2.3.0",
     "postcss-url": "npm:postcss-url@5.1.1",
@@ -634,7 +637,7 @@ SystemJS.config({
         "uniqid": "npm:uniqid@1.0.0"
       }
     },
-    "npm:postcss-inline-trait@0.1.0": {
+    "npm:postcss-inline-trait@0.2.0": {
       "map": {
         "postcss": "npm:postcss@5.0.19"
       }
@@ -691,7 +694,7 @@ SystemJS.config({
         "postcss-selector-parser": "npm:postcss-selector-parser@1.3.3"
       }
     },
-    "npm:postcss-mixin-from@0.3.0": {
+    "npm:postcss-mixin-from@0.5.0": {
       "map": {
         "postcss": "npm:postcss@5.0.19"
       }
