@@ -1,14 +1,8 @@
 SystemJS.config({
-  packageConfigPaths: [
-    "npm:@*/*.json",
-    "npm:*.json",
-    "github:*/*.json"
-  ],
   transpiler: "plugin-babel",
   babelOptions: {
     "moduleName": true
   },
-
   meta: {
     "*.css": {
       "loader": "jspm/css.js"
@@ -20,8 +14,21 @@ SystemJS.config({
       "loader": "hbs"
     }
   },
-
   map: {
+    "underscore": "npm:lodash@3.10.1"
+  },
+  packages: {}
+});
+
+SystemJS.config({
+  packageConfigPaths: [
+    "npm:@*/*.json",
+    "npm:*.json",
+    "github:*/*.json"
+  ],
+  map: {
+    "jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
+    "postcss-import": "github:MeoMix/postcss-import@master",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "autoprefixer": "npm:autoprefixer@6.3.3",
     "babel-polyfill": "npm:babel-polyfill@6.6.1",
@@ -37,7 +44,6 @@ SystemJS.config({
     "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
     "core-js": "npm:core-js@1.2.6",
     "crypto": "github:jspm/nodelibs-crypto@0.2.0-alpha",
-    "cssnano": "npm:cssnano@3.5.2",
     "events": "github:jspm/nodelibs-events@0.2.0-alpha",
     "fs": "github:jspm/nodelibs-fs@0.2.0-alpha",
     "handlebars": "github:components/handlebars.js@4.0.5",
@@ -45,7 +51,6 @@ SystemJS.config({
     "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
     "jquery": "github:components/jquery@2.2.1",
     "jquery.browser": "npm:jquery.browser@0.1.0",
-    "jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
     "lodash": "npm:lodash@3.10.1",
     "marionette": "github:marionettejs/backbone.marionette@2.4.4",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
@@ -54,7 +59,6 @@ SystemJS.config({
     "path": "github:jspm/nodelibs-path@0.2.0-alpha",
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.2",
     "postcss": "npm:postcss@5.0.19",
-    "postcss-import": "github:MeoMix/postcss-import@master",
     "postcss-inline-trait": "npm:postcss-inline-trait@0.2.0",
     "postcss-mixin-from": "npm:postcss-mixin-from@0.5.0",
     "postcss-mixins": "npm:postcss-mixins@4.0.1",
@@ -69,15 +73,15 @@ SystemJS.config({
     "uglify-js": "npm:uglify-js@2.3.6",
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
     "util": "github:jspm/nodelibs-util@0.2.0-alpha",
-    "underscore": "npm:lodash@3.10.1",
     "vm": "github:jspm/nodelibs-vm@0.2.0-alpha",
     "webcomponents.js": "npm:webcomponents.js@0.7.21"
   },
-
   packages: {
     "github:MeoMix/jspm-loader-css@master": {
       "map": {
-        "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0"
+        "css-modules-loader-core": "npm:css-modules-loader-core@1.0.0",
+        "cssnano": "@empty",
+        "node-cssnano": "npm:cssnano@3.5.2"
       }
     },
     "github:MeoMix/postcss-import@master": {
@@ -160,7 +164,7 @@ SystemJS.config({
     "npm:autoprefixer@6.3.3": {
       "map": {
         "browserslist": "npm:browserslist@1.1.3",
-        "caniuse-db": "npm:caniuse-db@1.0.30000420",
+        "caniuse-db": "npm:caniuse-db@1.0.30000430",
         "normalize-range": "npm:normalize-range@0.1.2",
         "num2fraction": "npm:num2fraction@1.2.2",
         "postcss": "npm:postcss@5.0.19",
@@ -252,7 +256,7 @@ SystemJS.config({
     },
     "npm:browserslist@1.1.3": {
       "map": {
-        "caniuse-db": "npm:caniuse-db@1.0.30000420"
+        "caniuse-db": "npm:caniuse-db@1.0.30000430"
       }
     },
     "npm:buffer-xor@1.0.3": {
@@ -396,9 +400,10 @@ SystemJS.config({
         "postcss-zindex": "npm:postcss-zindex@2.0.1"
       }
     },
-    "npm:csso@1.4.4": {
+    "npm:csso@1.6.4": {
       "map": {
-        "clap": "npm:clap@1.0.10"
+        "clap": "npm:clap@1.0.10",
+        "source-map": "npm:source-map@0.5.3"
       }
     },
     "npm:des.js@1.0.0": {
@@ -514,11 +519,10 @@ SystemJS.config({
     "npm:js-base64@2.1.9": {
       "map": {}
     },
-    "npm:js-yaml@3.4.6": {
+    "npm:js-yaml@3.5.4": {
       "map": {
         "argparse": "npm:argparse@1.0.6",
-        "esprima": "npm:esprima@2.7.2",
-        "inherit": "npm:inherit@2.2.3"
+        "esprima": "npm:esprima@2.7.2"
       }
     },
     "npm:jsonfile@2.2.3": {
@@ -783,7 +787,7 @@ SystemJS.config({
         "is-svg": "npm:is-svg@1.1.1",
         "postcss": "npm:postcss@5.0.19",
         "postcss-value-parser": "npm:postcss-value-parser@3.3.0",
-        "svgo": "npm:svgo@0.6.1"
+        "svgo": "npm:svgo@0.6.2"
       }
     },
     "npm:postcss-unique-selectors@2.0.2": {
@@ -846,11 +850,11 @@ SystemJS.config({
         "pify": "npm:pify@2.3.0"
       }
     },
-    "npm:readable-stream@2.0.5": {
+    "npm:readable-stream@2.0.6": {
       "map": {
         "core-util-is": "npm:core-util-is@1.0.2",
         "inherits": "npm:inherits@2.0.1",
-        "isarray": "npm:isarray@0.0.1",
+        "isarray": "npm:isarray@1.0.0",
         "process-nextick-args": "npm:process-nextick-args@1.0.6",
         "string_decoder": "npm:string_decoder@0.10.31",
         "util-deprecate": "npm:util-deprecate@1.0.2"
@@ -896,7 +900,7 @@ SystemJS.config({
     "npm:stream-browserify@2.0.1": {
       "map": {
         "inherits": "npm:inherits@2.0.1",
-        "readable-stream": "npm:readable-stream@2.0.5"
+        "readable-stream": "npm:readable-stream@2.0.6"
       }
     },
     "npm:string_decoder@0.10.31": {
@@ -912,60 +916,15 @@ SystemJS.config({
         "has-flag": "npm:has-flag@1.0.0"
       }
     },
-    "npm:svgo@0.6.1": {
+    "npm:svgo@0.6.2": {
       "map": {
         "coa": "npm:coa@1.0.1",
         "colors": "npm:colors@1.1.2",
-        "csso": "npm:csso@1.4.4",
-        "js-yaml": "npm:js-yaml@3.4.6",
+        "csso": "npm:csso@1.6.4",
+        "js-yaml": "npm:js-yaml@3.5.4",
         "mkdirp": "npm:mkdirp@0.5.1",
         "sax": "npm:sax@1.1.6",
         "whet.extend": "npm:whet.extend@0.9.9"
-      },
-      "meta": {
-        "lib/svgo/config.js": {
-          "deps": [
-            "../../plugins/removeDoctype",
-            "../../plugins/removeXMLProcInst",
-            "../../plugins/removeComments",
-            "../../plugins/removeMetadata",
-            "../../plugins/removeEditorsNSData",
-            "../../plugins/cleanupAttrs",
-            "../../plugins/minifyStyles",
-            "../../plugins/convertStyleToAttrs",
-            "../../plugins/cleanupIDs",
-            "../../plugins/removeRasterImages",
-            "../../plugins/removeUselessDefs",
-            "../../plugins/cleanupNumericValues",
-            "../../plugins/cleanupListOfValues",
-            "../../plugins/convertColors",
-            "../../plugins/removeUnknownsAndDefaults",
-            "../../plugins/removeNonInheritableGroupAttrs",
-            "../../plugins/removeUselessStrokeAndFill",
-            "../../plugins/removeViewBox",
-            "../../plugins/cleanupEnableBackground",
-            "../../plugins/removeHiddenElems",
-            "../../plugins/removeEmptyText",
-            "../../plugins/convertShapeToPath",
-            "../../plugins/moveElemsAttrsToGroup",
-            "../../plugins/moveGroupAttrsToElems",
-            "../../plugins/collapseGroups",
-            "../../plugins/convertPathData",
-            "../../plugins/convertTransform",
-            "../../plugins/removeEmptyAttrs",
-            "../../plugins/removeEmptyContainers",
-            "../../plugins/mergePaths",
-            "../../plugins/removeUnusedNS",
-            "../../plugins/transformsWithOnePath",
-            "../../plugins/sortAttrs",
-            "../../plugins/removeTitle",
-            "../../plugins/removeDesc",
-            "../../plugins/removeDimensions",
-            "../../plugins/removeAttrs",
-            "../../plugins/addClassesToSVGElement",
-            "../../plugins/removeStyleElement"
-          ]
-        }
       }
     },
     "npm:uglify-js@2.3.6": {

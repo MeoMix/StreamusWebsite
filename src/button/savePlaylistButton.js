@@ -25,7 +25,7 @@ export default Model.extend({
       text: 'Saving...'
     });
 
-    App.channels.notification.commands.trigger('show:notification', {
+    App.channels.snackbar.commands.trigger('show:snackbar', {
       message: 'Adding playlist.'
     });
 
@@ -39,7 +39,7 @@ export default Model.extend({
     const success = response.result === 'success';
 
     if (success) {
-      App.channels.notification.commands.trigger('show:notification', {
+      App.channels.snackbar.commands.trigger('show:snackbar', {
         message: 'Playlist added.'
       });
 
@@ -49,7 +49,7 @@ export default Model.extend({
         text: 'Playlist added'
       });
     } else {
-      App.channels.notification.commands.trigger('show:notification', {
+      App.channels.snackbar.commands.trigger('show:snackbar', {
         message: 'Failed to add playlist.'
       });
 

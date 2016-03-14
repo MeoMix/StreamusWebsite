@@ -1,4 +1,4 @@
-﻿.notification {
+﻿.snackbar {
   will-change: transform;
   transition: transform .28s cubic-bezier(.39, .575, .565, 1);
   transform: translateY(110%);
@@ -6,7 +6,7 @@
   max-width: 568px;
   padding: 0 24px;
   cursor: default;
-  trait: gray--notification from 'background-color';
+  trait: gray--snackbar from 'background-color';
   border-radius: 2px 2px 0 0;
   trait: mediumLowElevation from 'box-shadow';
   pointer-events: none;

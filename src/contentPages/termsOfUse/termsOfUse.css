@@ -7,12 +7,8 @@
 }
 
 .card {
-  border-radius: 2px;
-  trait: lowElevation from 'box-shadow';
+  @mixin card from 'common/css/components/card';
   padding: 24px 16px;
-  trait: white from 'background-color';
-  line-height: 24px;
-  margin-top: 48px;
 }
 
 .sectionTitle {

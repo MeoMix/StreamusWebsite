@@ -56,7 +56,6 @@
     },
     "devDependencies": {
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "cssnano": "npm:cssnano@^3.5.2",
       "text": "github:systemjs/plugin-text@^0.0.7"
     },
     "peerDependencies": {
@@ -94,6 +93,74 @@
           "core-js": "^1.2.0"
         }
       },
+      "npm:core-js@2.1.3": {
+        "format": "cjs",
+        "meta": {
+          "*": {
+            "globals": {
+              "process": "process"
+            }
+          },
+          "*.json": {
+            "format": "json"
+          }
+        },
+        "map": {
+          "./build.js": "./build/index.js",
+          "./core.js": "./core/index.js",
+          "./es5.js": "./es5/index.js",
+          "./es6.js": "./es6/index.js",
+          "./es7.js": "./es7/index.js",
+          "./fn/array.js": "./fn/array/index.js",
+          "./fn/array/virtual.js": "./fn/array/virtual/index.js",
+          "./fn/date.js": "./fn/date/index.js",
+          "./fn/dom-collections.js": "./fn/dom-collections/index.js",
+          "./fn/error.js": "./fn/error/index.js",
+          "./fn/function.js": "./fn/function/index.js",
+          "./fn/function/virtual.js": "./fn/function/virtual/index.js",
+          "./fn/json.js": "./fn/json/index.js",
+          "./fn/math.js": "./fn/math/index.js",
+          "./fn/number.js": "./fn/number/index.js",
+          "./fn/number/virtual.js": "./fn/number/virtual/index.js",
+          "./fn/object.js": "./fn/object/index.js",
+          "./fn/reflect.js": "./fn/reflect/index.js",
+          "./fn/regexp.js": "./fn/regexp/index.js",
+          "./fn/string.js": "./fn/string/index.js",
+          "./fn/string/virtual.js": "./fn/string/virtual/index.js",
+          "./fn/symbol.js": "./fn/symbol/index.js",
+          "./fn/system.js": "./fn/system/index.js",
+          "./fn/typed.js": "./fn/typed/index.js",
+          "./library.js": "./library/index.js",
+          "./library/core.js": "./library/core/index.js",
+          "./library/es5.js": "./library/es5/index.js",
+          "./library/es6.js": "./library/es6/index.js",
+          "./library/es7.js": "./library/es7/index.js",
+          "./library/fn/array.js": "./library/fn/array/index.js",
+          "./library/fn/array/virtual.js": "./library/fn/array/virtual/index.js",
+          "./library/fn/date.js": "./library/fn/date/index.js",
+          "./library/fn/dom-collections.js": "./library/fn/dom-collections/index.js",
+          "./library/fn/error.js": "./library/fn/error/index.js",
+          "./library/fn/function.js": "./library/fn/function/index.js",
+          "./library/fn/function/virtual.js": "./library/fn/function/virtual/index.js",
+          "./library/fn/json.js": "./library/fn/json/index.js",
+          "./library/fn/math.js": "./library/fn/math/index.js",
+          "./library/fn/number.js": "./library/fn/number/index.js",
+          "./library/fn/number/virtual.js": "./library/fn/number/virtual/index.js",
+          "./library/fn/object.js": "./library/fn/object/index.js",
+          "./library/fn/reflect.js": "./library/fn/reflect/index.js",
+          "./library/fn/regexp.js": "./library/fn/regexp/index.js",
+          "./library/fn/string.js": "./library/fn/string/index.js",
+          "./library/fn/string/virtual.js": "./library/fn/string/virtual/index.js",
+          "./library/fn/symbol.js": "./library/fn/symbol/index.js",
+          "./library/fn/system.js": "./library/fn/system/index.js",
+          "./library/fn/typed.js": "./library/fn/typed/index.js",
+          "./library/stage.js": "./library/stage/index.js",
+          "./library/web.js": "./library/web/index.js",
+          "./package": "./package.json",
+          "./stage.js": "./stage/index.js",
+          "./web.js": "./web/index.js"
+        }
+      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
@@ -102,7 +169,7 @@
       "npm:jquery@2.2.1": {
         "format": "amd"
       },
-      "npm:svgo@0.6.1": {
+      "npm:svgo@0.6.2": {
         "meta": {
           "lib/svgo/config.js": {
             "deps": [
@@ -170,7 +237,7 @@
     "gulp-sftp": "^0.1.5",
     "gulp-useref": "^3.0.7",
     "gulp-util": "^3.0.6",
-    "jspm": "^0.17.0-beta.9",
+    "jspm": "^0.17.0-beta.11",
     "karma": "^0.13.10",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
@@ -191,8 +258,5 @@
     "sinon-chai": "^2.8.0",
     "systemjs-builder": "^0.15.9",
     "yargs": "^3.27.0"
-  },
-  "dependencies": {
-    "jspm": "^0.16.11"
   }
-}
+}

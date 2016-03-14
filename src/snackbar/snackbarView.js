@@ -1,10 +1,10 @@
 ﻿import { LayoutView } from 'marionette';
-import template from './notification.hbs';
-import styles from './notification.css';
+import template from './snackbar.hbs';
+import styles from './snackbar.css';
 import { defer } from 'lodash';
 
 export default LayoutView.extend({
-  className: styles.notification,
+  className: styles.snackbar,
   template,
   templateHelpers: {
     styles
@@ -15,11 +15,11 @@ export default LayoutView.extend({
   },
 
   _hideTimeout: null,
-  // The default timeout delay for hiding the notification given no outside influences.
+  // The default timeout delay for hiding the snackbar given no outside influences.
   _hideTimeoutDelay: 3000,
-  // The time in which the notification became fully visible.
+  // The time in which the snackbar became fully visible.
   _fullyVisibleTime: null,
-  // Ensure notifications are given some time to be read before replaced with next notification.
+  // Ensure snackbars are given some time to be read before replaced with next snackbar.
   _minDisplayTime: 500,
 
   initialize() {
@@ -45,10 +45,10 @@ export default LayoutView.extend({
   hide(enforceMinDisplayTime = true) {
     this._clearHideTimeout();
 
-    // Ensure the notification is fully visible momentarily before allowing it to be hidden.
-    // This allows a second notification to be shown quickly without the first stuttering in/out.
+    // Ensure the snackbar is fully visible momentarily before allowing it to be hidden.
+    // This allows a second snackbar to be shown quickly without the first stuttering in/out.
     if (this.model.get('isFullyVisible')) {
-      // Don't let the current notification get hidden before the user has a chance to read it.
+      // Don't let the current snackbar get hidden before the user has a chance to read it.
       const currentDisplayTime = performance.now() - this._fullyVisibleTime;
       const remainingDisplayTime = this._minDisplayTime - currentDisplayTime;
 
@@ -104,13 +104,13 @@ export default LayoutView.extend({
     clearTimeout(this._hideTimeout);
   },
 
-  // Slide the notification up and into the viewport.
+  // Slide the snackbar up and into the viewport.
   _transitionIn() {
     this.$el.off('webkitTransitionEnd.transitionIn').on('webkitTransitionEnd.transitionIn', this._onTransitionInComplete.bind(this));
     this.el.classList.add(styles.isVisible);
   },
 
-  // Slide notification down and out of the viewport. Destroy the view once it is fully hidden.
+  // Slide snackbar down and out of the viewport. Destroy the view once it is fully hidden.
   _transitionOut() {
     // TODO: I need to support non-webkit browsers.
     this.$el.off('webkitTransitionEnd.transitionOut').on('webkitTransitionEnd.transitionOut', this._onTransitionOutComplete.bind(this));

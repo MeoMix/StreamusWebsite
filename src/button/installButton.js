@@ -23,7 +23,7 @@ export default Model.extend({
   install() {
     this.set('isInstalling', true);
 
-    App.channels.notification.commands.trigger('show:notification', {
+    App.channels.snackbar.commands.trigger('show:snackbar', {
       message: 'Installing Streamus.'
     });
 
@@ -65,7 +65,7 @@ export default Model.extend({
     this.reset();
 
     if (error !== 'User cancelled install') {
-      App.channels.notification.commands.trigger('show:notification', {
+      App.channels.snackbar.commands.trigger('show:snackbar', {
         message: `${error}.`
       });
       App.analyticsManager.trackEvent('Extension', 'InstallError', error);

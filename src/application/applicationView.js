@@ -4,7 +4,7 @@ import template from './application.hbs';
 import HeaderRegion from 'header/headerRegion.js';
 import FooterRegion from 'footer/footerRegion.js';
 import NavigationDrawerRegion from 'navigationDrawer/navigationDrawerRegion.js';
-import NotificationRegion from 'notification/notificationRegion.js';
+import SnackbarRegion from 'snackbar/snackbarRegion.js';
 import ContentPagesRegion from 'contentPages/contentPagesRegion.js';
 import _ from 'lodash';
 
@@ -32,9 +32,9 @@ export default LayoutView.extend({
       selector: 'footer',
       regionClass: FooterRegion
     },
-    notification: {
-      selector: 'notification',
-      regionClass: NotificationRegion
+    snackbar: {
+      selector: 'snackbar',
+      regionClass: SnackbarRegion
     }
   },
 

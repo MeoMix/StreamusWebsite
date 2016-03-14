@@ -79,7 +79,9 @@
     <None Include="src\common\css\traits\background-color.trait" />
     <None Include="src\common\css\traits\box-shadow.trait" />
     <None Include="src\common\css\traits\color.trait" />
+    <None Include="src\common\css\components\card.trait" />
     <Content Include="src\common\css\core.css" />
+    <Content Include="src\common\css\traits\colorPallete.trait" />
     <None Include="src\common\css\traits\fill.trait" />
     <Content Include="src\common\css\traits\font-awesome.css" />
     <Content Include="src\common\css\reset.css" />
@@ -210,11 +212,11 @@
     <Content Include="CONTRIBUTING.md" />
     <Content Include="gulp\.eslintrc" />
     <Content Include="src\main.js" />
-    <Content Include="src\notification\notification.css" />
-    <Content Include="src\notification\notification.js" />
-    <Content Include="src\notification\notificationRegion.js" />
-    <Content Include="src\notification\notifications.js" />
-    <Content Include="src\notification\notificationView.js" />
+    <Content Include="src\snackbar\snackbar.css" />
+    <Content Include="src\snackbar\snackbar.js" />
+    <Content Include="src\snackbar\snackbarRegion.js" />
+    <Content Include="src\snackbar\snackbars.js" />
+    <Content Include="src\snackbar\snackbarView.js" />
     <Content Include="src\playlist\playlist.css" />
     <Content Include="src\playlist\playlist.js" />
     <Content Include="src\playlist\playlistItem.css" />
@@ -259,7 +261,7 @@
     <Content Include="src\sitemap.xml" />
     <Content Include="src\header\header.hbs" />
     <Content Include="src\footer\footer.hbs" />
-    <Content Include="src\notification\notification.hbs" />
+    <Content Include="src\snackbar\snackbar.hbs" />
     <Content Include="src\contentPages\faq\faqItem.hbs" />
     <Content Include="src\contentPages\faq\descriptions\permissions.hbs" />
     <Content Include="src\contentPages\faq\descriptions\mobile.hbs" />

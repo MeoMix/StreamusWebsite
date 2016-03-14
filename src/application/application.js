@@ -32,7 +32,7 @@ export default Application.extend({
     route: Wreqr.radio.channel('route'),
     content: Wreqr.radio.channel('content'),
     element: Wreqr.radio.channel('element'),
-    notification: Wreqr.radio.channel('notification'),
+    snackbar: Wreqr.radio.channel('snackbar'),
     window: Wreqr.radio.channel('window'),
     simpleMenu: Wreqr.radio.channel('simpleMenu')
   },

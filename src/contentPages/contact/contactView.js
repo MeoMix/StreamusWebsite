@@ -34,12 +34,12 @@ export default LayoutView.extend({
     this.model.set(serialize(this));
     this.model.save().then(() => {
       this.ui.submit.val('Message sent');
-      App.channels.notification.commands.trigger('show:notification', {
+      App.channels.snackbar.commands.trigger('show:snackbar', {
         message: 'Message sent.'
       });
     }, (response) => {
       this.ui.submit.prop('disabled', false);
-      App.channels.notification.commands.trigger('show:notification', {
+      App.channels.snackbar.commands.trigger('show:snackbar', {
         message: `Sending failed. ${response.responseText.replace(/"/g, '')}`
       });
     });
@@ -51,7 +51,7 @@ export default LayoutView.extend({
 
   _onRequest() {
     this.ui.submit.prop('disabled', true);
-    App.channels.notification.commands.trigger('show:notification', {
+    App.channels.snackbar.commands.trigger('show:snackbar', {
       message: 'Sending message.'
     });
   }

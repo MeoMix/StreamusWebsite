@@ -1,6 +1,6 @@
 ﻿import { Collection } from 'backbone';
-import Notification from './notification.js';
+import Snackbar from './snackbar.js';
 
 export default Collection.extend({
-  model: Notification
+  model: Snackbar
 });
