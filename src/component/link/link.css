@@ -1,0 +1,5 @@
+﻿.link {
+  display: inline-block;
+  trait: blue from 'color';
+  font-weight: 500;
+}

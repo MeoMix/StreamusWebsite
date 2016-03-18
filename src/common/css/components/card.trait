@@ -1,4 +1,4 @@
-﻿@mixin-definition card {
+﻿@mixin-from card {
   border-radius: 2px;
   trait: lowElevation from 'box-shadow';
   trait: white from 'background-color';
@@ -6,21 +6,20 @@
   margin-top: 48px;
 }
 
-@mixin-definition richMedia {
+@mixin-from richMedia {
   /* Should be 16:9 */
 }
 
-@mixin-definition primaryTitle {
+@mixin-from primaryTitle {
   margin: 24px 16px 16px 16px;
   font-size: 24px;
   line-height: 32px;
 }
 
-@mixin-definition actions {
-  margin-top: 16px;
-  margin-bottom: 16px;
+@mixin-from actions {
+  margin: 8px;
 }
 
-@mixin-definition supportingText {
+@mixin-from supportingText {
   margin: 16px 16px 24px 16px;
 }

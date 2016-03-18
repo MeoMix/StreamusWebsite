@@ -6,6 +6,7 @@ import autoprefixer from 'autoprefixer';
 import mixinFrom from 'postcss-mixin-from';
 import inlineTrait from 'postcss-inline-trait';
 import atImport from 'postcss-import';
+import color from 'postcss-color-function';
 
 const isBundling = typeof window === 'undefined';
 const traitPath = 'common/css/traits/';
@@ -75,6 +76,7 @@ export default [
     getFileText
   }),
   mixins,
+  color(),
   nesting(),
   url({
     url: function(url) {

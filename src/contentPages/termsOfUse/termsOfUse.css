@@ -24,8 +24,3 @@
 .sectionParagraph:not(:last-child) {
   margin-bottom: 12px;
 }
-
-.link {
-  trait: blue from 'color';
-  font-weight: 500;
-}

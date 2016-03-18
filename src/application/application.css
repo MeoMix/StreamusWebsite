@@ -22,17 +22,17 @@
   margin-right: auto;
   /* Ensure browsers don't allow items to shrink smaller than default minimum size */
   flex: 1 0 auto;
-}
 
-.contentRegion::before {
-  content: '';
-  trait: blue from 'background-color';
-  height: 512px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  &::before {
+    content: '';
+    trait: blue from 'background-color';
+    height: 512px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 
 .footerRegion {

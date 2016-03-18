@@ -4,7 +4,6 @@
   flex-direction: column;
   overflow: hidden;
   transition: height .28s cubic-bezier(.39, .575, .565, 1), box-shadow .28s cubic-bezier(.39, .575, .565, 1);
-  border-radius: 2px;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0), inset 0 -1px rgba(0, 0, 0, 0);
 }
 
@@ -50,11 +49,6 @@
 
 .isActive .expandCollapseIcon {
   transform: rotate(180deg);
-}
-
-.link {
-  trait: blue from 'color';
-  font-weight: 500;
 }
 
 .paragraph:not(:last-of-type) {

@@ -6,6 +6,10 @@
   background-color: rgb(66, 133, 244);
 }
 
+.blue--shaded {
+  background-color: color(rgb(66, 133, 244) shade(12%));
+}
+
 .white {
   background-color: rgb(255, 255, 255);
 }
@@ -18,9 +22,15 @@
   background-color: rgb(250, 250, 250);
 }
 
-/* https://www.google.com/design/spec/components/buttons.html#buttons-raised-buttons */
-.disabledButton--light {
+/*
+  https://www.google.com/design/spec/components/buttons.html#buttons-raised-buttons
+*/
+.disabledButton--dark {
   background-color: rgba(255, 255, 255, .12);
+}
+
+.disabledButton--light {
+  background-color: rgba(0, 0, 0, .12);
 }
 
 /* Use for :hover highlighting */
@@ -28,7 +38,22 @@
   background-color: rgba(0, 0, 0, .03);
 }
 
-/* https://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-specs */
+/*
+  http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons
+  Pressed: 40% #999999 or rgba(153, 153, 153, .4)
+  Hover: value is derived from spec. screenshot, alpha is 20% instead of 40%
+*/
+.gray--hoverButton {
+  background-color: rgba(153, 153, 153, .2);
+}
+
+.gray--activeButton {
+  background-color:  rgba(153, 153, 153, .4);
+}
+
+/*
+  https://www.google.com/design/spec/components/snackbars-toasts.html#snackbars-toasts-specs
+*/
 .gray--snackbar {
   background-color: rgba(50, 50, 50, 1);
 }

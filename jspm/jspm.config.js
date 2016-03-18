@@ -27,6 +27,8 @@ SystemJS.config({
     "github:*/*.json"
   ],
   map: {
+    "postcss-color-function": "npm:postcss-color-function@2.0.1",
+    "postcss-conditionals": "npm:postcss-conditionals@2.0.2",
     "jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
     "postcss-import": "github:MeoMix/postcss-import@master",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
@@ -60,7 +62,7 @@ SystemJS.config({
     "plugin-babel": "npm:systemjs-plugin-babel@0.0.2",
     "postcss": "npm:postcss@5.0.19",
     "postcss-inline-trait": "npm:postcss-inline-trait@0.2.0",
-    "postcss-mixin-from": "npm:postcss-mixin-from@0.5.0",
+    "postcss-mixin-from": "npm:postcss-mixin-from@0.5.4",
     "postcss-mixins": "npm:postcss-mixins@4.0.1",
     "postcss-nesting": "npm:postcss-nesting@2.3.0",
     "postcss-url": "npm:postcss-url@5.1.1",
@@ -350,6 +352,20 @@ SystemJS.config({
         "randombytes": "npm:randombytes@2.0.3"
       }
     },
+    "npm:css-color-converter@1.0.2": {
+      "map": {
+        "color-convert": "npm:color-convert@0.5.3",
+        "color-name": "npm:color-name@1.1.1"
+      }
+    },
+    "npm:css-color-function@1.3.0": {
+      "map": {
+        "balanced-match": "npm:balanced-match@0.1.0",
+        "color": "npm:color@0.11.1",
+        "debug": "npm:debug@0.7.4",
+        "rgb": "npm:rgb@0.1.0"
+      }
+    },
     "npm:css-modules-loader-core@1.0.0": {
       "map": {
         "icss-replace-symbols": "npm:icss-replace-symbols@1.0.2",
@@ -600,11 +616,26 @@ SystemJS.config({
         "reduce-css-calc": "npm:reduce-css-calc@1.2.1"
       }
     },
+    "npm:postcss-color-function@2.0.1": {
+      "map": {
+        "css-color-function": "npm:css-color-function@1.3.0",
+        "postcss": "npm:postcss@5.0.19",
+        "postcss-message-helpers": "npm:postcss-message-helpers@2.0.0",
+        "postcss-value-parser": "npm:postcss-value-parser@3.3.0"
+      }
+    },
     "npm:postcss-colormin@2.2.0": {
       "map": {
         "colormin": "npm:colormin@1.1.0",
         "postcss": "npm:postcss@5.0.19",
         "postcss-value-parser": "npm:postcss-value-parser@3.3.0"
+      }
+    },
+    "npm:postcss-conditionals@2.0.2": {
+      "map": {
+        "css-color-converter": "npm:css-color-converter@1.0.2",
+        "css-unit-converter": "npm:css-unit-converter@1.0.0",
+        "postcss": "npm:postcss@5.0.19"
       }
     },
     "npm:postcss-convert-values@2.3.4": {
@@ -698,7 +729,7 @@ SystemJS.config({
         "postcss-selector-parser": "npm:postcss-selector-parser@1.3.3"
       }
     },
-    "npm:postcss-mixin-from@0.5.0": {
+    "npm:postcss-mixin-from@0.5.4": {
       "map": {
         "postcss": "npm:postcss@5.0.19"
       }

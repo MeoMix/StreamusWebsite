@@ -1,5 +1,0 @@
-﻿.savePlaylistButton {
-  @mixin raisedButton from './button';
-  trait: blue from 'background-color';
-  trait: white from 'color';
-}

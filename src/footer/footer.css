@@ -34,10 +34,10 @@
   opacity: 0.87;
   will-change: opacity;
   transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
-}
 
-.badge:hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .icon {
@@ -49,10 +49,10 @@
   opacity: 0.87;
   will-change: opacity;
   transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
-}
 
-.icon:hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .twitter {

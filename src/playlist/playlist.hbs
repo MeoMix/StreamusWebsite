@@ -6,12 +6,19 @@
   Failed to load playlist. Sorry. :(
 </div>
 
-<div class='{{styles.details}}'>
-  <h4 class='{{styles.title}}'>
-    { model:title }
-  </h4>
-  <div data-ui='displayInfo' class='{{styles.subtitle}}'></div>
-
-  <div data-region='playlistItems'></div>
-  <div data-region='button'></div>
-</div>
+<streamus-card>
+  <card-header>
+    <card-title>
+      <h4 data-ui='title' class='{{styles.title}}'></h4>
+    </card-title>
+    <card-subtitle>
+      <div data-ui='displayInfo' class='{{styles.subtitle}}'></div>
+    </card-subtitle>
+  </card-header>
+  <card-content>
+    <div data-region='playlistItems'></div>
+  </card-content>
+  <card-actions>
+    <div data-region='button'></div>
+  </card-actions>
+</streamus-card>

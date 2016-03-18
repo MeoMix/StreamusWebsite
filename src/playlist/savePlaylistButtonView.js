@@ -17,6 +17,10 @@ export default LayoutView.extend({
     }
   },
 
+  events: {
+    'click': '_onClick'
+  },
+
   modelEvents: {
     'change:isDisabled': '_onChangeIsDisabled',
     'change:text': '_onChangeText'
@@ -31,7 +35,7 @@ export default LayoutView.extend({
     this._setText(this.model.get('text'));
   },
 
-  onClick() {
+  _onClick() {
     // Prompt the user to install if needed and then automatically save the playlist.
     // This is better UX compared to making the user click twice.
     if (!this.installButton.get('isDisabled')) {

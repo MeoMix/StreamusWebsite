@@ -6,10 +6,10 @@
   trait: blue from 'background-color';
   trait: white from 'color';
   transition: box-shadow .2s cubic-bezier(.39, .575, .565, 1);
-}
 
-.isFloating {
-  trait: mediumLowElevation from 'box-shadow';
+  &.isFloating {
+    trait: mediumLowElevation from 'box-shadow';
+  }
 }
 
 .logo {

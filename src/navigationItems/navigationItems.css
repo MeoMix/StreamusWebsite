@@ -1,8 +1,6 @@
 ﻿.navigationItems {
-
-}
-
-/* TODO: Better way to do this? */
-.isHorizontal {
+  /* TODO: Better way to do this? */
+  &.isHorizontal {
     display: flex;
+  }
 }

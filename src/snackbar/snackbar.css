@@ -10,6 +10,15 @@
   border-radius: 2px 2px 0 0;
   trait: mediumLowElevation from 'box-shadow';
   pointer-events: none;
+
+  &.isVisible {
+    pointer-events: all;
+    transform: translateY(0);
+
+    .message {
+      opacity: 1;
+    }
+  }
 }
 
 .message {
@@ -24,13 +33,4 @@
   trait: white from 'color';
   font-size: 15px;
   line-height: 48px;
-}
-
-.isVisible {
-  pointer-events: all;
-  transform: translateY(0);
-}
-
-.isVisible .message {
-  opacity: 1;
 }

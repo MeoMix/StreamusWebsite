@@ -1,0 +1,3 @@
+﻿.savePlaylistButton {
+  @mixin flatButton light from 'button/button';
+}

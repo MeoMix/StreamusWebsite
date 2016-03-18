@@ -68,9 +68,7 @@
 }
 
 .payPalButton {
-  @mixin raisedButton from 'button/button';
-  trait: blue from 'background-color';
-  trait: white from 'color';
+  @mixin raisedButton dark from 'button/button';
   margin-left: 16px;
 }
 

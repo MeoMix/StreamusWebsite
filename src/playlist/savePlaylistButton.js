@@ -3,7 +3,7 @@ import { result } from 'lodash';
 
 export default Model.extend({
   defaults: {
-    isEnabled: true,
+    isDisabled: false,
     isSaving: false,
     // TODO: Feel like text shouldn't be in the model.
     text: 'Add Playlist',
@@ -20,10 +20,7 @@ export default Model.extend({
   },
 
   save() {
-    this.set({
-      isEnabled: false,
-      text: 'Saving...'
-    });
+    this.set('isDisabled', true);
 
     App.channels.snackbar.commands.trigger('show:snackbar', {
       message: 'Adding playlist.'
@@ -44,7 +41,7 @@ export default Model.extend({
       });
 
       this.set({
-        isEnabled: false,
+        isDisabled: true,
         isSaving: false,
         text: 'Playlist added'
       });

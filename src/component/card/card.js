@@ -2,8 +2,12 @@
 
 export default Model.extend({
   defaults: {
-    primartyTitle: '',
-    supportingText: '',
-    richMedia: ''
+    header: {
+      title: '',
+      subtitle: ''
+    },
+    content: '',
+    richMedia: '',
+    actions: ''
   }
 });

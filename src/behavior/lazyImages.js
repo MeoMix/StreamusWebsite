@@ -41,7 +41,7 @@ export default Behavior.extend({
   _loadImages() {
     // Determine which images (if any) need to be loaded.
     const imagesInThreshold = filter(this._unloadedImages, (image) => {
-      return image.getBoundingClientRect().bottom <= this._windowHeight + this.options.threshold;
+      return image.getBoundingClientRect().top <= this._windowHeight + this.options.threshold;
     });
 
     // Load images which are within the allowed threshold.
@@ -50,8 +50,6 @@ export default Behavior.extend({
     }
 
     // Stop considering images which have been loaded.
-    remove(this._unloadedImages, (image) => {
-      return contains(imagesInThreshold, image);
-    });
+    remove(this._unloadedImages, (image) => contains(imagesInThreshold, image));
   }
 });

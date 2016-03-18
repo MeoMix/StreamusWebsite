@@ -4,10 +4,21 @@
   transition: color .2s cubic-bezier(.39,.575,.565,1), background .2s cubic-bezier(.39,.575,.565,1), opacity .2s cubic-bezier(.39,.575,.565,1);
   height: 44px;
   cursor: pointer;
-}
 
-.simpleMenuItem:hover {
-  trait: gray--highlight from 'background-color';
+  &:hover {
+    trait: gray--highlight from 'background-color';
+  }
+
+  &.isActive {
+    .title {
+      trait: blue from 'color';
+    }
+  }
+
+  &.isDisabled {
+    cursor: default;
+    trait: darkTertiary from 'color';
+  }
 }
 
 .content {
@@ -20,13 +31,4 @@
 .title {
   margin: auto 0;
   font-size: 15px;
-}
-
-.isActive .title {
-  trait: blue from 'color';
-}
-
-.isDisabled {
-  cursor: default;
-  trait: darkTertiary from 'color';
 }

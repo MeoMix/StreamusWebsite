@@ -2,7 +2,7 @@
 import template from './footer.hbs';
 import styles from './footer.css';
 import RouteType from 'route/routeType.js';
-import NavigationItemsView from 'navigationitems/navigationItemsView.js';
+import NavigationItemsView from 'navigationItems/navigationItemsView.js';
 
 export default LayoutView.extend({
   className: styles.footer,

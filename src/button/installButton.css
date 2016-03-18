@@ -1,5 +1,3 @@
 ﻿.installButton {
-  @mixin raisedButton from './button';
-  trait: blue from 'background-color';
-  trait: white from 'color';
+  @mixin raisedButton dark from './button';
 }

@@ -6,22 +6,22 @@
 </h4>
 
 <div class='{{styles.introduction}}'>
-  <div class='{{styles.cards}}'>
-    <div class='{{styles.card}}'>
+  <streamus-card class='{{styles.card}}'>
+    <card-richMedia>
       <img width='640' height='480' src='/contentPages/share/share.png' alt='Image of Sharing Playlist' />
-
-      <h4 class='{{styles.cardTitle}}'></h4>
-
-      <p class='{{styles.cardSupportingText}}'>
-        Share playlists with friends by sending them a custom Streamus' playlist URL. This page will change if it detects a playlist in the URL!
-        To get you started, here's one of my playlists:
-
-        <a class='{{styles.link}}' href='{{RouteType.Share}}/playlist/1f9edabfdeb8/tropical_house'>
-          Tropical House
-        </a>
-      </p>
-    </div>
-  </div>
+    </card-richMedia>
+    <card-header>
+      <card-title>Sharing playlists</card-title>
+    </card-header>
+    <card-content>
+      Show others your taste in music by sharing a playlist URL. Want an example? Try clicking 'View Playlist'
+    </card-content>
+    <card-actions>
+      <a class='{{styles.button}}' href='{{RouteType.Share}}/playlist/1f9edabfdeb8/tropical_house'>
+        View Playlist
+      </a>
+    </card-actions>
+  </streamus-card>
 </div>
 
 <div class='{{styles.loading}}'>

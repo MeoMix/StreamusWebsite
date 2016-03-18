@@ -3,8 +3,8 @@ import template from './playlist.hbs';
 import styles from './playlist.css';
 import PlaylistItemsView from './playlistItemsView.js';
 import InstallButton from 'button/installButton.js';
-import SavePlaylistButtonView from 'button/savePlaylistButtonView.js';
-import SavePlaylistButton from 'button/savePlaylistButton.js';
+import SavePlaylistButtonView from './savePlaylistButtonView.js';
+import SavePlaylistButton from './savePlaylistButton.js';
 
 export default LayoutView.extend({
   className: styles.playlist,
@@ -19,7 +19,7 @@ export default LayoutView.extend({
   },
 
   ui: {
-    // TODO: Make this able to be databound.
+    title: 'title',
     displayInfo: 'displayInfo'
   },
 
@@ -32,6 +32,7 @@ export default LayoutView.extend({
   },
 
   onRender() {
+    this._setTitle(this.model.get('title'));
     this._setDisplayInfo(this.model.get('items').getDisplayInfo());
 
     this.showChildView('button', new SavePlaylistButtonView({
@@ -48,6 +49,7 @@ export default LayoutView.extend({
   },
 
   _onFetchResolve() {
+    this._setTitle(this.model.get('title'));
     this._setDisplayInfo(this.model.get('items').getDisplayInfo());
 
     this.el.classList.add(styles.isLoaded);
@@ -57,6 +59,10 @@ export default LayoutView.extend({
   _onFetchReject() {
     this.el.classList.add(styles.hasError);
     this.el.classList.remove(styles.isLoading);
+  },
+
+  _setTitle(title) {
+    this.ui.title.text(title);
   },
 
   _setDisplayInfo(displayInfo) {

@@ -6,12 +6,6 @@
   @mixin description from '../contentPage';
 }
 
-.card {
-  @mixin card from 'common/css/components/card';
-  padding: 24px 8px 8px 8px;
-}
-
-.link {
-  trait: blue from 'color';
-  font-weight: 500;
+.paragraph {
+  padding: 8px 0;
 }

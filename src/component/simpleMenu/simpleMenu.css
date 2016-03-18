@@ -2,14 +2,14 @@
   position: absolute;
   pointer-events: none;
   z-index: 1;
-}
 
-.isVisible {
-  pointer-events: all;
-}
+  &.isVisible {
+    pointer-events: all;
 
-.isVisible .content {
-  opacity: 1;
+    .content {
+      opacity: 1;
+    }
+  }
 }
 
 .content {

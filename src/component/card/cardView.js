@@ -25,9 +25,13 @@ const registerCardElement = function() {
         const cardView = new CardView({
           el: this,
           model: new Card({
-            primaryTitle: this.getElementsByTagName('primaryTitle')[0].textContent,
-            supportingText: this.getElementsByTagName('supportingText')[0].textContent,
-            richMedia: this.getElementsByTagName('richMedia')[0].innerHTML
+            header: {
+              title: this._getElementHtml('title'),
+              subtitle: this._getElementHtml('subtitle')
+            },
+            content: this._getElementHtml('content'),
+            richMedia: this._getElementHtml('richMedia'),
+            actions: this._getElementHtml('actions')
           })
         });
         cardView.render();
@@ -42,6 +46,11 @@ const registerCardElement = function() {
       detachedCallback() {
         this._view.destroy();
         delete this._view;
+      },
+
+      _getElementHtml(tagName) {
+        const element = this.getElementsByTagName(`card-${tagName}`)[0];
+        return element ? element.innerHTML : '';
       }
     })
   });

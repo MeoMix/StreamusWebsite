@@ -56,6 +56,10 @@
 }
 
 /* https://www.google.com/design/spec/components/buttons.html#buttons-raised-buttons */
-.disabledText--light {
+.disabledText--dark {
   color: rgba(255, 255, 255, .3);
+}
+
+.disabledText--light {
+  color: rgba(0, 0, 0, .26);
 }
