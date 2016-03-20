@@ -259,7 +259,7 @@
     "sinon": "^1.17.1",
     "sinon-chai": "^2.8.0",
     "systemjs-builder": "^0.15.9",
-    "yargs": "^3.27.0"
+    "yargs": "^4.3.2"
   }
 }
 
