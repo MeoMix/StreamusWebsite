@@ -1,6 +1,4 @@
 ﻿import { Behavior } from 'marionette';
-// Polyfill is needed for Reflect API
-import 'babel-polyfill';
 
 // Provides event handler unbinding of models or collections given to the implementing view.
 // If a view's entity has bound event listeners and the view is destroyed then those event listeners

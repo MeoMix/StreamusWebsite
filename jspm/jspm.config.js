@@ -33,7 +33,6 @@ SystemJS.config({
     "postcss-import": "github:MeoMix/postcss-import@master",
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "autoprefixer": "npm:autoprefixer@6.3.3",
-    "babel-polyfill": "npm:babel-polyfill@6.6.1",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "backbone": "npm:backbone@1.2.3",
     "backbone.babysitter": "github:marionettejs/backbone.babysitter@0.1.11",
@@ -171,13 +170,6 @@ SystemJS.config({
         "num2fraction": "npm:num2fraction@1.2.2",
         "postcss": "npm:postcss@5.0.19",
         "postcss-value-parser": "npm:postcss-value-parser@3.3.0"
-      }
-    },
-    "npm:babel-polyfill@6.6.1": {
-      "map": {
-        "babel-regenerator-runtime": "npm:babel-regenerator-runtime@6.5.0",
-        "babel-runtime": "npm:babel-runtime@5.8.35",
-        "core-js": "npm:core-js@2.1.3"
       }
     },
     "npm:babel-runtime@5.8.35": {
