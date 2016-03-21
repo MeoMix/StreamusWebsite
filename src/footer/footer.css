@@ -52,21 +52,46 @@
 
   &:hover {
     opacity: 1;
+
+    & .facebook {
+      color: #3664a2;
+    }
+
+    & .twitter {
+      color: #55acee;
+    }
+
+    & .reddit {
+      color: #FF4500;
+    }
+
+    & .github {
+      color: #672A80;
+    }
   }
 }
 
+@define-mixin iconImage {
+  will-change: color;
+  transition: color .1s cubic-bezier(.39, .575, .565, 1);
+}
+
 .twitter {
+  @mixin iconImage;
   composes: fa fa-twitter fa-lg from 'font-awesome';
 }
 
 .facebook {
+  @mixin iconImage;
   composes: fa fa-facebook fa-lg from 'font-awesome';
 }
 
 .github {
+  @mixin iconImage;
   composes: fa fa-github fa-lg from 'font-awesome';
 }
 
 .reddit {
+  @mixin iconImage;
   composes: fa fa-reddit fa-lg from 'font-awesome';
 }

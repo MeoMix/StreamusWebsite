@@ -1,10 +1,12 @@
 ﻿.navigationItem {
   display: flex;
 
-  &.isActive .link{
-    opacity: 1;
-    cursor: default;
-    pointer-events: none;
+  &.isActive {
+    & .link {
+      opacity: 1;
+      cursor: default;
+      pointer-events: none;
+    }
   }
 }
 

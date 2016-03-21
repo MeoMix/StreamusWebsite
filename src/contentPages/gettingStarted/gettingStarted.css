@@ -14,4 +14,12 @@
 
 .card {
   width: 640px;
+
+  &:not(:last-child) {
+    margin-bottom: 48px;
+  }
+}
+
+.image {
+  trait: bottomOutset from 'box-shadow';
 }

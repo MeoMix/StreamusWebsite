@@ -16,6 +16,7 @@ export default Model.extend({
     isValid: false,
     isRequired: false,
     isMultiline: false,
+    isAutofocused: false,
     showCharacterCount: true
   },
 

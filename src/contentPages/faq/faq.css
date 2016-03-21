@@ -8,7 +8,8 @@
 
 .card {
   @mixin card from 'common/css/components/card';
-  padding: 24px 0;
+  padding-top: 24px;
+  padding-bottom: 12px;
 }
 
 .header {

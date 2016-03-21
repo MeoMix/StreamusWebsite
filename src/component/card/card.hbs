@@ -1,13 +1,21 @@
-﻿<div class='{{styles.richMedia}}'>
+﻿{{#if hasRichMedia}}
+<div class='{{styles.richMedia}}'>
   {{{richMedia}}}
 </div>
+{{/if}}
+{{#if hasHeader}}
 <div class='{{styles.header}}'>
   <div class='{{styles.title}}'>{{{header.title}}}</div>
   <div class='{{styles.subtitle}}'>{{{header.subtitle}}}</div>
 </div>
+{{/if}}
+{{#if hasContent}}
 <div class='{{styles.content}}'>
   {{{content}}}
 </div>
+{{/if}}
+{{#if hasActions}}
 <div class='{{styles.actions}}'>
   {{{actions}}}
 </div>
+{{/if}}

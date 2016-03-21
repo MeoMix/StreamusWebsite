@@ -38,7 +38,7 @@ export default LayoutView.extend({
     // TODO: Wait for all items in collectionview to render before measuring since flex height changes as items add.
     setTimeout(() => {
       if (this.model.get('isActive')) {
-        this.$el.height(this.ui.description.outerHeight() + 48);
+        this.$el.height(this.ui.description.outerHeight(true) + 48);
       }
     }, 100);
   },
@@ -50,7 +50,7 @@ export default LayoutView.extend({
   _onChangeIsActive(model, isActive) {
     if (isActive) {
       this.el.classList.add(styles.isActive);
-      this.$el.height(this.ui.description.outerHeight() + 48);
+      this.$el.height(this.ui.description.outerHeight(true) + 48);
     } else {
       this.el.classList.remove(styles.isActive);
       this.$el.height(48);

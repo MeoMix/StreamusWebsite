@@ -58,15 +58,15 @@ const SelectView = LayoutView.extend({
   _openSimpleMenu() {
     // If the list item is clicked while the menu is open do not re-open it.
     if (isUndefined(this.getChildView('simpleMenu'))) {
+
       const simpleMenuItems = new SimpleMenuItems(this.model.get('options').map((option) => {
         return {
           active: option.get('isSelected'),
           text: option.get('label'),
           value: option.get('value'),
-          // TODO: Formatting.
-          onClick: function() {
-            this.set('isSelected', true);
-          }.bind(option)
+          onClick() {
+            option.set('isSelected', true);
+          }
         };
       }));
 

@@ -1,4 +1,24 @@
 ﻿.share {
+
+  &.isLoading,
+  &.hasError,
+  &.hasPlaylist {
+   & .introduction {
+     display: none;
+   } 
+  }
+
+  &:not(.isLoading) {
+   & .loading {
+     display: none;
+   } 
+  }
+
+  &:not(.hasError) {
+   & .error {
+     display: none;
+   } 
+  }
 }
 
 .title {
@@ -22,24 +42,6 @@
   justify-content: center;
 }
 
-.share.isLoading .introduction,
-.share.hasPlaylist .introduction,
-.share.hasError .introduction {
-  display: none;
-}
-
-.share:not(.isLoading) .loading {
-  display: none;
-}
-
-.share:not(.hasError) .error {
-  display: none;
-}
-
-.loading {
-  
-}
-
-.error {
-  
+.image {
+  trait: bottomOutset from 'box-shadow';
 }

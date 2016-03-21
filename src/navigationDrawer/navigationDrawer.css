@@ -24,13 +24,7 @@
   trait: top from 'box-shadow';
 }
 
-.logo {
-}
-
 .navigationItemsRegion {
   padding-top: 8px;
   flex: 1;
-}
-
-.link {
 }

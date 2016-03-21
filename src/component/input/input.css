@@ -1,5 +1,6 @@
 ﻿.input {
   
+
 }
 
 .value {
@@ -73,7 +74,7 @@
   trait: hint from 'color';
   display: inline-block;
   transform: translate(0, 25px) scale(1);
-  transition: transform .28s cubic-bezier(.39, .575, .565, 1);
+  transition: transform .28s cubic-bezier(.39, .575, .565, 1), color .28s cubic-bezier(.39, .575, .565, 1);
   pointer-events: none;
   user-select: none;
 }
@@ -104,10 +105,10 @@
   trait: error from 'color';
   opacity: 0;
   transition: opacity .28s cubic-bezier(.39, .575, .565, 1);
-}
 
-.errorMessage:first-letter {
-  text-transform: capitalize;
+  &:first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .characterCountWrapper {

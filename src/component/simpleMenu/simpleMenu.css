@@ -6,7 +6,7 @@
   &.isVisible {
     pointer-events: all;
 
-    .content {
+    & .content {
       opacity: 1;
     }
   }

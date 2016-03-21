@@ -4,19 +4,13 @@
 
   /* TODO: This CSS feels a bit forced. */
   &:not(.isLoading) {
-    .loading {
+    & .loading {
       display: none;
     }
   }
 
   &:not(.hasError) {
-    .error {
-      display: none;
-    }
-  }
-
-  &:not(.isLoaded) {
-    .details {
+    & .error {
       display: none;
     }
   }
@@ -37,4 +31,8 @@
 
 .subtitle {
   trait: darkSecondary from 'color';
+}
+
+.details {
+  flex: 1;
 }

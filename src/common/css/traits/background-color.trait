@@ -10,6 +10,15 @@
   background-color: color(rgb(66, 133, 244) shade(12%));
 }
 
+.darkBlue {
+  background-color:  rgb(40, 112, 238);
+}
+
+.darkBlue--shaded {
+  background-color: color(rgb(40, 112, 238) shade(12%));
+}
+
+
 .white {
   background-color: rgb(255, 255, 255);
 }

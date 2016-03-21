@@ -34,11 +34,16 @@ const InputView = LayoutView.extend({
     // Since element already existed, need to append className manually.
     this.el.classList.add(this.className);
     this.el.classList.toggle(styles.hasValue, this.model.hasValue());
+    this.el.classList.toggle(styles.hasFocus, this.model.get('isAutofocused'));
   },
 
   onAttach() {
     if (this.model.get('isMultiline') && this.model.hasValue()) {
       this._setMultilineHeight(false);
+    }
+
+    if (this.model.get('isAutofocused')) {
+      this.ui.input[0].focus();
     }
   },
 
@@ -99,6 +104,7 @@ const registerInputElement = function() {
             name: this._getAttribute('name'),
             isRequired: this.hasAttribute('required'),
             isMultiline: this.hasAttribute('multiline'),
+            isAutofocused: this.hasAttribute('autofocus'),
             value: this._getAttribute('value', type === InputType.Number),
             maxLength: this._getAttribute('maxLength', true),
             min: this._getAttribute('min', true),

@@ -4,7 +4,7 @@
   {{#if isMultiline}}
   <textarea data-ui='input' class='{{styles.value}}' maxlength='{{maxLength}}' rows='1' name='{{name}}'>{{value}}</textarea>
   {{else}}
-  <input data-ui='input' class='{{styles.value}}' type='{{type}}' min='{{min}}' maxlength='{{maxLength}}' value='{{value}}' name='{{name}}'>
+  <input data-ui='input' class='{{styles.value}}' type='{{type}}' min='{{min}}' maxlength='{{maxLength}}' value='{{value}}' name='{{name}}' {{ternary isAutofocused 'autofocus' ''}}>
   {{/if}}
 </div>
 

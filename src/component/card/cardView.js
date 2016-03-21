@@ -8,8 +8,14 @@ const CardView = LayoutView.extend({
   tagName: 'streamus-card',
   className: styles.card,
   template,
-  templateHelpers: {
-    styles
+  templateHelpers() {
+    return {
+      styles,
+      hasHeader: this.model.hasHeader(),
+      hasContent: this.model.hasContent(),
+      hasRichMedia: this.model.hasRichMedia(),
+      hasActions: this.model.hasActions()
+    }
   },
 
   initialize() {

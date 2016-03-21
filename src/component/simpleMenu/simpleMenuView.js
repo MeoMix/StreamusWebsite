@@ -142,6 +142,7 @@ export default LayoutView.extend({
   // When showing this view over a ListItem, center the view's active item over the ListItem.
   _centerActive(listItemHeight) {
     if (listItemHeight > 0) {
+      console.log('centering');
       const offsetData = this.getChildView('simpleMenuItems').getActiveItemOffsetData();
       // Center the offset over the listItem using logic outlined in Material guidelines
       // http://www.google.com/design/spec/components/menus.html#menus-simple-menus
