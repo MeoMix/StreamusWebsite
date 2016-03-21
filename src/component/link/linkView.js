@@ -45,7 +45,7 @@ const registerLinkElement = function() {
       _getAttribute(attributeName) {
         const hasAttribute = this.hasAttribute(attributeName);
         // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
-        let attribute = undefined;
+        let attribute;
 
         if (hasAttribute) {
           attribute = this.getAttribute(attributeName);

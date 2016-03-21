@@ -58,7 +58,6 @@ const SelectView = LayoutView.extend({
   _openSimpleMenu() {
     // If the list item is clicked while the menu is open do not re-open it.
     if (isUndefined(this.getChildView('simpleMenu'))) {
-
       const simpleMenuItems = new SimpleMenuItems(this.model.get('options').map((option) => {
         return {
           active: option.get('isSelected'),
@@ -72,7 +71,7 @@ const SelectView = LayoutView.extend({
 
       this.showChildView('simpleMenu', new SimpleMenuView({
         model: new SimpleMenu({
-          simpleMenuItems: simpleMenuItems,
+          simpleMenuItems,
           listItemHeight: this.$el.height()
         })
       }));
@@ -128,7 +127,7 @@ const registerSelectElement = function() {
       _getAttribute(attributeName, element = this) {
         const hasAttribute = element.hasAttribute(attributeName);
         // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
-        let attribute = undefined;
+        let attribute;
 
         if (hasAttribute) {
           attribute = element.getAttribute(attributeName);

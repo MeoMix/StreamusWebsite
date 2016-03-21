@@ -3,7 +3,6 @@ import styles from './application.css';
 import template from './application.hbs';
 import HeaderRegion from 'header/headerRegion.js';
 import FooterRegion from 'footer/footerRegion.js';
-import NavigationDrawerRegion from 'navigationDrawer/navigationDrawerRegion.js';
 import SnackbarRegion from 'snackbar/snackbarRegion.js';
 import ContentPagesRegion from 'contentPages/contentPagesRegion.js';
 import _ from 'lodash';
@@ -20,10 +19,6 @@ export default LayoutView.extend({
       selector: 'header',
       regionClass: HeaderRegion
     },
-    //navigation: {
-    //  selector: 'navigationDrawer',
-    //  regionClass: NavigationDrawerRegion
-    //},
     content: {
       selector: 'content',
       regionClass: ContentPagesRegion

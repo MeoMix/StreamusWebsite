@@ -60,7 +60,7 @@ export default LayoutView.extend({
       this._setPosition(this.model.get('repositionData'));
     }
 
-    // Call `ensureActiveIsVisible` from parent because `_centerActive` depends on simpleMenuItems' `scrollTop` which is set here.
+    // Call ensureActiveIsVisible from parent because _centerActive depends on simpleMenuItems' scrollTop.
     this.getChildView('simpleMenuItems').ensureActiveIsVisible();
     this._centerActive(this.model.get('listItemHeight'));
 
@@ -69,8 +69,9 @@ export default LayoutView.extend({
 
   hide() {
     App.channels.simpleMenu.vent.trigger('hidden');
-    // TODO: Fix + namespace.
-    this.ui.panelContent.off('webkitTransitionEnd').one('webkitTransitionEnd', this._onTransitionOutComplete.bind(this));
+    this.ui.panelContent
+      .off('webkitTransitionEnd.transitionOut')
+      .on('webkitTransitionEnd.transitionOut', this._onTransitionOutComplete.bind(this));
     this.el.classList.remove(styles.isVisible);
   },
 
@@ -142,7 +143,6 @@ export default LayoutView.extend({
   // When showing this view over a ListItem, center the view's active item over the ListItem.
   _centerActive(listItemHeight) {
     if (listItemHeight > 0) {
-      console.log('centering');
       const offsetData = this.getChildView('simpleMenuItems').getActiveItemOffsetData();
       // Center the offset over the listItem using logic outlined in Material guidelines
       // http://www.google.com/design/spec/components/menus.html#menus-simple-menus

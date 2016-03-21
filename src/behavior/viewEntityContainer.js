@@ -45,7 +45,7 @@ export default Behavior.extend({
 
   // Make sure the model is a property of the view.
   _ensureViewReferencesViewEntity(viewEntityName) {
-    if (!Reflect.has(this.view, viewEntityName)) {
+    if (!this.view.hasOwnProperty(viewEntityName)) {
       throw new Error(`ViewEntityContainer expects viewEntity ${viewEntityName} to be a property of the view`);
     }
   },
@@ -68,7 +68,7 @@ export default Behavior.extend({
       this._ensureViewReferencesViewEntity(viewEntityName);
       const viewEntity = this.view[viewEntityName];
       viewEntity.stopListening();
-      Reflect.deleteProperty(viewEntity, '_isAttachedToView');
+      delete viewEntity._isAttachedToView;
     }
   }
 });

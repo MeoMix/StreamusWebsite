@@ -123,7 +123,7 @@ export default Model.extend({
 
     // Use the HTML5 email validation RegEx implemented in Webkit.
     // http://stackoverflow.com/a/4940155/633438
-    if (this.get('isRequired') && !/[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]+@[A-Za-z0-9-]+(.[A-Za-z0-9-]+)*/.test(value)) {
+    if (this.get('isRequired') && !(/[A-Za-z0-9!#$%&'*+-/=?^_`{|}~]+@[A-Za-z0-9-]+(.[A-Za-z0-9-]+)*/).test(value)) {
       isValid = false;
       errorMessage = `Valid ${this.get('name')} is required`;
     }

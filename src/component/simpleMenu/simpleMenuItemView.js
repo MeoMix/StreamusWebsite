@@ -27,7 +27,7 @@ export default LayoutView.extend({
     const enabled = !this.model.get('disabled');
 
     if (enabled) {
-      this.model.get('onClick').call(this.model, this.model);
+      this.model.get('onClick')();
 
       this.triggerMethod('click:item', {
         view: this,

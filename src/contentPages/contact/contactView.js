@@ -32,17 +32,22 @@ export default LayoutView.extend({
   _onFormSubmit(event) {
     event.preventDefault();
     this.model.set(serialize(this));
-    this.model.save().then(() => {
-      this.ui.submit.val('Message sent');
-      App.channels.snackbar.commands.trigger('show:snackbar', {
-        message: 'Message sent.'
+
+    const saveDeferred = this.model.save();
+    // If validation fails then Backbone's save method returns undefined rather than a deferred object.
+    if (saveDeferred) {
+      saveDeferred.then(() => {
+        this.ui.submit.val('Message sent');
+        App.channels.snackbar.commands.trigger('show:snackbar', {
+          message: 'Message sent.'
+        });
+      }, (response) => {
+        this.ui.submit.prop('disabled', false);
+        App.channels.snackbar.commands.trigger('show:snackbar', {
+          message: `Sending failed. ${response.responseText.replace(/"/g, '')}`
+        });
       });
-    }, (response) => {
-      this.ui.submit.prop('disabled', false);
-      App.channels.snackbar.commands.trigger('show:snackbar', {
-        message: `Sending failed. ${response.responseText.replace(/"/g, '')}`
-      });
-    });
+    }
   },
 
   _onInvalid() {

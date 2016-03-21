@@ -130,13 +130,16 @@ const registerInputElement = function() {
       _getAttribute(attributeName, parseAsInteger) {
         const hasAttribute = this.hasAttribute(attributeName);
         // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
-        let attribute = undefined;
+        let attribute;
 
         if (hasAttribute) {
           attribute = this.getAttribute(attributeName);
 
           if (parseAsInteger) {
+            /*eslint-disable radix*/
+            // TODO: eslint bug fails to recognize parseInt from lodash: https://github.com/eslint/eslint/issues/5639
             attribute = parseInt(attribute);
+            /*eslint-enable radix*/
           }
         }
 

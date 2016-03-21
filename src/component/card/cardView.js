@@ -15,7 +15,7 @@ const CardView = LayoutView.extend({
       hasContent: this.model.hasContent(),
       hasRichMedia: this.model.hasRichMedia(),
       hasActions: this.model.hasActions()
-    }
+    };
   },
 
   initialize() {

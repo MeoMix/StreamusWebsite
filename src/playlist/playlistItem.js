@@ -1,9 +1,6 @@
 ﻿import { Model } from 'backbone';
 import Video from './video.js';
 import { mapValues } from 'lodash';
-// Polyfill is needed for Reflect API
-import 'babel-polyfill';
-
 export default Model.extend({
   defaults: {
     id: null,
@@ -22,7 +19,7 @@ export default Model.extend({
 
       // Take json of video and set into model. Delete to prevent overriding on return of data object.
       this.get('video').set(playlistItemDto.video);
-      Reflect.deleteProperty(playlistItemDto, 'video');
+      delete playlistItemDto.video;
     }
 
     return playlistItemDto;

@@ -106,14 +106,18 @@ export default LayoutView.extend({
 
   // Slide the snackbar up and into the viewport.
   _transitionIn() {
-    this.$el.off('webkitTransitionEnd.transitionIn').on('webkitTransitionEnd.transitionIn', this._onTransitionInComplete.bind(this));
+    this.$el
+      .off('webkitTransitionEnd.transitionIn')
+      .on('webkitTransitionEnd.transitionIn', this._onTransitionInComplete.bind(this));
     this.el.classList.add(styles.isVisible);
   },
 
   // Slide snackbar down and out of the viewport. Destroy the view once it is fully hidden.
   _transitionOut() {
     // TODO: I need to support non-webkit browsers.
-    this.$el.off('webkitTransitionEnd.transitionOut').on('webkitTransitionEnd.transitionOut', this._onTransitionOutComplete.bind(this));
+    this.$el
+      .off('webkitTransitionEnd.transitionOut')
+      .on('webkitTransitionEnd.transitionOut', this._onTransitionOutComplete.bind(this));
     this.el.classList.remove(styles.isVisible);
     this.model.set('isFullyVisible', false);
   }

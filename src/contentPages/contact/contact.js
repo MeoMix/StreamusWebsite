@@ -32,8 +32,6 @@ export default Model.extend({
       validationErrors.push('Message is invalid');
     }
 
-    if (validationErrors.length > 0) {
-      return validationErrors.join(' ');
-    }
+    return validationErrors.length > 0 ? validationErrors.join(' ') : null;
   }
 });
