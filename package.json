@@ -179,7 +179,6 @@
     "karma-mocha": "^0.2.0",
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.2.0",
-    "lodash": "^4.6.1",
     "lolex": "^1.4.0",
     "mocha": "^2.3.3",
     "opn": "^4.0.1",
@@ -192,4 +191,5 @@
     "systemjs-builder": "^0.15.9",
     "yargs": "^3.27.0"
   }
-}
+}
+
