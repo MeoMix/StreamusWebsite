@@ -25,6 +25,9 @@ module.exports = function(config) {
     frameworks: ['jspm', 'mocha', 'chai', 'sinon-chai'],
     
     jspm: {
+      browser: 'jspm/jspm.browser.js',
+      config: 'jspm/jspm.config.js',
+      packages: 'jspm/jspm_packages/',
       loadFiles: ['test/**/*.spec.js'],
       // serveFiles makes additional files available for jspm to load,
       // but does not load immediately.
@@ -34,7 +37,8 @@ module.exports = function(config) {
         '*': 'base/compiled/*',
         // Tests aren't located under compiled directory. Undo the above path modification.
         'compiled/*': 'compiled/*',
-        'test/*': 'test/*'
+        // TODO: .js file-ending necessary due to bug with karma-jspm: https://github.com/Workiva/karma-jspm/issues/141
+        'test/*': 'test/*.js'
       }
     },
     
