@@ -244,7 +244,7 @@
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
-    "karma-jspm": "^2.0.1",
+    "karma-jspm": "^2.1.0",
     "karma-mocha": "^0.2.0",
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.2.0",
