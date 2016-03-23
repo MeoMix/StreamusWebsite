@@ -30,6 +30,7 @@
     Set line-height instead of adjusting height to allow for multiline to grow/shrink correctly.
   */
   line-height: 20px;
+  cursor: pointer;
 }
 
 

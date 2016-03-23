@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
 
+  &:not(.isLoaded) {
+    & .details {
+      display: none;
+    }
+  }
+
   /* TODO: This CSS feels a bit forced. */
   &:not(.isLoading) {
     & .loading {

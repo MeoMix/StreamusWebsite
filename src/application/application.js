@@ -79,19 +79,22 @@ export default Application.extend({
   },
 
   _onStart() {
-    const applicationView = new ApplicationView();
-    applicationView.render();
+    setTimeout(() => {
+      const applicationView = new ApplicationView();
+      applicationView.render();
 
-    this.router = new Router();
+      this.router = new Router();
 
-    // Enable Backbone History to use routing. Only modern browsers are anticipated so set pushState to true.
-    history.start({
-      pushState: true
-    });
+      // Enable Backbone History to use routing. Only modern browsers are anticipated so set pushState to true.
+      history.start({
+        pushState: true
+      });
 
-    // Intercept href links so that HTML5 pushState is used instead of a full page reload.
-    Intercept.start();
+      // Intercept href links so that HTML5 pushState is used instead of a full page reload.
+      Intercept.start();
 
-    this.analyticsManager.sendPageView();
+      this.analyticsManager.sendPageView();
+    }, 2000);
+
   }
 });

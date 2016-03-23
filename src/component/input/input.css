@@ -1,6 +1,4 @@
 ﻿.input {
-  
-
 }
 
 .value {
@@ -29,6 +27,8 @@
     Set line-height instead of adjusting height to allow for multiline to grow/shrink correctly.
   */
   line-height: 20px;
+  /* It's important to set overflow: hidden otherwise Firefox will render 1 additional row for <textarea> elements. */
+  overflow: hidden;
 }
 
 .hasFocus:not(.isInvalid) .value {

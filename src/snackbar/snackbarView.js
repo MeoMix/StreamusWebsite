@@ -96,8 +96,8 @@ export default LayoutView.extend({
     }
   },
 
-  _setHideTimeout(hideTimeoutDelay) {
-    this._hideTimeout = setTimeout(() => this.hide(), hideTimeoutDelay);
+  _setHideTimeout(delay) {
+    this._hideTimeout = setTimeout(() => this.hide(), delay);
   },
 
   _clearHideTimeout() {

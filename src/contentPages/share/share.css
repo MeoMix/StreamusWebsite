@@ -37,7 +37,7 @@
   @mixin flatButton light from 'button/button';
 }
 
-.introduction {
+.cards {
   display: flex;
   justify-content: center;
 }

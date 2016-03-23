@@ -23,7 +23,14 @@ export default LayoutView.extend({
     'change:hasPlaylist': '_onChangeHasPlaylist'
   },
 
+  _loadingStartTime: null,
+  _loadedPlaylistTimeout: null,
+  _minLoadingDisplayTime: 1000,
+
   onRender() {
+    this.el.addEventListener('card:created', () => {
+      console.log('yo');
+    });
     // If the view was initialized with a ShareCode then go ahead and load it.
     // Otherwise, just let the user know no ShareCode is present and they can act accordingly.
     const shareCode = this.model.get('shareCode');
@@ -51,11 +58,41 @@ export default LayoutView.extend({
       hasPlaylist: false
     });
 
+    this._loadingStartTime = performance.now();
+
     // Figure out the actual entity ID from the ShareCode by asking the server for more information.
     shareCode.fetchByShortIdAndEntityTitle().then(this._onFetchResolve.bind(this), this._onFetchReject.bind(this));
   },
 
   _onFetchResolve() {
+    const currentDisplayTime = performance.now() - this._loadingStartTime;
+    const remainingDisplayTime = this._minLoadingDisplayTime - currentDisplayTime;
+
+    if (remainingDisplayTime > 0) {
+      this._setLoadedPlaylistTimeout(remainingDisplayTime);
+    } else {
+      this._showLoadedPlaylist();
+    }
+  },
+
+  _onFetchReject() {
+    this.model.set({
+      isLoading: false,
+      hasError: true
+    });
+  },
+
+  _setLoadedPlaylistTimeout(delay) {
+    this._loadedPlaylistTimeout = setTimeout(() => this._showLoadedPlaylist(), delay);
+  },
+
+  _clearLoadedPlaylistTimeout() {
+    clearTimeout(this._loadedPlaylistTimeout);
+  },
+
+  _showLoadedPlaylist() {
+    this._clearLoadedPlaylistTimeout();
+
     this.model.set({
       isLoading: false,
       hasPlaylist: true
@@ -69,12 +106,5 @@ export default LayoutView.extend({
       model: playlist,
       collection: playlist.get('items')
     }));
-  },
-
-  _onFetchReject() {
-    this.model.set({
-      isLoading: false,
-      hasError: true
-    });
   }
 });

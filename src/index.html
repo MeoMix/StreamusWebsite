@@ -27,7 +27,15 @@
     <script src='./jspm/jspm.browser.js'></script>
     <script src='./jspm/jspm.config.js'></script>
     <script>
-      System.import('./main.js');
+      window.addEventListener('WebComponentsReady', function() {
+        System.import('./main.js');
+      });
+      /*
+        NOTE: It's SUPER IMPORTANT to use webcomponents-lite and not the full version.
+        webcomponents-lite doesn't bring in the shadowdom polyfill. Mn's onAttach event will not fire
+        if shadowdom polyfill is loaded.
+      */
+      System.import('webcomponents.js/webcomponents-lite.js');
     </script>
     <!-- endbuild -->
 

@@ -25,7 +25,7 @@ const SelectView = LayoutView.extend({
   },
 
   events: {
-    'click': '_onClick'
+    'click @ui.value': '_onClickValue'
   },
 
   initialize() {
@@ -40,7 +40,7 @@ const SelectView = LayoutView.extend({
     this.ui.value.text(selectedOption.get('label'));
   },
 
-  _onClick() {
+  _onClickValue() {
     this._openSimpleMenu();
   },
 

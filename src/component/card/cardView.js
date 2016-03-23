@@ -40,9 +40,16 @@ const registerCardElement = function() {
             actions: this._getElementHtml('actions')
           })
         });
-        cardView.render();
 
+        cardView.render();
         this._view = cardView;
+
+        if (!window.CustomElements.hasNative) {
+          // Notify views which rendered this webcomponent that their HTML markup has changed.
+          this.dispatchEvent(new Event('card:created', {
+            bubbles: true
+          }));
+        }
       },
 
       attachedCallback() {

@@ -115,10 +115,15 @@ export default Model.extend({
       const isInvalidOperaVersion = browser.get('isOpera') && browser.get('version') < minOperaVersion;
       const isInvalidChromeVersion = browser.get('isChrome') && browser.get('version') < minChromeVersion;
 
-      if (!isWebKit || isInvalidOperaVersion || isInvalidChromeVersion) {
+      if (!isWebKit) {
         this.set({
-          enabled: false,
-          text: `Chrome v${minChromeVersion} or Opera v${minOperaVersion} required`
+          isDisabled: true,
+          text: `Google Chrome required`
+        });
+      } else if(isInvalidOperaVersion || isInvalidChromeVersion) {
+        this.set({
+          isDisabled: true,
+          text: `Google Chrome v${minChromeVersion} required`
         });
       }
     }

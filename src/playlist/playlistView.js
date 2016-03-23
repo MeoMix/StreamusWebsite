@@ -5,6 +5,7 @@ import PlaylistItemsView from './playlistItemsView.js';
 import InstallButton from 'button/installButton.js';
 import SavePlaylistButtonView from './savePlaylistButtonView.js';
 import SavePlaylistButton from './savePlaylistButton.js';
+import WebcomponentBehavior from 'behavior/webcomponentBehavior.js';
 
 export default LayoutView.extend({
   className: styles.playlist,
@@ -21,6 +22,16 @@ export default LayoutView.extend({
   ui: {
     title: 'title',
     displayInfo: 'displayInfo'
+  },
+
+  modelEvents: {
+    'request': '_onRequest'
+  },
+
+  behaviors: {
+    webcomponent: {
+      behaviorClass: WebcomponentBehavior
+    }
   },
 
   initialize() {
@@ -46,6 +57,10 @@ export default LayoutView.extend({
     this.showChildView('playlistItems', new PlaylistItemsView({
       collection: this.model.get('items')
     }));
+  },
+
+  _onRequest() {
+    this.el.classList.add(styles.isLoading);
   },
 
   _onFetchResolve() {

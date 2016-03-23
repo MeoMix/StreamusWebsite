@@ -6,11 +6,6 @@
   @mixin description from '../contentPage';
 }
 
-.card {
-  @mixin card from 'common/css/components/card';
-  padding: 24px 8px 8px 8px;
-}
-
 .icons {
   flex: 1;
   display: flex;

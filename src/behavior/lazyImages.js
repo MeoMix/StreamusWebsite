@@ -39,6 +39,12 @@ export default Behavior.extend({
   },
 
   _loadImages() {
+    // webcomponents polyfill results in getBoundingClientRect returning all default values for cached ui elements.
+    if (this.ui.lazyImage.length > 0 && this.ui.lazyImage[0].getBoundingClientRect().width === 0) {
+      this.view.bindUIElements();
+      this._unloadedImages = Array.from(this.ui.lazyImage);
+    }
+
     // Determine which images (if any) need to be loaded.
     const imagesInThreshold = filter(this._unloadedImages, (image) => {
       return image.getBoundingClientRect().top <= this._windowHeight + this.options.threshold;
