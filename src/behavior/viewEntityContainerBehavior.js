@@ -6,8 +6,8 @@
 // If an entity's lifetime is scoped to its view then it can safely bind event listeners
 // if the view implements this Behavior.
 // Example:
-// ViewEntityContainer: {
-//   behaviorClass: ViewEntityContainer,
+// viewEntityContainer: {
+//   behaviorClass: ViewEntityContainerBehavior,
 //   viewEntityNames: ['model']
 // }
 export default Behavior.extend({

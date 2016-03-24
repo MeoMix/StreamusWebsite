@@ -1,15 +1,15 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './faqItem.hbs';
 import styles from './faqItem.css';
 
-export default LayoutView.extend({
+export default View.extend({
   tagName: 'li',
   id() {
     return this.model.get('id');
   },
   className: styles.faqItem,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 

@@ -1,12 +1,12 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './privacyPolicy.hbs';
 import styles from './privacyPolicy.css';
 import RouteType from 'route/routeType.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.privacyPolicy,
   template,
-  templateHelpers: {
+  templateContext: {
     styles,
     RouteType
   }

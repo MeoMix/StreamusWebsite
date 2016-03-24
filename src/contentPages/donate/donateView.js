@@ -1,12 +1,12 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './donate.hbs';
 import styles from './donate.css';
 import InputType from 'component/input/inputType.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.donate,
   template,
-  templateHelpers: {
+  templateContext: {
     styles,
     InputType
   },

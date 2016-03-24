@@ -1,11 +1,11 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './notFound.hbs';
 import styles from './notFound.css';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.notFound,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   }
 });

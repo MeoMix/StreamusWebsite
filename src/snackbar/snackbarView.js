@@ -1,12 +1,12 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './snackbar.hbs';
 import styles from './snackbar.css';
 import { defer } from 'lodash';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.snackbar,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -27,7 +27,7 @@ export default LayoutView.extend({
     // were responsible for showing it do not also result in hiding.
     defer(() => {
       if (!this.isDestroyed) {
-        this.listenTo(App.channels.element.vent, 'click', this._onElementClick);
+        this.listenTo(App.channels.element, 'click', this._onElementClick);
       }
     });
   },

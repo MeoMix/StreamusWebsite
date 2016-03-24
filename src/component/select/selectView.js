@@ -1,4 +1,4 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './select.hbs';
 import styles from './select.css';
 import Select from './select.js';
@@ -6,13 +6,13 @@ import Options from './options.js';
 import SimpleMenuItems from '../simpleMenu/simpleMenuItems.js';
 import SimpleMenu from '../simpleMenu/simpleMenu.js';
 import SimpleMenuView from '../simpleMenu/simpleMenuView.js';
-import { isUndefined, extend } from 'lodash';
+import { isUndefined } from 'lodash';
 
-const SelectView = LayoutView.extend({
+const SelectView = View.extend({
   tagName: 'streamus-select',
   className: styles.select,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -81,59 +81,77 @@ const SelectView = LayoutView.extend({
 
 const registerSelectElement = function() {
   document.registerElement('streamus-select', {
-    prototype: extend(Object.create(HTMLElement.prototype), {
-      createdCallback() {
-        const selectView = new SelectView({
-          el: this,
-          model: new Select({
-            placeholder: this._getAttribute('placeholder'),
-            name: this._getAttribute('name'),
-            options: this._getOptions()
-          })
-        });
-        selectView.render();
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value() {
+          const selectView = new SelectView({
+            el: this,
+            model: new Select({
+              placeholder: this._getAttribute('placeholder'),
+              name: this._getAttribute('name'),
+              options: this._getOptions()
+            })
+          });
+          selectView.render();
 
-        this._view = selectView;
+          this._view = selectView;
+
+          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          if (!window.CustomElements.hasNative) {
+            // Notify views which rendered this webcomponent that their HTML markup has changed.
+            this.dispatchEvent(new Event('customElement:created', {
+              bubbles: true
+            }));
+          }
+        }
       },
 
-      attachedCallback() {
-        this._view.triggerMethod('attach');
+      attachedCallback: {
+        value() {
+          this._view.triggerMethod('attach');
+        }
       },
 
-      detachedCallback() {
-        this._view.destroy();
-        delete this._view;
+      detachedCallback: {
+        value() {
+          this._view.destroy();
+          delete this._view;
+        }
       },
 
-      _getOptions() {
-        const optionsDataList = Array.from(this.children).map((optionElement) => {
-          let label = this._getAttribute('label', optionElement);
+      _getOptions: {
+        value() {
+          const optionsDataList = Array.from(this.children).map((optionElement) => {
+            let label = this._getAttribute('label', optionElement);
 
-          if (isUndefined(label)) {
-            label = optionElement.textContent;
+            if (isUndefined(label)) {
+              label = optionElement.textContent;
+            }
+
+            return {
+              label,
+              value: this._getAttribute('value', optionElement),
+              isSelected: optionElement.hasAttribute('selected'),
+              isDisabled: optionElement.hasAttribute('disabled')
+            };
+          });
+
+          return new Options(optionsDataList);
+        }
+      },
+
+      _getAttribute: {
+        value(attributeName, element = this) {
+          const hasAttribute = element.hasAttribute(attributeName);
+          // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
+          let attribute;
+
+          if (hasAttribute) {
+            attribute = element.getAttribute(attributeName);
           }
 
-          return {
-            label,
-            value: this._getAttribute('value', optionElement),
-            isSelected: optionElement.hasAttribute('selected'),
-            isDisabled: optionElement.hasAttribute('disabled')
-          };
-        });
-
-        return new Options(optionsDataList);
-      },
-
-      _getAttribute(attributeName, element = this) {
-        const hasAttribute = element.hasAttribute(attributeName);
-        // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
-        let attribute;
-
-        if (hasAttribute) {
-          attribute = element.getAttribute(attributeName);
+          return attribute;
         }
-
-        return attribute;
       }
     })
   });

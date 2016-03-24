@@ -2,7 +2,7 @@
 
 export default Region.extend({
   initialize() {
-    this.listenTo(App.channels.content.commands, 'region:showView', this._showView);
+    this.listenTo(App.channels.content, 'region:showView', this._showView);
   },
 
   _showView(View, viewOptions) {

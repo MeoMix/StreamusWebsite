@@ -1,18 +1,18 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './about.hbs';
 import styles from './about.css';
-import LazyImages from 'behavior/lazyImages.js';
+import LazyImageBehavior from 'behavior/lazyImageBehavior.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.about,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
   behaviors: {
-    LazyImages: {
-      behaviorClass: LazyImages
+    lazyImage: {
+      behaviorClass: LazyImageBehavior
     }
   }
 });

@@ -1,16 +1,16 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './playlist.hbs';
 import styles from './playlist.css';
 import PlaylistItemsView from './playlistItemsView.js';
 import InstallButton from 'button/installButton.js';
 import SavePlaylistButtonView from './savePlaylistButtonView.js';
 import SavePlaylistButton from './savePlaylistButton.js';
-import WebcomponentBehavior from 'behavior/webcomponentBehavior.js';
+import CustomElementBehavior from 'behavior/customElementBehavior.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.playlist,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -29,8 +29,8 @@ export default LayoutView.extend({
   },
 
   behaviors: {
-    webcomponent: {
-      behaviorClass: WebcomponentBehavior
+    customElement: {
+      behaviorClass: CustomElementBehavior
     }
   },
 

@@ -7,7 +7,7 @@ export default Object.extend({
 
   show(routeData) {
     const viewOptions = this.getViewOptions(routeData.params);
-    App.channels.content.commands.trigger('region:showView', this.viewClass, viewOptions);
+    App.channels.content.trigger('region:showView', this.viewClass, viewOptions);
   },
 
   getViewOptions() {},

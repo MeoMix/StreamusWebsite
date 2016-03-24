@@ -1,4 +1,4 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './simpleMenu.hbs';
 import styles from './simpleMenu.css';
 import SimpleMenuItemsView from './simpleMenuItemsView.js';
@@ -7,10 +7,10 @@ import FixedPosition from './fixedPosition.js';
 import Utility from 'common/utility.js';
 import { defer } from 'lodash';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.simpleMenu,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -33,12 +33,7 @@ export default LayoutView.extend({
     // were responsible for showing it do not also result in hiding.
     defer(() => {
       if (!this.isDestroyed) {
-        this.listenTo(App.channels.element.vent, 'click', this._onElementClick);
-        this.listenTo(App.channels.element.vent, 'drag', this._onElementDrag);
-
-        if (this.model.get('isContextMenu')) {
-          this.listenTo(App.channels.element.vent, 'contextMenu', this._onElementContextMenu);
-        }
+        this.listenTo(App.channels.element, 'click', this._onElementClick);
       }
     });
   },
@@ -68,7 +63,6 @@ export default LayoutView.extend({
   },
 
   hide() {
-    App.channels.simpleMenu.vent.trigger('hidden');
     this.ui.panelContent
       .off('webkitTransitionEnd.transitionOut')
       .on('webkitTransitionEnd.transitionOut', this._onTransitionOutComplete.bind(this));
@@ -76,7 +70,6 @@ export default LayoutView.extend({
   },
 
   _onClickItem() {
-    App.channels.simpleMenu.vent.trigger('clicked:item');
     this.hide();
   },
 
@@ -89,15 +82,6 @@ export default LayoutView.extend({
     if (event.target !== this.getRegion('simpleMenuItems').el) {
       this.hide();
     }
-  },
-
-  _onElementDrag() {
-    this.hide();
-  },
-
-  // If a context menu click occurs and this menu is a context menu, hide it.
-  _onElementContextMenu() {
-    this.hide();
   },
 
   // Renders a SimpleMenuItem in a fixed location either above or below the collection of other items.

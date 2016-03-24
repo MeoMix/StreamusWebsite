@@ -2,13 +2,16 @@
 import { result } from 'lodash';
 
 export default Model.extend({
-  defaults: {
-    isDisabled: false,
-    isSaving: false,
-    // TODO: Feel like text shouldn't be in the model.
-    text: 'Add Playlist',
-    playlistId: null,
-    isSavePending: false
+  defaults() {
+    const isWebKit = App.browser.get('isWebKit');
+
+    return {
+      isDisabled: !isWebKit,
+      isSaving: false,
+      text: isWebKit ? 'Add Playlist' : 'Google Chrome required',
+      playlistId: null,
+      isSavePending: false
+    };
   },
 
   initialize() {
@@ -22,7 +25,7 @@ export default Model.extend({
   save() {
     this.set('isDisabled', true);
 
-    App.channels.snackbar.commands.trigger('show:snackbar', {
+    App.channels.snackbar.trigger('show:snackbar', {
       message: 'Adding playlist.'
     });
 
@@ -36,7 +39,7 @@ export default Model.extend({
     const success = response.result === 'success';
 
     if (success) {
-      App.channels.snackbar.commands.trigger('show:snackbar', {
+      App.channels.snackbar.trigger('show:snackbar', {
         message: 'Playlist added.'
       });
 
@@ -46,7 +49,7 @@ export default Model.extend({
         text: 'Playlist added'
       });
     } else {
-      App.channels.snackbar.commands.trigger('show:snackbar', {
+      App.channels.snackbar.trigger('show:snackbar', {
         message: 'Failed to add playlist.'
       });
 

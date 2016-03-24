@@ -1,4 +1,4 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import styles from './application.css';
 import template from './application.hbs';
 import HeaderRegion from 'header/headerRegion.js';
@@ -7,10 +7,10 @@ import SnackbarRegion from 'snackbar/snackbarRegion.js';
 import ContentPagesRegion from 'contentPages/contentPagesRegion.js';
 import _ from 'lodash';
 
-export default LayoutView.extend({
+export default View.extend({
   el: 'main',
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -48,12 +48,12 @@ export default LayoutView.extend({
     window.addEventListener('scroll', this._onWindowScroll);
     window.addEventListener('resize', this._onWindowResize);
 
-    this.listenTo(App.channels.route.vent, 'shown', this._onRouteShown);
+    this.listenTo(App.channels.route, 'shown', this._onRouteShown);
   },
 
   onRender() {
     // Announce the body has been rendered so every region doesn't have to be manually told to show its view.
-    App.channels.body.vent.trigger('rendered');
+    App.channels.body.trigger('rendered');
   },
 
   onBeforeDestroy() {
@@ -62,17 +62,17 @@ export default LayoutView.extend({
   },
 
   _onClick(event) {
-    App.channels.element.vent.trigger('click', event);
+    App.channels.element.trigger('click', event);
   },
 
   _onWindowScroll() {
-    App.channels.window.vent.trigger('scroll', {
+    App.channels.window.trigger('scroll', {
       scrollY: window.scrollY
     });
   },
 
   _onWindowResize() {
-    App.channels.window.vent.trigger('resize', {
+    App.channels.window.trigger('resize', {
       height: window.innerHeight,
       width: window.innerWidth
     });

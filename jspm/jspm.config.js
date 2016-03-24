@@ -14,9 +14,6 @@ SystemJS.config({
             "loader": "hbs"
         }
     },
-    map: {
-        "underscore": "npm:lodash@3.10.1"
-    },
     packages: {}
 });
 
@@ -27,7 +24,8 @@ SystemJS.config({
         "github:*/*.json"
     ],
     map: {
-        "document-register-element": "npm:document-register-element@0.5.4",
+        "backbone.radio": "npm:backbone.radio@1.0.4",
+        "marionette": "npm:backbone.marionette@3.0.0-pre.2",
         "postcss-color-function": "npm:postcss-color-function@2.0.1",
         "postcss-conditionals": "npm:postcss-conditionals@2.0.2",
         "jspm-loader-css": "github:MeoMix/jspm-loader-css@master",
@@ -36,11 +34,9 @@ SystemJS.config({
         "autoprefixer": "npm:autoprefixer@6.3.4",
         "babel-runtime": "npm:babel-runtime@5.8.35",
         "backbone": "npm:backbone@1.2.3",
-        "backbone.babysitter": "github:marionettejs/backbone.babysitter@0.1.11",
         "backbone.base-router": "npm:backbone.base-router@1.3.0",
         "backbone.intercept": "npm:backbone.intercept@0.4.2",
         "backbone.syphon": "npm:backbone.syphon@0.6.3",
-        "backbone.wreqr": "github:marionettejs/backbone.wreqr@1.3.6",
         "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
         "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
         "constants": "github:jspm/nodelibs-constants@0.2.0-alpha",
@@ -54,7 +50,6 @@ SystemJS.config({
         "jquery": "github:components/jquery@2.2.1",
         "jquery.browser": "npm:jquery.browser@0.1.0",
         "lodash": "npm:lodash@3.10.1",
-        "marionette": "github:marionettejs/backbone.marionette@2.4.5",
         "module": "github:jspm/nodelibs-module@0.2.0-alpha",
         "net": "github:jspm/nodelibs-net@0.2.0-alpha",
         "os": "github:jspm/nodelibs-os@0.2.0-alpha",
@@ -175,6 +170,12 @@ SystemJS.config({
         "npm:babel-runtime@5.8.35": {
             "map": {}
         },
+        "npm:backbone.babysitter@0.1.11": {
+            "map": {
+                "backbone": "npm:backbone@1.3.2",
+                "underscore": "npm:underscore@1.8.3"
+            }
+        },
         "npm:backbone.base-router@1.3.0": {
             "map": {
                 "backbone": "npm:backbone@1.2.3",
@@ -187,6 +188,20 @@ SystemJS.config({
                 "underscore": "npm:underscore@1.8.3"
             }
         },
+        "npm:backbone.marionette@3.0.0-pre.2": {
+            "map": {
+                "backbone": "npm:backbone@1.2.3",
+                "backbone.babysitter": "npm:backbone.babysitter@0.1.11",
+                "backbone.radio": "npm:backbone.radio@1.0.4",
+                "underscore": "npm:underscore@1.8.3"
+            }
+        },
+        "npm:backbone.radio@1.0.4": {
+            "map": {
+                "backbone": "npm:backbone@1.3.2",
+                "underscore": "npm:underscore@1.8.3"
+            }
+        },
         "npm:backbone.syphon@0.6.3": {
             "map": {
                 "backbone": "npm:backbone@1.2.3",
@@ -195,6 +210,11 @@ SystemJS.config({
             }
         },
         "npm:backbone@1.2.3": {
+            "map": {
+                "underscore": "npm:underscore@1.8.3"
+            }
+        },
+        "npm:backbone@1.3.2": {
             "map": {
                 "underscore": "npm:underscore@1.8.3"
             }

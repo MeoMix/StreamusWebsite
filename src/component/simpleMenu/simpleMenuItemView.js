@@ -1,12 +1,12 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './simpleMenuItem.hbs';
 import styles from './simpleMenuItem.css';
 import FixedPosition from './fixedPosition.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.simpleMenuItem,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 

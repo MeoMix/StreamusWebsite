@@ -65,8 +65,9 @@
     <Content Include="src\application\applicationView.js" />
     <Content Include="src\application\chromeWebStoreBadge.png" />
     <Content Include="src\application\youTubeBadge.png" />
-    <Content Include="src\behavior\lazyImages.js" />
-    <Content Include="src\behavior\viewEntityContainer.js" />
+    <Content Include="src\behavior\lazyImageBehavior.js" />
+    <Content Include="src\behavior\viewEntityContainerBehavior.js" />
+    <Content Include="src\behavior\customElementBehavior.js" />
     <Content Include="src\button\installButton.css" />
     <Content Include="src\button\installButton.js" />
     <Content Include="src\button\installButtonView.js" />
@@ -95,8 +96,6 @@
     <Content Include="src\common\fonts\fontawesome-webfont.svg" />
     <Content Include="src\route\route.js" />
     <Content Include="src\route\router.js" />
-    <Content Include="src\common\shim\marionette.region.shim.js" />
-    <Content Include="src\common\shim\marionette.toJson.shim.js" />
     <Content Include="src\common\shim\marionette.view.shim.js" />
     <Content Include="src\common\shim\handlebars.helpers.shim.js" />
     <Content Include="src\common\shim\lodash.mixin.shim.js" />

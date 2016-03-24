@@ -1,10 +1,9 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './link.hbs';
 import styles from './link.css';
 import Link from './link.js';
-import { extend } from 'lodash';
 
-const LinkView = LayoutView.extend({
+const LinkView = View.extend({
   tagName: 'streamus-link',
   className: styles.link,
   template,
@@ -17,41 +16,57 @@ const LinkView = LayoutView.extend({
 
 const registerLinkElement = function() {
   document.registerElement(LinkView.prototype.tagName, {
-    prototype: extend(Object.create(HTMLElement.prototype), {
-      createdCallback() {
-        const linkView = new LinkView({
-          el: this,
-          model: new Link({
-            text: this.textContent,
-            href: this._getAttribute('href'),
-            target: this._getAttribute('target'),
-            title: this._getAttribute('title')
-          })
-        });
-        linkView.render();
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value() {
+          const linkView = new LinkView({
+            el: this,
+            model: new Link({
+              text: this.textContent,
+              href: this._getAttribute('href'),
+              target: this._getAttribute('target'),
+              title: this._getAttribute('title')
+            })
+          });
+          linkView.render();
 
-        this._view = linkView;
-      },
+          this._view = linkView;
 
-      attachedCallback() {
-        this._view.triggerMethod('attach');
-      },
-
-      detachedCallback() {
-        this._view.destroy();
-        delete this._view;
-      },
-
-      _getAttribute(attributeName) {
-        const hasAttribute = this.hasAttribute(attributeName);
-        // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
-        let attribute;
-
-        if (hasAttribute) {
-          attribute = this.getAttribute(attributeName);
+          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          if (!window.CustomElements.hasNative) {
+            // Notify views which rendered this webcomponent that their HTML markup has changed.
+            this.dispatchEvent(new Event('customElement:created', {
+              bubbles: true
+            }));
+          }
         }
+      },
 
-        return attribute;
+      attachedCallback: {
+        value() {
+          this._view.triggerMethod('attach');
+        }
+      },
+
+      detachedCallback: {
+        value() {
+          this._view.destroy();
+          delete this._view;
+        }
+      },
+
+      _getAttribute: {
+        value(attributeName) {
+          const hasAttribute = this.hasAttribute(attributeName);
+          // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
+          let attribute;
+
+          if (hasAttribute) {
+            attribute = this.getAttribute(attributeName);
+          }
+
+          return attribute;
+        }
       }
     })
   });

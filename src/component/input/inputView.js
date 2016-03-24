@@ -1,15 +1,15 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './input.hbs';
 import styles from './input.css';
 import Input from './input.js';
 import InputType from './inputType.js';
-import { extend, parseInt } from 'lodash';
+import { parseInt } from 'lodash';
 
-const InputView = LayoutView.extend({
+const InputView = View.extend({
   tagName: 'streamus-input',
   className: styles.input,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -92,57 +92,73 @@ const InputView = LayoutView.extend({
 
 const registerInputElement = function() {
   document.registerElement('streamus-input', {
-    prototype: extend(Object.create(HTMLElement.prototype), {
-      createdCallback() {
-        const type = this._getAttribute('type');
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value() {
+          const type = this._getAttribute('type');
 
-        const inputView = new InputView({
-          el: this,
-          model: new Input({
-            placeholder: this._getAttribute('placeholder'),
-            name: this._getAttribute('name'),
-            isRequired: this.hasAttribute('required'),
-            isMultiline: this.hasAttribute('multiline'),
-            isAutofocused: this.hasAttribute('autofocus'),
-            value: this._getAttribute('value', type === InputType.Number),
-            maxLength: this._getAttribute('maxLength', true),
-            min: this._getAttribute('min', true),
-            max: this._getAttribute('max', true),
-            type
-          })
-        });
-        inputView.render();
+          const inputView = new InputView({
+            el: this,
+            model: new Input({
+              placeholder: this._getAttribute('placeholder'),
+              name: this._getAttribute('name'),
+              isRequired: this.hasAttribute('required'),
+              isMultiline: this.hasAttribute('multiline'),
+              isAutofocused: this.hasAttribute('autofocus'),
+              value: this._getAttribute('value', type === InputType.Number),
+              maxLength: this._getAttribute('maxLength', true),
+              min: this._getAttribute('min', true),
+              max: this._getAttribute('max', true),
+              type
+            })
+          });
+          inputView.render();
 
-        this._view = inputView;
-        this.validate = inputView.validate.bind(inputView);
-      },
+          this._view = inputView;
+          this.validate = inputView.validate.bind(inputView);
 
-      attachedCallback() {
-        this._view.triggerMethod('attach');
-      },
-
-      detachedCallback() {
-        this._view.destroy();
-        delete this._view;
-      },
-
-      _getAttribute(attributeName, parseAsInteger) {
-        const hasAttribute = this.hasAttribute(attributeName);
-        // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
-        let attribute;
-
-        if (hasAttribute) {
-          attribute = this.getAttribute(attributeName);
-
-          if (parseAsInteger) {
-            /*eslint-disable radix*/
-            // TODO: eslint bug fails to recognize parseInt from lodash: https://github.com/eslint/eslint/issues/5639
-            attribute = parseInt(attribute);
-            /*eslint-enable radix*/
+          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          if (!window.CustomElements.hasNative) {
+            // Notify views which rendered this webcomponent that their HTML markup has changed.
+            this.dispatchEvent(new Event('customElement:created', {
+              bubbles: true
+            }));
           }
         }
+      },
 
-        return attribute;
+      attachedCallback: {
+        value() {
+          this._view.triggerMethod('attach');
+        }
+      },
+
+      detachedCallback: {
+        value() {
+          this._view.destroy();
+          delete this._view;
+        }
+      },
+
+      _getAttribute: {
+        value(attributeName, parseAsInteger) {
+          const hasAttribute = this.hasAttribute(attributeName);
+          // Use undefined so result plays well with Backbone.Model's defaults if hasAttribute is false.
+          let attribute;
+
+          if (hasAttribute) {
+            attribute = this.getAttribute(attributeName);
+
+            if (parseAsInteger) {
+              /*eslint-disable radix*/
+              // TODO: eslint bug fails to recognize parseInt from lodash: https://github.com/eslint/eslint/issues/5639
+              attribute = parseInt(attribute);
+              /*eslint-enable radix*/
+            }
+          }
+
+          return attribute;
+        }
       }
     })
   });

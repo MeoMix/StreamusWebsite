@@ -23,7 +23,7 @@ export default Model.extend({
   install() {
     this.set('isInstalling', true);
 
-    App.channels.snackbar.commands.trigger('show:snackbar', {
+    App.channels.snackbar.trigger('show:snackbar', {
       message: 'Installing Streamus.'
     });
 
@@ -65,7 +65,7 @@ export default Model.extend({
     this.reset();
 
     if (error !== 'User cancelled install') {
-      App.channels.snackbar.commands.trigger('show:snackbar', {
+      App.channels.snackbar.trigger('show:snackbar', {
         message: `${error}.`
       });
       App.analyticsManager.trackEvent('Extension', 'InstallError', error);
@@ -98,6 +98,7 @@ export default Model.extend({
     };
   },
 
+  // TODO: This logic could be shared with the SavePlaylistButton.
   _ensureValidBrowser() {
     const browser = App.browser;
 

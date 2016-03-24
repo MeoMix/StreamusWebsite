@@ -21,7 +21,7 @@ export default BaseRouter.extend({
     }
 
     newRoute.show(routeData);
-    App.channels.route.vent.trigger('shown', newRoute.type, routeData);
+    App.channels.route.trigger('shown', newRoute.type, routeData);
     App.analyticsManager.sendPageView();
   },
 

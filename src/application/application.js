@@ -1,7 +1,5 @@
 // Load globals before initialization the application to ensure all dependencies utilize the globals.
 // Shim helpful/expected functionality into third-party libraries.
-import 'common/shim/marionette.region.shim.js';
-import 'common/shim/marionette.toJson.shim.js';
 import 'common/shim/marionette.view.shim.js';
 import 'common/shim/handlebars.helpers.shim.js';
 import 'common/shim/lodash.mixin.shim.js';
@@ -10,7 +8,7 @@ import 'common/shim/webcomponents.shim.js';
 import 'common/css/core.css';
 import { Application } from 'marionette';
 import { history } from 'backbone';
-import Wreqr from 'backbone.wreqr';
+import Radio from 'backbone.radio';
 import Intercept from 'backbone.intercept';
 import Router from 'route/router.js';
 import RouteType from 'route/routeType.js';
@@ -28,13 +26,12 @@ export default Application.extend({
   serverUrl: 'https://aws-server.streamus.com/Streamus/',
 
   channels: {
-    body: Wreqr.radio.channel('body'),
-    route: Wreqr.radio.channel('route'),
-    content: Wreqr.radio.channel('content'),
-    element: Wreqr.radio.channel('element'),
-    snackbar: Wreqr.radio.channel('snackbar'),
-    window: Wreqr.radio.channel('window'),
-    simpleMenu: Wreqr.radio.channel('simpleMenu')
+    body: Radio.channel('body'),
+    route: Radio.channel('route'),
+    content: Radio.channel('content'),
+    element: Radio.channel('element'),
+    snackbar: Radio.channel('snackbar'),
+    window: Radio.channel('window')
   },
 
   initialize() {
@@ -79,22 +76,19 @@ export default Application.extend({
   },
 
   _onStart() {
-    setTimeout(() => {
-      const applicationView = new ApplicationView();
-      applicationView.render();
+    const applicationView = new ApplicationView();
+    applicationView.render();
 
-      this.router = new Router();
+    this.router = new Router();
 
-      // Enable Backbone History to use routing. Only modern browsers are anticipated so set pushState to true.
-      history.start({
-        pushState: true
-      });
+    // Enable Backbone History to use routing. Only modern browsers are anticipated so set pushState to true.
+    history.start({
+      pushState: true
+    });
 
-      // Intercept href links so that HTML5 pushState is used instead of a full page reload.
-      Intercept.start();
+    // Intercept href links so that HTML5 pushState is used instead of a full page reload.
+    Intercept.start();
 
-      this.analyticsManager.sendPageView();
-    }, 2000);
-
+    this.analyticsManager.sendPageView();
   }
 });

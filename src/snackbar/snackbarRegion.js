@@ -8,7 +8,7 @@ export default Region.extend({
 
   initialize() {
     this._snackbarQueue = new Snackbars();
-    this.listenTo(App.channels.snackbar.commands, 'show:snackbar', this._showSnackbar);
+    this.listenTo(App.channels.snackbar, 'show:snackbar', this._showSnackbar);
   },
 
   onEmpty() {

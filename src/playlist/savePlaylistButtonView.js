@@ -1,18 +1,18 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import styles from './savePlaylistButton.css';
-import ViewEntityContainer from 'behavior/viewEntityContainer.js';
+import ViewEntityContainerBehavior from 'behavior/viewEntityContainerBehavior.js';
 
-export default LayoutView.extend({
+export default View.extend({
   tagName: 'a',
   className: styles.savePlaylistButton,
   template: false,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
   behaviors: {
-    ViewEntityContainer: {
-      behaviorClass: ViewEntityContainer,
+    viewEntityContainer: {
+      behaviorClass: ViewEntityContainerBehavior,
       viewEntityNames: ['model']
     }
   },

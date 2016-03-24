@@ -1,12 +1,12 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './navigationItem.hbs';
 import styles from './navigationItem.css';
 
-export default LayoutView.extend({
+export default View.extend({
   tagName: 'li',
   className: styles.navigationItem,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -16,7 +16,7 @@ export default LayoutView.extend({
 
   initialize() {
     this._setActiveClass(this.model.get('isActive'));
-    this.listenTo(App.channels.route.vent, 'shown', this._onRouteShown);
+    this.listenTo(App.channels.route, 'shown', this._onRouteShown);
   },
 
   _onChangeIsActive(model, isActive) {

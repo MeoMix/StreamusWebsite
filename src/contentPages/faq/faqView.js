@@ -1,4 +1,4 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './faq.hbs';
 import styles from './faq.css';
 import FaqItems from './faqItems.js';
@@ -21,10 +21,10 @@ import blankScreenDescription from './descriptions/blankScreen.hbs';
 import truncatedScreenDescription from './descriptions/truncatedScreen.hbs';
 
 // TODO: Scroll into view on initial page load.
-export default LayoutView.extend({
+export default View.extend({
   className: styles.faq,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 

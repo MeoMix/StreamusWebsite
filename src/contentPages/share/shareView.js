@@ -1,14 +1,15 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './share.hbs';
 import styles from './share.css';
 import Playlist from 'playlist/playlist.js';
 import PlaylistView from 'playlist/playlistView.js';
 import RouteType from 'route/routeType.js';
+import CustomElementBehavior from 'behavior/customElementBehavior.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.share,
   template,
-  templateHelpers: {
+  templateContext: {
     styles,
     RouteType
   },
@@ -23,14 +24,17 @@ export default LayoutView.extend({
     'change:hasPlaylist': '_onChangeHasPlaylist'
   },
 
+  behaviors: {
+    customElement: {
+      behaviorClass: CustomElementBehavior
+    }
+  },
+
   _loadingStartTime: null,
   _loadedPlaylistTimeout: null,
   _minLoadingDisplayTime: 1000,
 
   onRender() {
-    this.el.addEventListener('card:created', () => {
-      console.log('yo');
-    });
     // If the view was initialized with a ShareCode then go ahead and load it.
     // Otherwise, just let the user know no ShareCode is present and they can act accordingly.
     const shareCode = this.model.get('shareCode');

@@ -21,12 +21,15 @@ export default Behavior.extend({
 
   initialize() {
     this._windowHeight = window.innerHeight;
-    this.bindEntityEvents(App.channels.window.vent, this._windowEvents);
+    this.bindEntityEvents(App.channels.window, this._windowEvents);
   },
 
   onRender() {
     // Cache a copy of the images to load so processing a subset is simple.
     this._unloadedImages = Array.from(this.ui.lazyImage);
+
+    // It's possible to be scrolled down the page on initial load (i.e. Firefox preserves scroll location)
+    this._loadImages();
   },
 
   _onWindowScroll() {
@@ -39,12 +42,6 @@ export default Behavior.extend({
   },
 
   _loadImages() {
-    // webcomponents polyfill results in getBoundingClientRect returning all default values for cached ui elements.
-    if (this.ui.lazyImage.length > 0 && this.ui.lazyImage[0].getBoundingClientRect().width === 0) {
-      this.view.bindUIElements();
-      this._unloadedImages = Array.from(this.ui.lazyImage);
-    }
-
     // Determine which images (if any) need to be loaded.
     const imagesInThreshold = filter(this._unloadedImages, (image) => {
       return image.getBoundingClientRect().top <= this._windowHeight + this.options.threshold;

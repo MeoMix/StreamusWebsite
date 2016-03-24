@@ -1,17 +1,21 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import styles from './installButton.css';
-import ViewEntityContainer from 'behavior/viewEntityContainer.js';
+import ViewEntityContainerBehavior from 'behavior/viewEntityContainerBehavior.js';
 
-export default LayoutView.extend({
+export default View.extend({
   tagName: 'a',
   className: styles.installButton,
   template: false,
 
   behaviors: {
-    ViewEntityContainer: {
-      behaviorClass: ViewEntityContainer,
+    viewEntityContainer: {
+      behaviorClass: ViewEntityContainerBehavior,
       viewEntityNames: ['model']
     }
+  },
+
+  events: {
+    'click': '_onClick'
   },
 
   modelEvents: {
@@ -24,10 +28,8 @@ export default LayoutView.extend({
     this._setText(this.model.get('text'));
   },
 
-  onClick() {
-    if (!this.model.get('isDisabled')) {
-      this.model.install();
-    }
+  _onClick() {
+    this.model.install();
   },
 
   _onChangeIsDisabled(model, isDisabled) {

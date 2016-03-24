@@ -1,12 +1,12 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './header.hbs';
 import styles from './header.css';
 import NavigationItemsView from 'navigationItems/navigationItemsView.js';
 
-export default LayoutView.extend({
+export default View.extend({
   className: styles.header,
   template,
-  templateHelpers: {
+  templateContext: {
     styles
   },
 
@@ -15,7 +15,7 @@ export default LayoutView.extend({
   },
 
   initialize() {
-    this.listenTo(App.channels.window.vent, 'scroll', this._onWindowScroll);
+    this.listenTo(App.channels.window, 'scroll', this._onWindowScroll);
   },
 
   onRender() {

@@ -1,14 +1,13 @@
-﻿import { LayoutView } from 'marionette';
+﻿import { View } from 'marionette';
 import template from './card.hbs';
 import styles from './card.css';
 import Card from './card.js';
-import { extend } from 'lodash';
 
-const CardView = LayoutView.extend({
+const CardView = View.extend({
   tagName: 'streamus-card',
   className: styles.card,
   template,
-  templateHelpers() {
+  templateContext() {
     return {
       styles,
       hasHeader: this.model.hasHeader(),
@@ -26,44 +25,53 @@ const CardView = LayoutView.extend({
 
 const registerCardElement = function() {
   document.registerElement('streamus-card', {
-    prototype: extend(Object.create(HTMLElement.prototype), {
-      createdCallback() {
-        const cardView = new CardView({
-          el: this,
-          model: new Card({
-            header: {
-              title: this._getElementHtml('title'),
-              subtitle: this._getElementHtml('subtitle')
-            },
-            content: this._getElementHtml('content'),
-            richMedia: this._getElementHtml('richMedia'),
-            actions: this._getElementHtml('actions')
-          })
-        });
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value() {
+          const cardView = new CardView({
+            el: this,
+            model: new Card({
+              header: {
+                title: this._getElementHtml('title'),
+                subtitle: this._getElementHtml('subtitle')
+              },
+              content: this._getElementHtml('content'),
+              richMedia: this._getElementHtml('richMedia'),
+              actions: this._getElementHtml('actions')
+            })
+          });
 
-        cardView.render();
-        this._view = cardView;
+          cardView.render();
+          this._view = cardView;
 
-        if (!window.CustomElements.hasNative) {
-          // Notify views which rendered this webcomponent that their HTML markup has changed.
-          this.dispatchEvent(new Event('card:created', {
-            bubbles: true
-          }));
+          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          if (!window.CustomElements.hasNative) {
+            // Notify views which rendered this webcomponent that their HTML markup has changed.
+            this.dispatchEvent(new Event('customElement:created', {
+              bubbles: true
+            }));
+          }
         }
       },
 
-      attachedCallback() {
-        this._view.triggerMethod('attach');
+      attachedCallback: {
+        value() {
+          this._view.triggerMethod('attach');
+        }
       },
 
-      detachedCallback() {
-        this._view.destroy();
-        delete this._view;
+      detachedCallback: {
+        value() {
+          this._view.destroy();
+          delete this._view;
+        }
       },
 
-      _getElementHtml(tagName) {
-        const element = this.getElementsByTagName(`card-${tagName}`)[0];
-        return element ? element.innerHTML : '';
+      _getElementHtml: {
+        value(tagName) {
+          const element = this.getElementsByTagName(`card-${tagName}`)[0];
+          return element ? element.innerHTML : '';
+        }
       }
     })
   });
