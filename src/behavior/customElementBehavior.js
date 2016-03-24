@@ -2,14 +2,14 @@
 import { bindAll, debounce} from 'lodash';
 
 export default Behavior.extend({
-  _cardCreated: false,
+  _customElementCreated: false,
   _originalViewInitialize: null,
   _originalViewOnRender: null,
 
   initialize() {
     if (!window.CustomElements.hasNative) {
       // Bind pre-emptively to preserve function reference otherwise removeEventListener will fail.
-      bindAll(this, '_onCardCreated');
+      bindAll(this, '_onCustomElementCreated');
 
       // There can be multiple webcomponents which will all emit events. Don't spam reinitialize the view.
       this._reinitializeView = debounce(this._reinitializeView.bind(this), 100);
@@ -36,7 +36,7 @@ export default Behavior.extend({
   },
 
   _onViewRender() {
-    if (window.CustomElements.hasNative || this._cardCreated) {
+    if (window.CustomElements.hasNative || this._customElementCreated) {
       if (this._originalViewOnRender) {
         this._originalViewOnRender.call(this.view, arguments);
       }
@@ -56,7 +56,7 @@ export default Behavior.extend({
   },
 
   _reinitializeView() {
-    this._cardCreated = true;
+    this._customElementCreated = true;
     this.view.bindUIElements();
     this.view._reInitRegions();
     this.view.triggerMethod('render', this.view);
