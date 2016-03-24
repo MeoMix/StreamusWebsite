@@ -7,7 +7,6 @@ export default Behavior.extend({
   _originalViewOnRender: null,
 
   initialize() {
-    debugger;
     if (!window.CustomElements.hasNative) {
       // Bind pre-emptively to preserve function reference otherwise removeEventListener will fail.
       bindAll(this, '_onCardCreated');
