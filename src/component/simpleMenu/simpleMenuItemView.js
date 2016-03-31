@@ -1,7 +1,6 @@
 ﻿import { View } from 'marionette';
 import template from './simpleMenuItem.hbs';
 import styles from './simpleMenuItem.css';
-import FixedPosition from './fixedPosition.js';
 
 export default View.extend({
   className: styles.simpleMenuItem,
@@ -16,7 +15,6 @@ export default View.extend({
 
   initialize() {
     this.el.classList.toggle(styles.isDisabled, this.model.get('disabled'));
-    this._setFixedPositionClass(this.model.get('fixedPosition'));
   },
 
   onRender() {
@@ -45,15 +43,5 @@ export default View.extend({
 
   _setState(active) {
     this.el.classList.toggle(styles.isActive, active);
-  },
-
-  // Add a border dividing a fixed ItemView's position from the other collection of ItemViews.
-  _setFixedPositionClass(fixedPosition) {
-    // TODO: css
-    if (fixedPosition === FixedPosition.Top) {
-      this.$el.addClass('u-bordered--bottom');
-    } else if (fixedPosition === FixedPosition.Bottom) {
-      this.$el.addClass('u-bordered--top');
-    }
   }
 });

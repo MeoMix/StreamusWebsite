@@ -1,6 +1,5 @@
 ﻿import { View } from 'marionette';
 import styles from './savePlaylistButton.css';
-import ViewEntityContainerBehavior from 'behavior/viewEntityContainerBehavior.js';
 
 export default View.extend({
   tagName: 'a',
@@ -8,13 +7,6 @@ export default View.extend({
   template: false,
   templateContext: {
     styles
-  },
-
-  behaviors: {
-    viewEntityContainer: {
-      behaviorClass: ViewEntityContainerBehavior,
-      viewEntityNames: ['model']
-    }
   },
 
   events: {
@@ -26,25 +18,13 @@ export default View.extend({
     'change:text': '_onChangeText'
   },
 
-  installButton: null,
-
-  initialize(options) {
-    this.installButton = options.installButton;
-
+  initialize() {
     this._setIsDisabledClass(this.model.get('isDisabled'));
     this._setText(this.model.get('text'));
   },
 
   _onClick() {
-    // Prompt the user to install if needed and then automatically save the playlist.
-    // This is better UX compared to making the user click twice.
-    if (!this.installButton.get('isDisabled')) {
-      this.model.set('isSavePending', true);
-      // TODO: Button doesn't say 'Installing...'
-      this.installButton.install();
-    } else if (!this.model.get('isDisabled')) {
-      this.model.save();
-    }
+    this.model.save();
   },
 
   _onChangeIsDisabled(model, isDisabled) {

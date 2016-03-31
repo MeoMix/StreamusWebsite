@@ -1,0 +1,29 @@
+﻿.gettingStarted {
+  @mixin content from '../content';
+}
+
+.title {
+  @mixin title from '../content';
+}
+
+.description {
+  @mixin description from '../content';
+}
+
+.cards {
+  display: flex;  
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  width: 640px;
+
+  &:not(:last-child) {
+    margin-bottom: 48px;
+  }
+}
+
+.image {
+  trait: bottomOutset from 'box-shadow';
+}

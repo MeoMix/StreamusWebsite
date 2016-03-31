@@ -1,15 +1,15 @@
 ﻿import BaseRouter from 'backbone.base-router';
 import Route from 'route/route.js';
-import HomeRoute from 'contentPages/home/homeRoute.js';
-import FaqRoute from 'contentPages/faq/faqRoute.js';
-import GettingStartedRoute from 'contentPages/gettingStarted/gettingStartedRoute.js';
-import ShareRoute from 'contentPages/share/shareRoute.js';
-import AboutRoute from 'contentPages/about/aboutRoute.js';
-import DonateRoute from 'contentPages/donate/donateRoute.js';
-import ContactRoute from 'contentPages/contact/contactRoute.js';
-import PrivacyPolicyRoute from 'contentPages/privacyPolicy/privacyPolicyRoute.js';
-import TermsOfUseRoute from 'contentPages/termsOfUse/termsOfUseRoute.js';
-import NotFoundRoute from 'contentPages/notFound/notFoundRoute.js';
+import HomeRoute from 'content/home/homeRoute.js';
+import FaqRoute from 'content/faq/faqRoute.js';
+import GettingStartedRoute from 'content/gettingStarted/gettingStartedRoute.js';
+import ShareRoute from 'content/share/shareRoute.js';
+import AboutRoute from 'content/about/aboutRoute.js';
+import DonateRoute from 'content/donate/donateRoute.js';
+import ContactRoute from 'content/contact/contactRoute.js';
+import PrivacyPolicyRoute from 'content/privacyPolicy/privacyPolicyRoute.js';
+import TermsOfUseRoute from 'content/termsOfUse/termsOfUseRoute.js';
+import NotFoundRoute from 'content/notFound/notFoundRoute.js';
 import { mapKeys } from 'lodash';
 
 export default BaseRouter.extend({

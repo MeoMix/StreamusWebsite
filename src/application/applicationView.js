@@ -4,7 +4,7 @@ import template from './application.hbs';
 import HeaderRegion from 'header/headerRegion.js';
 import FooterRegion from 'footer/footerRegion.js';
 import SnackbarRegion from 'snackbar/snackbarRegion.js';
-import ContentPagesRegion from 'contentPages/contentPagesRegion.js';
+import ContentRegion from 'content/contentRegion.js';
 import _ from 'lodash';
 
 export default View.extend({
@@ -17,15 +17,18 @@ export default View.extend({
   regions: {
     header: {
       selector: 'header',
-      regionClass: HeaderRegion
+      regionClass: HeaderRegion,
+      replaceElement: true
     },
     content: {
       selector: 'content',
-      regionClass: ContentPagesRegion
+      regionClass: ContentRegion,
+      replaceElement: true
     },
     footer: {
       selector: 'footer',
-      regionClass: FooterRegion
+      regionClass: FooterRegion,
+      replaceElement: true
     },
     snackbar: {
       selector: 'snackbar',

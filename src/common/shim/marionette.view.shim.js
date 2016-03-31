@@ -1,4 +1,4 @@
-﻿/* eslint max-len: 0 */
+﻿/*eslint-disable*/
 // All views should look up ui elements with a "data-ui~=name" attribute.
 // Make the lookup of ui elements by their data-ui attribute implicit.
 // Optionally allow the user to opt-out of this functionaliy via 'useCustomUiSelector' flag.
@@ -116,3 +116,4 @@ Marionette.View.prototype.normalizeUIValues = Marionette.Behavior.prototype.norm
   var uiBindings = this._getUIBindings();
   return normalizeUIValues(hash, uiBindings, properties, uiBindings, this.useCustomUiSelector || this.view && this.view.useCustomUiSelector);
 };
+/*eslint-enable*/

@@ -32,7 +32,7 @@ const registerLinkElement = function() {
 
           this._view = linkView;
 
-          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          // Polyfill is async; dispatch event to allow App to know when async work has completed.
           if (!window.CustomElements.hasNative) {
             // Notify views which rendered this webcomponent that their HTML markup has changed.
             this.dispatchEvent(new Event('customElement:created', {

@@ -1,4 +1,6 @@
-﻿// Import from 'compiled' because tests work off of pre-compiled logic not raw ES6.
+﻿// TODO: This is bad, I should find a better way to load webcomponents polyfill for each test.
+import 'webcomponents.js/webcomponents-lite.js';
+// Import from 'compiled' because tests work off of pre-compiled logic not raw ES6.
 import Application from 'compiled/application/application.js';
 import indexText from 'compiled/index.html!text';
 

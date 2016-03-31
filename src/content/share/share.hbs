@@ -1,0 +1,39 @@
+﻿<h1 class='{{styles.title}}'>
+  Share
+</h1>
+<h4 class='{{styles.description}}'>
+  Sharing playlists is as easy as you'd expect.
+</h4>
+
+<div class='{{styles.cards}}'>
+  <streamus-card class='{{styles.card}} {{styles.introduction}}'>
+    <card-richMedia>
+      <img class='{{styles.image}}' width='640' height='480' src='/content/share/share.png' alt='Image of Sharing Playlist' />
+    </card-richMedia>
+    <card-header>
+      <card-title>Sharing playlists</card-title>
+    </card-header>
+    <card-content>
+      Show others your taste in music by sharing a playlist URL. Want an example? Try clicking 'View Playlist'
+    </card-content>
+    <card-actions>
+      <a class='{{styles.button}}' href='{{RouteType.Share}}/playlist/1f9edabfdeb8/tropical_house'>
+        View Playlist
+      </a>
+    </card-actions>
+  </streamus-card>
+
+  <streamus-card class='{{styles.card}} {{styles.loading}}'>
+    <card-content>
+      Loading share data...
+    </card-content>
+  </streamus-card>
+
+  <streamus-card class='{{styles.card}} {{styles.error}}'>
+    <card-content>
+      Failed to load share data. Sorry. :(
+    </card-content>
+  </streamus-card>
+</div>
+
+<div data-region='playlist'></div>

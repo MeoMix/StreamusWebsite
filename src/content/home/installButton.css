@@ -1,0 +1,3 @@
+﻿.installButton {
+  @mixin raisedButton dark from 'component/button/button';
+}

@@ -1,0 +1,15 @@
+.about {
+  @mixin content from '../content';
+}
+
+.title {
+  @mixin title from '../content';
+}
+
+.description {
+  @mixin description from '../content';
+}
+
+.paragraph {
+  padding: 8px 0;
+}

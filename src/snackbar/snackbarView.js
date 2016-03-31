@@ -26,7 +26,7 @@ export default View.extend({
     // Defer binding event listeners which will hide this view to ensure that events which
     // were responsible for showing it do not also result in hiding.
     defer(() => {
-      if (!this.isDestroyed) {
+      if (!this.isDestroyed()) {
         this.listenTo(App.channels.element, 'click', this._onElementClick);
       }
     });
@@ -72,7 +72,7 @@ export default View.extend({
   _onTransitionInComplete(event) {
     // TransitionEnd events bubble up from children. Only respond to the expected event.
     if (event.target === event.currentTarget) {
-      this.$el.off('webkitTransitionEnd.transitionIn');
+      this.$el.off('transitionend.transitionIn');
       this.model.set('isFullyVisible', true);
     }
   },
@@ -80,7 +80,7 @@ export default View.extend({
   _onTransitionOutComplete(event) {
     // TransitionEnd events bubble up from children. Only respond to the expected event.
     if (event.target === event.currentTarget) {
-      this.$el.off('webkitTransitionEnd.transitionOut');
+      this.$el.off('transitionend.transitionOut');
       this.destroy();
     }
   },
@@ -107,17 +107,16 @@ export default View.extend({
   // Slide the snackbar up and into the viewport.
   _transitionIn() {
     this.$el
-      .off('webkitTransitionEnd.transitionIn')
-      .on('webkitTransitionEnd.transitionIn', this._onTransitionInComplete.bind(this));
+      .off('transitionend.transitionIn')
+      .on('transitionend.transitionIn', this._onTransitionInComplete.bind(this));
     this.el.classList.add(styles.isVisible);
   },
 
   // Slide snackbar down and out of the viewport. Destroy the view once it is fully hidden.
   _transitionOut() {
-    // TODO: I need to support non-webkit browsers.
     this.$el
-      .off('webkitTransitionEnd.transitionOut')
-      .on('webkitTransitionEnd.transitionOut', this._onTransitionOutComplete.bind(this));
+      .off('transitionend.transitionOut')
+      .on('transitionend.transitionOut', this._onTransitionOutComplete.bind(this));
     this.el.classList.remove(styles.isVisible);
     this.model.set('isFullyVisible', false);
   }

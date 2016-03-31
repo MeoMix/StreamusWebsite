@@ -1,0 +1,76 @@
+﻿.donate {
+  @mixin content from '../content';
+}
+
+.title {
+  @mixin title from '../content';
+}
+
+.description {
+  @mixin description from '../content';
+}
+
+.icons {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 64px;
+  margin-top: 16px;
+  padding: 8px 0;
+}
+
+.dollarSign {
+  composes: fa fa-usd from 'font-awesome';
+  trait: green from 'color';
+  padding: 0 8px;
+}
+
+.arrow {
+  composes: fa fa-long-arrow-right from 'font-awesome';
+  trait: yellow from 'color';
+  padding: 0 16px;
+}
+
+.heart {
+  composes: fa fa-heart from 'font-awesome';
+  trait: red from 'color';
+  padding: 0 8px;
+}
+
+.equalSign {
+  trait: blue from 'color';
+  padding: 0 16px;
+  font-weight: 500;
+  cursor: default;
+  /* The equalSign is text and so it doesn't align properly with icons. */
+  margin-top: -2px;
+}
+
+.beer {
+  trait: brown from 'fill';
+}
+
+.paragraph {
+  margin: 8px 0;
+}
+
+.donationArea {
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.payPalAmount {
+  margin-left: 16px;
+}
+
+.payPalButton {
+  @mixin raisedButton dark from 'component/button/button';
+  margin-left: 16px;
+}
+
+.donate-payPalInput {
+  display: inline-block;
+  max-width: 200px;
+}

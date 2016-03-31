@@ -80,7 +80,7 @@ const SelectView = View.extend({
 });
 
 const registerSelectElement = function() {
-  document.registerElement('streamus-select', {
+  document.registerElement(SelectView.prototype.tagName, {
     prototype: Object.create(HTMLElement.prototype, {
       createdCallback: {
         value() {
@@ -96,7 +96,7 @@ const registerSelectElement = function() {
 
           this._view = selectView;
 
-          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          // Polyfill is async; dispatch event to allow App to know when async work has completed.
           if (!window.CustomElements.hasNative) {
             // Notify views which rendered this webcomponent that their HTML markup has changed.
             this.dispatchEvent(new Event('customElement:created', {

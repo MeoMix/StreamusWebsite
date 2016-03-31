@@ -1,0 +1,36 @@
+﻿@mixin-from content {
+  margin-top: 56px;
+  padding: 48px 0;
+  width: 976px;
+  margin-left: auto;
+  margin-right: auto;
+  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
+  flex: 1 0 auto;
+
+  &::before {
+    content: '';
+    trait: blue from 'background-color';
+    height: 512px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* TODO: Negative z-index is probably a really bad idea */
+    z-index: -1;
+  }
+}
+
+@mixin-from title {
+  trait: white from 'color';
+  margin: 24px 0;
+  text-align: center;
+  font-size: 56px;
+}
+
+@mixin-from description {
+  trait: white from 'color';
+  text-align: center;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 48px;
+}

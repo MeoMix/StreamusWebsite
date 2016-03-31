@@ -1,0 +1,41 @@
+﻿.privacyPolicy {
+  @mixin content from '../content';
+}
+
+.title {
+  @mixin title from '../content';
+}
+
+.description {
+  @mixin description from '../content';
+}
+
+.card {
+  @mixin card from 'common/css/components/card';
+  padding: 24px 16px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.subsectionTitle {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.subsectionTitle,
+.sectionTitle {
+  margin-bottom: 12px;
+}
+
+.subsection,
+.section:not(:first-child) {
+  margin-top: 16px;
+}
+
+.subsectionParagraph,
+.sectionParagraph:not(:last-child) {
+  margin-bottom: 12px;
+}

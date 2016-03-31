@@ -1,9 +1,11 @@
 ﻿.footer {
   display: flex;
-  flex: 1;
   align-items: center;
   justify-content: center;
-  padding: 8px 0;
+  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
+  flex: none;
+  trait: darkPrimary from 'background-color';
+  padding: 32px 0;
 }
 
 .leftSection {
@@ -19,7 +21,6 @@
 
 .rightSection {
   trait: white from 'color';
-  padding-left: 48px;
   flex: 1;
 }
 
@@ -34,10 +35,18 @@
   opacity: 0.87;
   will-change: opacity;
   transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
+  margin-left: 48px;
 
   &:hover {
     opacity: 1;
   }
+}
+
+.icons {
+  margin-top: 8px;
+  /* Shave 4px off so that icon background-color aligns with badge. */
+  margin-left: 44px;
+  display: flex;
 }
 
 .icon {
@@ -49,31 +58,38 @@
   opacity: 0.87;
   will-change: opacity;
   transition: opacity .1s cubic-bezier(.39, .575, .565, 1);
+  margin-right: 8px;
 
   &:hover {
     opacity: 1;
 
     & .facebook {
-      color: #3664a2;
+      background-color: rgba(54, 100, 162, .54);
     }
 
     & .twitter {
-      color: #55acee;
+      background-color: rgba(85, 172, 238, .54);
     }
 
     & .reddit {
-      color: #FF4500;
+      background-color: rgba(255, 69, 0, .54);
     }
 
     & .github {
-      color: #672A80;
+      background-color: rgba(64, 120, 192, .54);
     }
   }
 }
 
 @define-mixin iconImage {
-  will-change: color;
-  transition: color .1s cubic-bezier(.39, .575, .565, 1);
+  will-change: background-color;
+  transition: background-color .1s cubic-bezier(.39, .575, .565, 1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .twitter {

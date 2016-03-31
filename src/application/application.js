@@ -13,14 +13,13 @@ import Intercept from 'backbone.intercept';
 import Router from 'route/router.js';
 import RouteType from 'route/routeType.js';
 import ApplicationView from './applicationView.js';
-import ExtensionData from 'common/extensionData.js';
+import Extension from 'common/extension.js';
 import AnalyticsManager from 'common/analyticsManager.js';
-import Browser from 'common/browser.js';
 import NavigationItems from 'navigationItems/navigationItems.js';
 
 export default Application.extend({
   router: null,
-  extensionData: null,
+  extension: null,
   analyticsManager: null,
   browser: null,
   serverUrl: 'https://aws-server.streamus.com/Streamus/',
@@ -35,10 +34,7 @@ export default Application.extend({
   },
 
   initialize() {
-    this.browser = new Browser();
-    this.extensionData = new ExtensionData({
-      browser: this.browser
-    });
+    this.extension = new Extension();
     this.analyticsManager = new AnalyticsManager();
     this.navigationItems = new NavigationItems([{
       text: 'Home',

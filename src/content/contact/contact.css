@@ -1,0 +1,43 @@
+﻿.contact {
+  @mixin content from '../content';
+}
+
+.title {
+  @mixin title from '../content';
+}
+
+.description {
+  @mixin description from '../content';
+}
+
+.card {
+  @mixin card from 'common/css/components/card';
+  padding: 24px 8px 16px 8px;
+}
+
+.inputs {
+  margin: 0 8px;
+}
+
+.note {
+  font-size: 12px;
+  trait: darkSecondary from 'color';
+  margin-left: 8px;
+  flex: 1;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 32px;
+  align-items: center;
+}
+
+.button {
+  @mixin raisedButton light from 'component/button/button';
+  margin-right: 8px;
+}
+
+.required {
+  trait: error from 'color';
+}

@@ -1,5 +1,5 @@
 ﻿import { Behavior } from 'marionette';
-import { bindAll, debounce} from 'lodash';
+import { bindAll, debounce } from 'lodash';
 
 export default Behavior.extend({
   _customElementCreated: false,
@@ -20,7 +20,7 @@ export default Behavior.extend({
       this.view.onRender = this._onViewRender.bind(this);
     }
   },
-  
+
   onBeforeDestroy() {
     if (!window.CustomElements.hasNative) {
       this.el.removeEventListener('customElement:created', this._onCustomElementCreated);
@@ -42,7 +42,7 @@ export default Behavior.extend({
       }
     }
   },
-  
+
   _onCustomElementCreated(event) {
     // Webcomponent has modified DOM and so our ui/region references are stale.
     // If we haven't rendered yet then the view isn't stale.

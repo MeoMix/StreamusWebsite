@@ -1,0 +1,48 @@
+﻿.home {
+  @mixin content from '../content';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  @mixin title from '../content';
+}
+
+.description {
+  @mixin description from '../content';
+}
+
+.button {
+  margin-bottom: 48px;
+}
+
+.video {
+  width: 640px;
+  height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+
+.feature {
+  flex-basis: 33%;
+  padding: 12px;
+  text-align: center;
+}
+
+.featureTitle {
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+
+.featureDescription {
+  line-height: 24px;
+}

@@ -16,7 +16,7 @@ export default CollectionView.extend({
     this._isHorizontal = isUndefined(options.isHorizontal) ? this._isHorizontal : options.isHorizontal;
     this._isSecondary = isUndefined(options.isSecondary) ? this._isSecondary : options.isSecondary;
 
-    // Navigation items are displayed in two locations: navigationDrawer and header.
+    // Navigation items will be displayed in two locations: navigationDrawer and header.
     // The header displays the items horizontally. NavigationDrawer displays them vertically.
     if (options.isHorizontal) {
       this.el.classList.add(styles.isHorizontal);

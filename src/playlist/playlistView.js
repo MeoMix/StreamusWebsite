@@ -2,7 +2,6 @@
 import template from './playlist.hbs';
 import styles from './playlist.css';
 import PlaylistItemsView from './playlistItemsView.js';
-import InstallButton from 'button/installButton.js';
 import SavePlaylistButtonView from './savePlaylistButtonView.js';
 import SavePlaylistButton from './savePlaylistButton.js';
 import CustomElementBehavior from 'behavior/customElementBehavior.js';
@@ -49,9 +48,7 @@ export default View.extend({
     this.showChildView('button', new SavePlaylistButtonView({
       model: new SavePlaylistButton({
         playlistId: this.model.get('id')
-      }),
-      // TODO: Rename 'button' models to 'action' to ensure they aren't coupled to a given view.
-      installButton: new InstallButton()
+      })
     }));
 
     this.showChildView('playlistItems', new PlaylistItemsView({

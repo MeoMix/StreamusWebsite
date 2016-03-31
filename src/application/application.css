@@ -5,59 +5,10 @@
   trait: darkPrimary from 'color';
 }
 
-.headerRegion {
-  display: flex;
-  width: 100%;
-  height: 64px;
-  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
-  flex: none;
-  position: fixed;
-}
-
-.contentRegion {
-  margin-top: 56px;
-  padding: 48px 0;
-  width: 976px;
-  margin-left: auto;
-  margin-right: auto;
-  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
-  flex: 1 0 auto;
-
-  &::before {
-    content: '';
-    trait: blue from 'background-color';
-    height: 512px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-}
-
-.footerRegion {
-  /* Ensure browsers don't allow items to shrink smaller than default minimum size */
-  flex: none;
-  trait: darkPrimary from 'background-color';
-  padding: 24px 0;
-}
-
-.navigationRegion {
-  display: flex;
-  flex-direction: column;
-  /*flex: 0 0 280px;*/
-  trait: right from 'box-shadow';
-  position: fixed;
-  height: 100%;
-  width: 280px;
-  display: none;
-}
-
 .content {
   display: flex;
   flex-direction: column;
   flex: 1;
-  /*padding-left: 280px;*/
 }
 
 .snackbarRegion {

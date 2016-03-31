@@ -1,69 +1,69 @@
 ﻿import { Model } from 'backbone';
-import { result } from 'lodash';
 
 export default Model.extend({
   defaults() {
-    const isWebKit = App.browser.get('isWebKit');
+    const isDisabled = !App.extension.get('isInstalled') && !App.extension.get('canInstall');
 
     return {
-      isDisabled: !isWebKit,
-      isSaving: false,
-      text: isWebKit ? 'Add Playlist' : 'Google Chrome required',
-      playlistId: null,
-      isSavePending: false
+      isDisabled,
+      text: isDisabled ? App.extension.get('cantInstallReason') : 'Add Playlist',
+      playlistId: null
     };
-  },
-
-  initialize() {
-    this.listenTo(App.extensionData, 'change:isUserLoaded', this._onExtensionDataChangeIsUserLoaded);
-  },
-
-  reset() {
-    this.set(result(this, 'defaults'));
   },
 
   save() {
     this.set('isDisabled', true);
 
+    // Prompt the user to install if needed and then automatically save the playlist.
+    // This is better UX compared to making the user click twice.
+    if (App.extension.get('canInstall')) {
+      App.extension.install().then(() => {
+        // TODO: I need to check for isUserLoaded.
+        this._save();
+      }).catch(() => {
+        this.model.set('isDisabled', false);
+      });
+    } else {
+      this._save();
+    }
+  },
+
+  _save() {
     App.channels.snackbar.trigger('show:snackbar', {
       message: 'Adding playlist.'
     });
 
-    window.chrome.runtime.sendMessage(App.extensionData.get('id'), {
+    App.extension.sendMessage({
       method: 'copyPlaylist',
       playlistId: this.get('playlistId')
-    }, this._onSendMessageResponse.bind(this));
+    }).then(this._onPlaylistAddSuccess.bind(this), this._onPlaylistAddFailure.bind(this));
   },
 
-  _onSendMessageResponse(response) {
-    const success = response.result === 'success';
+  // Notify user and analytics that added the playlist succeeded.
+  // Don't re-enable the button; change its text to indicate playlist was added.
+  _onPlaylistAddSuccess() {
+    App.channels.snackbar.trigger('show:snackbar', {
+      message: 'Playlist added.'
+    });
 
-    if (success) {
-      App.channels.snackbar.trigger('show:snackbar', {
-        message: 'Playlist added.'
-      });
+    this.set('text', 'Playlist added');
 
-      this.set({
-        isDisabled: true,
-        isSaving: false,
-        text: 'Playlist added'
-      });
-    } else {
-      App.channels.snackbar.trigger('show:snackbar', {
-        message: 'Failed to add playlist.'
-      });
-
-      this.reset();
-    }
-
-    const eventName = success ? 'AddedSuccess' : 'AddedError';
-    App.analyticsManager.trackEvent('Playlist', eventName, this.get('playlistId'));
+    App.analyticsManager.trackEvent('Playlist', 'AddedSuccess', this.get('playlistId'));
   },
 
-  _onExtensionDataChangeIsUserLoaded(extensionData, isUserLoaded) {
-    // TODO: Could potentially be a long time to wait between install and user loaded.
-    if (isUserLoaded && this.get('isSavePending')) {
-      this.save();
-    }
+  // Notify user and analytics that adding the playlist failed.
+  // Reset save button so that user may try again (could be an intermittent save issue).
+  _onPlaylistAddFailure() {
+    App.channels.snackbar.trigger('show:snackbar', {
+      message: 'Failed to add playlist.'
+    });
+
+    this.set({
+      isDisabled: false,
+      // TODO: Not DRY with text in defaults
+      text: 'Add Playlist'
+    });
+
+    App.analyticsManager.trackEvent('Playlist', 'AddedError', this.get('playlistId'));
   }
 });

@@ -14,13 +14,13 @@ module.exports = function(config) {
       // serveFiles makes additional files available for jspm to load,
       // but does not load immediately.
       serveFiles: ['compiled/**/*'],
+      stripExtension: false,
       paths: {
         // Need to redirect a path such as 'common/route' to 'base/compiled/common/route'
         '*': 'compiled/*',
         // Tests aren't located under compiled directory. Undo the above path modification.
         'compiled/*': 'compiled/*',
-        // TODO: .js file-ending necessary due to bug with karma-jspm: https://github.com/Workiva/karma-jspm/issues/141
-        'test/*': 'test/*.js'
+        'test/*': 'test/*'
       }
     },
 

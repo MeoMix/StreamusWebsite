@@ -91,7 +91,7 @@ const InputView = View.extend({
 });
 
 const registerInputElement = function() {
-  document.registerElement('streamus-input', {
+  document.registerElement(InputView.prototype.tagName, {
     prototype: Object.create(HTMLElement.prototype, {
       createdCallback: {
         value() {
@@ -117,7 +117,7 @@ const registerInputElement = function() {
           this._view = inputView;
           this.validate = inputView.validate.bind(inputView);
 
-          // Only dispatch an event when polyfilled because there's timing differences on layout rendering when polyfilled.
+          // Polyfill is async; dispatch event to allow App to know when async work has completed.
           if (!window.CustomElements.hasNative) {
             // Notify views which rendered this webcomponent that their HTML markup has changed.
             this.dispatchEvent(new Event('customElement:created', {
@@ -150,10 +150,7 @@ const registerInputElement = function() {
             attribute = this.getAttribute(attributeName);
 
             if (parseAsInteger) {
-              /*eslint-disable radix*/
-              // TODO: eslint bug fails to recognize parseInt from lodash: https://github.com/eslint/eslint/issues/5639
               attribute = parseInt(attribute);
-              /*eslint-enable radix*/
             }
           }
 
