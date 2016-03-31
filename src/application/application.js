@@ -11,7 +11,6 @@ import { history } from 'backbone';
 import Radio from 'backbone.radio';
 import Intercept from 'backbone.intercept';
 import Router from 'route/router.js';
-import RouteType from 'route/routeType.js';
 import ApplicationView from './applicationView.js';
 import Extension from 'common/extension.js';
 import AnalyticsManager from 'common/analyticsManager.js';
@@ -36,37 +35,9 @@ export default Application.extend({
   initialize() {
     this.extension = new Extension();
     this.analyticsManager = new AnalyticsManager();
-    this.navigationItems = new NavigationItems([{
-      text: 'Home',
-      route: RouteType.Home
-    }, {
-      text: 'Getting Started',
-      route: RouteType.GettingStarted
-    }, {
-      text: 'FAQ',
-      route: RouteType.Faq
-    }, {
-      text: 'Share',
-      route: RouteType.Share
-    }, {
-      text: 'About',
-      route: RouteType.About
-    }, {
-      text: 'Donate',
-      route: RouteType.Donate
-    }, {
-      text: 'Contact',
-      route: RouteType.Contact,
-      isSecondary: true
-    }, {
-      text: 'Terms of Use',
-      route: RouteType.TermsOfUse,
-      isSecondary: true
-    }, {
-      text: 'Privacy Policy',
-      route: RouteType.PrivacyPolicy,
-      isSecondary: true
-    }]);
+    this.router = new Router();
+    this.navigationItems = new NavigationItems();
+    this.navigationItems.loadDefaults();
 
     this.on('start', this._onStart);
   },
@@ -75,12 +46,8 @@ export default Application.extend({
     const applicationView = new ApplicationView();
     applicationView.render();
 
-    this.router = new Router();
-
     // Enable Backbone History to use routing. Only modern browsers are anticipated so set pushState to true.
-    history.start({
-      pushState: true
-    });
+    history.start({ pushState: true });
 
     // Intercept href links so that HTML5 pushState is used instead of a full page reload.
     Intercept.start();

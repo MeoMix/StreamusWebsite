@@ -11,6 +11,7 @@
   flex: 1;
 }
 
+/* TODO: Prefer removing the region and having the view in charge of its own CSS. */
 .snackbarRegion {
   position: fixed;
   bottom: 0;

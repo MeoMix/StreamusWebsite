@@ -63,8 +63,6 @@
     <Content Include="src\application\application.css" />
     <Content Include="src\application\application.js" />
     <Content Include="src\application\applicationView.js" />
-    <Content Include="src\application\chromeWebStoreBadge.png" />
-    <Content Include="src\application\youTubeBadge.png" />
     <Content Include="src\behavior\lazyImageBehavior.js" />
     <Content Include="src\behavior\viewEntityContainerBehavior.js" />
     <Content Include="src\behavior\customElementBehavior.js" />

@@ -81,6 +81,7 @@ export default View.extend({
     });
   },
 
+  // Emulate a new page load when routing to new content by scrolling to the top of the page.
   _onRouteShown() {
     document.body.scrollTop = 0;
   }
