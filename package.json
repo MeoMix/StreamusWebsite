@@ -93,6 +93,9 @@
           "core-js": "^1.2.0"
         }
       },
+      "npm:esprima@2.7.2": {
+        "jspmNodeConversion": false
+      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"
