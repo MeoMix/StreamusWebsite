@@ -173,7 +173,7 @@
     "gulp-useref": "^3.0.8",
     "gulp-util": "^3.0.6",
     "jspm": "^0.17.0-beta.11",
-    "karma": "^0.13.22",
+    "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
