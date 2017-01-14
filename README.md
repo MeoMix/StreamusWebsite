@@ -62,7 +62,7 @@ The following Gulp tasks are available:
 * [PostCSS](https://github.com/postcss/postcss)
 * [Babel](https://babeljs.io/)
 * [Gulp](http://gulpjs.com/)
-* [Mocha](http://visionmedia.github.io/mocha/)
+* [Mocha](http://mochajs.org/)
 * [Chai](http://chaijs.com/)
 * [Sinon](http://sinonjs.org/)
 * [Karma](https://karma-runner.github.io/)
