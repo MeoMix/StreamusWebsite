@@ -170,7 +170,7 @@
     "gulp-imagemin": "^2.3.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sftp": "^0.1.5",
-    "gulp-useref": "^3.0.8",
+    "gulp-useref": "^3.1.0",
     "gulp-util": "^3.0.6",
     "jspm": "^0.17.0-beta.11",
     "karma": "^0.13.22",
