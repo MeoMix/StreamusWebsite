@@ -182,7 +182,7 @@
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.2.0",
     "lolex": "^1.4.0",
-    "mocha": "^2.3.3",
+    "mocha": "^3.4.1",
     "opn": "^4.0.1",
     "path": "^0.12.7",
     "phantomjs": "^1.9.18",
